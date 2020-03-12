@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		</script>
+		<title>WiRoc</title>
+	</head>
+	<body>
+		<div class="container">
+			<header style="border-radius: .4rem!important; border: 1px solid #000000; margin-top:0.5rem; background-image: url('mapbanner.png'); background-size: cover; background-position: center">
+				<div class="d-flex flex-nowrap justify-content-between align-items-center mt-md-2 ml-md-1 mr-md-1">
+					<div class="m-2 border border-dark" style="background-color: white; border-radius: .6rem!important;">
+						<div class="text-center m-2" style="flex-grow: 1; flex-shrink: 1; max-width:6rem">
+							<img class="card-img-top" src="logo.png" alt="logo">
+						</div>
+					</div>
+					<div class="text-center" style="flex-grow: 1; flex-shrink: 1; width:50%"></div>
+					<div class="border border-dark" style="border-width:1px !important; border-radius: .6rem!important; flex-grow: 1; flex-shrink: 1; background-color:white; max-width:5rem; height:2rem">
+						  <nav class="text-center">
+						<a class="p-2 text-dark" style="line-height:2rem;" href="http://monitor.wiroc.se">Monitor</a>
+						  </nav>
+					</div>
+				</div>
+			</header>
+
+			<div id="accordion">
+				<div class="btn-group btn-group-toggle btn-group-justified mt-1" style="width: 100%" data-toggle="buttons">
+				  <label class="btn btn-secondary active">
+					<input type="radio" name="options" id="optionWiRoc" autocomplete="off" checked data-toggle="collapse" href="#pageWiRoc" aria-expanded="true" aria-controls="pageWiRoc" id="WiRocLink"> WiRoc
+				  </label>
+				  <label class="btn btn-secondary">
+					<input type="radio" name="options" id="optionRange" autocomplete="off" data-toggle="collapse" href="#pageRange" aria-expanded="false" aria-controls="pageRange" id="RangeLink"> Räckvidd
+				  </label>
+				  <label class="btn btn-secondary">
+					<input type="radio" name="options" id="optionConfig" autocomplete="off" data-toggle="collapse" href="#pageConfig" aria-expanded="false" aria-controls="pageConfig" id="ConfigLink"> Konfiguration
+				  </label>
+				  <label class="btn btn-secondary">
+					<input type="radio" name="options" id="optionBlog" autocomplete="off" data-toggle="collapse" href="#pageBlog" aria-expanded="false" aria-controls="pageBlog" id="BlogLink"> Blog
+				  </label>
+				  <label class="btn btn-secondary">
+					<input type="radio" name="options" id="optionContact" autocomplete="off" data-toggle="collapse" href="#pageContact" aria-expanded="false" aria-controls="pageContact" id="ContactLink"> Kontakt
+				  </label>
+				</div>
+
+				<div class="container collapse show mt-md-2" id="pageWiRoc" data-parent="#accordion">
+					 <div class="container mt-md-2">
+						<h2>WiRoc</h2>
+						<div class="card">
+						  <img class="card-img-top" src="WiRocOLED2.png" alt="WiRoc enhet">
+						  <div class="card-body">
+							<h5 class="card-title"></h5>
+							<p class="card-text">
+							WiRoc är ett system för att trådlöst skicka mellantider från kontroller till tävlingsprogrammet. En WiRoc enhet kan antingen agera sändare, mottagare eller repeater. Mottagaren  kopplas upp på WLAN och konfigureras till att skicka mellantider till tävlingsprogrammet via SIRAP/tcp. Systemet kräver inte mobiltäckning, sim-kort eller anslutning till internet. Enheterna är små och uppladdningsbara batterier ingår, bara att ansluta till USB port för att ladda.
+							</p><p class="card-text">
+							Konfigurationen är enkel och görs med en mobilapplikation WiRoc-Config. WiRoc-Config används också för att testa att sändaren når mottagaren.
+							</p><p class="card-text">
+							WiRoc enheten kan också användas för målenheterna. Ligger mållinjen inom räckhåll för WLANet så kan en WiRoc enhet skicka måltiden direkt via SIRAP/tcp till tävlingsprogrammet så att tiderna kommer upp direkt i speakerstödet. Det räcker då med en WiRoc enhet (USB-hub kan användas för att ansluta flera målenheter) som agerar som mottagare. Samma enhet kan också samtidigt ta emot mellantider från skogen.
+							</p>
+						  </div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container collapse mt-md-2" id="pageRange" data-parent="#accordion">
+					<div class="container">
+						<h2>Räckvidd</h2>
+						Räckvidden beror på många faktorer där de främsta är datahastigheten, vilka antenner som används och terrängen. Se några verkliga exempel från tävlingar längre ner.
+						<h2>Antenner</h2>
+						Vilken antenn som används på sändare respektive mottagare har stor betydelse för räckvidden.
+						<div class="d-flex row flex-wrap align-content-stretch mb-2">
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+								<div class="card h-100">
+								  <img class="card-img-top" src="DipoleAntenna.jpg" alt="Dipolantenn">
+								  <div class="card-body">
+									<h5 class="card-title">Dipolantenn</h5>
+									<p class="card-text">Liten dipolantenn som ansluts direkt till WiRoc-enheten. Storlek ca 10x30 cm.</p>
+								  </div>
+								</div>
+							</div>
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+								<div class="card h-100">
+								  <img class="card-img-top" src="DirectionalAntenna.jpg" alt="Dipolantenn">
+								  <div class="card-body">
+									<h5 class="card-title">Riktantenn</h5>
+									<p class="card-text">Riktantenn ger bättre räckvidd, denna är ca 45x30 cm.</p>
+								  </div>
+								</div>
+							</div>
+						</div>
+						<h2>Exempel</h2>
+					</div>
+
+					<div class="container mt-md-2">
+						<div class="card">
+						  <img class="card-img-top" src="RangeDipoleToDipole1.png" alt="Dipolantenn till dipoleantenn">
+						  <div class="card-body">
+							<h5 class="card-title">Skullebomedeln</h5>
+							<p class="card-text">Avståndet mellan kontroll 9 och mål är 600 m. Här användes en liten dipolantenn vid både sändaren och mottagaren. Inställning för låg datahastighet/lång räckvidd.</p>
+						  </div>
+						</div>
+					</div>
+
+					<div class="container mt-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="RangeDipoleToDirectional1.png" alt="Dipolantenn till riktantenn">
+						  <div class="card-body">
+							<h5 class="card-title">Lång DM</h5>
+							<p class="card-text">Avståndet mellan kontroll 14 och mål är 760 m. Här användes en liten dipolantenn vid sändaren och mottagaren använde en riktantenn. Inställning för låg datahastighet/lång räckvidd. Hade troligen fungerat även med dipolantenn vid mottagaren.</p>
+						  </div>
+						</div>
+					</div>
+
+					<div class="container mt-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="RangeDipoleToDirectional2.png" alt="Dipolantenn till riktantenn">
+						  <div class="card-body">
+							<h5 class="card-title">Ulrikadubbeln</h5>
+							<p class="card-text">Avståndet mellan kontroll 5 till mål är 1,5 km, kontrollen ligger på höjd med nära fri sikt till målet. Här användes en liten dipolantenn på sändaren och riktantenn på mottagaren. Hade troligen fungerat även med dipolantenn vid mottagaren.</p>
+						  </div>
+						</div>
+					</div>
+
+					<div class="container mt-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="RangeDirectionalToDirectional1.png" alt="Riktantenn till riktantenn">
+						  <div class="card-body">
+							<h5 class="card-title">Lång DM</h5>
+							<p class="card-text">Avståndet mellan kontroll 7 till mål är 1,8 km med flera mindre höjder emellan. Här användes riktantenner på både sändaren och mottagaren. Inställning för låg datahastighet/lång räckvidd.</p>
+						  </div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container collapse mt-md-2" id="pageConfig" data-parent="#accordion">
+					<div class="container">
+						<h2>Konfiguration</h2>
+						WiRoc-enheterna konfigureras med Android-applikationen ”WiRoc Config”.
+					</div>
+					<div class="container">
+						<div class="d-flex row flex-wrap align-content-stretch mb-2">
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScan.jpg" alt="Sök efter WiRocenheter">
+								  <div class="card-body">
+									<h5 class="card-title">Sök efter enheter</h5>
+									<p class="card-text">Börja med att starta WiRoc enheten. Starta sedan ”WiRoc Config” och klicka på Scan. När WiRoc enheten har startat upp så dyker den upp i listan över enheter under Scan knappen. Default namnet är ”WiRoc Device” men det är rekommenderat att byta namn för att kunna skilja dem åt enklare. Finns det fler med samma namn är det enklaste sättet att skilja dem åt att titta på signalstyrkan. Den med bäst signalstyrka bör vara den som ligger närmast mobilen. I bilden visas en WiRoc enhet i närheten som heter "White".</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigChannel.jpg" alt="Kanalinställning">
+								  <div class="card-body">
+									<h5 class="card-title">Kanal / hastighet</h5>
+									<p class="card-text">Efter att man anslutit till en enhet i ”WiRoc Config” kommer man till en sida med flera flikar. Den första fliken ”Radio” används för att välja kanal och datahastighet. Sätt samma på både sändare och mottagare. Lägsta datahastigheten ger längst räckvidd.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigSIRAPConfigured.jpg" alt="Kanalinställning">
+								  <div class="card-body">
+									<h5 class="card-title">SIRAP</h5>
+									<p class="card-text">Ställ in IP-adress och port som mellantiderns ska skickas till. För Meos är standardporten 10000 och för OLA är den 10001. Bara mottagaren ska ha "Send to SIRAP-tcp/ip" ikryssad. När det är ikryssat så blir enheten en mottagare, den är en mottagare även om en SI-master kopplas in på den. Stämplingar från inkopplade SI-master enheter skickas då direkt via SIRAP-tcp/ip och skickas inte ut på radio. En WiRoc-enhet som inte har "Send to SIRAP-tcp/ip" ikryssat är en repeater om ingen SI-master är inkopplad och en sändare om minst en SI-master är inkopplad.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4 align-content-stretch">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigNetwork.jpg" alt="Kanalinställning">
+								  <div class="card-body">
+									<h5 class="card-title">Nätverk</h5>
+									<p class="card-text">Mottagarenheten måste vara ansluten till tävlingsnätverket för att kunna skicka in stämplingar via SIRAP-tcp/ip. Klicka på ”Get/Refresh wifi list” för att se vilka nätverk som finns och för att se om WiRoc är ansluten. Om den inte är ansluten klicka på CONNECT knappen vid det nätverk som den ska anslutas till och ange Wlan lösenordet. WiRoc-enhetens IP-adress om den har en står längst ner.</p>
+								  </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="container collapse mt-md-2" id="pageBlog" data-parent="#accordion">
+					<div class="container">
+						<h2>Blog</h2>
+					</div>
+					<div class="container mt-md-2">
+						<div class="card">
+						  <div class="card-body">
+							<h3 class="card-title">O-Ringen Kolmården 2019</h3>
+							<p class="card-text">
+								<p>Som ansvarig för onlinekontroller hade jag hand om främst tre kategorier av onlinekontroller, onlinekontroller i skogen, start/check enheter som var online samt sistakontrollen och målstämplingen.</p>
+
+
+								<h4>Start/Check enheter</h4>
+								<p>Här användes ROCar med USB-sticka som kopplade upp på Telias mobilnät. Varje startplats hade en eller två ROCar som skickar stämplingar i check-enheten alternativt start-enheten (beroende på startmetod). Detta gör att man tidigt vet vilka som har startat och sportidentenheterna behöver inte läsas av efter tävlingen. Förutom ROCen och USB-stickan behövs en powerbank och lite USB-kablar. I det vi fick från föregående år fanns det en USB-kabel för strömmatning (USB-A till Micro USB). Eftersom det är på gränsen att det går att strömmata ROCen genom bara micro-usb kontakten så rekomenderas att man även strömmatar "baklänges" till ROCens USB-A kontakter. För detta fanns det även en Y-kabel som har två USB-A hane kontakter och en USB-hona. Tanken med den är att man kopplar den från powerbanken till de vanliga USB-A kontakter och att den kvarvarande USB-A hona kontakten i Y-kabeln kan användas för t.ex mobil USB-stickan. </p>
+								<p>Vi började testa ROC-arna för start/check enheter tidigt, dels för att testa hur länga batterierna räcker (kanske behöver vi byta någon powerbank) och testa om allt fungerar. Tur var det, vi hade direkt problem med att ibland så kopplade de inte upp sig på mobilnätet, eller att de kopplade upp sig en stund men sedan kopplade ner för att senare koppla upp sig igen. Det verkade vara mer eller mindre slumpmässigt vilken/vilka som krånglade. Vi testade olika batteripaket och strömförsörjningar och mätte om spänning var låg/ostadig. Samma problem uppstod på både i Linköping och i Norrköping så hade troligen inte med täckning eller mobilnätet att göra. Efter mycket testande så visade det sig att det var Y-kabeln som orsakade problemet, hur vet vi inte. Vi köpte in vanliga korta 30 cm USB-förlängningskablar istället, detta så att USB-stickan kom ut från ROCen lite så den inte blockar USB-kontakterna jämte. Eftersom vi inte längre använde Y-kabeln (eller använde den bara för strömmatning) så förlorade vi en USB-kontakt på ROCen men vi behövde bara två USB-kontakter för att koppla in SportIdent enheter på ändå.</p>
+								<p>Nu när det problemet var löst upptäckte vi att ett av Telias kontantkort hade fått slut på data. Misstanken där var att det antingen var något i ROCens operativsystem som slukade datatrafik (säkerhetsuppdateringar?) eller att ROCen själv konstant försökte skicka eller ta emot data. Felsökningen där gjorde vi genom att koppla in ROCen via ethernet kabel till en dator. Datorn var uppkopplad till Wifi och internet delades från Wifit till ethernetkabeln. På detta sätt passerade nätverkstrafiken datorn och med programmet Wireshark kunde vi se nätverkstrafiken. Det visade sig att ROCen skickade anrop mot ROC-servern där den försökte skicka upp samma stämpling gång efter gång. ROC-servern skickade tillbaka ett felmeddelande om att querysträngen var för lång. Vi tog kontakt med Oskar Berg som löste problemet genom att ändra inställningarna på servern.
+								<p>Nu borde väl allt ändå fungera? Det tog inte lång tid innan nästa Telia kontantkort tog slut på en annan ROC. Samma övning igen med felsökning. Denna gång visade sig problemet vara att ROCen försökte skicka upp samma stämpling två gånger i samma anrop. Detta gillade inte servern. Efter ny kontakt med Oskar Berg så lyckades han återskapa felet. Felet var i ROC-mjukvaran och kunde uppstå om man drar ur en SportIdent-enhet och sätter i den igen inom 10 sekunder. Vi valde då att bränna om ROC-imagen och sedan instruera startpersonalen att vänta minst 10 sekunder efter att de dragit ur en SportIdent-enhet innan de sätter i den igen. Oskar har säkert löst problemet i senare versioner.
+								<p>Startcheferna fick instruktioener om hur de skulle hantera ROCarna och fick dem i början på veckan och behöll dem sedan hela veckan. De fick själva se till att ladda powerbanken varje natt. På morgonen efter att de startat upp dem så fick de ringa in till oss och stämpla i start/check-enheten så att vi kunde kontrollera att de var online och att stämplingar kom in. På eftermiddagen innan de kopplade ner så fick de ringa igen och stämpla i start/check-enheterna för bekräfta att alla stämplingar hade laddats upp till servern.
+								<p>Under veckan så hade vi en powerbank som inte hade blivit laddad en dag och en USB-sticka som vi fick byta. Det hände några gånger att en ROC tappade kontakten med mobilnätet och vi fick ringa och be dem starta om den. De flesta gånger som de gick ner så kom de tillbaka innan vi hann ringa dem. Vi hade lite dålig mobiltäckning på ett par ställen, där fick de montera dem lite högre upp. Sammanfattningsvis mycket krångel under föreberedelserna men under veckan fungerade det bra.
+
+								<h4>Skogskontroller</h4>
+								<p>Till skogskontroller användes främst O-Ringens ROCar som går på NET1 nätet. De består av en ganska stor NET1 router, ett 12-volts motorcykel batteri och en vanlig ROC. Dessa är monterade i en väska av plast (tänk verktygsväska för borrmaskin version större). Tunga och otympliga var de. Erik Wedin som var min chef (chef för stämplingsgruppen) var tidigt ute och testade vid alla tänkta onlinekontroller och noterade ner antal staplar på NET1-routern och RSSI värden för Telia ROCar. Detta var till stor hjälp senare.</p>
+								<p>Vi testade även dessa NET1-rockar flera gånger under veckorna innan O-Ringen. Vi fick byta ut ett eller två av batterierna och någon av ROCarna eftersom det var glapp i strömkontakten. Vi hade problem med att uppkopplingen mot NET1-nätet inte var stabilt. Vi kontrollerade att vi hade senaste firmwaren för routrarna, testade lite med olika antenner men fick inget tydligt resultat. Efter samtal med NET1 visade det sig att de lagt ner en av masterna i Norrköpingsområdet. Kvar var en mindre centralt i Norrköping och en större norr om Norrköping. Vi hade började nu fundera på att använda riktantenner på de platser med sämre mottagning.</p>
+								<p>På Söndagen var det dags för Bagherra-stafetten, den gick inne i Norrköping så vi förväntade oss inga problem med täckning men eftersom vi hade haft problem med uppkopplingen till NET1 så hade vi backup-ROCar (NET1 också) med oss ut till kontrollerna. Problemen började direkt med att de tappade uppkopplingen men med hjälp av backupen löstes radio-kontrollen troligen utan att någon märkte något. Förvarningskontrollen däremot, den höll uppkopplingen och rapporterade in att den var online men rapporterade inte in några stämplingar. Eftersom den stod som online så tog det oss ett tag innan vi insåg att det var problem med den. Komunikationen innifrån arenan där vi satt och övervakade med de ute vid kontrollerna var knepig eftersom ljudnivån var hög. Vi misstänker att problmet med förvarningskontrollen var samma som vi hade med en start-ROC, dvs att den försökte skicka dubbla stämplingar i ett anrop. Vi hade dock inte tid att felsöka det utan brände om imagen på SD-kortet så att det fungerade nästa dag.</p>
+								<p>Efter de här problemen tog vi ett litet krismöte och diskuterade hur vi skulle gå vidare. Får vi så här mycket problem under veckan så skulle det bli jobbigt... Vi hade en del inlånade extra ROCar med USB-modem så ställde iordning så många sådan som möjligt och fixade kontantkort till dem. De fick fungera som backup om NET1-rocarna skulle krångla. Jag hade också själv testat mina WiRoc-enheter och visste vilka kontroller som låg inom räckhåll för dem. Med några få undantag skulle WiRoc gå att använda om man satte upp en WiRoc-repeater. Så mitt i natten innan första ordinarie dag så monterade jag upp en WiRoc-repeater på en höjd. Vi bestämde oss också för att använda riktantenn för NET1 på de ställen med lite sämre täckning. Första "riktiga" dagen blev en total framgång, tror inte vi hade ett enda problem. Inga backuplösningar behövde användas. Med undantag för lite glapp i usbkontakterna så fungerade NET1-rocarna bra även resten av veckan.</p>
+								<p>Förutom NET-rocarna och några enstaka Telia-rocar så använde vi WiRoc på några kontroller också. Under andra dagen användes det för en MTBO-kontroll nära målområdet. På förmiddagen på aktivitetsdagen användes de för sistakontrollen på MTBO. På elitsprinten valde vi att använda dem på näst sista kontrollen samt på näst sista kontrollen innan varvning. Speakern önskade här att stämplingarna skulle komma in snabbt eftersom kontrollerna låg så nära målet. Med ROC blir det en viss fördröjning som ibland kan vara ganska lång. Att dra tråd var ett alternativ men det skulle ha varit en hel del jobb. Som backup hade vi möjlighet att sätta upp en nätverksradiolänk (nätverksradiolänken användes på etapp 5) och koppla en ROC till den. Vanlig Telia-ROC var backupalternativ också. WiRoc användes även på en kontroll på fjärde etappen. Vi hade inga problem med WiRoc.</p>
+
+								<h4>Sistakontroll, målkontroller</h4>
+								<p>Sistakontrollen och målkontrollerna kopplades upp med hjälp av tvåtråd och samlingsboxar. Enda undantaget var sistakontrollen för MTBO på aktivitetsdagen där WiRoc användes. Med i O-Ringens matrialsats finns ett antal samlingsboxar som har 6 serieportar där man kan koppla in SportIdent enheter, en utgående serieport som kan kopplas in till en dator eller till nästa samlingsbox. De hade också en in och en utgång för tvåtråd. Antalet samlingsboxar räckte för OL men inte för OL och MTBO. Eftersom MTBO körde en separat OLA databas så behövde vi ha egna samlingsboxar för deras sistakontroll och målkontroll, och förstås dra separata tvåtrådar. Vi lånade in samlingsboxar av lite äldre modell för MTBO som bara klarade av SportIdents legacy protokoll. Det betydde att dessa SportIdent enheter behövde programeras med legacy protokollet, vilket inte senaste SI Config programmet ens tillåter en att göra längre. Vi testade alla samlingsboxar och serieportar. Några serieportar fungerade inte så det tejpade vi över så de inte av misstag skulle användas.</p>
+								<p>Tvåtråden grävdes ner under veckan innan och samlingsboxarna monterades på målade MDF-skivor tillsammans med batteri. Detta gjorde det enklare/snabbare att sätta upp och koppla upp allt på morgonen. Men det tog ändå lång tid att koppla upp allt, ordna och tejpa kablarna samt testa att det fungerar. Underskatta inte tiden. Om det finns bevakning på arenan så överväg att göra det på kvällen innan/lämna kvar det över natten mellan dagarna. Vi var tre personer inklusive mig och Erik Wedin för att få upp allt på morgonen. Detta inkluderade ta emot samtalen från starterna och från de som satte ut onlinekontrollerna.</p>
+
+								<h4>Tips/synpunkter/noteringar</h4>
+								<p>Testa allt i ordentligt i förväg för att hitta det som är sönder och det som glappar eller de saker som är felkonfigurerat.</p>
+								<p>O-Ringens NET1 ROCar var stora/tunga och därför jobbiga att transportera. En kortare sträcka kan man kånka dem men för lite längre behövs bil. Alternativt om man har en lite större ryggsäck så kan man cykla med en. NET1 rocarna använder sig av cigarettuttag och adapter för att gå från batteriets 12v till USB. Vissa av dessa var av dålig kvalite och de hade en förmåga att glappa. Detta borde göras om. I övrigt så fungerade de bra om bara NET1 täckningen är hyffsad.</p>
+								<p>Vårt jobb hade varit enklare om både OL och MTBO hade använt samma OLA databas. Eftersom det var olika behövde vi ha två ROC-tävlingar och tilldela alla ROCar antingen till MTBO eller OL. Hade det varit samma tävling hade det varit lättare att flytta dem mellan dem. Det betydde också att vi behövde fyra datorer istället för två för att ta emot onlinestämplingar. Samt separata trådar fick dras till sistakontrollerna.</p>
+
+								<h4>WiRoc</h4>
+
+								<p>WiRoc fungerade utmärkt där vi valde att använda dem. Flera möjliga förbättringar för att utöka dess användningsområde identifierades dock. Ett av de mest begränsande sakerna med den WiRoc version som användes på O-Ringen är att den bara hade två icke överlappande frekvenskanaler. Det går att koppla upp flera kontroller även om man använder överlappande kanaler men det har sina begränsningar.</p>
+								<p>Det skulle vara väldigt smidigt att använda WiRoc för sistakontrollen och därmed slippa gräva ner tråd. För att kunna använda det för sistakontrollen så behöver det gå att skicka 2 stämplingar per sekund (som mest kommer ca 1,5 person imål per sekund). Det behövs lite optimeringar för att klara det, nuvarande version klarar knappt en stämpling per sekund. För målstämplingen borde det fungera bra med WiRoc genom att koppla upp dem på Wifi.</p>
+								<p>Nuvarande WiRoc version har en USB-kontakt för att ansluta SportIdent-enheter till. På O-Ringen är det nästan alltid två SportIdent-enheter på onlinekontrollerna, man behöver då använda en USB-hub. En förbättring vore att erbjuda fler USB-kontakter så USB-hub inte behöver användas. Då tar man också bort en möjlig felkälla. Stöd för USB-seriella adaptrar eller till och med en serieport skulle göra det möjigt att använda SportIdent-enheter med serieport.</p>
+							</p>
+						  </div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container collapse mt-md-2" id="pageContact" data-parent="#accordion">
+					<h2>Kontakt</h2>
+					<div class="container">
+						   E-post: info(at)wiroc.se
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="info"></div>
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+		<script type="text/javascript">
+		//<![CDATA[
+
+			var app = {};
+
+			app.showWiRocPage = function() {
+				$('#pageWiRoc').show();
+				$('#pageRange').hide();
+				$('#pageConfig').hide();
+				$('#pageBlog').hide();
+				$('#pageContact').hide();
+				$("#optionWiRoc").prop("checked", true);
+			};
+
+			app.showRangePage = function() {
+				$('#pageWiRoc').hide();
+				$('#pageRange').show();
+				$('#pageConfig').hide();
+				$('#pageBlog').hide();
+				$('#pageContact').hide();
+				$("#optionRange").prop("checked", true);
+			};
+
+			app.showConfigPage = function() {
+				$('#pageWiRoc').hide();
+				$('#pageRange').hide();
+				$('#pageConfig').show();
+				$('#pageBlog').hide();
+				$('#pageContact').hide();
+				$("#optionConfig").prop("checked", true);
+			};
+
+			app.showBlogPage = function() {
+				$('#pageWiRoc').hide();
+				$('#pageRange').hide();
+				$('#pageConfig').hide();
+				$('#pageBlog').show();
+				$('#pageContact').hide();
+				$("#optionBlog").prop("checked", true);
+			};
+
+			app.showContactPage = function() {
+				$('#pageWiRoc').hide();
+				$('#pageRange').hide();
+				$('#pageConfig').hide();
+				$('#pageBlog').hide();
+				$('#pageContact').show();
+				$("#optionContact").prop("checked", true);
+			};
+
+			// Listen for history state changes
+			window.addEventListener('popstate', function(e) {
+				var state = history.state;
+				// back button pressed. close popup
+				if (!state) {
+					app.showWiRocPage();
+				}
+				else {
+					if (state.name == 'pageWiRoc') {
+						app.showWiRocPage();
+					} else if (state.name == 'pageRange') {
+						app.showRangePage();
+					} else if (state.name == 'pageConfig') {
+						app.showConfigPage();
+					} else if (state.name == 'pageBlog') {
+						app.showBlogPage();
+					} else if (state.name == 'pageContact') {
+						app.showContactPage();
+					}
+				}
+				$(':input').parent('.btn').removeClass('focus');
+				$(':input:checked').parent('.btn').addClass('focus');
+				$(':input').parent('.btn').removeClass('active');
+				$(':input:checked').parent('.btn').addClass('active');
+			});
+
+			
+
+			$(document).ready(function(){
+			  $('#optionWiRoc').change(function(){
+				if ($(this).is(':checked'))
+				{
+					app.showWiRocPage();
+					window.history.pushState( { name: "pageWiRoc" }, "pageWiRoc", "/#wiroc" );
+				}
+			  });
+
+			  $('#optionRange').change(function(){
+				if ($(this).is(':checked'))
+				{
+					app.showRangePage();
+					window.history.pushState( { name: "pageRange" }, "pageRange", "/#range" );
+				}
+			  });
+
+			  $('#optionConfig').change(function(){
+				if ($(this).is(':checked'))
+				{
+					app.showConfigPage();
+					window.history.pushState( { name: "pageConfig" }, "pageConfig", "/#config" );
+				}
+			  });
+
+			  $('#optionBlog').change(function(){
+				if ($(this).is(':checked'))
+				{
+					app.showBlogPage();
+					window.history.pushState( { name: "pageBlog" }, "pageConfig", "/#blog" );
+				}
+			  });
+
+			  $('#optionContact').change(function(){
+				if ($(this).is(':checked'))
+				{
+					app.showContactPage();
+					window.history.pushState( { name: "pageContact" }, "pageContact", "/#contact" );     
+				}
+			  });
+			  $("#pageWiRoc").on("hide.bs.collapse", function(){
+				$(".info").html('<span class="glyphicon glyphicon-collapse-down"></span> Open');
+			  });
+			  $("#pageWiRoc").on("show.bs.collapse", function(){
+				$(".info").html('<span class="glyphicon glyphicon-collapse-up"></span> Close');
+			  });
+			});
+		//]]>
+		</script>
+	</body>
+</html>
