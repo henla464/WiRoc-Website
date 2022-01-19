@@ -1,0 +1,28 @@
+Ny version
+
+Av flera anledningar har jag jobbat på en ny version av WiRoc. Den enkortdator (C.H.I.P.) som version 2 bygger på går inte längre att få tag på. Den nya enkortdatorn som jag har valt
+gör att det blir möjligt att göra ett antal förbättringar. Samtidigt saknar den en del funktioner (power management, batteriladdning) som jag har fått lägga till på ett eget kretskort. Jag passar samtidigt på att byta till en ny radiomodul som klarar av kanaler med mindre bandbredd, dvs ger möjlighet till fler icke överlappande kanaler.
+
+På O-Ringen identifierades flera möjliga förbättringar för att vara smidigare att använda eller kunna användas i fler situationer. Bland annat hade det varit smidigt att kunna ansluta fler
+SportIdent-masterstationer till en WiRoc utan att behöva en USB-hub. Nya versionen har därför två USB-kontakter så att två SportIdent-masterstationer kan anslutas utan USB-hub.
+
+Mjukvaran har också optimerats så att det på högsta hastigheten går att skicka strax över en stämpling per sekund med acknowledgement påslaget. Med envägsradiokommunikation, alltså utan att sändaren begär bekräftelse tillbaka så kan man skicka ca 2 per sekund. Detta gör det möjligt att använda WiRoc på exempelvis sistakontrollen på O-Ringen. Oavsett om man kör med acknowledment eller inte så rekommenderar jag två WiRoc enheter och att koppla SI-enheterna så att ungefär hälften av stämplingarna går till vardera WiRoc. SI-enheterna kan antingen kopplas via USB-hub eller via samlingsboxar och USB-seriell adapter till WiRoc enheterna.
+
+Den mindre storleken hoppas jag gör det enklare att hitta någon lämplig väska för förvaring.
+
+Förbättringar:
+* 6 icke överlappande kanaler
+   - I version 2 finns det 8 kanaler men de överlappar i frekvens. För att undvika överlappning var man tvungen att använda kanal 1 och kanal 7 eller kanal 8. I praktiken alltså
+     två kanaler utan störningar mellan dem.
+* 2 USB kontakter
+   - Nya versionen har två USB-kontakter för att ansluta SportIdent-masterenheter till. (Plus förstås USB kontakten för laddning precis som innan.)
+* Wifi antenn
+   - En riktigt wifi antenn ersätter kretskortsantennen på förra versionen så att det går att placera mottageren längre ifrån WLAN/Wifi accesspunkten/routern.
+* Mindre till storleken
+   - Den nya boxen är 84*59*34 mm.
+* Mjukvaruförbättringar
+   - Stöd för USB-Seriell adaptrar med "067b:2303 Prolific Technology, Inc. PL2303 Serial Port" chipset
+   - Stöd för USB-Seriell adaptrar med "0403:6001 Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC" chipset
+   - Stöd för USB-Seriell adaptrar med "0557:2008 ATEN International Co., Ltd UC-232A Serial Port [pl2303]" chipset
+   - Snabbare sändning av stämplingar efter varandra. Klarar ca 1,2 stämplingar per sekund nu med "request acknowledment" valt och 2 per sekund utan.
+

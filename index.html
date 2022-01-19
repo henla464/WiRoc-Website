@@ -1,13 +1,30 @@
 <!doctype html>
 <html lang="en">
 	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168074631-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-168074631-1');
+		</script>
+
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		</script>
+		<style>
+			img.centered {
+			    display: block;
+			    margin-left: auto;
+			    margin-right: auto;
+			    margin-bottom: 15px;
+			}
+		</style>
 		<title>WiRoc</title>
 	</head>
 	<body>
@@ -51,7 +68,7 @@
 					 <div class="container mt-md-2">
 						<h2>WiRoc</h2>
 						<div class="card">
-						  <img class="card-img-top" src="WiRocOLED2.png" alt="WiRoc enhet">
+						  <img class="card-img-top" src="WiRocv3Rev2.png" alt="WiRoc enhet"/>
 						  <div class="card-body">
 							<h5 class="card-title"></h5>
 							<p class="card-text">
@@ -59,7 +76,7 @@
 							</p><p class="card-text">
 							Konfigurationen är enkel och görs med en mobilapplikation WiRoc-Config. WiRoc-Config används också för att testa att sändaren når mottagaren.
 							</p><p class="card-text">
-							WiRoc enheten kan också användas för målenheterna. Ligger mållinjen inom räckhåll för WLANet så kan en WiRoc enhet skicka måltiden direkt via SIRAP/tcp till tävlingsprogrammet så att tiderna kommer upp direkt i speakerstödet. Det räcker då med en WiRoc enhet (USB-hub kan användas för att ansluta flera målenheter) som agerar som mottagare. Samma enhet kan också samtidigt ta emot mellantider från skogen.
+							WiRoc enheten kan också användas för målenheterna. Ligger mållinjen inom räckhåll för WLANet så kan en WiRoc enhet skicka måltiden direkt via SIRAP/tcp till tävlingsprogrammet så att tiderna kommer upp blixtsnabbt i speakerstödet. Det räcker då med en WiRoc enhet (USB-hub kan användas för om man vill ansluta fler än två målenheter) som agerar som mottagare. Samma enhet kan också samtidigt ta emot mellantider från skogen.
 							</p>
 						  </div>
 						</div>
@@ -191,6 +208,74 @@
 						<h2>Blog</h2>
 					</div>
 					<div class="container mt-md-2">
+						<div class="card">
+						  <div class="card-body">
+							<h3 class="card-title">Fler mjukvaruförbättringar</h3>
+							<p class="card-text">
+								<h5>2021-10-09</h5>
+								<p>Med bytet till en ny radiomodul så infördes två nya radio modes "XL" eXtra long range och "UL" ultra long range. Dessa lägen innebär betydligt långsammare överföring. Vid tester har det fungerat bra att skicka över långa avstånd men det har blivit ganska tydligt att det inte får vara många stämplingar per minut för att det ska fungera. Särskilt om det krävs omsändningar så blir det snabbt en kö av stämplingar att skicka.</p>
+
+								<p>Radiomodulen har inbyggd felkorrigering, i vissa fall så kan radiomodulen upptäcka att öveföringsfel uppstått utan att kunna rätta det. I dessa fall får man ändå det överförda (felaktiga) meddelande samt information om att den är fel. Det här öppnar för att implementera felkorrigering på meddelandenivå för att försöka korrigera även dessa meddelanden.</p>
+
+								<p>Ovanstående har fått mig att börja implementera följande::</p>
+								<ul>
+								<li>Felkorrigering med Reed-Solomon algoritmen</li>
+								<li>Nytt meddelande format för stämplingar som nästan halverar antalet bytes som behöver skickas</li>
+								<li>Ny meddelandetyp som skickar två stämplingar i ett meddelande</li>
+								</ul>
+								
+								<p>Förhoppningen är att fler meddelanden ska kunna korrigeras och därmed kräva färre omsändningar. Detta är förstås särskilt viktig när det är dålig mottagning och/eller man använder lägena för lång räckvidd/låg hastighet.</p>
+								
+								<p>Att korta ner meddelandena gör att lägena för lång räckvidd/låg hastighet blir möjliga att använda i betydligt fler fall. Även den nya meddelandetypen hjälper till att öka överföringskapaciteten, dock ger den störst skillnad vid lägena för hög hastighet där fördröjningar som inte har med datahastigheten att göra är mer dominerande.</p>
+								
+								<p>Vid O-Ringen i Östergötland funderade jag på möjligheten att använda WiRoc på sistakontrollen. När det var som högst tryck så stämplade ungefär 75 personer per minut på sistakontrollen (1.25 per sekund). Tidigare har WiRoc kunnat skicka ungefär 1 stämpling per sekund med läget för högsta hastigheten och med acknowledgements, alltså något för långsamt för en egen WiRoc att hantera. Med den nya meddelandetypen och kortare meddelandelängd visar mina preliminära tester att det går att skicka 2 stämplingar per sekund.</p>
+						  </div>
+						</div>
+						<div class="card">
+						  <div class="card-body">
+							<h3 class="card-title">Ny version</h3>
+							<p class="card-text">
+								<h5>2020-05-23</h5>
+								<a href="WiRocNanoPiV3R1Rotate.mp4" alt="video"><img class="centered" src="BlogWiRocNanoPiV3R1.png" alt="WiRoc version 3 rev 2"/></a>
+								<p>Av flera anledningar har jag jobbat på en ny version av WiRoc. Den enkortdator (C.H.I.P.) som version 2 bygger på går inte längre att få tag på. Den nya enkortdatorn som jag har valt gör att det blir möjligt att göra ett antal förbättringar. Samtidigt saknar den en del funktioner (power management, batteriladdning) som jag har fått lägga till på ett eget kretskort. Jag passar samtidigt på att byta till en ny radiomodul som klarar av kanaler med mindre bandbredd, dvs ger möjlighet till fler icke överlappande kanaler.</p>
+
+								<p>På O-Ringen identifierades flera möjliga förbättringar, som skulle göra WiRoc smidigare att använda eller göra att Wiroc kan användas i fler situationer. Bland annat hade det varit smidigt att kunna ansluta fler SportIdent-masterstationer till en WiRoc utan att behöva en USB-hub. Nya versionen har därför två USB-kontakter så att två SportIdent-masterstationer kan anslutas utan USB-hub.</p>
+
+								<p>Mjukvaran har också optimerats så att det på högsta hastigheten går att skicka strax över en stämpling per sekund med acknowledgement påslaget. Med envägsradiokommunikation, alltså utan att sändaren begär bekräftelse tillbaka så kan man skicka ca 2 per sekund. Detta gör det möjligt att använda WiRoc på exempelvis sistakontrollen på O-Ringen. I ett sådand scenario så rekommenderar jag, oavsett om man kör med acknowledment eller inte, att använda två WiRoc enheter och att koppla SI-enheterna så att ungefär hälften av stämplingarna går till vardera WiRoc. SI-enheterna kan antingen kopplas via USB-hub eller via samlingsboxar och USB-seriell adapter till WiRoc enheterna.</p>
+
+								<p>Den mindre storleken hoppas jag gör det enklare att hitta någon lämplig väska för förvaring.</p>
+
+								<p>Förbättringar:</p>
+								<ul>
+								<li>6 icke överlappande kanaler</li>
+									<ul>
+										<li>I version 2 finns det 8 kanaler men de överlappar i frekvens. För att undvika överlappning var man tvungen att använda kanal 1 och kanal 7 eller kanal 8. I praktiken alltså
+								två kanaler utan störningar mellan dem.</li>
+									</ul>
+								<li>2 USB kontakter</li>
+									<ul>
+										<li>Nya versionen har två USB-kontakter för att ansluta SportIdent-masterenheter till. (Plus förstås USB kontakten för laddning precis som innan.)</li>
+									</ul>
+								<li>Wifi antenn</li>
+									<ul>
+										<li>En riktigt wifi antenn ersätter kretskortsantennen på förra versionen så att det går att placera mottageren längre ifrån WLAN/Wifi accesspunkten/routern.</li>
+									</ul>
+								<li>Mindre till storleken</li>
+									<ul>
+										<li>Den nya boxen är 84*59*34 mm.</li>
+									</ul>
+								<li>Mjukvaruförbättringar</li>
+									<ul>
+										<li>Stöd för USB-Seriell adaptrar med "067b:2303 Prolific Technology, Inc. PL2303 Serial Port" chipset</li>
+										<li>Stöd för USB-Seriell adaptrar med "0403:6001 Future Technology Devices International, Ltd FT232 USB-Serial (UART) IC" chipset</li>
+										<li>Stöd för USB-Seriell adaptrar med "0557:2008 ATEN International Co., Ltd UC-232A Serial Port [pl2303]" chipset</li>
+										<li>Snabbare sändning av stämplingar efter varandra. Klarar ca 1,2 stämplingar per sekund nu med "request acknowledment" valt och 2 per sekund utan.</li>
+										<li>Möjlighet att sätta one-way kommunikation med SI-masterenheter för att förhindra att WiRoc att skicka kommandon till SI-masterenheten.</li>
+										<li>Möjlighet att sätta 9600bps baudrate vid kommunikation med SI-masterenhet. (Detta tillsammans med one-way gör det möjligt att ansluta en samlingsbox via USB-serielladapter)</li>
+									</ul>
+								</ul>
+						  </div>
+						</div>
 						<div class="card">
 						  <div class="card-body">
 							<h3 class="card-title">O-Ringen Kolmården 2019</h3>
