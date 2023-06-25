@@ -51,6 +51,9 @@
 					<input type="radio" name="options" id="optionWiRoc" autocomplete="off" checked data-toggle="collapse" href="#pageWiRoc" aria-expanded="true" aria-controls="pageWiRoc" id="WiRocLink"> WiRoc
 				  </label>
 				  <label class="btn btn-secondary">
+					<input type="radio" name="options" id="optionProducts" autocomplete="off" data-toggle="collapse" href="#pageProducts" aria-expanded="false" aria-controls="pageProducts" id="ProductsLink"> Produkter
+				  </label>
+				  <label class="btn btn-secondary">
 					<input type="radio" name="options" id="optionRange" autocomplete="off" data-toggle="collapse" href="#pageRange" aria-expanded="false" aria-controls="pageRange" id="RangeLink"> Räckvidd
 				  </label>
 				  <label class="btn btn-secondary">
@@ -68,13 +71,13 @@
 					 <div class="container mt-md-2">
 						<h2>WiRoc</h2>
 						<div class="card">
-						  <img class="card-img-top" src="WiRocv3Rev2.png" alt="WiRoc enhet"/>
+						  <img class="card-img-top" src="WiRocv6Rev1.JPG" alt="WiRoc enhet"/>
 						  <div class="card-body">
 							<h5 class="card-title"></h5>
 							<p class="card-text">
-							WiRoc är ett system för att trådlöst skicka mellantider från kontroller till tävlingsprogrammet. En WiRoc enhet kan antingen agera sändare, mottagare eller repeater. Mottagaren  kopplas upp på WLAN och konfigureras till att skicka mellantider till tävlingsprogrammet via SIRAP/tcp. Systemet kräver inte mobiltäckning, sim-kort eller anslutning till internet. Enheterna är små och uppladdningsbara batterier ingår, bara att ansluta till USB port för att ladda.
+							WiRoc är ett system för att trådlöst skicka mellantider från kontroller till tävlingsprogrammet. En WiRoc enhet kan antingen agera sändare, mottagare eller repeater. Mottagaren kopplas upp på WLAN och konfigureras till att skicka mellantider till tävlingsprogrammet via SIRAP/tcp. Systemet kräver inte mobiltäckning, sim-kort eller anslutning till internet. Enheterna är små och uppladdningsbara batterier ingår, bara att ansluta till USB port för att ladda.
 							</p><p class="card-text">
-							Konfigurationen är enkel och görs med en mobilapplikation WiRoc-Config. WiRoc-Config används också för att testa att sändaren når mottagaren.
+							Konfigurationen är enkel och görs med mobilapplikationen WiRoc-Config. WiRoc-Config används också för att testa att sändaren når mottagaren.
 							</p><p class="card-text">
 							WiRoc enheten kan också användas för målenheterna. Ligger mållinjen inom räckhåll för WLANet så kan en WiRoc enhet skicka måltiden direkt via SIRAP/tcp till tävlingsprogrammet så att tiderna kommer upp blixtsnabbt i speakerstödet. Det räcker då med en WiRoc enhet (USB-hub kan användas för om man vill ansluta fler än två målenheter) som agerar som mottagare. Samma enhet kan också samtidigt ta emot mellantider från skogen.
 							</p>
@@ -82,11 +85,70 @@
 						</div>
 					</div>
 				</div>
+				
+				<div class="container collapse mt-md-2" id="pageProducts" data-parent="#accordion">
+					
+					<div class="container mt-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="WiRocv6Rev1.JPG" alt="WiRoc v6Rev1">
+						  <div class="card-body">
+							<h4 class="card-title">WiRoc enhet</h4>
+							<p class="card-text"><b>Hyra: 90 kr inkl. moms för endagarsevenemang (72 kr exkl. moms)</b></p>
+							<p class="card-text">Det vanligaste scenariot för en radiokontroll i skogen är att använda en WiRoc enhet konfigurerad som sändare på eller i närheten av kontrollen och en WiRoc enhet konfigurerad som mottagare vid TC. Mottagaren kopplas upp på det lokala WLAN/Wifi nätverket och konfigureras att skicka till tävlingsprogrammet över SIRAP/tcp. SportIdent enheten kan kopplas till WiRoc sändaren på några olika sätt beroende på vilken typ av SportIdent enhet det är.<br/><br/><h5>SportIdent enhet med USB kabel</h5>Om SportIdent enheten har USB sladd kan den kopplas direkt till WiRoc enheten (ev. med en USB-förlängningsladd och/eller USB-hub). Ett annat alternativ är att koppla SportIdent enheten till en USB-till-Bluetooth adapter. I WiRoc-Config kan man sedan söka upp och ansluta USB-till-Bluetooth adaptern.<br/><br/><h5>SportIdent enhet med RS232 seriell kabel</h5>Om SportIdent enheten har en RS232 seriell kabel så kan den kopplas via USB-adapter (notera att inte alla adaptrar stöds). Det finns även RS232-till-Bluetooth adaptrar att koppla SportIdent enheten till. I WiRoc-Config kan man sedan söka upp och ansluta RS232-till-Bluetooth adaptern. Vissa WiRoc enheter har en inbyggd RS232 port så att det går att koppla in direkt.<br/><br/><h5>SportIdent SRR enhet</h5> För att använda en SportIdent SRR enhet behöver man använda en SRR USB Dongle som kopplas in i WiRoc enheten.</p>
+						  </div>
+						</div>
+					</div>
+					
+					<div class="container mt-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="DirectionalAntenna.jpg" alt="Yagi antenna">
+						  <div class="card-body">
+							<h4 class="card-title">Yagi riktantenn</h4>
+							<p class="card-text"><b>Hyra: 50 kr inkl. moms för endagarsevenemang (40 kr exkl. moms)</b></p>
+							<p class="card-text">En riktantenn kopplad till antingen mottagaren eller sändaren alternativt båda två förbättrar räckvidden avsevärt.</p>
+						  </div>
+						</div>
+					</div>
+					
+					<div class="container mt-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="DipoleAntenna.jpg" alt="Dipole antenna">
+						  <div class="card-body">
+							<h4 class="card-title">Dipolantenn</h4>
+							<p class="card-text"><b>Hyra: 30 kr inkl. moms för endagarsevenemang (24 kr exkl. moms)</b></p>
+							<p class="card-text">Observera att en dipolantenn ingår vid hyra av en WiRoc enhet (om ingen riktantenn hyres).</p>
+						  </div>
+						</div>
+					</div>
+					
+					<div class="container mt-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="USBToBluetooth.jpg" alt="USB-till-Bluetooth adapter">
+						  <div class="card-body">
+							<h4 class="card-title">USB-till-Bluetooth adapter</h4>
+							<p class="card-text"><b>Hyra: 50 kr inkl. moms för endagarsevenemang (40 kr exkl. moms)</b></p>
+							<p class="card-text">Används för att trådlöst koppla en SportIdent enhet med USB-kabel till en WiRoc enhet. Detta gör det enklare att placera WiRoc enheten med antenn högre upp t.ex i ett träd.</p>
+						  </div>
+						</div>
+					</div>
+					
+					<div class="container mt-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="RS232ToBluetooth.jpg" alt="RS232-till-Bluetooth adapter">
+						  <div class="card-body">
+							<h4 class="card-title">RS232-till-Bluetooth adapter</h4>
+							<p class="card-text"><b>Hyra: 50 kr inkl. moms för endagarsevenemang (40 kr exkl. moms)</b></p>
+							<p class="card-text">Används för att trådlöst koppla en SportIdent enhet med RS232 seriell kabel till en WiRoc enhet. Detta gör det enklare att placera WiRoc enheten med antenn högre upp t.ex i ett träd.</p>
+						  </div>
+						</div>
+					</div>
+					
+				</div>
 
 				<div class="container collapse mt-md-2" id="pageRange" data-parent="#accordion">
 					<div class="container">
 						<h2>Räckvidd</h2>
-						Räckvidden beror på många faktorer där de främsta är datahastigheten, vilka antenner som används och terrängen. Se några verkliga exempel från tävlingar längre ner.
+						Räckvidden beror på många faktorer där de främsta är terrängen, vilka antenner som används och datahastigheten. Se några verkliga exempel från tävlingar längre ner.
 						<h2>Antenner</h2>
 						Vilken antenn som används på sändare respektive mottagare har stor betydelse för räckvidden.
 						<div class="d-flex row flex-wrap align-content-stretch mb-2">
@@ -210,6 +272,42 @@
 					<div class="container mt-md-2">
 						<div class="card">
 						  <div class="card-body">
+							<h3 class="card-title">SportIdent SRR</h3>
+							<p class="card-text">
+								<h5>2022-06-05</h5>
+								<p>Fick nyligen hem en SportIdent SRR enhet och en USB SRR-Dongle för test och nu finns stöd implementerat för dessa i v0.237. Även i tidigare versioner så fungerar det, men då behöver man klicka i att USB anslutningarna ska vara one-way* manuellt. I v0.237 detecteras att det är en SRR-Dongle och då sätts denna till one-way. Om man har en vanlig SportIdent med USB sladd i andra USB ingången så behöver inte den då inte vara one-way (den manuella inställningen påverkar båda USB ingångarna).</p>
+								
+								<p>Det vore intressant att i framtiden inkludera SRR mottagare inbyggt i WiRoc. Det verkar som SportIdent helt slutat sälja enheter med USB och med Seriell sladd. Det enda de verkar ha kvar är en enhet med USB men utan inbyggt batteri. Denna är endast lämplig för avläsning och kan inte användas för radiokontroller.</p>
+								
+								<p>* När inställningen One-way är vald så lyssnar WiRoc efter meddelanden men skickar inga kommandon eller frågor till enheten. När den inte är one-way så kan missade stämplingar läsas från backup minnet i enheten. Missade stämplingar kan hända om t.ex USB sladden glappar eller tillfälligt kopplas ur.</p>
+							</p>
+						  </div>
+						</div>
+						<div class="card">
+						  <div class="card-body">
+							<h3 class="card-title">Radiostörningar</h3>
+							<p class="card-text">
+								<h5>2022-06-03</h5>
+								<p>Vi använde WiRoc på två tävlingar utanför Forsheda för några veckor sedan. På lördagen var det utbrutet mål så vi använde WiRoc för att skicka målstämplingarna. Avståndet var ca 1400m och målet låg i princip på högsta punkten på en höjd utan några andra höjder mellan TC och målet. Som förberedelse testade jag att skicka stämplingar och använde då dipole antenner på både sändaren och mottagaren. Det verkade vara lite på gränsen, de allra flesta sändningar gick fram men några gjorde inte det. Eftersom det görs omförsök och eftersom jag normalt brukar använda riktantenn på mottagaren så var slutsatsen att det inte skulle vara några problem alls. Så på tävlingsdagen monterade vi upp riktantenn på mottagaren och dipole på sändaren. Men till vår förvåning så fungerade det inte bättre utan det verkade fungera sämre.</p>
+
+								<p>Vi satte då upp riktantenn på sändaren, och sänkte datahastigheten. Detta fick det att fungera någorlunda men inte helt bra.</p>
+
+								<p>På söndagen hade vi två radiokontroller ca 300-400 meter bort åt andra hållet och dessa fungerade utmärkt. Det kom sedan en önskan från speakern om att sätta radio på den gemensamma sista och varvningskontrollen. Detta ca 50 meter från mottagaren. Det kan ju inte vara något problem... kopplade in den med en något sämre antenn, och sändaren nära marken och den låg lite som i en grop från mottagaren sett, men 50 m kan ju inte var något problem. Och sedan började problemen... många sändingarna hade problem att komma fram, de fick skickas om och det blev kö på stämplingar att skicka.</p>
+								
+								<p>Så vad orsakade dessa problem? Slutsatsen vi kommit fram till, både genom egna tester senare och genom att prata med andra är att kraftledningen som gick nära TC skapade radiostörningar. Det var ca 90 meter från mottagaren till kraftledningen och ca 50 m från sista/varvningkontrollen till kraftledningen. Även lördagens mål låg i riktning mot kraftledningen från TC sett, riktantennen var i princip riktad rakt mot ledningarna. </p>
+								
+								<p>I veckorna efter tävlingen har jag analyserat loggarna från WiRoc noggrant för att förbättra möjligheten att sända och ta emot meddelanden när det är mycket radiostörningar. När ett meddelande blir korrupt pga av radiostörningar så kan en av två saker hända. Antingen så klarar sig headern (Loraprotokollets standard header) som innehåller bland annat meddelandets längd och felen uppstår endast i data delen av meddelandet eller så upptäcks fel i headern också. Headern använder sig av högre felkorrigeringskoden Hamming code 4/8 (4 databits, 4 felkorrigeringsbitar) medan data delen normalt använder sig av Hamming code 4/5 (4 databits, 1 felkorrigeringsbitar). Om headern är korrupt så kan inget meddelande tas emot. Om felen endast finns i data delen så får man meddelandet ändå men får också notifiering om att det troligen är felaktigt. Det man då kan göra är att implementera en felkorrigerings metod och skicka med extra felkorrigeringsdata.</p>
+								
+								<p>Redan innan tävlingen har jag implementerat Reed-Solomon kodning för stämplingsmeddelanden och detta rättade en del av meddelandena. Nu fick jag dock många testmeddelanden och kunde vidareutveckla felkorrigeringen. Dels så vet man ju en del om strukturen på meddelandena, och även troliga värden på delar av det. T.ex så kan man vara ganska säker på att de kommer från samma kontroll som förra meddelandena, man vet ungefärlig tid etc. Hittade även en metod för att kunna rätta ännu fler fel: https://arxiv.org/pdf/2107.08868.pdf</p>
+								
+								<p>Det blir säkert lite småjusteringar i koden men i stort så går det nog inte förbättra felkorrigeringen så mycket mer. Vid tester så märker jag en ganska stor skillnad just när jag testar från ett ställe nära en transformatorstation där det tidigare var närmast omöjligt att få fram något meddelande. Nu går de flesta meddelanden fram där.</p>
+								
+								<p>Märker man att det är problem så finns det även en inställning för att öka Lora inbyggda felkorrigering av datat från Hamming code 4/5 till något högre (exempelvis 4/8). Det kommer då ta längre tid att skicka meddelandena men borde kunna hjälpa en hel del just när det ligger på gränsen.</p>
+							</p>
+						  </div>
+						</div>
+						<div class="card">
+						  <div class="card-body">
 							<h3 class="card-title">Fler mjukvaruförbättringar</h3>
 							<p class="card-text">
 								<h5>2021-10-09</h5>
@@ -229,6 +327,7 @@
 								<p>Att korta ner meddelandena gör att lägena för lång räckvidd/låg hastighet blir möjliga att använda i betydligt fler fall. Även den nya meddelandetypen hjälper till att öka överföringskapaciteten, dock ger den störst skillnad vid lägena för hög hastighet där fördröjningar som inte har med datahastigheten att göra är mer dominerande.</p>
 								
 								<p>Vid O-Ringen i Östergötland funderade jag på möjligheten att använda WiRoc på sistakontrollen. När det var som högst tryck så stämplade ungefär 75 personer per minut på sistakontrollen (1.25 per sekund). Tidigare har WiRoc kunnat skicka ungefär 1 stämpling per sekund med läget för högsta hastigheten och med acknowledgements, alltså något för långsamt för en egen WiRoc att hantera. Med den nya meddelandetypen och kortare meddelandelängd visar mina preliminära tester att det går att skicka 2 stämplingar per sekund.</p>
+							</p>
 						  </div>
 						</div>
 						<div class="card">
@@ -274,6 +373,7 @@
 										<li>Möjlighet att sätta 9600bps baudrate vid kommunikation med SI-masterenhet. (Detta tillsammans med one-way gör det möjligt att ansluta en samlingsbox via USB-serielladapter)</li>
 									</ul>
 								</ul>
+							</p>
 						  </div>
 						</div>
 						<div class="card">
@@ -340,15 +440,27 @@
 
 			app.showWiRocPage = function() {
 				$('#pageWiRoc').show();
+				$('#pageProducts').hide();
 				$('#pageRange').hide();
 				$('#pageConfig').hide();
 				$('#pageBlog').hide();
 				$('#pageContact').hide();
 				$("#optionWiRoc").prop("checked", true);
 			};
+			
+			app.showProductsPage = function() {
+				$('#pageWiRoc').hide();
+				$('#pageProducts').show();
+				$('#pageRange').hide();
+				$('#pageConfig').hide();
+				$('#pageBlog').hide();
+				$('#pageContact').hide();
+				$("#optionProducts").prop("checked", true);
+			};
 
 			app.showRangePage = function() {
 				$('#pageWiRoc').hide();
+				$('#pageProducts').hide();
 				$('#pageRange').show();
 				$('#pageConfig').hide();
 				$('#pageBlog').hide();
@@ -358,6 +470,7 @@
 
 			app.showConfigPage = function() {
 				$('#pageWiRoc').hide();
+				$('#pageProducts').hide();
 				$('#pageRange').hide();
 				$('#pageConfig').show();
 				$('#pageBlog').hide();
@@ -367,6 +480,7 @@
 
 			app.showBlogPage = function() {
 				$('#pageWiRoc').hide();
+				$('#pageProducts').hide();
 				$('#pageRange').hide();
 				$('#pageConfig').hide();
 				$('#pageBlog').show();
@@ -376,6 +490,7 @@
 
 			app.showContactPage = function() {
 				$('#pageWiRoc').hide();
+				$('#pageProducts').hide();
 				$('#pageRange').hide();
 				$('#pageConfig').hide();
 				$('#pageBlog').hide();
@@ -393,6 +508,8 @@
 				else {
 					if (state.name == 'pageWiRoc') {
 						app.showWiRocPage();
+					} else if (state.name == 'pageProducts') {
+						app.showProductsPage();
 					} else if (state.name == 'pageRange') {
 						app.showRangePage();
 					} else if (state.name == 'pageConfig') {
@@ -412,11 +529,39 @@
 			
 
 			$(document).ready(function(){
+			  var anchorStr = location.href.substr(location.href.indexOf("#")+1)
+			  if (anchorStr == "wiroc") {
+				  app.showWiRocPage();
+			  } else if (anchorStr == "products") {
+				  app.showProductsPage();
+			  } else if (anchorStr == "range") {
+				  app.showRangePage();
+			  } else if (anchorStr == "config") {
+				  app.showConfigPage();
+			  } else if (anchorStr == "blog") {
+				  app.showBlogPage();
+			  } else if (anchorStr == "contact") {
+				  app.showContactPage();
+			  }
+			  $(':input').parent('.btn').removeClass('focus');
+			  $(':input:checked').parent('.btn').addClass('focus');
+			  $(':input').parent('.btn').removeClass('active');
+			  $(':input:checked').parent('.btn').addClass('active');
+			  
+			  
 			  $('#optionWiRoc').change(function(){
 				if ($(this).is(':checked'))
 				{
 					app.showWiRocPage();
 					window.history.pushState( { name: "pageWiRoc" }, "pageWiRoc", "/#wiroc" );
+				}
+			  });
+			  
+			   $('#optionProducts').change(function(){
+				if ($(this).is(':checked'))
+				{
+					app.showProductsPage();
+					window.history.pushState( { name: "pageProducts" }, "pageProducts", "/#products" );
 				}
 			  });
 
