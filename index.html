@@ -173,7 +173,34 @@
 						</div>
 						<h2>Exempel</h2>
 					</div>
-
+					
+					<div class="container mt-md-2">
+						<div class="card">
+						  <a href="RangeUlrikLangDM2023YagiToYagi.png" target="_blank"><img class="card-img-top" src="RangeUlrikLangDM2023YagiToYagi.png" alt="Yagiantenn till Yagiantenn"></a>
+						  <div class="card-body">
+							<h5 class="card-title">Lång DM Östergötland 2023</h5>
+							<p class="card-text">Avståndet mellan kontroll 4 och mål är 3150 m. Här användes en yagi riktantenn vid både sändaren och mottagaren. Inställning för extra lång räckvidd (XL), datahastighet 134 bps.</p>
+						  </div>
+						</div>
+					</div>
+					
+					<div class="container mt-md-2">
+						<div class="card">
+						  <a href="RangeUlrikLangDM2023DipoleToDipole.png" target="_blank"><img class="card-img-top" src="RangeUlrikLangDM2023DipoleToDipole.png" alt="Dipolantenn till dipoleantenn"></a>
+						  <div class="card-body">
+							<h5 class="card-title">Lång DM Östergötland 2023</h5>
+							<p class="card-text">Avståndet mellan kontroll 14 och mål är 700 m. Här användes en dipolantenn vid både sändaren och mottagaren. Inställning för lång räckvidd (L) (standardinställningen), datahastighet 244 bps.</p>
+						  </div>
+						</div>
+					</div>
+					
+					
+					<div class="container mt-md-2"><hr/></div>
+					<div class="container">
+						<h2>Äldre exempel</h2>
+						Nedanstående exempel är med en tidigare version av WiRoc. Nuvarande räckvidd bör dock vara minst lika bra.
+					</div>
+					
 					<div class="container mt-md-2">
 						<div class="card">
 						  <img class="card-img-top" src="RangeDipoleToDipole1.png" alt="Dipolantenn till dipoleantenn">
@@ -270,6 +297,69 @@
 						<h2>Blog</h2>
 					</div>
 					<div class="container mt-md-2">
+            <div class="card">
+						  <div class="card-body">
+							<h3 class="card-title">Bättre batterihantering</h3>
+							<p class="card-text">
+								<h5>2025-12-11</h5>
+								<p>Nästa version (V1.04) av mjukvaran innehåller förbättringar av beräkningen av återstående batterikapacitet. Detta ger en mer korrekt beräkning och tittar man på grafen över batterinivån så blir den betydligt mer linjär. Förändringen möjliggör även att använda mer av kapaciteten i batteriet och leder till över två timmar extra batteritid. Batteritiden beror mycket på vad som ansluts till USB-portarna och till viss del hur många stämplingar som ska skickas. Batteritiden bör bli minst 12 timmar och kan utan anslutna USB-enheter bli uppåt 22 timmar.</p>
+							</p>
+						  </div>
+						</div>
+						<div class="card">
+						  <div class="card-body">
+							<h3 class="card-title">Förbättringar monitor.wiroc.se</h3>
+							<p class="card-text">
+								<h5>2025-12-10</h5>
+								<p>Sidan med listan på WiRoc-enheter har en ny kolumn som visar batteriladdningen i procent. Det gör det enklare att få en översikt över alla enheter. Tidigare gick det att se samma information om man klickade in på enheten.</p>
+                <p>Om man klickar in på enheten så kan man se lite mer information. I grafen där batteriladdningen tidigare visades visas nu även antal LoRa meddelanden som inte ackats av mottagaren (Orange linje) under femminutersintervaller. Den röda linjen visar om någon stämpling inte ackats, också det i femminutersintervaller. Notera att en stämpling skickar om flera gånger så man kan ha flera LoRa meddelanden som inte ackats utan att tappa några stämplingar. Siffrorna skickas från sändaren till mottagaren i ett statusmeddelande var femte minut. Statusmeddelandet kan förstås också misslyckas men då kan man se att enheten går offline i listan på enheter. Att övervaka antal icke-ackade meddelanden kan vara ett bra sätt att tidigt upptäcka om någon länk fungerar mindre bra. Kanske kan man då byta antenn eller placering/riktning av antennen. Eller byta till lägre hastighet.</p>
+                <p>Det finns nu också information om anslutna USB-enheter. Det går att se om det finns SRR-donglar anslutna, vilka kanaler och om de ackar eller inte. Det är viktigt att anslutna SRR-donglar verkligen upptäcks av systemet så att de inte är igång men inte skickar stämplingarna till WiRoc. Med både ROC och WiRoc har vi sett att det kan hända att SRR-dongeln får ström och därför tar emot och ackar SRR-stämplingar, men SRR-dongeln har inte upptäcks av ROC/WiRoc vilket då leder till tappade stämplingar. Om det finns en fungerande SRR-dongel på den andra kanalen så kommer en del stämplingar troligen in den vägen, men om stämplingen skickas från SIAC eller SI-SRR-enhet på den icke fungerande kanalen så får den ack och skickar då inte på den andra kanalen. Så ett tips är att kontrollera här att de donglar som ska vara anslutna är det, och att de har rätt konfiguration (röd eller blå kanal, och ack/no ack).</p>
+                <p>Även den interna SRR-mottagens konfiguration (för de enheter som har det) visas.</p>
+							</p>
+						  </div>
+						</div>
+						<div class="card">
+						  <div class="card-body">
+							<h3 class="card-title">Inbyggd SRR-mottagare</h3>
+							<p class="card-text">
+								<h5>2025-11-01</h5>
+								<p>Sedan version 7 av hårdvaran finns det en inbyggd SRR-mottagare i WiRoc enheten, eller rättare sagt finns det två. En för röd kanal och en för blå kanal. Det går att enabla/disabla dem var för sig och ställa om var för sig om de ska acka eller inte.</p>
+							</p>
+						  </div>
+						</div>
+					  <div class="card">
+						  <div class="card-body">
+							<h3 class="card-title">O-Ringen Jönköping 2025</h3>
+							<p class="card-text">
+								<h5>2025-09-15</h5>
+								<p>WiRoc användes på O-Ringen för framförallt förvarningarna. På O-Ringen har alla löpare en förvarningskontroll, i de flesta fall är detta näst sista kontrollen på banan. Det är som mest 8 förvarningskontroller men är oftast något färre. Vi hade mellan 4 och 8 förvarningkontroller per etapp i Jönköping. </p>
+								<p>Förutom förvarningskontrollerna användes WiRoc enheter till att fånga upp touch-free stämplingar vid målet. Detta i kombination med samlingsboxar som tog de vanliga stämplingarna och som också de hade SRR-mottagare för touch-free. Det gjorde även en del tester med WiRoc vid en del av radiokontrollerna.</p>
+								<h4>Förvarningskontrollerna</h4>
+								<p>Förvarningskontroller är ganska perfekt att använda WiRoc för. De ligger normalt så nära att inga större antenner behövs och inte mycket (om ens någon) testning krävs. O-Ringen är ju lite annorlunda dock med upp till 8 förvarningskontroller och många löpare (runt 1,5 per sekund). I nuvarande version av WiRoc så finns det sex kanaler så samma kanal behöver användas på några kontroller. Gjorde flera ganska ordenliga tester innan med att ha flera kontroller som skickade på samma kanal och det skapade inga problem. Särskilt vid sådana här kontroller med hög belastning är det bra om kontrollerna ligger inom räckhåll från varandra så att de kan 'höra' när den andra sänder.</p>
+								<p>Ett problem upptäcktes under veckan och det var att mottagarna ibland verkade 'hänga' sig. Egentligen hängde de sig inte utan tog bara lång tid på sig att försöka felrätta en del mottagna meddelanden. Mjukvaran har uppdaterats för att begränsa hur mycket tid som felrättningen får ta. Om vi hade förstått problemet bättre hade jag gjort några små ändringar i placeringen av mottagarna. Troligen hade bitfelen kunnat i det närmaste eliminerats genom att placera mottagarna som körde med närliggande kanaler lite längre ifrån varandra.</p>
+								<h4>Målet</h4>
+								<p>Vid målet användes samlingsboxar som var kopplade till SI-enheter med seriekabel och som även hade SRR-mottagare inkopplade. Två av samlingsboxarna hade två SRR-mottagare i varje. Bara två SRR mottagare ackade meddelandena, en på varje kanal. SRR-mottagarna i samlingsboxarna kompletterades med tre WiRoc enheter placerade 2-3 meter efter målenheterna. Dessa var inställda till att inte acka tillbaka. Två av dem använde SportIdents SRR-mottagare men den tredje WiRoc enheten använde egen inbyggd SRR mottagare. Enda problemet vid målet vi hade var någon powerbank till samlingsboxarna som överhettades av att vara i solen och en SI-enhet som slutade fungera.</p>
+								<h4>SRR</h4>
+								<p>SRR överföringen är inte så tillförlitlig, det är lätt att tappa upp till några procent av stämplingarna där. Det verkar som att det ofta händer när någon, ofta löparen själv, står emellan kontrollen (eller egna SI-pinnen om det är touch-free) och mottagaren. Mottagare som sitter vid kontrollen, så att ingen kan blockera, är troligen bästa lösningen men kanske inte så enkel i praktiken. Ett alternativ är att ha flera mottagare, i olika riktningar från kontrollen så att risken att någon blockar båda är liten.</p>
+								<p>Vid sistakontrollen på E1 och E2 hade vi problemet att mottagaren var satt så att löparen själv ofta blockade signalen. Mottagaren låg nära i avstånd men det tappades ändå flera procent av stämplingarna. Vid E1 och E2 hade vi dock sådan tur att avståndet till mål var så kort att wifit nådde till kontrollen. Med två WiRoc, direkt uppkopplade på wifit så gick antalet tappade stämplingar ner signifikant och slutade under procent på totalen.</p>
+								<p>Ett annat problem vi stötte på var att Sportidents SRR-mottagaren som kopplas in med USB till t.ex ROC eller WiRoc tappade kontakten med ROC/WiRoc. Detta hände på Bagheera stafetten. SRR-mottagaren är inkopplad och den lyser, och den ackar stämplingarna men ROC eller WiRoc har inte kontakt med den och tar inte emot stämplingar. I ROCs webbgränssnitt kan man se om SRR-mottagaren är inkopplad och upptäckt. Så vi införde en rutin att kontrollera det efter Bagheera. Samma sak hände dock även för WiRoc på elitsprintens förvarning. Jobbar på att införa liknande rapportering av inkopplade enheter så att man kan se detta i WiRocs webbgränssnitt också.</p>
+								<h4>Radio</h4>
+								<p>För alla radiokontrollerna användes Dubbel-rocar. Dock gjordes det tester på en del med WiRoc. På E1 hade vi fyra radiokontroller där de två längst bort låg 3 respektive 3,7 km bort. Här testade vi att köra alla fyra på samma kanal med en lite högre datahastighet. Eftersom det var så långt så hade det inte fungerat att ha mottagaren på arenan utan istället satte vi den på en hög höjd 500-600 meter från arenan. Från mottagaren ner till arenan användes en wifi-länk. Alla stämplingar från kontrollerna ackades av mottagaren, ett fåtal fick skickas om då de inte gick fram (eller ackades) på första försöket. Men det är helt normalt, särskilt i detta fall då kontrollerna låg så långt ifrån varandra att de omöjligt kunde höra när de andra skickade och därför säkert ibland skickade samtidigt. Detta var första riktiga försöket med så många sändare på samma kanal och så hög belastning. Total succé!</p>
+								<p>På E3 hade vi två radiokontroller, den ena på en höjd medan den andra låg lågt bakom höjder. Även målet låg lågt. Ett svårt läge för radiokontakt. Möjligt att det skulle fungerat med riktantenner ändå, men det var ett bra tillfälle att testa att skicka via en mellanpunkt. Så vi gjorde så att radiokontrollen som låg lågt skickade till en mottagare som låg vid radiokontrollen som låg på höjden. Denna mottagaren kopplades till en WiRoc-sändare via seriekabel. Sändaren tog även in stämplingar med SRR-dongeln från kontrollen på höjden. </p><p>Tyvärr har jag inte loggarna kvar men vi kunde se under dagen att det kom in stämplingar från båda kontrollerna. Vi såg också att de kom in något sent. Antingen berodde det på att det var för många stämplingar för den hastighet vi valt, och/eller så blev det en del bitfel som gjorde att meddelanden fick skickas om och att det därför blev kö. Men funktionen att skicka vidare via en mellanpunkt fungerade!</p>
+								<p>På E4 ville jag testa lite längre avstånd och amtörradioläget... Här satte vi en mottagare med stor riktantenn på höjden bakom arenan. Denna var inkopplad på nätverket med kabel. Radion längst bort hade också en stor riktantenn. Använde ”Long range” inställningen så något långsammare hastighet jämfört med förvarningarna. Testade här nya amatörradioläget, det är lite andra frekvenser och kräver att radioamatörens anropssignalen skickas regelbundet. Första riktiga testet av detta läge.</p><p>
+Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på stämplingar att skicka utan de kom in i Ola i realtid (tar ca 2 s att skicka). Det gjorde inte en enda omsändning, allt kom fram på första försöket. Ett meddelande kom fram med bitfel men det rättades i mottagaren. Avstånd från kontrollen till mottagaren var nästan exakt 4 km.</p>
+							</p>
+						  </div>
+						</div>
+						<div class="card">
+						  <div class="card-body">
+							<h3 class="card-title">Uthyrning</h3>
+							<p class="card-text">
+								<h5>2023-09-06</h5>
+								<p>I fliken Produkter finns nu listat vilka produkter som finns tillgängliga för uthyrning. Om du är intresserad skicka ett mail till info (at) wiroc.se eller henrik.larsson (at) chenfei.se för mer information. Om du skickar en karta med tänkta radiokontroller gör jag en bedömning om vilken utrustning som är lämplig och vad som är möjligt.</p>
+							</p>
+						  </div>
+						</div>
 						<div class="card">
 						  <div class="card-body">
 							<h3 class="card-title">SportIdent SRR</h3>
