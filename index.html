@@ -299,6 +299,27 @@
 					<div class="container mt-md-2">
             <div class="card">
 						  <div class="card-body">
+							<h3 class="card-title">Wifi mesh</h3>
+							<p class="card-text">
+								<h5>2026-01-22</h5>
+								<p>Har gjort tester med Wifi mesh, 802.11s, på WiRoc enheterna. Drivrutinerna för den inbyggda wifin stöder inte mesh men det går att köpa billiga USB-wifi baserade på Atheros AR9271. Till dessa finns det bra Linux drivrutiner. Lyckades inte få WPA kryptering att fungera tillförlitligt men som ett okrypterat öppet nätverk fungerade det bra. 
+
+För att få det stabilt behövde jag dock 3D-printa hållare för att undvika glapp i USB-kontakten. 
+
+Jag tänker att detta skulle kunna vara ett alternativ för exempelvis sistakontrollen i de fall den ligger strax utanför vanliga wifi rangen. Eller kanske för en publikkontroll. Fördelelen är blixtsnabb sändning och att ingen Lora kanal behövs, vilket kan vara en fördel om alla redan används till andra radiokontroller.
+
+Meshinställningarna konfigureras i WiRoc Config i en ny flik: 
+<img src="WiRocConfigWifiMesh.jpg" />
+<br/>
+Gick ut och testade med fyra WiRocenheter med varsin USB-Wifi. Den första (1 i bilden) sitter på min balkong och var uppkopplad till internet, tvåan i en snödriva i hörnet lite drygt 100 meter bort, nummer tre också den i en snödriva drygt 100 meter från nummer två. Den fjärde satte jag ~80m bort men den var lite svajig och gick offline ibland. Tror den hade en lite sämre antenn, efter att flyttat den lite närmre nummer tre (ca 50 meter ifrån) så verkade alla enheter hålla sig stabilt online.
+
+<img src="WifiMeshTestMap.png" /> </p>
+							</p>
+						  </div>
+						</div>
+
+            <div class="card">
+						  <div class="card-body">
 							<h3 class="card-title">Bättre batterihantering</h3>
 							<p class="card-text">
 								<h5>2025-12-11</h5>
