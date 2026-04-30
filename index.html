@@ -299,7 +299,50 @@
 					<div class="container mt-md-2">
             <div class="card">
 						  <div class="card-body">
-							<h3 class="card-title">Wifi mesh</h3>
+							<h3 class="card-title">Ny rundstrålande antenn</h3>
+							<p class="card-text">
+								<h5>2026-05-01</h5>
+								<p>Har testat en ny rundstrålande antenn och kombinerat den med en krok i toppen och en hållare för WiRoc under. Det gör att man enkelt kan hänga den i en gren, i många fall rakt över kontrollen. De intiala testerna pekar på att den är lika bra eller kanske bättre än de riktantenner (Yagi) som jag använt tidigare. Lösningen har flera fördelar:</p>
+                <ul>
+                  <li>Kan hängas upp enkelt, utan tejs eller spännband. Enkelt att få upp den högre.</li>
+                </ul>
+                <p>Jämfört med yagi riktantenn:</p>
+                <ul>
+                    <li>Smidigare att bära ut jämfört med riktantenner. Inga antennspröt som kan tappas bort. Kan enkelt bäras ihopsatt med WiRoc enheten.</li>
+                    <li>Behöver inte riktas in, ska bara hänga lodrätt</li>
+                    <li>Lika eller bättre prestanda</li>
+                    <li>Andra sändare runt om på samma kanal har bättre chans att uppfatta när den sänder</li>
+                </ul>
+                <p>Jämfört med yagi dipolantenn:</p>
+                <ul>
+                  <li>Signifikant bättre prestanda</li>
+                </ul>
+                <img src="OmnidirectonalAntennaAndWiRoc.png" />
+                <br/><br/>
+                <p>En annan idé... I de fall det inte finns möjlighet att hänga ovanför kontrollen så borde det gå att montera den under SI-enheten. Med lite andra fästen borde det fungera tillsamman med kontrollställningarna i glasfiber. SRR-mottagningen borde blir riktigt bra under enheten. Helt idealiskt är det ju inte med Lora-antennen så nära marken men i de flesta fall bör det fungera utmärkt ändå.</p>                
+							</p>
+						  </div>
+						</div>
+
+            <div class="card">
+						  <div class="card-body">
+							<h3 class="card-title">Wifi-mesh</h3>
+							<p class="card-text">
+								<h5>2026-04-30</h5>
+								<p>I helgen testades Wifi-mesh funktionaliteten på en dubbeltävling. Det fungerade utmärkt, det var stabilt och räckvidden var bättre än förväntat.</p>
+                <p>Under dag 1 så användes fyra mesh noder. Mesh-1 anslöt till Wifi-AP med inbyggda wifin. Noderna Mesh-1 till Mesh-4 skapade ett mesh nätverk på 2.4 Ghz wifi (802.11s) med hjälp av USB-Wifi donglar baserade på Atheros AR9271 chipsetet. Alla noderna höll sig online under hela tävlingen. Kontrollen satt vid Mesh-4. Mest troligt hade Mesh-3 kunna tagits bort.</p>
+                <p>Under dag 2 så användes bara två mesh noder. Mesh-1 anslöt till Wifi-AP med inbyggda wifin. Noderna Mesh-1 och Mesh-2 skapade ett mesh nätverk mellan sig med USB-Wifi dongeln. Båda noderna höll sig online under hela tävlingen. Kontrollen satt vid Mesh-2.</p>
+                <img src="WifiMeshTestCompetitionSmaller.png" />
+                <br/><br/>
+                <p>WiRoc med en Mesh-Wifi-dongle:</p>
+                <img src="Wifi-mesh-enhet.jpg" />
+							</p>
+						  </div>
+						</div>
+
+            <div class="card">
+						  <div class="card-body">
+							<h3 class="card-title">Wifi-mesh</h3>
 							<p class="card-text">
 								<h5>2026-01-22</h5>
 								<p>Har gjort tester med Wifi mesh, 802.11s, på WiRoc enheterna. Drivrutinerna för den inbyggda wifin stöder inte mesh men det går att köpa billiga USB-wifi baserade på Atheros AR9271. Till dessa finns det bra Linux drivrutiner. Lyckades inte få WPA kryptering att fungera tillförlitligt men som ett okrypterat öppet nätverk fungerade det bra. 
