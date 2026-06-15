@@ -297,6 +297,17 @@
 						<h2>Blog</h2>
 					</div>
 					<div class="container mt-md-2">
+<div class="card">
+						  <div class="card-body">
+							<h3 class="card-title">Ny hårdvara</h3>
+							<p class="card-text">
+								<h5>2026-06-15</h5>
+								<p>Nyligen testat nästa version av hårdvaran. Största ändringen på många år, instället för att bygga på en inköpt SBC (NanoPi Neo AIr) så är nu processor, minne och eMMC integrerat på kretskortet tillsammans med en ny LORA radiomodul. Fördelarna är framförallt mer flexibilitet och att inte längre vara beroende av tillgängligheten på NanoPi Neo Air. Den ny LORA radion ger fler möjligheter att anpassa exakt hur meddelanden skickas vilket gör att man kan kräma ut lite mer prestanda. Vi bör kunna öka antal stämplingar per sekund och även erbjuda fler kanaler. Och kanske fler saker i framtiden...</p>
+                <img src="WiRoc_v8.png" />
+                <br/><br/>
+						  </div>
+						</div>
+
             <div class="card">
 						  <div class="card-body">
 							<h3 class="card-title">Ny rundstrålande antenn</h3>
@@ -304,7 +315,7 @@
 								<h5>2026-05-01</h5>
 								<p>Har testat en ny rundstrålande antenn och kombinerat den med en krok i toppen och en hållare för WiRoc under. Det gör att man enkelt kan hänga den i en gren, i många fall rakt över kontrollen. De intiala testerna pekar på att den är lika bra eller kanske bättre än de riktantenner (Yagi) som jag använt tidigare. Lösningen har flera fördelar:</p>
                 <ul>
-                  <li>Kan hängas upp enkelt, utan tejs eller spännband. Enkelt att få upp den högre.</li>
+                  <li>Kan hängas upp enkelt, utan tejp eller spännband. Enkelt att få upp den högre.</li>
                 </ul>
                 <p>Jämfört med yagi riktantenn:</p>
                 <ul>
@@ -313,13 +324,13 @@
                     <li>Lika eller bättre prestanda</li>
                     <li>Andra sändare runt om på samma kanal har bättre chans att uppfatta när den sänder</li>
                 </ul>
-                <p>Jämfört med yagi dipolantenn:</p>
+                <p>Jämfört med dipolantenn:</p>
                 <ul>
                   <li>Signifikant bättre prestanda</li>
                 </ul>
                 <img src="OmnidirectonalAntennaAndWiRoc.png" />
                 <br/><br/>
-                <p>En annan idé... I de fall det inte finns möjlighet att hänga ovanför kontrollen så borde det gå att montera den under SI-enheten. Med lite andra fästen borde det fungera tillsamman med kontrollställningarna i glasfiber. SRR-mottagningen borde blir riktigt bra under enheten. Helt idealiskt är det ju inte med Lora-antennen så nära marken men i de flesta fall bör det fungera utmärkt ändå.</p>                
+                <p>En annan idé... I de fall det inte finns möjlighet att hänga ovanför kontrollen så borde det gå att montera den under SI-enheten. Med lite andra fästen borde det fungera tillsammans med kontrollställningarna i glasfiber. SRR-mottagningen borde blir riktigt bra under enheten. Helt idealiskt är det ju inte med Lora-antennen så nära marken men i de flesta fall bör det fungera utmärkt ändå.</p>                
 							</p>
 						  </div>
 						</div>
@@ -349,7 +360,7 @@
 
 För att få det stabilt behövde jag dock 3D-printa hållare för att undvika glapp i USB-kontakten. 
 
-Jag tänker att detta skulle kunna vara ett alternativ för exempelvis sistakontrollen i de fall den ligger strax utanför vanliga wifi rangen. Eller kanske för en publikkontroll. Fördelelen är blixtsnabb sändning och att ingen Lora kanal behövs, vilket kan vara en fördel om alla redan används till andra radiokontroller.
+Jag tänker att detta skulle kunna vara ett alternativ för exempelvis sistakontrollen i de fall den ligger strax utanför vanliga wifi rangen. Eller kanske för en publikkontroll. Fördelen är blixtsnabb sändning och att ingen Lora kanal behövs, vilket kan vara en fördel om alla redan används till andra radiokontroller.
 
 Meshinställningarna konfigureras i WiRoc Config i en ny flik: 
 <img src="WiRocConfigWifiMesh.jpg" />
