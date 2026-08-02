@@ -296,41 +296,231 @@
 					<div class="container">
 						<h2>Blog</h2>
 					</div>
+
+          <div class="card">
+						  <div class="card-body">
+							<h3 class="card-title">ROC-kompatibelt API för stämplingshämtning</h3>
+							<p class="card-text">
+								<h5>2026-08-02</h5>
+								<p>Nu finns ett nytt ROC-kompatibelt API i WiRoc. Det gör det möjligt att från tävlingsprogrammet ansluta och hämta stämplingar direkt från en WiRoc-enhet via ROC-protokollet. Adressen är <code>http://&lt;wiroc-ip&gt;:5000/api/roc</code>. Parametern "unitid" ignoreras av WiRoc så den kan sättas till exempelvis 1.</p>
+								<p>API:et stöder long polling vilket innebär att inkommande stämplingar levereras snabbt. Sätt ett kort polling-intervall, till exempel 100 ms. Om det inte finns någon stämpling att hämta kommer WiRoc att blockera i upp till 30 sekunder, och sedan returnera en stämpling direkt när en sådan anländer.</p>
+								<p>Du kan polla från vilken WiRoc-enhet som helst som du kan nå över nätverket. Detta är troligen mest användbart som ett alternativ till TCP/IP SIRAP. Båda metoderna kan användas parallellt. En fördel med ROC-protokollet är att du kan välja att hämta alla stämplingar (med start från ett specifikt stämplings-id).</p>
+							</p>
+						  </div>
+						</div>
+
+	          <div class="card">
+							  <div class="card-body">
+								<h3 class="card-title">WiRoc V8 – ny hårdvara och förbättrad LoRa-kommunikation</h3>
+							<p class="card-text">
+					      <h5>2026-07-12</h5>
+                <p>Efter tester av den nya hårdvaran är nu version 8 av WiRoc redo att tas vidare. Den största förändringen är att vi går över till en egen SBC (Single Board Computer) istället för NanoPi Neo Air som använts tidigare.</p>
+<p>Att ha en egen hårdvara ger betydligt större frihet i designen. Det blir enklare att anpassa kretskortet efter WiRocs behov och att göra framtida förbättringar utan att vara beroende av en färdig enkortsdator.</p>
+<p>Den nya versionen har även nya moduler för WiFi, Bluetooth och LoRa.</p>
+
+          <h4>Ny WiFi- och Bluetooth-modul</h4>
+          <p>WiFi-modulen är uppdaterad och har nu stöd för 5 GHz WiFi. Det kan vara en fördel i miljöer där 2,4 GHz-bandet är belastat av många andra nätverk.</p>
+          <p>Även räckvidden på 2,4 GHz WiFi har förbättrats jämfört med tidigare versioner.</p>
+          <h4>Ny LoRa-radio</h4>
+          <p>Den största tekniska förändringen är den nya LoRa-modulen. Med den nya modulen får vi full kontroll över alla LoRa-inställningar, vilket öppnar flera möjligheter att optimera kommunikationen.</p>
+          <p>En förbättring är att vi kan minska storleken på meddelandena med ett par byte. Vi kan också skicka ACK (bekräftelser) snabbare tillbaka till sändaren. Det gör att vi kan öka antalet stämplingar per minut något utan att behöva öka datahastigheten.</p>
+          <h4>Fler kanaler</h4>
+          <p>Den nya LoRa-modulen gör det också möjligt att använda smalare kanaler. Det innebär att WiRoc V8 kan använda upp till 12 olika kanaler.</p>
+          <p>För att behålla kompatibiliteten med tidigare WiRoc-versioner finns de tidigare 6 kanalerna fortfarande kvar. Det går alltså att använda nya och äldre enheter tillsammans i samma system.</p>
+          <p>Räckviddstesterna visar att nya modulen ger samma eller kanske något bättre räckvidd än gamla. De smalare kanalerna fungerar också de minst lika bra som de gamla bredare.</p>
+
+          <h4>Sammanfattning</h4>
+          <p>WiRoc V8 är framförallt ett steg mot en mer flexibel hårdvaruplattform. Den nya SBC gör att vi kan fortsätta utveckla hårdvaran efter WiRocs behov och den nya LoRa-modulen ger bättre möjligheter att optimera radiokommunikationen.</p>
+          <p>Precis som tidigare version så finns det inbyggd SRR-mottagare för både Röd och Blå kanal (samtidigt). Två USB honkontakter där det går att koppla in ytterligare SRR-donglar, USB-ethernet adapter eller SI-stationer med USB-kabel. Det finns också en serieport där man koppla in masterstation med seriekontakt eller en samlingsbox. Serieporten kan även användas för att skicka ut data till samlingsbox eller dator. </p>
+						</div>
+					</div>
+
+					<div class="card">
+						  <div class="card-body">
+							<h3 class="card-title">Guest post: Wharfedale Three Peaks 2026</h3>
+							<p class="card-text">
+					<h5>2026-07-02</h5>
+					<p>Today we have a report from Ben in UK. Ben bought a number of WiRoc kits and assembled them, installed everything and got them working in short time!</p>
+					<div style="background-color: rgb(231, 231, 231);padding:10px">
+					<h4>Wharfedale Three Peaks 2026, Saturday 27th June</h4>
+					<p>
+							Pendle Forest Orienteers (PFO) ran the timing for the UWFRA Wharfedale
+							Three Peaks this year, the Upper Wharfedale Fell Rescue Association's
+							fundraising event on 27 June. Around 250 runners across two courses:
+							the full 17 mile Three Peaks (W3P) over Great Whernside, Buckden Pike
+							and Birks Fell, and the shorter Two Peaks (W2P), all run in glorious
+							sunshine. We used WiRoc to bring checkpoint "punches" back to the
+							event centre so the finish team and the organisers could see who was
+							still out on the hill. On a fell race/walk that is as much a safety
+							tool as a results one.</p>
+							<p>
+							Six units in all, running WiRoc v1.13. R1 sat at the finish as the
+							receiver, feeding SiTiming over SIRAP (more on that later), and also
+							carried the finish control. Five senders (S1 to S5) covered the manned
+							checkpoints: Great Whernside, Buckden Village, Buckden Pike, Park Rash
+							and Birks Fell. LoRa carried the punches from the checkpoints back to
+							base, and Great Whernside (S1), the high point, also ran as a repeater
+							so that valley sites which could not reach the finish directly could
+							route via the summit. Two controls, Starbotton and Cam Head, had no
+							radio at all.</p><p>
+
+							Afterwards we pulled the databases off all six units and compared
+							every punch against the SiTiming card download, which is the
+							definitive truth: a punch is physically on the runner's card whether
+							or not any radio worked. So the delivery rate for a site is simply the
+							fraction of the punches on cards there that also reached base over the
+							network.</p><p></p>
+
+							<h5>How it went:</h5>
+							<p>
+							The LoRa network as a whole delivered 791 of 901 punches from the five
+							hill sites, so just under 88 percent. Per site it ranged widely:
+							</p><p>
+								<a href="WharfedaleThreePeaks2026Map.png"><img src="WharfedaleThreePeaks2026Map2.png" /></a>
+							<ul>
+							<li>Great Whernside (S1): 189 of 193, 98 percent</li>
+							<li>Park Rash (S4): 185 of 196, 94 percent</li>
+							<li>Birks Fell (S5): 146 of 158, 92 percent</li>
+							<li>Buckden Pike (S3): 160 of 196, 82 percent</li>
+							<li>Buckden Village (S2): 111 of 158, 70 percent</li>
+							</ul>
+							</p><p>
+							For a first outing of this network on real terrain, that is a decent
+							result, but the spread is the interesting part, and digging into the
+							two worst sites turned up two lessons that were the opposite of what
+							we expected going in.
+							</p><p>
+							At Buckden Village (S2) the headline delivery there was our worst, 70
+							percent, so on the face of it the experiment looked like a failure.
+							</p><p>
+							Great Whernside was active as a repeater and, encouragingly, it
+							carried the two weakest-delivery sites the most. It relayed 94
+							distinct cards from Buckden Pike (S3) and 83 from Buckden Village
+							(S2), plus smaller numbers from Park Rash (S4), the finish and Birks Fell.
+							So the adaptive routing did what it is supposed to: the valley sites
+							that struggled to reach base directly leaned on the summit. Without
+							it, S2 and S3 would have been worse still.
+							</p>
+							<h5>What actually caused the losses:</h5>
+							</p><p>
+							The single most important finding is that most of the losses were not
+							really radio problems at all. They were R1.
+							</p><p>
+							The base unit (R1) froze and had to be restarted repeatedly through the
+							morning: 21 power cycles, and more than two-thirds of its database
+							rows carry the unset-clock date that a unit writes when it has just
+							booted without time. When you plot LoRa losses by hour, they
+							concentrate between 09:00 and 11:00, running at around 20 percent an
+							hour, and then they fall away to essentially zero after 13:00. That is
+							during the busiest time, when participants are bunched together. With
+							thanks to Henrik, a field patch was applied, which stabilised
+							performance.
+							</p><p>
+							That splits the losses into two mechanisms. Some punches were sent,
+							got a single-hop acknowledgement, and the sender stopped
+							retransmitting, but R1 was frozen at that moment so the base never
+							actually stored them. Those are silent and unrecoverable. Others never
+							got an acknowledgement at all, so the sender retried the full five
+							times over about a minute into a receiver that was not listening, then
+							gave up. Either way, link quality only decided how many punches were
+							exposed to the problem. The R1 hangs turned exposure into loss.
+							</p><p>
+							SIRAP, and making sure punches stick:
+							</p><p>
+							Earlier I mentioned that R1 feeds SiTiming over SIRAP. SIRAP is
+							unacknowledged: the WiRoc pushes a punch at the timing software, and
+							there is no confirmation that it actually landed in the database. We
+							were bitten by that before at the Compass Sport Final (2024), where
+							punches arrived over the wire but never made it into the results. So
+							this time I wrote a replay system alongside it. Every punch WiRoc had
+							received was held and could be replayed into the timing software, so
+							that anything which reached the event centre was checked against
+							SiTiming and replayed if missed.
+							</p><p>
+							It is a belt and braces layer; WiRoc's job is to get the punch to
+							base, and the replay's job is to ensure a punch that reached base is
+							actually in the timing software.
+							</p><p>
+							<h5>What we would change:</h5>
+							<p>
+							The priority for next year is obvious: fix R1's stability so it is not
+							freezing under early load, because a solid base station would have
+							turned an 88 percent day into a very good one on the same radio links.
+							</p><p>
+							Buckden Village showed the 2.4 GHz SRR hop itself is fine, so the work
+							there is on the LoRa path to base, most likely antenna height,
+							position or repeater. And we would log RSSI next time. It was NULL
+							throughout these databases, so we could not do any signal-strength
+							fade analysis.
+							</p><p>
+							Overall, UWFRA were extremely happy with the data, having moved from a
+							paper-based system, and they have already booked us for next year,
+							where they want to add 2 more units... Henrik, I need more units :)
+							</p><p>
+							My sincere thanks to Henrik for his tireless support over these last
+							few months whilst I worked on this somewhat accidental project. The
+							WiRocs are meant for PFO use :)
+							</p>
+							</div>
+							<p></p>
+							<p>I must say I am impressed with what Ben archived in such a short time. 
+								A little sad I couldn't provide a stable version without the freezing issue. 
+								It is a known issue that has been fixed or at least been much improved in later 
+								internal builds. The problem occurs when the links are marginal or there is some interferrense.</p>
+							<p>When I looked at the maps, distances (some above 6 km), topology, and Bens plans I didn't expect the Lora links 
+								to work as well as it apparantly did. There are some challenges with this setup in that the senders at the controls
+								are so far apart that they can't hear each other. This increases the chances of them trying to send data at the same time. 
+								This was also the first test of the repeater functionality in many years (and versions).</p>
+							<p>Some things to consider for next year: Should all run on the same channel with a single receiver? The receiver is in a 
+								difficult location to reach from the controls and it is difficult to find a single repeater location that has good Lora link to all controls. 
+								So maybe using two or more channels with a repeater on each could help. Linking up two WiRoc to create a relay station could be an 
+								alternative to use the repeater functionality. I also would suggest directional antennas at some checkpoints.</p>
+								<p>Ben also sent some photos, two of which are shown below:</p>
+								<p>
+									<img src="Wharfedale-photo2.jpeg" />
+									<img src="Wharfedale--S1-GreatWhernside.jpeg" />
+									
+								</p>
+
+						</div>
+					</div>
+
+
 					<div class="container mt-md-2">
-<div class="card">
+					<div class="card">
 						  <div class="card-body">
 							<h3 class="card-title">Ny hårdvara</h3>
 							<p class="card-text">
 								<h5>2026-06-15</h5>
 								<p>Nyligen testat nästa version av hårdvaran. Största ändringen på många år, instället för att bygga på en inköpt SBC (NanoPi Neo AIr) så är nu processor, minne och eMMC integrerat på kretskortet tillsammans med en ny LORA radiomodul. Fördelarna är framförallt mer flexibilitet och att inte längre vara beroende av tillgängligheten på NanoPi Neo Air. Den ny LORA radion ger fler möjligheter att anpassa exakt hur meddelanden skickas vilket gör att man kan kräma ut lite mer prestanda. Vi bör kunna öka antal stämplingar per sekund och även erbjuda fler kanaler. Och kanske fler saker i framtiden...</p>
-                <img src="WiRoc_v8.png" />
-                <br/><br/>
+                				<img src="WiRoc_v8.png" />
+                				<br/><br/>
 						  </div>
-						</div>
+					</div>
 
-            <div class="card">
-						  <div class="card-body">
-							<h3 class="card-title">Ny rundstrålande antenn</h3>
-							<p class="card-text">
-								<h5>2026-05-01</h5>
-								<p>Har testat en ny rundstrålande antenn och kombinerat den med en krok i toppen och en hållare för WiRoc under. Det gör att man enkelt kan hänga den i en gren, i många fall rakt över kontrollen. De intiala testerna pekar på att den är lika bra eller kanske bättre än de riktantenner (Yagi) som jag använt tidigare. Lösningen har flera fördelar:</p>
-                <ul>
-                  <li>Kan hängas upp enkelt, utan tejp eller spännband. Enkelt att få upp den högre.</li>
-                </ul>
-                <p>Jämfört med yagi riktantenn:</p>
-                <ul>
-                    <li>Smidigare att bära ut jämfört med riktantenner. Inga antennspröt som kan tappas bort. Kan enkelt bäras ihopsatt med WiRoc enheten.</li>
-                    <li>Behöver inte riktas in, ska bara hänga lodrätt</li>
-                    <li>Lika eller bättre prestanda</li>
-                    <li>Andra sändare runt om på samma kanal har bättre chans att uppfatta när den sänder</li>
-                </ul>
-                <p>Jämfört med dipolantenn:</p>
-                <ul>
-                  <li>Signifikant bättre prestanda</li>
-                </ul>
-                <img src="OmnidirectonalAntennaAndWiRoc.png" />
-                <br/><br/>
-                <p>En annan idé... I de fall det inte finns möjlighet att hänga ovanför kontrollen så borde det gå att montera den under SI-enheten. Med lite andra fästen borde det fungera tillsammans med kontrollställningarna i glasfiber. SRR-mottagningen borde blir riktigt bra under enheten. Helt idealiskt är det ju inte med Lora-antennen så nära marken men i de flesta fall bör det fungera utmärkt ändå.</p>                
+					<div class="card">
+							<div class="card-body">
+								<h3 class="card-title">Ny rundstrålande antenn</h3>
+								<p class="card-text">
+									<h5>2026-05-01</h5>
+									<p>Har testat en ny rundstrålande antenn och kombinerat den med en krok i toppen och en hållare för WiRoc under. Det gör att man enkelt kan hänga den i en gren, i många fall rakt över kontrollen. De intiala testerna pekar på att den är lika bra eller kanske bättre än de riktantenner (Yagi) som jag använt tidigare. Lösningen har flera fördelar:</p>
+					<ul>
+					<li>Kan hängas upp enkelt, utan tejp eller spännband. Enkelt att få upp den högre.</li>
+					</ul>
+					<p>Jämfört med yagi riktantenn:</p>
+					<ul>
+						<li>Smidigare att bära ut jämfört med riktantenner. Inga antennspröt som kan tappas bort. Kan enkelt bäras ihopsatt med WiRoc enheten.</li>
+						<li>Behöver inte riktas in, ska bara hänga lodrätt</li>
+						<li>Lika eller bättre prestanda</li>
+						<li>Andra sändare runt om på samma kanal har bättre chans att uppfatta när den sänder</li>
+					</ul>
+					<p>Jämfört med dipolantenn:</p>
+					<ul>
+					<li>Signifikant bättre prestanda</li>
+					</ul>
+					<img src="OmnidirectonalAntennaAndWiRoc.png" />
+					<br/><br/>
+					<p>En annan idé... I de fall det inte finns möjlighet att hänga ovanför kontrollen så borde det gå att montera den under SI-enheten. Med lite andra fästen borde det fungera tillsammans med kontrollställningarna i glasfiber. SRR-mottagningen borde blir riktigt bra under enheten. Helt idealiskt är det ju inte med Lora-antennen så nära marken men i de flesta fall bör det fungera utmärkt ändå.</p>                
 							</p>
 						  </div>
 						</div>
