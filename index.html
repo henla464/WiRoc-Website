@@ -23,12 +23,14 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<style>
 			:root {
-				--wiroc-green: #37474f;
-				--wiroc-green-light: #546e7a;
-				--wiroc-green-dark: #263238;
+				--wiroc-primary: #37474F;
+				--wiroc-primary-light: #546E7A;
+				--wiroc-primary-dark: #263238;
+				--wiroc-accent: #ffc107;
+				--wiroc-accent-light: #ffca2c;
 			}
 			body {
-				background-color: #f5f6f5;
+				background-color: #f8f9fa;
 			}
 			img.centered {
 			    display: block;
@@ -40,51 +42,54 @@
 				color: #495057;
 				border-radius: .25rem;
 				margin: 0 2px;
+				transition: background-color 0.2s ease, color 0.2s ease;
 			}
 			.nav-pills .nav-link.active {
-				background-color: var(--wiroc-green);
+				background-color: var(--wiroc-primary);
 			}
 			.nav-pills .nav-link:hover:not(.active) {
-				background-color: #eceff1;
-				color: var(--wiroc-green-dark);
+				background-color: #ECEFF1;
+				color: var(--wiroc-primary-dark);
 			}
 			h2 {
-				color: var(--wiroc-green-dark);
-				border-bottom: 2px solid var(--wiroc-green-light);
-				padding-bottom: 0.4rem;
+				color: var(--wiroc-primary-dark);
+				border-bottom: 2px solid var(--wiroc-primary-light);
+				border-left: 4px solid var(--wiroc-accent);
+				padding: 0.3rem 0 0.4rem 0.75rem;
 				margin-bottom: 1.2rem;
 			}
 			h3 {
-				color: var(--wiroc-green);
+				color: var(--wiroc-primary);
 			}
 			h4 {
-				color: var(--wiroc-green-dark);
+				color: var(--wiroc-primary-dark);
 			}
 			.card {
 				border: none;
 				border-radius: .5rem;
-				box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+				box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 				transition: box-shadow 0.2s ease, transform 0.2s ease;
 				margin-bottom: 1rem;
 			}
 			.card:hover {
-				box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+				transform: translateY(-3px);
 			}
 			.card .card-img-top {
 				border-radius: .5rem .5rem 0 0;
 			}
 			.price-tag {
-				background-color: var(--wiroc-green);
+				background-color: var(--wiroc-accent);
 				color: white;
 				padding: 0.4rem 0.8rem;
 				border-radius: .25rem;
 				display: inline-block;
 				font-weight: 600;
 				margin-bottom: 0.8rem;
+				box-shadow: 0 2px 6px rgba(255,193,7,0.35);
 			}
 			.blog-date {
-				background-color: var(--wiroc-green-light);
+				background-color: var(--wiroc-accent);
 				color: white;
 				padding: 0.2rem 0.6rem;
 				border-radius: 1rem;
@@ -101,7 +106,7 @@
 			.header-banner {
 				border-radius: .5rem !important;
 				margin-top: 0.5rem;
-				background: linear-gradient(135deg, rgba(38,50,56,0.75) 0%, rgba(55,71,79,0.65) 100%), url('mapbanner.png');
+				background: linear-gradient(135deg, rgba(38,50,56,0.6) 0%, rgba(55,71,79,0.45) 100%), url('mapbanner.png');
 				background-size: cover;
 				background-position: center;
 				padding: 1.5rem 1rem;
@@ -111,14 +116,17 @@
 				font-size: 2rem;
 				font-weight: 700;
 				margin-bottom: 0.3rem;
+				text-shadow: 0 1px 8px rgba(0,0,0,0.7);
 			}
 			.header-banner p {
-				font-size: 1rem;
-				opacity: 0.9;
+				font-size: 1.15rem;
+				font-weight: 500;
+				opacity: 1;
 				margin-bottom: 0;
+				text-shadow: 0 1px 8px rgba(0,0,0,0.7);
 			}
 			.footer {
-				background-color: var(--wiroc-green-dark);
+				background: linear-gradient(135deg, var(--wiroc-primary-dark) 0%, #263238 100%);
 				color: rgba(255,255,255,0.85);
 				padding: 1.5rem 0;
 				margin-top: 2rem;
@@ -148,7 +156,7 @@
 						</div>
 					</div>
 					<div>
-						<a class="btn btn-outline-light btn-sm" href="http://monitor.wiroc.se">Monitor</a>
+						<a class="btn btn-warning btn-lg" href="http://monitor.wiroc.se" style="box-shadow: 0 2px 6px rgba(255,193,7,0.35); font-size: 1.1rem; padding: 0.5rem 1.2rem;">Monitor</a>
 					</div>
 				</div>
 			</header>
