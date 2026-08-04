@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="sv">
 	<head>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168074631-1"></script>
@@ -14,60 +14,171 @@
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="WiRoc – trådlöst system för att skicka mellantider från kontroller till tävlingsprogrammet med LoRa-teknik. Ingen mobiltäckning eller internet krävs.">
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" href="logo.png">
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<style>
+			:root {
+				--wiroc-green: #37474f;
+				--wiroc-green-light: #546e7a;
+				--wiroc-green-dark: #263238;
+			}
+			body {
+				background-color: #f5f6f5;
+			}
 			img.centered {
 			    display: block;
 			    margin-left: auto;
 			    margin-right: auto;
 			    margin-bottom: 15px;
 			}
+			.nav-pills .nav-link {
+				color: #495057;
+				border-radius: .25rem;
+				margin: 0 2px;
+			}
+			.nav-pills .nav-link.active {
+				background-color: var(--wiroc-green);
+			}
+			.nav-pills .nav-link:hover:not(.active) {
+				background-color: #eceff1;
+				color: var(--wiroc-green-dark);
+			}
+			h2 {
+				color: var(--wiroc-green-dark);
+				border-bottom: 2px solid var(--wiroc-green-light);
+				padding-bottom: 0.4rem;
+				margin-bottom: 1.2rem;
+			}
+			h3 {
+				color: var(--wiroc-green);
+			}
+			h4 {
+				color: var(--wiroc-green-dark);
+			}
+			.card {
+				border: none;
+				border-radius: .5rem;
+				box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+				transition: box-shadow 0.2s ease, transform 0.2s ease;
+				margin-bottom: 1rem;
+			}
+			.card:hover {
+				box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+				transform: translateY(-2px);
+			}
+			.card .card-img-top {
+				border-radius: .5rem .5rem 0 0;
+			}
+			.price-tag {
+				background-color: var(--wiroc-green);
+				color: white;
+				padding: 0.4rem 0.8rem;
+				border-radius: .25rem;
+				display: inline-block;
+				font-weight: 600;
+				margin-bottom: 0.8rem;
+			}
+			.blog-date {
+				background-color: var(--wiroc-green-light);
+				color: white;
+				padding: 0.2rem 0.6rem;
+				border-radius: 1rem;
+				font-size: 0.8rem;
+				font-weight: 500;
+				display: inline-block;
+				margin-bottom: 0.5rem;
+			}
+			.blog-img {
+				max-width: 100%;
+				border-radius: .35rem;
+				margin: 0.5rem 0;
+			}
+			.header-banner {
+				border-radius: .5rem !important;
+				margin-top: 0.5rem;
+				background: linear-gradient(135deg, rgba(38,50,56,0.75) 0%, rgba(55,71,79,0.65) 100%), url('mapbanner.png');
+				background-size: cover;
+				background-position: center;
+				padding: 1.5rem 1rem;
+				color: white;
+			}
+			.header-banner h1 {
+				font-size: 2rem;
+				font-weight: 700;
+				margin-bottom: 0.3rem;
+			}
+			.header-banner p {
+				font-size: 1rem;
+				opacity: 0.9;
+				margin-bottom: 0;
+			}
+			.footer {
+				background-color: var(--wiroc-green-dark);
+				color: rgba(255,255,255,0.85);
+				padding: 1.5rem 0;
+				margin-top: 2rem;
+				font-size: 0.9rem;
+			}
+			.footer a {
+				color: rgba(255,255,255,0.9);
+				text-decoration: underline;
+			}
+			.footer a:hover {
+				color: white;
+			}
 		</style>
-		<title>WiRoc</title>
+		<title>WiRoc – Trådlösa mellantider för orientering</title>
 	</head>
 	<body>
 		<div class="container">
-			<header style="border-radius: .4rem!important; border: 1px solid #000000; margin-top:0.5rem; background-image: url('mapbanner.png'); background-size: cover; background-position: center">
-				<div class="d-flex flex-nowrap justify-content-between align-items-center mt-md-2 ml-md-1 mr-md-1">
-					<div class="m-2 border border-dark" style="background-color: white; border-radius: .6rem!important;">
-						<div class="text-center m-2" style="flex-grow: 1; flex-shrink: 1; max-width:6rem">
-							<img class="card-img-top" src="logo.png" alt="logo">
+			<header class="header-banner">
+				<div class="d-flex align-items-center justify-content-between">
+					<div class="d-flex align-items-center">
+						<div class="bg-white rounded p-1 mr-3" style="border-radius: .5rem !important;">
+							<img src="logo.png" alt="WiRoc logo" style="width: 5rem; height: auto;">
+						</div>
+						<div>
+							<h1 class="mb-0">WiRoc</h1>
+							<p class="mb-0">Trådlösa mellantider med LoRa</p>
 						</div>
 					</div>
-					<div class="text-center" style="flex-grow: 1; flex-shrink: 1; width:50%"></div>
-					<div class="border border-dark" style="border-width:1px !important; border-radius: .6rem!important; flex-grow: 1; flex-shrink: 1; background-color:white; max-width:5rem; height:2rem">
-						  <nav class="text-center">
-						<a class="p-2 text-dark" style="line-height:2rem;" href="http://monitor.wiroc.se">Monitor</a>
-						  </nav>
+					<div>
+						<a class="btn btn-outline-light btn-sm" href="http://monitor.wiroc.se">Monitor</a>
 					</div>
 				</div>
 			</header>
 
-			<div id="accordion">
-				<div class="btn-group btn-group-toggle btn-group-justified mt-1" style="width: 100%" data-toggle="buttons">
-				  <label class="btn btn-secondary active">
-					<input type="radio" name="options" id="optionWiRoc" autocomplete="off" checked data-toggle="collapse" href="#pageWiRoc" aria-expanded="true" aria-controls="pageWiRoc" id="WiRocLink"> WiRoc
-				  </label>
-				  <label class="btn btn-secondary">
-					<input type="radio" name="options" id="optionProducts" autocomplete="off" data-toggle="collapse" href="#pageProducts" aria-expanded="false" aria-controls="pageProducts" id="ProductsLink"> Produkter
-				  </label>
-				  <label class="btn btn-secondary">
-					<input type="radio" name="options" id="optionRange" autocomplete="off" data-toggle="collapse" href="#pageRange" aria-expanded="false" aria-controls="pageRange" id="RangeLink"> Räckvidd
-				  </label>
-				  <label class="btn btn-secondary">
-					<input type="radio" name="options" id="optionConfig" autocomplete="off" data-toggle="collapse" href="#pageConfig" aria-expanded="false" aria-controls="pageConfig" id="ConfigLink"> Konfiguration
-				  </label>
-				  <label class="btn btn-secondary">
-					<input type="radio" name="options" id="optionBlog" autocomplete="off" data-toggle="collapse" href="#pageBlog" aria-expanded="false" aria-controls="pageBlog" id="BlogLink"> Blog
-				  </label>
-				  <label class="btn btn-secondary">
-					<input type="radio" name="options" id="optionContact" autocomplete="off" data-toggle="collapse" href="#pageContact" aria-expanded="false" aria-controls="pageContact" id="ContactLink"> Kontakt
-				  </label>
-				</div>
+			<nav class="mt-2">
+				<ul class="nav nav-pills nav-fill" id="mainNav" role="tablist">
+				  <li class="nav-item">
+				    <a class="nav-link active" id="tabWiRoc" data-toggle="pill" href="#pageWiRoc" role="tab">WiRoc</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" id="tabProducts" data-toggle="pill" href="#pageProducts" role="tab">Produkter</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" id="tabRange" data-toggle="pill" href="#pageRange" role="tab">Räckvidd</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" id="tabConfig" data-toggle="pill" href="#pageConfig" role="tab">Konfiguration</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" id="tabBlog" data-toggle="pill" href="#pageBlog" role="tab">Blogg</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" id="tabContact" data-toggle="pill" href="#pageContact" role="tab">Kontakt</a>
+				  </li>
+				</ul>
+			</nav>
 
-				<div class="container collapse show mt-md-2" id="pageWiRoc" data-parent="#accordion">
+			<div class="tab-content mt-3">
+
+				<div class="tab-pane fade show active" id="pageWiRoc" role="tabpanel">
 					 <div class="container mt-md-2">
 						<h2>WiRoc</h2>
 						<div class="card">
@@ -89,14 +200,14 @@
 					</div>
 				</div>
 				
-				<div class="container collapse mt-md-2" id="pageProducts" data-parent="#accordion">
+				<div class="tab-pane fade" id="pageProducts" role="tabpanel">
 					
 					<div class="container mt-md-4">
 						<div class="card">
 						  <img class="card-img-top" src="WiRocv6Rev1.JPG" alt="WiRoc v6Rev1">
 						  <div class="card-body">
 							<h4 class="card-title">WiRoc enhet</h4>
-							<p class="card-text"><b>Hyra: 90 kr inkl. moms för endagarsevenemang (72 kr exkl. moms)</b></p>
+							<span class="price-tag">90 kr/dag inkl. moms (72 kr exkl. moms)</span>
 							<p class="card-text">Det vanligaste scenariot för en radiokontroll i skogen är att använda en WiRoc enhet konfigurerad som sändare på eller i närheten av kontrollen och en WiRoc enhet konfigurerad som mottagare vid TC. Mottagaren kopplas upp på det lokala WLAN/Wifi nätverket och konfigureras att skicka till tävlingsprogrammet över SIRAP/tcp. SportIdent enheten kan kopplas till WiRoc sändaren på några olika sätt beroende på vilken typ av SportIdent enhet det är.<br/><br/><h5>SportIdent enhet med USB kabel</h5>Om SportIdent enheten har USB sladd kan den kopplas direkt till WiRoc enheten (ev. med en USB-förlängningsladd och/eller USB-hub). Ett annat alternativ är att koppla SportIdent enheten till en USB-till-Bluetooth adapter. I WiRoc-Config kan man sedan söka upp och ansluta USB-till-Bluetooth adaptern.<br/><br/><h5>SportIdent enhet med RS232 seriell kabel</h5>Om SportIdent enheten har en RS232 seriell kabel så kan den kopplas via USB-adapter (notera att inte alla adaptrar stöds). Det finns även RS232-till-Bluetooth adaptrar att koppla SportIdent enheten till. I WiRoc-Config kan man sedan söka upp och ansluta RS232-till-Bluetooth adaptern. Vissa WiRoc enheter har en inbyggd RS232 port så att det går att koppla in direkt.<br/><br/><h5>SportIdent SRR enhet</h5> För att använda en SportIdent SRR enhet behöver man använda en SRR USB Dongle som kopplas in i WiRoc enheten.</p>
 						  </div>
 						</div>
@@ -107,7 +218,7 @@
 						  <img class="card-img-top" src="DirectionalAntenna.jpg" alt="Yagi antenna">
 						  <div class="card-body">
 							<h4 class="card-title">Yagi riktantenn</h4>
-							<p class="card-text"><b>Hyra: 50 kr inkl. moms för endagarsevenemang (40 kr exkl. moms)</b></p>
+							<span class="price-tag">50 kr/dag inkl. moms (40 kr exkl. moms)</span>
 							<p class="card-text">En riktantenn kopplad till antingen mottagaren eller sändaren alternativt båda två förbättrar räckvidden avsevärt.</p>
 						  </div>
 						</div>
@@ -118,7 +229,7 @@
 						  <img class="card-img-top" src="DipoleAntenna.jpg" alt="Dipole antenna">
 						  <div class="card-body">
 							<h4 class="card-title">Dipolantenn</h4>
-							<p class="card-text"><b>Hyra: 30 kr inkl. moms för endagarsevenemang (24 kr exkl. moms)</b></p>
+							<span class="price-tag">30 kr/dag inkl. moms (24 kr exkl. moms)</span>
 							<p class="card-text">Observera att en dipolantenn ingår vid hyra av en WiRoc enhet (om ingen riktantenn hyres).</p>
 						  </div>
 						</div>
@@ -129,7 +240,7 @@
 						  <img class="card-img-top" src="USBToBluetooth.jpg" alt="USB-till-Bluetooth adapter">
 						  <div class="card-body">
 							<h4 class="card-title">USB-till-Bluetooth adapter</h4>
-							<p class="card-text"><b>Hyra: 50 kr inkl. moms för endagarsevenemang (40 kr exkl. moms)</b></p>
+							<span class="price-tag">50 kr/dag inkl. moms (40 kr exkl. moms)</span>
 							<p class="card-text">Används för att trådlöst koppla en SportIdent enhet med USB-kabel till en WiRoc enhet. Detta gör det enklare att placera WiRoc enheten med antenn högre upp t.ex i ett träd.</p>
 						  </div>
 						</div>
@@ -140,7 +251,7 @@
 						  <img class="card-img-top" src="RS232ToBluetooth.jpg" alt="RS232-till-Bluetooth adapter">
 						  <div class="card-body">
 							<h4 class="card-title">RS232-till-Bluetooth adapter</h4>
-							<p class="card-text"><b>Hyra: 50 kr inkl. moms för endagarsevenemang (40 kr exkl. moms)</b></p>
+							<span class="price-tag">50 kr/dag inkl. moms (40 kr exkl. moms)</span>
 							<p class="card-text">Används för att trådlöst koppla en SportIdent enhet med RS232 seriell kabel till en WiRoc enhet. Detta gör det enklare att placera WiRoc enheten med antenn högre upp t.ex i ett träd.</p>
 						  </div>
 						</div>
@@ -148,7 +259,7 @@
 					
 				</div>
 
-				<div class="container collapse mt-md-2" id="pageRange" data-parent="#accordion">
+				<div class="tab-pane fade" id="pageRange" role="tabpanel">
 					<div class="container">
 						<h2>Räckvidd</h2>
 						Räckvidden beror på många faktorer där de främsta är terrängen, vilka antenner som används och datahastigheten. Se några verkliga exempel från tävlingar längre ner.
@@ -245,7 +356,7 @@
 					</div>
 				</div>
 
-				<div class="container collapse mt-md-2" id="pageConfig" data-parent="#accordion">
+				<div class="tab-pane fade" id="pageConfig" role="tabpanel">
 					<div class="container">
 						<h2>Konfiguration</h2>
 						WiRoc-enheterna konfigureras med Android-applikationen "WiRoc Config".
@@ -461,7 +572,7 @@
 					</div>
 				</div>
 				
-				<div class="container collapse mt-md-2" id="pageBlog" data-parent="#accordion">
+				<div class="tab-pane fade" id="pageBlog" role="tabpanel">
 					<div class="container">
 						<h2>Blog</h2>
 					</div>
@@ -470,7 +581,7 @@
 						  <div class="card-body">
 							<h3 class="card-title">Skicka stämplingar till ROC-servern</h3>
 							<p class="card-text">
-								<h5>2026-08-04</h5>
+								<span class="blog-date">2026-08-04</span>
 								<p>WiRoc kan nu skicka stämplingar direkt till en ROC-server. Tidigare har WiRoc kunnat erbjuda ett ROC-kompatibelt API varifrån man kan hämta stämplingar istället för ifrån den officiella ROC-servern. Med den nya funktionen kan WiRoc istället aktivt skicka (pusha) stämplingar till den officella ROC-server, på samma sätt som en vanlig ROC-enhet gör.</p>
 								<p>Funktionen innebär att WiRoc integreras sömlöst i ett befintligt ROC-system. För att kunna skicka stämplingar behöver WiRoc-enheten ha internetuppkoppling (via Wifi, USB-ethernet, Wifi-mesh). Funktionen kan användas på WiRoc-enheter som är konfigurerade som Lora-sändare, Lora-mottagare eller som Lora-repeater. De olika utdata alternativen
 									kan användas parallellt, så att stämplingar kan skickas både via Lora, SIRAP/tcp och till ROC-servern samtidigt. Exempelvis kan en WiRoc-enhet som är konfigurerad som mottagare skicka stämplingar både via SIRAP/tcp till tävlingsprogrammet och samtidigt skicka dem till ROC-servern.</p>
@@ -486,7 +597,7 @@
 						  <div class="card-body">
 							<h3 class="card-title">WiFi-mesh – Begränsa åtkomst till lokala nätverket</h3>
 								<p class="card-text">
-									<h5>2026-08-03</h5>
+									<span class="blog-date">2026-08-03</span>
 									<p>WiFi-mesh funktionen i WiRoc har fått en ny inställning: Begränsa åtkomst (Restrict access). När denna är aktiverad så kan enheter på mesh-nätverket inte nå ut till det lokala nätverket (LAN) som mesh-noderna är anslutna till. Detta ger bättre kontroll över vad som är tillgängligt från mesh-nätverket.</p>
 									<p>Funktionen är användbar i situationer där man vill begränsa vad enheter på mesh-nätverket kan komma åt. Till exempel kan man undvika att mesh-noder av misstag får tillgång till känsliga resurser på det lokala nätverket.</p>
 									<p>När Begränsa åtkomst är aktiverat kan mesh-enheterna fortfarande kommunicera med varandra inom mesh-nätverket och med WiRoc-enheternas egna tjänster. Trafik till internet släpps alltid igenom.</p>
@@ -500,7 +611,7 @@
 							  <div class="card-body">
 								<h3 class="card-title">Tailscale VPN i WiRoc</h3>
 								<p class="card-text">
-									<h5>2026-08-03</h5>
+									<span class="blog-date">2026-08-03</span>
 									<p>WiRoc har nu stöd för Tailscale VPN. Tailscale är en VPN-tjänst byggd på WireGuard som gör det enkelt att skapa ett säkert nätverk mellan olika enheter, oavsett var de befinner sig eller hur de är anslutna till internet.</p>
 									<p>Med Tailscale aktiverat på en WiRoc-enhet som har internetuppkoppling (t.ex. via WiFi, ethernet eller mobil USB-sticka) kan enheten nås från andra enheter som också är anslutna till samma Tailscale-nätverk. Det betyder att du till exempel kan nå en WiRoc-enhet ute i skogen från din dator hemma, eller från en annan WiRoc-enhet på en annan plats. All kommunikation är krypterad och går direkt mellan enheterna när det är möjligt, utan att passera en central server.</p>
 									<p>Några användningsområden:</p>
@@ -511,10 +622,10 @@
 									<p>Tailscale stöds från WiRoc mjukvaruversion v1.43 och konfigureras enkelt i WiRoc Config-appen. För att komma igång skapar du ett konto på tailscale.com och anväder sedan WiRoc Config appen för att ansluta enheten till ditt Tailnet. Nedan visas konfigurationsskärmarna:</p>
 									<div class="d-flex row flex-wrap align-content-stretch mb-2">
 										<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6">
-											<img src="BlogPictures/AppScreen_NetworkTailscale1.jpg" alt="Tailscale konfiguration 1" class="img-fluid"/>
+											<img src="BlogPictures/AppScreen_NetworkTailscale1.jpg" alt="Tailscale konfiguration 1" class="img-fluid rounded blog-img"/>
 										</div>
 										<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6">
-											<img src="BlogPictures/AppScreen_NetworkTailscale2.jpg" alt="Tailscale konfiguration 2" class="img-fluid"/>
+											<img src="BlogPictures/AppScreen_NetworkTailscale2.jpg" alt="Tailscale konfiguration 2" class="img-fluid rounded blog-img"/>
 										</div>
 									</div>
 									<br/><br/>
@@ -527,7 +638,7 @@
 							  <div class="card-body">
 								<h3 class="card-title">ROC-kompatibelt API för stämplingshämtning</h3>
 							<p class="card-text">
-								<h5>2026-08-02</h5>
+								<span class="blog-date">2026-08-02</span>
 								<p>Nu finns ett nytt ROC-kompatibelt API i WiRoc. Det gör det möjligt att från tävlingsprogrammet ansluta och hämta stämplingar direkt från en WiRoc-enhet via ROC-protokollet. Adressen är <code>http://&lt;wiroc-ip&gt;:5000/api/roc</code>. Parametern "unitid" ignoreras av WiRoc så den kan sättas till exempelvis 1.</p>
 								<p>API:et stöder long polling vilket innebär att inkommande stämplingar levereras snabbt. Sätt ett kort polling-intervall, till exempel 100 ms. Om det inte finns någon stämpling att hämta kommer WiRoc att blockera i upp till 30 sekunder, och sedan returnera en stämpling direkt när en sådan anländer.</p>
 								<p>Du kan polla från vilken WiRoc-enhet som helst som du kan nå över nätverket. Detta är troligen mest användbart som ett alternativ till TCP/IP SIRAP. Båda metoderna kan användas parallellt. En fördel med ROC-protokollet är att du kan välja att hämta alla stämplingar (med start från ett specifikt stämplings-id).</p>
@@ -539,7 +650,7 @@
 							  <div class="card-body">
 								<h3 class="card-title">WiRoc V8 – ny hårdvara och förbättrad LoRa-kommunikation</h3>
 							<p class="card-text">
-					      <h5>2026-07-12</h5>
+					      <span class="blog-date">2026-07-12</span>
                 <p>Efter tester av den nya hårdvaran är nu version 8 av WiRoc redo att tas vidare. Den största förändringen är att vi går över till en egen SBC (Single Board Computer) istället för NanoPi Neo Air som använts tidigare.</p>
 <p>Att ha en egen hårdvara ger betydligt större frihet i designen. Det blir enklare att anpassa kretskortet efter WiRocs behov och att göra framtida förbättringar utan att vara beroende av en färdig enkortsdator.</p>
 <p>Den nya versionen har även nya moduler för WiFi, Bluetooth och LoRa.</p>
@@ -565,7 +676,7 @@
 						  <div class="card-body">
 							<h3 class="card-title">Guest post: Wharfedale Three Peaks 2026</h3>
 							<p class="card-text">
-					<h5>2026-07-02</h5>
+					<span class="blog-date">2026-07-02</span>
 					<p>Today we have a report from Ben in UK. Ben bought a number of WiRoc kits and assembled them, installed everything and got them working in short time!</p>
 					<div style="background-color: rgb(231, 231, 231);padding:10px">
 					<h4>Wharfedale Three Peaks 2026, Saturday 27th June</h4>
@@ -602,7 +713,7 @@
 							The LoRa network as a whole delivered 791 of 901 punches from the five
 							hill sites, so just under 88 percent. Per site it ranged widely:
 							</p><p>
-								<a href="BlogPictures/WharfedaleThreePeaks2026Map.png"><img src="BlogPictures/WharfedaleThreePeaks2026Map2.png" /></a>
+								<a href="BlogPictures/WharfedaleThreePeaks2026Map.png"><img src="BlogPictures/WharfedaleThreePeaks2026Map2.png" class="img-fluid rounded blog-img" /></a>
 							<ul>
 							<li>Great Whernside (S1): 189 of 193, 98 percent</li>
 							<li>Park Rash (S4): 185 of 196, 94 percent</li>
@@ -703,8 +814,8 @@
 								alternative to use the repeater functionality. I also would suggest directional antennas at some checkpoints.</p>
 								<p>Ben also sent some photos, two of which are shown below:</p>
 								<p>
-									<img src="BlogPictures/Wharfedale-photo2.jpeg" />
-									<img src="BlogPictures/Wharfedale--S1-GreatWhernside.jpeg" />
+									<img src="BlogPictures/Wharfedale-photo2.jpeg" class="img-fluid rounded blog-img" />
+									<img src="BlogPictures/Wharfedale--S1-GreatWhernside.jpeg" class="img-fluid rounded blog-img" />
 									
 								</p>
 
@@ -717,9 +828,9 @@
 						  <div class="card-body">
 							<h3 class="card-title">Ny hårdvara</h3>
 							<p class="card-text">
-								<h5>2026-06-15</h5>
+								<span class="blog-date">2026-06-15</span>
 								<p>Nyligen testat nästa version av hårdvaran. Största ändringen på många år, instället för att bygga på en inköpt SBC (NanoPi Neo AIr) så är nu processor, minne och eMMC integrerat på kretskortet tillsammans med en ny LORA radiomodul. Fördelarna är framförallt mer flexibilitet och att inte längre vara beroende av tillgängligheten på NanoPi Neo Air. Den ny LORA radion ger fler möjligheter att anpassa exakt hur meddelanden skickas vilket gör att man kan kräma ut lite mer prestanda. Vi bör kunna öka antal stämplingar per sekund och även erbjuda fler kanaler. Och kanske fler saker i framtiden...</p>
-                				<img src="BlogPictures/WiRoc_v8.png" />
+                				<img src="BlogPictures/WiRoc_v8.png" class="img-fluid rounded blog-img" />
                 				<br/><br/>
 						  </div>
 					</div>
@@ -728,7 +839,7 @@
 							<div class="card-body">
 								<h3 class="card-title">Ny rundstrålande antenn</h3>
 								<p class="card-text">
-									<h5>2026-05-01</h5>
+									<span class="blog-date">2026-05-01</span>
 									<p>Har testat en ny rundstrålande antenn och kombinerat den med en krok i toppen och en hållare för WiRoc under. Det gör att man enkelt kan hänga den i en gren, i många fall rakt över kontrollen. De intiala testerna pekar på att den är lika bra eller kanske bättre än de riktantenner (Yagi) som jag använt tidigare. Lösningen har flera fördelar:</p>
 					<ul>
 					<li>Kan hängas upp enkelt, utan tejp eller spännband. Enkelt att få upp den högre.</li>
@@ -744,7 +855,7 @@
 					<ul>
 					<li>Signifikant bättre prestanda</li>
 					</ul>
-					<img src="BlogPictures/OmnidirectonalAntennaAndWiRoc.png" />
+					<img src="BlogPictures/OmnidirectonalAntennaAndWiRoc.png" class="img-fluid rounded blog-img" />
 					<br/><br/>
 					<p>En annan idé... I de fall det inte finns möjlighet att hänga ovanför kontrollen så borde det gå att montera den under SI-enheten. Med lite andra fästen borde det fungera tillsammans med kontrollställningarna i glasfiber. SRR-mottagningen borde blir riktigt bra under enheten. Helt idealiskt är det ju inte med Lora-antennen så nära marken men i de flesta fall bör det fungera utmärkt ändå.</p>                
 							</p>
@@ -755,14 +866,14 @@
 						  <div class="card-body">
 							<h3 class="card-title">Wifi-mesh</h3>
 							<p class="card-text">
-								<h5>2026-04-30</h5>
+								<span class="blog-date">2026-04-30</span>
 								<p>I helgen testades Wifi-mesh funktionaliteten på en dubbeltävling. Det fungerade utmärkt, det var stabilt och räckvidden var bättre än förväntat.</p>
                 <p>Under dag 1 så användes fyra mesh noder. Mesh-1 anslöt till Wifi-AP med inbyggda wifin. Noderna Mesh-1 till Mesh-4 skapade ett mesh nätverk på 2.4 Ghz wifi (802.11s) med hjälp av USB-Wifi donglar baserade på Atheros AR9271 chipsetet. Alla noderna höll sig online under hela tävlingen. Kontrollen satt vid Mesh-4. Mest troligt hade Mesh-3 kunna tagits bort.</p>
                 <p>Under dag 2 så användes bara två mesh noder. Mesh-1 anslöt till Wifi-AP med inbyggda wifin. Noderna Mesh-1 och Mesh-2 skapade ett mesh nätverk mellan sig med USB-Wifi dongeln. Båda noderna höll sig online under hela tävlingen. Kontrollen satt vid Mesh-2.</p>
-                <img src="BlogPictures/WifiMeshTestCompetitionSmaller.png" />
+                <img src="BlogPictures/WifiMeshTestCompetitionSmaller.png" class="img-fluid rounded blog-img" />
                 <br/><br/>
                 <p>WiRoc med en Mesh-Wifi-dongle:</p>
-                <img src="BlogPictures/Wifi-mesh-enhet.jpg" />
+                <img src="BlogPictures/Wifi-mesh-enhet.jpg" class="img-fluid rounded blog-img" />
 							</p>
 						  </div>
 						</div>
@@ -771,7 +882,7 @@
 						  <div class="card-body">
 							<h3 class="card-title">Wifi-mesh</h3>
 							<p class="card-text">
-								<h5>2026-01-22</h5>
+								<span class="blog-date">2026-01-22</span>
 								<p>Har gjort tester med Wifi mesh, 802.11s, på WiRoc enheterna. Drivrutinerna för den inbyggda wifin stöder inte mesh men det går att köpa billiga USB-wifi baserade på Atheros AR9271. Till dessa finns det bra Linux drivrutiner. Lyckades inte få WPA kryptering att fungera tillförlitligt men som ett okrypterat öppet nätverk fungerade det bra. 
 
 För att få det stabilt behövde jag dock 3D-printa hållare för att undvika glapp i USB-kontakten. 
@@ -779,11 +890,11 @@ För att få det stabilt behövde jag dock 3D-printa hållare för att undvika g
 Jag tänker att detta skulle kunna vara ett alternativ för exempelvis sistakontrollen i de fall den ligger strax utanför vanliga wifi rangen. Eller kanske för en publikkontroll. Fördelen är blixtsnabb sändning och att ingen Lora kanal behövs, vilket kan vara en fördel om alla redan används till andra radiokontroller.
 
 Meshinställningarna konfigureras i WiRoc Config i en ny flik: 
-<img src="BlogPictures/WiRocConfigWifiMesh.jpg" />
+<img src="BlogPictures/WiRocConfigWifiMesh.jpg" class="img-fluid rounded blog-img" />
 <br/>
 Gick ut och testade med fyra WiRocenheter med varsin USB-Wifi. Den första (1 i bilden) sitter på min balkong och var uppkopplad till internet, tvåan i en snödriva i hörnet lite drygt 100 meter bort, nummer tre också den i en snödriva drygt 100 meter från nummer två. Den fjärde satte jag ~80m bort men den var lite svajig och gick offline ibland. Tror den hade en lite sämre antenn, efter att flyttat den lite närmre nummer tre (ca 50 meter ifrån) så verkade alla enheter hålla sig stabilt online.
 
-<img src="BlogPictures/WifiMeshTestMap.png" /> </p>
+<img src="BlogPictures/WifiMeshTestMap.png" class="img-fluid rounded blog-img" /> </p>
 							</p>
 						  </div>
 						</div>
@@ -792,7 +903,7 @@ Gick ut och testade med fyra WiRocenheter med varsin USB-Wifi. Den första (1 i 
 						  <div class="card-body">
 							<h3 class="card-title">Bättre batterihantering</h3>
 							<p class="card-text">
-								<h5>2025-12-11</h5>
+								<span class="blog-date">2025-12-11</span>
 								<p>Nästa version (V1.04) av mjukvaran innehåller förbättringar av beräkningen av återstående batterikapacitet. Detta ger en mer korrekt beräkning och tittar man på grafen över batterinivån så blir den betydligt mer linjär. Förändringen möjliggör även att använda mer av kapaciteten i batteriet och leder till över två timmar extra batteritid. Batteritiden beror mycket på vad som ansluts till USB-portarna och till viss del hur många stämplingar som ska skickas. Batteritiden bör bli minst 12 timmar och kan utan anslutna USB-enheter bli uppåt 22 timmar.</p>
 							</p>
 						  </div>
@@ -801,7 +912,7 @@ Gick ut och testade med fyra WiRocenheter med varsin USB-Wifi. Den första (1 i 
 						  <div class="card-body">
 							<h3 class="card-title">Förbättringar monitor.wiroc.se</h3>
 							<p class="card-text">
-								<h5>2025-12-10</h5>
+								<span class="blog-date">2025-12-10</span>
 								<p>Sidan med listan på WiRoc-enheter har en ny kolumn som visar batteriladdningen i procent. Det gör det enklare att få en översikt över alla enheter. Tidigare gick det att se samma information om man klickade in på enheten.</p>
                 <p>Om man klickar in på enheten så kan man se lite mer information. I grafen där batteriladdningen tidigare visades visas nu även antal LoRa meddelanden som inte ackats av mottagaren (Orange linje) under femminutersintervaller. Den röda linjen visar om någon stämpling inte ackats, också det i femminutersintervaller. Notera att en stämpling skickar om flera gånger så man kan ha flera LoRa meddelanden som inte ackats utan att tappa några stämplingar. Siffrorna skickas från sändaren till mottagaren i ett statusmeddelande var femte minut. Statusmeddelandet kan förstås också misslyckas men då kan man se att enheten går offline i listan på enheter. Att övervaka antal icke-ackade meddelanden kan vara ett bra sätt att tidigt upptäcka om någon länk fungerar mindre bra. Kanske kan man då byta antenn eller placering/riktning av antennen. Eller byta till lägre hastighet.</p>
                 <p>Det finns nu också information om anslutna USB-enheter. Det går att se om det finns SRR-donglar anslutna, vilka kanaler och om de ackar eller inte. Det är viktigt att anslutna SRR-donglar verkligen upptäcks av systemet så att de inte är igång men inte skickar stämplingarna till WiRoc. Med både ROC och WiRoc har vi sett att det kan hända att SRR-dongeln får ström och därför tar emot och ackar SRR-stämplingar, men SRR-dongeln har inte upptäcks av ROC/WiRoc vilket då leder till tappade stämplingar. Om det finns en fungerande SRR-dongel på den andra kanalen så kommer en del stämplingar troligen in den vägen, men om stämplingen skickas från SIAC eller SI-SRR-enhet på den icke fungerande kanalen så får den ack och skickar då inte på den andra kanalen. Så ett tips är att kontrollera här att de donglar som ska vara anslutna är det, och att de har rätt konfiguration (röd eller blå kanal, och ack/no ack).</p>
@@ -813,7 +924,7 @@ Gick ut och testade med fyra WiRocenheter med varsin USB-Wifi. Den första (1 i 
 						  <div class="card-body">
 							<h3 class="card-title">Inbyggd SRR-mottagare</h3>
 							<p class="card-text">
-								<h5>2025-11-01</h5>
+								<span class="blog-date">2025-11-01</span>
 								<p>Sedan version 7 av hårdvaran finns det en inbyggd SRR-mottagare i WiRoc enheten, eller rättare sagt finns det två. En för röd kanal och en för blå kanal. Det går att enabla/disabla dem var för sig och ställa om var för sig om de ska acka eller inte.</p>
 							</p>
 						  </div>
@@ -822,7 +933,7 @@ Gick ut och testade med fyra WiRocenheter med varsin USB-Wifi. Den första (1 i 
 						  <div class="card-body">
 							<h3 class="card-title">O-Ringen Jönköping 2025</h3>
 							<p class="card-text">
-								<h5>2025-09-15</h5>
+								<span class="blog-date">2025-09-15</span>
 								<p>WiRoc användes på O-Ringen för framförallt förvarningarna. På O-Ringen har alla löpare en förvarningskontroll, i de flesta fall är detta näst sista kontrollen på banan. Det är som mest 8 förvarningskontroller men är oftast något färre. Vi hade mellan 4 och 8 förvarningkontroller per etapp i Jönköping. </p>
 								<p>Förutom förvarningskontrollerna användes WiRoc enheter till att fånga upp touch-free stämplingar vid målet. Detta i kombination med samlingsboxar som tog de vanliga stämplingarna och som också de hade SRR-mottagare för touch-free. Det gjorde även en del tester med WiRoc vid en del av radiokontrollerna.</p>
 								<h4>Förvarningskontrollerna</h4>
@@ -846,7 +957,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 						  <div class="card-body">
 							<h3 class="card-title">Uthyrning</h3>
 							<p class="card-text">
-								<h5>2023-09-06</h5>
+								<span class="blog-date">2023-09-06</span>
 								<p>I fliken Produkter finns nu listat vilka produkter som finns tillgängliga för uthyrning. Om du är intresserad skicka ett mail till info (at) wiroc.se eller henrik.larsson (at) chenfei.se för mer information. Om du skickar en karta med tänkta radiokontroller gör jag en bedömning om vilken utrustning som är lämplig och vad som är möjligt.</p>
 							</p>
 						  </div>
@@ -855,7 +966,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 						  <div class="card-body">
 							<h3 class="card-title">SportIdent SRR</h3>
 							<p class="card-text">
-								<h5>2022-06-05</h5>
+								<span class="blog-date">2022-06-05</span>
 								<p>Fick nyligen hem en SportIdent SRR enhet och en USB SRR-Dongle för test och nu finns stöd implementerat för dessa i v0.237. Även i tidigare versioner så fungerar det, men då behöver man klicka i att USB anslutningarna ska vara one-way* manuellt. I v0.237 detecteras att det är en SRR-Dongle och då sätts denna till one-way. Om man har en vanlig SportIdent med USB sladd i andra USB ingången så behöver inte den då inte vara one-way (den manuella inställningen påverkar båda USB ingångarna).</p>
 								
 								<p>Det vore intressant att i framtiden inkludera SRR mottagare inbyggt i WiRoc. Det verkar som SportIdent helt slutat sälja enheter med USB och med Seriell sladd. Det enda de verkar ha kvar är en enhet med USB men utan inbyggt batteri. Denna är endast lämplig för avläsning och kan inte användas för radiokontroller.</p>
@@ -868,7 +979,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 						  <div class="card-body">
 							<h3 class="card-title">Radiostörningar</h3>
 							<p class="card-text">
-								<h5>2022-06-03</h5>
+								<span class="blog-date">2022-06-03</span>
 								<p>Vi använde WiRoc på två tävlingar utanför Forsheda för några veckor sedan. På lördagen var det utbrutet mål så vi använde WiRoc för att skicka målstämplingarna. Avståndet var ca 1400m och målet låg i princip på högsta punkten på en höjd utan några andra höjder mellan TC och målet. Som förberedelse testade jag att skicka stämplingar och använde då dipole antenner på både sändaren och mottagaren. Det verkade vara lite på gränsen, de allra flesta sändningar gick fram men några gjorde inte det. Eftersom det görs omförsök och eftersom jag normalt brukar använda riktantenn på mottagaren så var slutsatsen att det inte skulle vara några problem alls. Så på tävlingsdagen monterade vi upp riktantenn på mottagaren och dipole på sändaren. Men till vår förvåning så fungerade det inte bättre utan det verkade fungera sämre.</p>
 
 								<p>Vi satte då upp riktantenn på sändaren, och sänkte datahastigheten. Detta fick det att fungera någorlunda men inte helt bra.</p>
@@ -891,7 +1002,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 						  <div class="card-body">
 							<h3 class="card-title">Fler mjukvaruförbättringar</h3>
 							<p class="card-text">
-								<h5>2021-10-09</h5>
+								<span class="blog-date">2021-10-09</span>
 								<p>Med bytet till en ny radiomodul så infördes två nya radio modes "XL" eXtra long range och "UL" ultra long range. Dessa lägen innebär betydligt långsammare överföring. Vid tester har det fungerat bra att skicka över långa avstånd men det har blivit ganska tydligt att det inte får vara många stämplingar per minut för att det ska fungera. Särskilt om det krävs omsändningar så blir det snabbt en kö av stämplingar att skicka.</p>
 
 								<p>Radiomodulen har inbyggd felkorrigering, i vissa fall så kan radiomodulen upptäcka att öveföringsfel uppstått utan att kunna rätta det. I dessa fall får man ändå det överförda (felaktiga) meddelande samt information om att den är fel. Det här öppnar för att implementera felkorrigering på meddelandenivå för att försöka korrigera även dessa meddelanden.</p>
@@ -915,7 +1026,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 						  <div class="card-body">
 							<h3 class="card-title">Ny version</h3>
 							<p class="card-text">
-								<h5>2020-05-23</h5>
+								<span class="blog-date">2020-05-23</span>
 								<a href="WiRocNanoPiV3R1Rotate.mp4" alt="video"><img class="centered" src="BlogWiRocNanoPiV3R1.png" alt="WiRoc version 3 rev 2"/></a>
 								<p>Av flera anledningar har jag jobbat på en ny version av WiRoc. Den enkortdator (C.H.I.P.) som version 2 bygger på går inte längre att få tag på. Den nya enkortdatorn som jag har valt gör att det blir möjligt att göra ett antal förbättringar. Samtidigt saknar den en del funktioner (power management, batteriladdning) som jag har fått lägga till på ett eget kretskort. Jag passar samtidigt på att byta till en ny radiomodul som klarar av kanaler med mindre bandbredd, dvs ger möjlighet till fler icke överlappande kanaler.</p>
 
@@ -999,7 +1110,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 					</div>
 				</div>
 
-				<div class="container collapse mt-md-2" id="pageContact" data-parent="#accordion">
+				<div class="tab-pane fade" id="pageContact" role="tabpanel">
 					<h2>Kontakt</h2>
 					<div class="container">
 						   E-post: info(at)wiroc.se
@@ -1007,7 +1118,15 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 				</div>
 			</div>
 		</div>
-		<div class="info"></div>
+		
+		<div class="container">
+				<footer class="footer rounded" style="border-radius: .5rem;">
+					<div class="text-center">
+						E-post: info (at) wiroc.se
+					</div>
+				</footer>
+			</div>
+
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -1017,174 +1136,33 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 		<script type="text/javascript">
 		//<![CDATA[
 
-			var app = {};
-
-			app.showWiRocPage = function() {
-				$('#pageWiRoc').show();
-				$('#pageProducts').hide();
-				$('#pageRange').hide();
-				$('#pageConfig').hide();
-				$('#pageBlog').hide();
-				$('#pageContact').hide();
-				$("#optionWiRoc").prop("checked", true);
+			var tabMap = {
+				'wiroc': '#tabWiRoc',
+				'products': '#tabProducts',
+				'range': '#tabRange',
+				'config': '#tabConfig',
+				'blog': '#tabBlog',
+				'contact': '#tabContact'
 			};
-			
-			app.showProductsPage = function() {
-				$('#pageWiRoc').hide();
-				$('#pageProducts').show();
-				$('#pageRange').hide();
-				$('#pageConfig').hide();
-				$('#pageBlog').hide();
-				$('#pageContact').hide();
-				$("#optionProducts").prop("checked", true);
-			};
-
-			app.showRangePage = function() {
-				$('#pageWiRoc').hide();
-				$('#pageProducts').hide();
-				$('#pageRange').show();
-				$('#pageConfig').hide();
-				$('#pageBlog').hide();
-				$('#pageContact').hide();
-				$("#optionRange").prop("checked", true);
-			};
-
-			app.showConfigPage = function() {
-				$('#pageWiRoc').hide();
-				$('#pageProducts').hide();
-				$('#pageRange').hide();
-				$('#pageConfig').show();
-				$('#pageBlog').hide();
-				$('#pageContact').hide();
-				$("#optionConfig").prop("checked", true);
-			};
-
-			app.showBlogPage = function() {
-				$('#pageWiRoc').hide();
-				$('#pageProducts').hide();
-				$('#pageRange').hide();
-				$('#pageConfig').hide();
-				$('#pageBlog').show();
-				$('#pageContact').hide();
-				$("#optionBlog").prop("checked", true);
-			};
-
-			app.showContactPage = function() {
-				$('#pageWiRoc').hide();
-				$('#pageProducts').hide();
-				$('#pageRange').hide();
-				$('#pageConfig').hide();
-				$('#pageBlog').hide();
-				$('#pageContact').show();
-				$("#optionContact").prop("checked", true);
-			};
-
-			// Listen for history state changes
-			window.addEventListener('popstate', function(e) {
-				var state = history.state;
-				// back button pressed. close popup
-				if (!state) {
-					app.showWiRocPage();
-				}
-				else {
-					if (state.name == 'pageWiRoc') {
-						app.showWiRocPage();
-					} else if (state.name == 'pageProducts') {
-						app.showProductsPage();
-					} else if (state.name == 'pageRange') {
-						app.showRangePage();
-					} else if (state.name == 'pageConfig') {
-						app.showConfigPage();
-					} else if (state.name == 'pageBlog') {
-						app.showBlogPage();
-					} else if (state.name == 'pageContact') {
-						app.showContactPage();
-					}
-				}
-				$(':input').parent('.btn').removeClass('focus');
-				$(':input:checked').parent('.btn').addClass('focus');
-				$(':input').parent('.btn').removeClass('active');
-				$(':input:checked').parent('.btn').addClass('active');
-			});
-
-			
 
 			$(document).ready(function(){
-			  var anchorStr = location.href.substr(location.href.indexOf("#")+1)
-			  if (anchorStr == "wiroc") {
-				  app.showWiRocPage();
-			  } else if (anchorStr == "products") {
-				  app.showProductsPage();
-			  } else if (anchorStr == "range") {
-				  app.showRangePage();
-			  } else if (anchorStr == "config") {
-				  app.showConfigPage();
-			  } else if (anchorStr == "blog") {
-				  app.showBlogPage();
-			  } else if (anchorStr == "contact") {
-				  app.showContactPage();
-			  }
-			  $(':input').parent('.btn').removeClass('focus');
-			  $(':input:checked').parent('.btn').addClass('focus');
-			  $(':input').parent('.btn').removeClass('active');
-			  $(':input:checked').parent('.btn').addClass('active');
-			  
-			  
-			  $('#optionWiRoc').change(function(){
-				if ($(this).is(':checked'))
-				{
-					app.showWiRocPage();
-					window.history.pushState( { name: "pageWiRoc" }, "pageWiRoc", "/#wiroc" );
+				// Handle deep-linking via URL hash
+				var hash = location.hash.replace('#', '');
+				if (hash && tabMap[hash]) {
+					$(tabMap[hash]).tab('show');
 				}
-			  });
-			  
-			   $('#optionProducts').change(function(){
-				if ($(this).is(':checked'))
-				{
-					app.showProductsPage();
-					window.history.pushState( { name: "pageProducts" }, "pageProducts", "/#products" );
-				}
-			  });
 
-			  $('#optionRange').change(function(){
-				if ($(this).is(':checked'))
-				{
-					app.showRangePage();
-					window.history.pushState( { name: "pageRange" }, "pageRange", "/#range" );
-				}
-			  });
-
-			  $('#optionConfig').change(function(){
-				if ($(this).is(':checked'))
-				{
-					app.showConfigPage();
-					window.history.pushState( { name: "pageConfig" }, "pageConfig", "/#config" );
-				}
-			  });
-
-			  $('#optionBlog').change(function(){
-				if ($(this).is(':checked'))
-				{
-					app.showBlogPage();
-					window.history.pushState( { name: "pageBlog" }, "pageConfig", "/#blog" );
-				}
-			  });
-
-			  $('#optionContact').change(function(){
-				if ($(this).is(':checked'))
-				{
-					app.showContactPage();
-					window.history.pushState( { name: "pageContact" }, "pageContact", "/#contact" );     
-				}
-			  });
-			  $("#pageWiRoc").on("hide.bs.collapse", function(){
-				$(".info").html('<span class="glyphicon glyphicon-collapse-down"></span> Open');
-			  });
-			  $("#pageWiRoc").on("show.bs.collapse", function(){
-				$(".info").html('<span class="glyphicon glyphicon-collapse-up"></span> Close');
-			  });
+				// Update URL hash when tabs change
+				$('#mainNav a').on('shown.bs.tab', function(e) {
+					var tabId = e.target.hash.replace('#page', '').toLowerCase();
+					if (tabId === 'wiroc') {
+						history.replaceState(null, null, window.location.pathname);
+					} else {
+						history.replaceState(null, null, '#' + tabId);
+					}
+				});
 			});
 		//]]>
 		</script>
 	</body>
-</html>
+	</html>
