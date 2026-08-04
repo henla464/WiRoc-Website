@@ -75,11 +75,14 @@
 						  <div class="card-body">
 							<h5 class="card-title"></h5>
 							<p class="card-text">
-							WiRoc är ett system för att trådlöst skicka mellantider från kontroller till tävlingsprogrammet. En WiRoc enhet kan antingen agera sändare, mottagare eller repeater. Mottagaren kopplas upp på WLAN och konfigureras till att skicka mellantider till tävlingsprogrammet via SIRAP/tcp. Systemet kräver inte mobiltäckning, sim-kort eller anslutning till internet. Enheterna är små och uppladdningsbara batterier ingår, bara att ansluta till USB port för att ladda.
+							WiRoc är ett system för att trådlöst skicka mellantider från kontroller till tävlingsprogrammet. Den anväder sig av LoRa-tekniken. En WiRoc enhet kan agera Lora-sändare, Lora-mottagare eller Lora-repeater. Mottagaren kopplas upp på nätverket (vanligtvis med Wifi) och konfigureras till att skicka mellantider till tävlingsprogrammet via SIRAP/tcp. Systemet kräver inte mobiltäckning, sim-kort eller anslutning till internet. Anslutning till internet ger dock större möjligheter att övervarak enheterna. Enheterna är små och uppladdningsbara batterier ingår, bara att ansluta till USB port för att ladda.
 							</p><p class="card-text">
 							Konfigurationen är enkel och görs med mobilapplikationen WiRoc-Config. WiRoc-Config används också för att testa att sändaren når mottagaren.
 							</p><p class="card-text">
-							WiRoc enheten kan också användas för målenheterna. Ligger mållinjen inom räckhåll för WLANet så kan en WiRoc enhet skicka måltiden direkt via SIRAP/tcp till tävlingsprogrammet så att tiderna kommer upp blixtsnabbt i speakerstödet. Det räcker då med en WiRoc enhet (USB-hub kan användas för om man vill ansluta fler än två målenheter) som agerar som mottagare. Samma enhet kan också samtidigt ta emot mellantider från skogen.
+							WiRoc enheten kan också användas för målenheterna. Ligger mållinjen inom räckhåll för Wifi så kan en WiRoc enhet skicka måltiden direkt via SIRAP/tcp till tävlingsprogrammet så att tiderna kommer upp blixtsnabbt i speakerstödet. WiRoc har inbyggd SRR mottagare. Samma enhet kan också samtidigt ta emot mellantider från skogen.
+							</p>
+							<p class="card-text">
+							WiRoc kan även användas tillsammans med den officeella ROC-servern. När funktionen är aktiverad skickas inkommande stämplingar automatiskt vidare till ROC-servern, precis som en vanlig ROC-enhet. Både Lora, SIRAP och ROC kan användas samtidigt.
 							</p>
 						  </div>
 						</div>
@@ -245,46 +248,212 @@
 				<div class="container collapse mt-md-2" id="pageConfig" data-parent="#accordion">
 					<div class="container">
 						<h2>Konfiguration</h2>
-						WiRoc-enheterna konfigureras med Android-applikationen ”WiRoc Config”.
+						WiRoc-enheterna konfigureras med Android-applikationen "WiRoc Config".
 					</div>
 					<div class="container">
+
+						<h3 class="mt-3">Scan</h3>
 						<div class="d-flex row flex-wrap align-content-stretch mb-2">
 							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
 								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScan.jpg" alt="Sök efter WiRocenheter">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_Scan.jpg" alt="Sök efter WiRocenheter">
 								  <div class="card-body">
 									<h5 class="card-title">Sök efter enheter</h5>
-									<p class="card-text">Börja med att starta WiRoc enheten. Starta sedan ”WiRoc Config” och klicka på Scan. När WiRoc enheten har startat upp så dyker den upp i listan över enheter under Scan knappen. Default namnet är ”WiRoc Device” men det är rekommenderat att byta namn för att kunna skilja dem åt enklare. Finns det fler med samma namn är det enklaste sättet att skilja dem åt att titta på signalstyrkan. Den med bäst signalstyrka bör vara den som ligger närmast mobilen. I bilden visas en WiRoc enhet i närheten som heter "White".</p>
+									<p class="card-text">Starta WiRoc enheten och klicka på Scan i appen. När enheten har startat upp dyker den upp i listan. Default-namnet är "WiRoc Device" men rekommenderas att byta namn för att kunna skilja dem åt. Finns flera med samma namn kan man skilja dem åt på signalstyrkan – den med högst signalstyrka är närmast.</p>
 								  </div>
 								</div>
 							</div>
+						</div>
 
+						<h3 class="mt-3">Config</h3>
+						<div class="d-flex row flex-wrap align-content-stretch mb-2">
 							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
 								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigChannel.jpg" alt="Kanalinställning">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigLora.jpg" alt="LoRa radioinställningar">
 								  <div class="card-body">
-									<h5 class="card-title">Kanal / hastighet</h5>
-									<p class="card-text">Efter att man anslutit till en enhet i ”WiRoc Config” kommer man till en sida med flera flikar. Den första fliken ”Radio” används för att välja kanal och datahastighet. Sätt samma på både sändare och mottagare. Lägsta datahastigheten ger längst räckvidd.</p>
+									<h5 class="card-title">LoRa – Kanal / hastighet</h5>
+									<p class="card-text">Välj funktion, kanal, datahastighet mm för LoRa-radion. Sätt samma på både sändare och mottagare. Lägsta datahastigheten ger längst räckvidd men färre stämplingar per minut. Andra faktorer har dock större inverkan på räckvidden så de två lägsta datahastigheterna rekommenderas inte annat än i specifika fall. Här väljs också uteffekt och kompatibilitets läget för DRF1268DS (WiRoc v7 och tidigare) ska användas. Vilka kanaler som finns att välja på om kompatibilitetsläge är aktiverat och om amatörradioläget är aktiverat.</p>
 								  </div>
 								</div>
 							</div>
 
 							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
 								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigSIRAPConfigured.jpg" alt="Kanalinställning">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigSIRAP.jpg" alt="SIRAP inställningar">
 								  <div class="card-body">
 									<h5 class="card-title">SIRAP</h5>
-									<p class="card-text">Ställ in IP-adress och port som mellantiderns ska skickas till. För Meos är standardporten 10000 och för OLA är den 10001. Bara mottagaren ska ha "Send to SIRAP-tcp/ip" ikryssad. När det är ikryssat så blir enheten en mottagare, den är en mottagare även om en SI-master kopplas in på den. Stämplingar från inkopplade SI-master enheter skickas då direkt via SIRAP-tcp/ip och skickas inte ut på radio. En WiRoc-enhet som inte har "Send to SIRAP-tcp/ip" ikryssat är en repeater om ingen SI-master är inkopplad och en sändare om minst en SI-master är inkopplad.</p>
+									<p class="card-text">Ställ in IP-adress och port dit stämplingar ska skickas via SIRAP TCP/IP. För Meos är standardporten 10000, för OLA 10001 (endast testat med dessa program). Oavsett vilken Lora funktion som WiRoc enheten har så kan SIRAP TCP/IP aktiveras.</p>
 								  </div>
 								</div>
 							</div>
 
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4 align-content-stretch">
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
 								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigNetwork.jpg" alt="Kanalinställning">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigROC.jpg" alt="ROC inställningar">
 								  <div class="card-body">
-									<h5 class="card-title">Nätverk</h5>
-									<p class="card-text">Mottagarenheten måste vara ansluten till tävlingsnätverket för att kunna skicka in stämplingar via SIRAP-tcp/ip. Klicka på ”Get/Refresh wifi list” för att se vilka nätverk som finns och för att se om WiRoc är ansluten. Om den inte är ansluten klicka på CONNECT knappen vid det nätverk som den ska anslutas till och ange Wlan lösenordet. WiRoc-enhetens IP-adress om den har en står längst ner.</p>
+									<h5 class="card-title">ROC</h5>
+									<p class="card-text">Här kan du konfigurera enheten att skicka stämplingar till den officella ROC-servern. När funktionen är aktiverad skickas inkommande stämplingar automatiskt vidare till ROC-servern, precis som en vanlig ROC-enhet.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigSRR.jpg" alt="SRR inställningar">
+								  <div class="card-body">
+									<h5 class="card-title">SRR</h5>
+									<p class="card-text">Inställningar för inbyggda SRR-mottagare. Här kan du aktivera/inaktivera SRR-mottagare för röd och blå kanal, samt välja om de ska skicka ack (bekräftelse) tillbaka till SIAC/SRR-enheterna. Det går också att sätta SRR i sänd läge så att den skickar ut stämplingar som kan tas emot av annan WiRoc eller av en SRR-dongel.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigUSB.jpg" alt="USB inställningar">
+								  <div class="card-body">
+									<h5 class="card-title">USB</h5>
+									<p class="card-text">Hantera anslutna USB-enheter som SI-masterstationer eller SRR-donglar. Här kan du aktivera "One-way" kommunikation (endast lyssna, skickar inga kommandon) för USB-portarna. Användbart för SRR-donglar eller samlingsboxar som inte ska ta emot kommandon från WiRoc.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigSerial.jpg" alt="Serieport inställningar">
+								  <div class="card-body">
+									<h5 class="card-title">Serieport</h5>
+									<p class="card-text">Inställningar för den inbyggda serieporten. Här kan du aktivera "One-way" kommunikation (endast lyssna, skickar inga kommandon) för kommunikation med SI-enheter eller samlingsboxar anslutna via seriekabel. Serieporten kan även användas för att skicka ut data till dator, annan WiRoc eller samlingsbox.</p>
+								  </div>
+								</div>
+							</div>
+						</div>
+
+						<h3 class="mt-3">Nätverk</h3>
+						<div class="d-flex row flex-wrap align-content-stretch mb-2">
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_NetworkWifi.jpg" alt="WiFi inställningar">
+								  <div class="card-body">
+									<h5 class="card-title">WiFi</h5>
+									<p class="card-text">Anslut WiRoc-enheten till ett WiFi-nätverk. Klicka på "Get/Refresh wifi list" för att se tillgängliga nätverk. Välj nätverk och ange lösenord för att ansluta. Mottagarenheten måste vara ansluten till nätverket för att kunna skicka stämplingar via SIRAP. Enhetens IP-adress visas längst upp när den är ansluten.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_NetworkEthernet.jpg" alt="Ethernet inställningar">
+								  <div class="card-body">
+									<h5 class="card-title">Ethernet</h5>
+									<p class="card-text">Här kan du se ip-adressen för Ethernet-anslutningar (exempelvis USB-Ethernet-adapter) och Tailscale VPN IP.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_NetworkTailscale1.jpg" alt="Tailscale VPN inställningar">
+								  <div class="card-body">
+									<h5 class="card-title">Tailscale VPN</h5>
+									<p class="card-text">Anslut WiRoc-enheten till ett Tailscale-nätverk. Med Tailscale kan du nå enheten från var som helst, även bakom brandväggar. Enheten får en fast IP-adress (100.x.x.x) i Tailscale-nätverket. Användbart för fjärrövervakning, felsökning eller för att skicka stämplingar till en dator på annan plats. Kräver ett gratiskonto på tailscale.com.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_NetworkWifiMesh.jpg" alt="WiFi Mesh inställningar">
+								  <div class="card-body">
+									<h5 class="card-title">WiFi Mesh</h5>
+									<p class="card-text">Konfigurera WiFi-mesh-nätverk (802.11s) för att utöka räckvidden på WiFi-nätverket. Användbart när en kontroll ligger utanför vanlig WiFi-räckvidd. Kräver en kompatibel USB-WiFi-dongel (t.ex. Atheros AR9271). Här kan du även ställa in begränsad åtkomst till det lokala nätverket och ange specifika regler för tillåten trafik.</p>
+								  </div>
+								</div>
+							</div>
+							
+						</div>
+
+						<h3 class="mt-3">Test</h3>
+						<div class="d-flex row flex-wrap align-content-stretch mb-2">
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_TestSend.jpg" alt="Testa sändning">
+								  <div class="card-body">
+									<h5 class="card-title">Testa sändning</h5>
+									<p class="card-text">Skicka testmeddelanden för att verifiera att Lora länken mellan sändare och mottagare fungerar. Här kan du se signalstyrka (RSSI och SNR) och vilka meddelanen bekräftats tillbaka. Användbart vid uppsättning för att kontrollera att placering och antennriktning är bra. Kan även användas för att skicka via SIRAP TCP/IP, ROC och de andra utdatametoderna. Skärmbilden visar en stämpling som skickats till SIRAP och till ROC</p>
+								  </div>
+								</div>
+							</div>
+						</div>
+
+						<h3 class="mt-3">Övrigt</h3>
+						<div class="d-flex row flex-wrap align-content-stretch mb-2">
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherDatabase.jpg" alt="Databas">
+								  <div class="card-body">
+									<h5 class="card-title">Databas</h5>
+									<p class="card-text">Hantera enhetens interna databas med stämplingar och konfiguration. Databasen kan rensas från stämplingar eller så kan den helt skapas om (förlorar då både inställningar och stämplingar). </p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherDateTime.jpg" alt="Datum och tid">
+								  <div class="card-body">
+									<h5 class="card-title">Datum & Tid</h5>
+									<p class="card-text">Ställ in datum och tid på enheten. Korrekt tid är viktigt för att loggarna ska få rätt tidsstämpel, och för att stämplingar som skickas till ROC servern ska få rätt datum. Enheten synkar normalt tiden automatiskt när den har internetuppkoppling och WiRoc V7 och senare har RTC-chip som håller tiden även när enheten är avstängd.</p>
+								  </div>
+								</div>
+							</div>
+							
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherStatus.jpg" alt="Enhetsstatus">
+								  <div class="card-body">
+									<h5 class="card-title">Status</h5>
+									<p class="card-text">Visar enhetens aktuella status, om tjänsterna körs som de ska, vilka indata/utdata som är aktiva mm.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherSettings.jpg" alt="Övriga inställningar">
+								  <div class="card-body">
+									<h5 class="card-title">Inställningar</h5>
+									<p class="card-text">Här kan man ändra alla inställningar, inklusive avancerade som det inte finns något användargränssnitt för.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherAmateurRadio.jpg" alt="Amatörradio">
+								  <div class="card-body">
+									<h5 class="card-title">Amatörradio</h5>
+									<p class="card-text">Inställningar för amatörradioläget. Här anges om läget ska aktiveras och vilken anropssignal som ska användas för amatörradiofrekvenser. Anropssignalen skickas med regelbundet som en del av radiosändningarna enligt gällande regler.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_MonitorAccess.jpg" alt="Monitor åtkomst">
+								  <div class="card-body">
+									<h5 class="card-title">Monitor-åtkomst</h5>
+									<p class="card-text">Här ger du ett användarnamn åtkomst till WiRoc enheten på monitor.wiroc.se så att användaren kan tilldela eneheten till en tävling, rensa statistik mm.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherUpdate.jpg" alt="Mjukvaruuppdatering">
+								  <div class="card-body">
+									<h5 class="card-title">Uppdatering</h5>
+									<p class="card-text">Uppdatera enhetens mjukvara till senaste versionen. Enheten söker efter tillgängliga uppdateringar och du kan välja att installera dem direkt. Håll mjukvaran uppdaterad för att få de senaste funktionerna och buggfixarna.</p>
 								  </div>
 								</div>
 							</div>
@@ -299,7 +468,64 @@
 
           <div class="card">
 						  <div class="card-body">
-							<h3 class="card-title">ROC-kompatibelt API för stämplingshämtning</h3>
+							<h3 class="card-title">Skicka stämplingar till ROC-servern</h3>
+							<p class="card-text">
+								<h5>2026-08-04</h5>
+								<p>WiRoc kan nu skicka stämplingar direkt till en ROC-server. Tidigare har WiRoc kunnat erbjuda ett ROC-kompatibelt API varifrån man kan hämta stämplingar istället för ifrån den officiella ROC-servern. Med den nya funktionen kan WiRoc istället aktivt skicka (pusha) stämplingar till den officella ROC-server, på samma sätt som en vanlig ROC-enhet gör.</p>
+								<p>Funktionen innebär att WiRoc integreras sömlöst i ett befintligt ROC-system. För att kunna skicka stämplingar behöver WiRoc-enheten ha internetuppkoppling (via Wifi, USB-ethernet, Wifi-mesh). Funktionen kan användas på WiRoc-enheter som är konfigurerade som Lora-sändare, Lora-mottagare eller som Lora-repeater. De olika utdata alternativen
+									kan användas parallellt, så att stämplingar kan skickas både via Lora, SIRAP/tcp och till ROC-servern samtidigt. Exempelvis kan en WiRoc-enhet som är konfigurerad som mottagare skicka stämplingar både via SIRAP/tcp till tävlingsprogrammet och samtidigt skicka dem till ROC-servern.</p>
+									I ROC-serverns gränssnitt ser det ut som att stämplingarna kommer från vilken ROC-enhet som helst.</p>
+								
+								<p>Detta gör det möjligt att använda WiRoc som ett komplement till ROC i samma tävling. Till exempel kan ROC användas vid kontroller nära arenan där WiFi eller mobiltäckning finns, medan WiRoc används vid kontroller längre ut i skogen där LoRa-kommunikation är mer tillförlitligt.</p>
+								<p>Funktionen finns tillgänglig från WiRoc mjukvaruversion v1.45.</p>
+							</p>
+						  </div>
+						</div>
+
+          <div class="card">
+						  <div class="card-body">
+							<h3 class="card-title">WiFi-mesh – Begränsa åtkomst till lokala nätverket</h3>
+								<p class="card-text">
+									<h5>2026-08-03</h5>
+									<p>WiFi-mesh funktionen i WiRoc har fått en ny inställning: Begränsa åtkomst (Restrict access). När denna är aktiverad så kan enheter på mesh-nätverket inte nå ut till det lokala nätverket (LAN) som mesh-noderna är anslutna till. Detta ger bättre kontroll över vad som är tillgängligt från mesh-nätverket.</p>
+									<p>Funktionen är användbar i situationer där man vill begränsa vad enheter på mesh-nätverket kan komma åt. Till exempel kan man undvika att mesh-noder av misstag får tillgång till känsliga resurser på det lokala nätverket.</p>
+									<p>När Begränsa åtkomst är aktiverat kan mesh-enheterna fortfarande kommunicera med varandra inom mesh-nätverket och med WiRoc-enheternas egna tjänster. Trafik till internet släpps alltid igenom.</p>
+									<p>För att tillåta specifik trafik från mesh-nätverket till det lokala nätverket går det att ange destinationens IP-adress, port och protokoll. På så sätt kan man till exempel tillåta att stämplingar skickas via TCP/SIRAP till en mottagardator på det lokala nätverket, samtidigt som övrig åtkomst till LAN:et är blockerad. Flera sådana regler kan läggas till.</p>
+									<p>Inställningen görs i WiRoc Config-appen under WiFi-mesh fliken och finns tillgänglig från mjukvaruversion v1.44.</p>
+								</p>
+							  </div>
+							</div>
+
+	          <div class="card">
+							  <div class="card-body">
+								<h3 class="card-title">Tailscale VPN i WiRoc</h3>
+								<p class="card-text">
+									<h5>2026-08-03</h5>
+									<p>WiRoc har nu stöd för Tailscale VPN. Tailscale är en VPN-tjänst byggd på WireGuard som gör det enkelt att skapa ett säkert nätverk mellan olika enheter, oavsett var de befinner sig eller hur de är anslutna till internet.</p>
+									<p>Med Tailscale aktiverat på en WiRoc-enhet som har internetuppkoppling (t.ex. via WiFi, ethernet eller mobil USB-sticka) kan enheten nås från andra enheter som också är anslutna till samma Tailscale-nätverk. Det betyder att du till exempel kan nå en WiRoc-enhet ute i skogen från din dator hemma, eller från en annan WiRoc-enhet på en annan plats. All kommunikation är krypterad och går direkt mellan enheterna när det är möjligt, utan att passera en central server.</p>
+									<p>Några användningsområden:</p>
+									<ul>
+										<li>Felsökning och övervakning</code></li>
+										<li>Skicka stämplingar via SIRAP/ROC till en dator som inte är på samma lokala nätverk</li>
+									</ul>
+									<p>Tailscale stöds från WiRoc mjukvaruversion v1.43 och konfigureras enkelt i WiRoc Config-appen. För att komma igång skapar du ett konto på tailscale.com och anväder sedan WiRoc Config appen för att ansluta enheten till ditt Tailnet. Nedan visas konfigurationsskärmarna:</p>
+									<div class="d-flex row flex-wrap align-content-stretch mb-2">
+										<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6">
+											<img src="BlogPictures/AppScreen_NetworkTailscale1.jpg" alt="Tailscale konfiguration 1" class="img-fluid"/>
+										</div>
+										<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6">
+											<img src="BlogPictures/AppScreen_NetworkTailscale2.jpg" alt="Tailscale konfiguration 2" class="img-fluid"/>
+										</div>
+									</div>
+									<br/><br/>
+									<p>När Tailscale är aktiverat får WiRoc-enheten en stabil IP-adress i Tailscale-nätverket (100.x.x.x) som alltid är densamma oavsett var enheten ansluter till internet. Det gör det betydligt enklare att nå enheter som annars ligger bakom brandväggar eller saknar publik IP-adress.</p>
+								</p>
+							  </div>
+							</div>
+
+	          <div class="card">
+							  <div class="card-body">
+								<h3 class="card-title">ROC-kompatibelt API för stämplingshämtning</h3>
 							<p class="card-text">
 								<h5>2026-08-02</h5>
 								<p>Nu finns ett nytt ROC-kompatibelt API i WiRoc. Det gör det möjligt att från tävlingsprogrammet ansluta och hämta stämplingar direkt från en WiRoc-enhet via ROC-protokollet. Adressen är <code>http://&lt;wiroc-ip&gt;:5000/api/roc</code>. Parametern "unitid" ignoreras av WiRoc så den kan sättas till exempelvis 1.</p>
@@ -376,7 +602,7 @@
 							The LoRa network as a whole delivered 791 of 901 punches from the five
 							hill sites, so just under 88 percent. Per site it ranged widely:
 							</p><p>
-								<a href="WharfedaleThreePeaks2026Map.png"><img src="WharfedaleThreePeaks2026Map2.png" /></a>
+								<a href="BlogPictures/WharfedaleThreePeaks2026Map.png"><img src="BlogPictures/WharfedaleThreePeaks2026Map2.png" /></a>
 							<ul>
 							<li>Great Whernside (S1): 189 of 193, 98 percent</li>
 							<li>Park Rash (S4): 185 of 196, 94 percent</li>
@@ -477,8 +703,8 @@
 								alternative to use the repeater functionality. I also would suggest directional antennas at some checkpoints.</p>
 								<p>Ben also sent some photos, two of which are shown below:</p>
 								<p>
-									<img src="Wharfedale-photo2.jpeg" />
-									<img src="Wharfedale--S1-GreatWhernside.jpeg" />
+									<img src="BlogPictures/Wharfedale-photo2.jpeg" />
+									<img src="BlogPictures/Wharfedale--S1-GreatWhernside.jpeg" />
 									
 								</p>
 
@@ -493,7 +719,7 @@
 							<p class="card-text">
 								<h5>2026-06-15</h5>
 								<p>Nyligen testat nästa version av hårdvaran. Största ändringen på många år, instället för att bygga på en inköpt SBC (NanoPi Neo AIr) så är nu processor, minne och eMMC integrerat på kretskortet tillsammans med en ny LORA radiomodul. Fördelarna är framförallt mer flexibilitet och att inte längre vara beroende av tillgängligheten på NanoPi Neo Air. Den ny LORA radion ger fler möjligheter att anpassa exakt hur meddelanden skickas vilket gör att man kan kräma ut lite mer prestanda. Vi bör kunna öka antal stämplingar per sekund och även erbjuda fler kanaler. Och kanske fler saker i framtiden...</p>
-                				<img src="WiRoc_v8.png" />
+                				<img src="BlogPictures/WiRoc_v8.png" />
                 				<br/><br/>
 						  </div>
 					</div>
@@ -518,7 +744,7 @@
 					<ul>
 					<li>Signifikant bättre prestanda</li>
 					</ul>
-					<img src="OmnidirectonalAntennaAndWiRoc.png" />
+					<img src="BlogPictures/OmnidirectonalAntennaAndWiRoc.png" />
 					<br/><br/>
 					<p>En annan idé... I de fall det inte finns möjlighet att hänga ovanför kontrollen så borde det gå att montera den under SI-enheten. Med lite andra fästen borde det fungera tillsammans med kontrollställningarna i glasfiber. SRR-mottagningen borde blir riktigt bra under enheten. Helt idealiskt är det ju inte med Lora-antennen så nära marken men i de flesta fall bör det fungera utmärkt ändå.</p>                
 							</p>
@@ -533,10 +759,10 @@
 								<p>I helgen testades Wifi-mesh funktionaliteten på en dubbeltävling. Det fungerade utmärkt, det var stabilt och räckvidden var bättre än förväntat.</p>
                 <p>Under dag 1 så användes fyra mesh noder. Mesh-1 anslöt till Wifi-AP med inbyggda wifin. Noderna Mesh-1 till Mesh-4 skapade ett mesh nätverk på 2.4 Ghz wifi (802.11s) med hjälp av USB-Wifi donglar baserade på Atheros AR9271 chipsetet. Alla noderna höll sig online under hela tävlingen. Kontrollen satt vid Mesh-4. Mest troligt hade Mesh-3 kunna tagits bort.</p>
                 <p>Under dag 2 så användes bara två mesh noder. Mesh-1 anslöt till Wifi-AP med inbyggda wifin. Noderna Mesh-1 och Mesh-2 skapade ett mesh nätverk mellan sig med USB-Wifi dongeln. Båda noderna höll sig online under hela tävlingen. Kontrollen satt vid Mesh-2.</p>
-                <img src="WifiMeshTestCompetitionSmaller.png" />
+                <img src="BlogPictures/WifiMeshTestCompetitionSmaller.png" />
                 <br/><br/>
                 <p>WiRoc med en Mesh-Wifi-dongle:</p>
-                <img src="Wifi-mesh-enhet.jpg" />
+                <img src="BlogPictures/Wifi-mesh-enhet.jpg" />
 							</p>
 						  </div>
 						</div>
@@ -553,11 +779,11 @@ För att få det stabilt behövde jag dock 3D-printa hållare för att undvika g
 Jag tänker att detta skulle kunna vara ett alternativ för exempelvis sistakontrollen i de fall den ligger strax utanför vanliga wifi rangen. Eller kanske för en publikkontroll. Fördelen är blixtsnabb sändning och att ingen Lora kanal behövs, vilket kan vara en fördel om alla redan används till andra radiokontroller.
 
 Meshinställningarna konfigureras i WiRoc Config i en ny flik: 
-<img src="WiRocConfigWifiMesh.jpg" />
+<img src="BlogPictures/WiRocConfigWifiMesh.jpg" />
 <br/>
 Gick ut och testade med fyra WiRocenheter med varsin USB-Wifi. Den första (1 i bilden) sitter på min balkong och var uppkopplad till internet, tvåan i en snödriva i hörnet lite drygt 100 meter bort, nummer tre också den i en snödriva drygt 100 meter från nummer två. Den fjärde satte jag ~80m bort men den var lite svajig och gick offline ibland. Tror den hade en lite sämre antenn, efter att flyttat den lite närmre nummer tre (ca 50 meter ifrån) så verkade alla enheter hålla sig stabilt online.
 
-<img src="WifiMeshTestMap.png" /> </p>
+<img src="BlogPictures/WifiMeshTestMap.png" /> </p>
 							</p>
 						  </div>
 						</div>
@@ -611,7 +837,7 @@ Gick ut och testade med fyra WiRocenheter med varsin USB-Wifi. Den första (1 i 
 								<h4>Radio</h4>
 								<p>För alla radiokontrollerna användes Dubbel-rocar. Dock gjordes det tester på en del med WiRoc. På E1 hade vi fyra radiokontroller där de två längst bort låg 3 respektive 3,7 km bort. Här testade vi att köra alla fyra på samma kanal med en lite högre datahastighet. Eftersom det var så långt så hade det inte fungerat att ha mottagaren på arenan utan istället satte vi den på en hög höjd 500-600 meter från arenan. Från mottagaren ner till arenan användes en wifi-länk. Alla stämplingar från kontrollerna ackades av mottagaren, ett fåtal fick skickas om då de inte gick fram (eller ackades) på första försöket. Men det är helt normalt, särskilt i detta fall då kontrollerna låg så långt ifrån varandra att de omöjligt kunde höra när de andra skickade och därför säkert ibland skickade samtidigt. Detta var första riktiga försöket med så många sändare på samma kanal och så hög belastning. Total succé!</p>
 								<p>På E3 hade vi två radiokontroller, den ena på en höjd medan den andra låg lågt bakom höjder. Även målet låg lågt. Ett svårt läge för radiokontakt. Möjligt att det skulle fungerat med riktantenner ändå, men det var ett bra tillfälle att testa att skicka via en mellanpunkt. Så vi gjorde så att radiokontrollen som låg lågt skickade till en mottagare som låg vid radiokontrollen som låg på höjden. Denna mottagaren kopplades till en WiRoc-sändare via seriekabel. Sändaren tog även in stämplingar med SRR-dongeln från kontrollen på höjden. </p><p>Tyvärr har jag inte loggarna kvar men vi kunde se under dagen att det kom in stämplingar från båda kontrollerna. Vi såg också att de kom in något sent. Antingen berodde det på att det var för många stämplingar för den hastighet vi valt, och/eller så blev det en del bitfel som gjorde att meddelanden fick skickas om och att det därför blev kö. Men funktionen att skicka vidare via en mellanpunkt fungerade!</p>
-								<p>På E4 ville jag testa lite längre avstånd och amtörradioläget... Här satte vi en mottagare med stor riktantenn på höjden bakom arenan. Denna var inkopplad på nätverket med kabel. Radion längst bort hade också en stor riktantenn. Använde ”Long range” inställningen så något långsammare hastighet jämfört med förvarningarna. Testade här nya amatörradioläget, det är lite andra frekvenser och kräver att radioamatörens anropssignalen skickas regelbundet. Första riktiga testet av detta läge.</p><p>
+								<p>På E4 ville jag testa lite längre avstånd och amtörradioläget... Här satte vi en mottagare med stor riktantenn på höjden bakom arenan. Denna var inkopplad på nätverket med kabel. Radion längst bort hade också en stor riktantenn. Använde "Long range" inställningen så något långsammare hastighet jämfört med förvarningarna. Testade här nya amatörradioläget, det är lite andra frekvenser och kräver att radioamatörens anropssignalen skickas regelbundet. Första riktiga testet av detta läge.</p><p>
 Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på stämplingar att skicka utan de kom in i Ola i realtid (tar ca 2 s att skicka). Det gjorde inte en enda omsändning, allt kom fram på första försöket. Ett meddelande kom fram med bitfel men det rättades i mottagaren. Avstånd från kontrollen till mottagaren var nästan exakt 4 km.</p>
 							</p>
 						  </div>
