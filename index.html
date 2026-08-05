@@ -225,6 +225,78 @@
 				font-size: 0.75rem;
 				margin-right: 0.3rem;
 			}
+			/* Image flipper */
+			.image-flipper {
+				position: relative;
+				overflow: hidden;
+				border-radius: .5rem .5rem 0 0;
+				background: #f0f0f0;
+			}
+			.image-flipper .flip-image {
+				width: 100%;
+				display: none;
+				border-radius: .5rem .5rem 0 0;
+				transition: opacity 0.4s ease;
+			}
+			.image-flipper .flip-image.active {
+				display: block;
+			}
+			.flip-btn {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				background: rgba(55,71,79,0.55);
+				color: white;
+				border: none;
+				font-size: 1.5rem;
+				padding: 0.3rem 0.7rem;
+				cursor: pointer;
+				border-radius: .25rem;
+				transition: background 0.2s ease;
+				z-index: 2;
+				line-height: 1;
+			}
+			.flip-btn:hover {
+				background: rgba(55,71,79,0.85);
+			}
+			.flip-prev { left: 8px; }
+			.flip-next { right: 8px; }
+			.flip-dots {
+				position: absolute;
+				bottom: 10px;
+				left: 50%;
+				transform: translateX(-50%);
+				display: flex;
+				gap: 6px;
+				z-index: 2;
+			}
+			.flip-dot {
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background: rgba(255,255,255,0.5);
+				cursor: pointer;
+				transition: background 0.2s ease;
+			}
+			.flip-dot.active {
+				background: var(--wiroc-accent);
+			}
+			.flip-dot:hover {
+				background: rgba(255,255,255,0.9);
+			}
+			.flip-caption {
+				position: absolute;
+				bottom: 10px;
+				right: 12px;
+				background: rgba(55,71,79,0.65);
+				color: white;
+				padding: 0.15rem 0.55rem;
+				border-radius: 1rem;
+				font-size: 0.75rem;
+				font-weight: 600;
+				z-index: 2;
+				pointer-events: none;
+			}
 		</style>
 		<title>WiRoc – Trådlösa mellantider för orientering | Wireless split times for orienteering</title>
 	</head>
@@ -281,7 +353,17 @@
 						<div class="lang-sv">
 						<h2>WiRoc</h2>
 						<div class="card">
-						  <img class="card-img-top" src="WiRocv6Rev1.JPG" alt="WiRoc enhet"/>
+						  <div class="image-flipper">
+						    <img class="flip-image active" src="OtherPictures/WiRocV8Rev2_Ethernet_wobg_sc.png" alt="WiRoc enhet - Ethernet-sida"/>
+						    <img class="flip-image" src="OtherPictures/WiRocV8Rev2_Serial_wobg_sc.png" alt="WiRoc enhet - Serieport-sida"/>
+						    <button class="flip-btn flip-prev" onclick="flipImage(this.parentElement, -1)" title="Föregående bild">&#10094;</button>
+						    <button class="flip-btn flip-next" onclick="flipImage(this.parentElement, 1)" title="Nästa bild">&#10095;</button>
+						    <div class="flip-dots">
+						      <span class="flip-dot active" onclick="flipTo(this.parentElement.parentElement, 0)"></span>
+						      <span class="flip-dot" onclick="flipTo(this.parentElement.parentElement, 1)"></span>
+						    </div>
+						    <div class="flip-caption"></div>
+						  </div>
 						  <div class="card-body">
 							<h5 class="card-title"></h5>
 							<p class="card-text">
@@ -300,7 +382,17 @@
 						<div class="lang-en">
 						<h2>WiRoc</h2>
 						<div class="card">
-						  <img class="card-img-top" src="WiRocv6Rev1.JPG" alt="WiRoc unit"/>
+						  <div class="image-flipper">
+						    <img class="flip-image active" src="WiRocV8Rev2_Ethernet_wobg_sc_2.png" alt="WiRoc unit - Ethernet side"/>
+						    <img class="flip-image" src="WiRocV8Rev2_Serial_wobg.png" alt="WiRoc unit - Serial port side"/>
+						    <button class="flip-btn flip-prev" onclick="flipImage(this.parentElement, -1)" title="Previous image">&#10094;</button>
+						    <button class="flip-btn flip-next" onclick="flipImage(this.parentElement, 1)" title="Next image">&#10095;</button>
+						    <div class="flip-dots">
+						      <span class="flip-dot active" onclick="flipTo(this.parentElement.parentElement, 0)"></span>
+						      <span class="flip-dot" onclick="flipTo(this.parentElement.parentElement, 1)"></span>
+						    </div>
+						    <div class="flip-caption"></div>
+						  </div>
 						  <div class="card-body">
 							<h5 class="card-title"></h5>
 							<p class="card-text">
@@ -328,7 +420,7 @@
 						  <div class="card-body">
 							<h4 class="card-title">WiRoc enhet</h4>
 							<span class="price-tag">90 kr/dag inkl. moms (72 kr exkl. moms)</span>
-							<p class="card-text">Det vanligaste scenariot för en radiokontroll i skogen är att använda en WiRoc enhet konfigurerad som sändare på eller i närheten av kontrollen och en WiRoc enhet konfigurerad som mottagare vid TC. Mottagaren kopplas upp på det lokala WLAN/Wifi nätverket och konfigureras att skicka till tävlingsprogrammet över SIRAP/tcp. SportIdent enheten kan kopplas till WiRoc sändaren på några olika sätt beroende på vilken typ av SportIdent enhet det är.<br/><br/><h5>SportIdent enhet med USB kabel</h5>Om SportIdent enheten har USB sladd kan den kopplas direkt till WiRoc enheten (ev. med en USB-förlängningsladd och/eller USB-hub). Ett annat alternativ är att koppla SportIdent enheten till en USB-till-Bluetooth adapter. I WiRoc-Config kan man sedan söka upp och ansluta USB-till-Bluetooth adaptern.<br/><br/><h5>SportIdent enhet med RS232 seriell kabel</h5>Om SportIdent enheten har en RS232 seriell kabel så kan den kopplas via USB-adapter (notera att inte alla adaptrar stöds). Det finns även RS232-till-Bluetooth adaptrar att koppla SportIdent enheten till. I WiRoc-Config kan man sedan söka upp och ansluta RS232-till-Bluetooth adaptern. Vissa WiRoc enheter har en inbyggd RS232 port så att det går att koppla in direkt.<br/><br/><h5>SportIdent SRR enhet</h5> För att använda en SportIdent SRR enhet behöver man använda en SRR USB Dongle som kopplas in i WiRoc enheten.</p>
+							<p class="card-text">Det vanligaste scenariot för en radiokontroll i skogen är att använda en WiRoc enhet konfigurerad som sändare på eller i närheten av kontrollen och en WiRoc enhet konfigurerad som mottagare vid TC. Mottagaren kopplas upp på det lokala WLAN/Wifi nätverket och konfigureras att skicka till tävlingsprogrammet över SIRAP/tcp. SportIdent enheten kan kopplas till WiRoc sändaren på några olika sätt beroende på vilken typ av SportIdent enhet det är.<br/><br/><h5>SportIdent SRR enhet</h5> För att använda en SportIdent SRR enhet behöver man använda WiRoc V7 eller senare alternativt ansluta en SRR USB Dongle till WiRocs USB port.<br/><br/><h5>SportIdent enhet med USB kabel</h5>Om SportIdent enheten har USB sladd kan den kopplas direkt till WiRoc enheten (ev. med en USB-förlängningsladd och/eller USB-hub). Ett annat alternativ är att koppla SportIdent enheten till en USB-till-Bluetooth adapter. I WiRoc-Config kan man sedan söka upp och ansluta USB-till-Bluetooth adaptern.<br/><br/><h5>SportIdent enhet med RS232 seriell kabel</h5>Om SportIdent enheten har en RS232 seriell kabel så kan den kopplas via USB-adapter (notera att inte alla adaptrar stöds). Det finns även RS232-till-Bluetooth adaptrar att koppla SportIdent enheten till. I WiRoc-Config kan man sedan söka upp och ansluta RS232-till-Bluetooth adaptern. Vissa WiRoc enheter har en inbyggd RS232 port så att det går att koppla in direkt.</p>
 						  </div>
 						</div>
 					</div>
@@ -383,9 +475,9 @@
 						<div class="card">
 						  <img class="card-img-top" src="WiRocv6Rev1.JPG" alt="WiRoc v6Rev1">
 						  <div class="card-body">
-							<h4 class="card-title">WiRoc unit</h4>
+							<h4 class="card-title">WiRoc device</h4>
 							<span class="price-tag">90 SEK/day incl. VAT (72 SEK excl. VAT)</span>
-							<p class="card-text">The most common scenario for a radio control in the forest is to use a WiRoc unit configured as a transmitter at or near the control and a WiRoc unit configured as a receiver at the event centre. The receiver connects to the local WLAN/WiFi network and is configured to send to the competition software over SIRAP/TCP. The SportIdent unit can be connected to the WiRoc transmitter in several different ways depending on the type of SportIdent unit.<br/><br/><h5>SportIdent unit with USB cable</h5>If the SportIdent unit has a USB cable, it can be connected directly to the WiRoc unit (possibly with a USB extension cable and/or USB hub). Another option is to connect the SportIdent unit to a USB-to-Bluetooth adapter. In WiRoc-Config you can then search for and connect to the USB-to-Bluetooth adapter.<br/><br/><h5>SportIdent unit with RS232 serial cable</h5>If the SportIdent unit has an RS232 serial cable, it can be connected via a USB adapter (note that not all adapters are supported). There are also RS232-to-Bluetooth adapters to connect the SportIdent unit to. In WiRoc-Config you can then search for and connect the RS232-to-Bluetooth adapter. Some WiRoc units have a built-in RS232 port so it can be connected directly.<br/><br/><h5>SportIdent SRR unit</h5>To use a SportIdent SRR unit, you need to use an SRR USB Dongle that plugs into the WiRoc unit.</p>
+							<p class="card-text">The most common scenario for a radio control in the forest is to use a WiRoc device configured as a transmitter at or near the control and a WiRoc device configured as a receiver at the event centre. The receiver connects to the local WLAN/WiFi network and is configured to send to the competition software over SIRAP/TCP. The SportIdent unit can be connected to the WiRoc transmitter in several different ways depending on the type of SportIdent unit.<br/><h5>SportIdent SRR unit</h5>To use a SportIdent SRR unit you need to use a WiRoc V7 or later (with built in SRR receiver) or attach an SRR USB Dongle to the WiRoc device.<br/><br/><h5>SportIdent unit with USB cable</h5>If the SportIdent unit has a USB cable, it can be connected directly to the WiRoc unit (possibly with a USB extension cable and/or USB hub). Another option is to connect the SportIdent unit to a USB-to-Bluetooth adapter. In WiRoc-Config you can then search for and connect to the USB-to-Bluetooth adapter.<br/><br/><h5>SportIdent unit with RS232 serial cable</h5>If the SportIdent unit has an RS232 serial cable, it can be connected via a USB adapter (note that not all adapters are supported). There are also RS232-to-Bluetooth adapters to connect the SportIdent unit to. In WiRoc-Config you can then search for and connect the RS232-to-Bluetooth adapter. Some WiRoc units have a built-in RS232 port so it can be connected directly.<br/></p>
 						  </div>
 						</div>
 					</div>
@@ -440,8 +532,9 @@
 				<div class="tab-pane fade" id="pageRange" role="tabpanel">
 					<div class="lang-sv">
 					<div class="container">
-						<h2>Räckvidd</h2>
-						Räckvidden beror på många faktorer där de främsta är terrängen, vilka antenner som används och datahastigheten. Se några verkliga exempel från tävlingar längre ner.
+						<h2>Räckvidd</h2><br/>
+						Räckvidden beror på många faktorer där de främsta är terrängen, vegetations, vilka antenner som används och datahastigheten. Se några verkliga exempel från tävlingar längre ner.
+						<br /><br />
 						<h2>Antenner</h2>
 						Vilken antenn som används på sändare respektive mottagare har stor betydelse för räckvidden.
 						<div class="d-flex row flex-wrap align-content-stretch mb-2">
@@ -538,9 +631,10 @@
 					<div class="lang-en">
 					<div class="container">
 						<h2>Range</h2>
-						The range depends on many factors, the main ones being terrain, which antennas are used, and the data rate. See some real-world examples from competitions below.
+						The range depends on many factors, the main ones being terrain, the vegetation, which antennas are used, and the data rate. See some real-world examples from competitions below.
+						<br /><br />
 						<h2>Antennas</h2>
-						Which antenna is used on the transmitter and receiver respectively has a major impact on range.
+						Which antennas that are used on the transmitter and receiver respectively has a major impact on range.
 						<div class="d-flex row flex-wrap align-content-stretch mb-2">
 							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 								<div class="card h-100">
@@ -648,7 +742,7 @@
 								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_Scan.jpg" alt="Sök efter WiRocenheter">
 								  <div class="card-body">
 									<h5 class="card-title">Sök efter enheter</h5>
-									<p class="card-text">Starta WiRoc enheten och klicka på Scan i appen. När enheten har startat upp dyker den upp i listan. Default-namnet är "WiRoc Device" men rekommenderas att byta namn för att kunna skilja dem åt. Finns flera med samma namn kan man skilja dem åt på signalstyrkan – den med högst signalstyrka är närmast.</p>
+									<p class="card-text">Starta WiRoc enheten och klicka på "Sök WiRoc enheter" i appen. När enheten har startat upp dyker den upp i listan. Default-namnet är "WiRoc Device" men rekommenderas att byta namn för att kunna skilja dem åt. Finns flera med samma namn kan man skilja dem åt på signalstyrkan – den med högst signalstyrka är närmast.</p>
 								  </div>
 								</div>
 							</div>
@@ -864,7 +958,7 @@
 								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_Scan.jpg" alt="Search for WiRoc units">
 								  <div class="card-body">
 									<h5 class="card-title">Search for units</h5>
-									<p class="card-text">Start the WiRoc unit and click Scan in the app. When the unit has started up it appears in the list. The default name is "WiRoc Device" but it is recommended to change the name to distinguish them. If there are several with the same name, you can tell them apart by signal strength – the one with the highest signal strength is the closest.</p>
+									<p class="card-text">Start the WiRoc device and click Scan in the app. When the device has started up it appears in the list. The default name is "WiRoc Device" but it is recommended to change the name to distinguish them. If there are several with the same name, you can tell them apart by signal strength – the one with the highest signal strength is the closest.</p>
 								  </div>
 								</div>
 							</div>
@@ -917,7 +1011,7 @@
 								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigUSB.jpg" alt="USB settings">
 								  <div class="card-body">
 									<h5 class="card-title">USB</h5>
-									<p class="card-text">Manage connected USB devices such as SI master stations or SRR dongles. Here you can enable "One-way" communication (listen only, no commands sent) for the USB ports. Useful for SRR dongles or collection boxes that should not receive commands from WiRoc.</p>
+									<p class="card-text">Manage connected USB devices such as SI master stations or SRR dongles. Here you can enable "One-way" communication (listen only, no commands sent) for the USB ports. Useful for "samlingsboxar" that cannot receive commands from WiRoc.</p>
 								  </div>
 								</div>
 							</div>
@@ -927,7 +1021,7 @@
 								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigSerial.jpg" alt="Serial port settings">
 								  <div class="card-body">
 									<h5 class="card-title">Serial port</h5>
-									<p class="card-text">Settings for the built-in serial port. Here you can enable "One-way" communication (listen only, no commands sent) for communication with SI units or collection boxes connected via serial cable. The serial port can also be used to send data to a computer, another WiRoc, or a collection box.</p>
+									<p class="card-text">Settings for the built-in serial port. Here you can enable "One-way" communication (listen only, no commands sent) for communication with SI units or "samlingsboxar" connected via serial cable. The serial port can also be used to send data to a computer, another WiRoc, or a "samlingsbox".</p>
 								  </div>
 								</div>
 							</div>
@@ -1058,7 +1152,7 @@
 								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherUpdate.jpg" alt="Software update">
 								  <div class="card-body">
 									<h5 class="card-title">Update</h5>
-									<p class="card-text">Update the unit's software to the latest version. The unit searches for available updates and you can choose to install them directly. Keep the software updated to get the latest features and bug fixes.</p>
+									<p class="card-text">Update the device's software to the latest version. The device searches for available updates and you can choose to install them directly. Keep the software updated to get the latest features and bug fixes.</p>
 								  </div>
 								</div>
 							</div>
@@ -1075,7 +1169,7 @@
 
 					<div class="blog-summary card blog-summary-row"></div>
 
-          <div class="card">
+          			<div class="card">
 						  <div class="card-body">
 							<h3 class="card-title">Skicka stämplingar till ROC-servern</h3>
 							<p class="card-text">
@@ -1300,7 +1394,7 @@
 							<p></p>
 							<p>I must say I am impressed with what Ben archived in such a short time. 
 								A little sad I couldn't provide a stable version without the freezing issue. 
-								It is a known issue that has been fixed or at least been much improved in later 
+								It is a known issue that has been fixed in later 
 								internal builds. The problem occurs when the links are marginal or there is some interferrense.</p>
 							<p>When I looked at the maps, distances (some above 6 km), topology, and Bens plans I didn't expect the Lora links 
 								to work as well as it apparantly did. There are some challenges with this setup in that the senders at the controls
@@ -1338,7 +1432,7 @@
 								<h3 class="card-title">Ny rundstrålande antenn</h3>
 								<p class="card-text">
 									<span class="blog-date">2026-05-01</span>
-									<p>Har testat en ny rundstrålande antenn och kombinerat den med en krok i toppen och en hållare för WiRoc under. Det gör att man enkelt kan hänga den i en gren, i många fall rakt över kontrollen. De intiala testerna pekar på att den är lika bra eller kanske bättre än de riktantenner (Yagi) som jag använt tidigare. Lösningen har flera fördelar:</p>
+									<p>Har testat en ny rundstrålande antenn och kombinerat den med en krok i toppen och en hållare för WiRoc under. Det gör att man enkelt kan hänga den i en gren, i många fall rakt över kontrollen. De intiala testerna pekar på att den inte ger lika bra prestanda som de riktantenner (Yagi) som jag använt tidigare (förutsatt att de riktas korrekt). Lösningen har flera fördelar:</p>
 					<ul>
 					<li>Kan hängas upp enkelt, utan tejp eller spännband. Enkelt att få upp den högre.</li>
 					</ul>
@@ -1346,12 +1440,11 @@
 					<ul>
 						<li>Smidigare att bära ut jämfört med riktantenner. Inga antennspröt som kan tappas bort. Kan enkelt bäras ihopsatt med WiRoc enheten.</li>
 						<li>Behöver inte riktas in, ska bara hänga lodrätt</li>
-						<li>Lika eller bättre prestanda</li>
 						<li>Andra sändare runt om på samma kanal har bättre chans att uppfatta när den sänder</li>
 					</ul>
 					<p>Jämfört med dipolantenn:</p>
 					<ul>
-					<li>Signifikant bättre prestanda</li>
+					<li>Bättre prestanda</li>
 					</ul>
 					<img src="BlogPictures/OmnidirectonalAntennaAndWiRoc.png" class="img-fluid rounded blog-img" />
 					<br/><br/>
@@ -1658,8 +1751,8 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 					<h3 class="card-title">ROC-compatible API for punch retrieval</h3>
 					<p class="card-text">
 						<span class="blog-date">2026-08-02</span>
-						<p>A new ROC-compatible API is available in WiRoc, making it possible to connect from competition software and fetch punches directly from a WiRoc unit via the ROC protocol. The address is <code>http://&lt;wiroc-ip&gt;:5000/api/roc</code>. The parameter "unitid" is ignored by WiRoc and can be set to e.g. 1.</p>
-						<p>The API supports long polling, meaning incoming punches are delivered quickly. Set a short polling interval, e.g. 100 ms. If there is no punch to fetch, WiRoc will block for up to 30 seconds and then return a punch immediately when one arrives. Both this API and TCP/IP SIRAP can be used in parallel.</p>
+						<p>A new ROC-compatible API is available in WiRoc, making it possible to connect from competition software and fetch punches directly from a WiRoc unit via the ROC protocol. The address is <code>http://&lt;wiroc-ip&gt;:5000/api/roc</code>. The parameter "unitid" is ignored by WiRoc and can be set to 1.</p>
+						<p>The API supports long polling, meaning incoming punches are delivered quickly. Set a short polling interval, for example 100 ms (if the software supports it). If there is no punch to fetch, WiRoc will block for up to 30 seconds and then return a punch immediately when one arrives. Both this API and TCP/IP SIRAP can be used in parallel.</p>
 					</p>
 				  </div>
 				</div>
@@ -1671,22 +1764,159 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 						<span class="blog-date">2026-07-12</span>
 						<p>After testing the new hardware, version 8 of WiRoc is now ready to move forward. The biggest change is moving to a custom SBC (Single Board Computer) instead of the NanoPi Neo Air used previously. Having custom hardware provides significantly more freedom in design and makes future improvements easier.</p>
 						<p>The new version features new modules for WiFi, Bluetooth, and LoRa. The WiFi module now supports 5 GHz and has improved 2.4 GHz range. The new LoRa module provides full control over all LoRa settings, enabling smaller message sizes and faster ACK responses, increasing the number of punches per minute without increasing data rate. Up to 12 different channels are available, while maintaining backward compatibility with previous WiRoc versions.</p>
-						<p>Like previous versions, it has built-in SRR receivers for both Red and Blue channels, two USB host ports, and a serial port for connecting master stations or collection boxes.</p>
+						<p>Like previous versions, it has built-in SRR receivers for both Red and Blue channels, two USB host ports, and a serial port for connecting master stations or "samlingsboxar".</p>
 					</div>
 				</div>
 
-          <div class="card">
-				  <div class="card-body">
-					<h3 class="card-title">Guest post: Wharfedale Three Peaks 2026</h3>
-					<p class="card-text">
-						<span class="blog-date">2026-07-02</span>
-						<p>Report from Ben in the UK. Ben bought a number of WiRoc kits, assembled them, and got everything working in short time for the Wharfedale Three Peaks event on 27th June 2026.</p>
-						<p>Six WiRoc units were used: one receiver at the finish (R1) feeding SiTiming over SIRAP, and five senders (S1–S5) covering the manned checkpoints. The LoRa network delivered 791 of 901 punches (88%) from the five hill sites. Great Whernside (S1) also ran as a repeater, relaying data from valley sites that couldn't reach base directly.</p>
-						<p>The main finding was that most losses were caused by R1 freezing under early load, not radio problems. After a field patch stabilized performance, losses dropped to near zero after 13:00. Overall a very successful first outing, and the organizers have already booked for next year.</p>
-						<p>Read the full report (in Swedish) for detailed analysis, maps, and photos.</p>
-					</p>
-				  </div>
-				</div>
+          		<div class="card">
+						  <div class="card-body">
+							<h3 class="card-title">Guest post: Wharfedale Three Peaks 2026</h3>
+							<p class="card-text">
+					<span class="blog-date">2026-07-02</span>
+					<p>Today we have a report from Ben in UK. Ben bought a number of WiRoc kits and assembled them, installed everything and got them working in short time!</p>
+					<div style="background-color: rgb(231, 231, 231);padding:10px">
+					<h4>Wharfedale Three Peaks 2026, Saturday 27th June</h4>
+					<p>
+							Pendle Forest Orienteers (PFO) ran the timing for the UWFRA Wharfedale
+							Three Peaks this year, the Upper Wharfedale Fell Rescue Association's
+							fundraising event on 27 June. Around 250 runners across two courses:
+							the full 17 mile Three Peaks (W3P) over Great Whernside, Buckden Pike
+							and Birks Fell, and the shorter Two Peaks (W2P), all run in glorious
+							sunshine. We used WiRoc to bring checkpoint "punches" back to the
+							event centre so the finish team and the organisers could see who was
+							still out on the hill. On a fell race/walk that is as much a safety
+							tool as a results one.</p>
+							<p>
+							Six units in all, running WiRoc v1.13. R1 sat at the finish as the
+							receiver, feeding SiTiming over SIRAP (more on that later), and also
+							carried the finish control. Five senders (S1 to S5) covered the manned
+							checkpoints: Great Whernside, Buckden Village, Buckden Pike, Park Rash
+							and Birks Fell. LoRa carried the punches from the checkpoints back to
+							base, and Great Whernside (S1), the high point, also ran as a repeater
+							so that valley sites which could not reach the finish directly could
+							route via the summit. Two controls, Starbotton and Cam Head, had no
+							radio at all.</p><p>
+
+							Afterwards we pulled the databases off all six units and compared
+							every punch against the SiTiming card download, which is the
+							definitive truth: a punch is physically on the runner's card whether
+							or not any radio worked. So the delivery rate for a site is simply the
+							fraction of the punches on cards there that also reached base over the
+							network.</p><p></p>
+
+							<h5>How it went:</h5>
+							<p>
+							The LoRa network as a whole delivered 791 of 901 punches from the five
+							hill sites, so just under 88 percent. Per site it ranged widely:
+							</p><p>
+								<a href="BlogPictures/WharfedaleThreePeaks2026Map.png"><img src="BlogPictures/WharfedaleThreePeaks2026Map2.png" class="img-fluid rounded blog-img" /></a>
+							<ul>
+							<li>Great Whernside (S1): 189 of 193, 98 percent</li>
+							<li>Park Rash (S4): 185 of 196, 94 percent</li>
+							<li>Birks Fell (S5): 146 of 158, 92 percent</li>
+							<li>Buckden Pike (S3): 160 of 196, 82 percent</li>
+							<li>Buckden Village (S2): 111 of 158, 70 percent</li>
+							</ul>
+							</p><p>
+							For a first outing of this network on real terrain, that is a decent
+							result, but the spread is the interesting part, and digging into the
+							two worst sites turned up two lessons that were the opposite of what
+							we expected going in.
+							</p><p>
+							At Buckden Village (S2) the headline delivery there was our worst, 70
+							percent, so on the face of it the experiment looked like a failure.
+							</p><p>
+							Great Whernside was active as a repeater and, encouragingly, it
+							carried the two weakest-delivery sites the most. It relayed 94
+							distinct cards from Buckden Pike (S3) and 83 from Buckden Village
+							(S2), plus smaller numbers from Park Rash (S4), the finish and Birks Fell.
+							So the adaptive routing did what it is supposed to: the valley sites
+							that struggled to reach base directly leaned on the summit. Without
+							it, S2 and S3 would have been worse still.
+							</p>
+							<h5>What actually caused the losses:</h5>
+							</p><p>
+							The single most important finding is that most of the losses were not
+							really radio problems at all. They were R1.
+							</p><p>
+							The base unit (R1) froze and had to be restarted repeatedly through the
+							morning: 21 power cycles, and more than two-thirds of its database
+							rows carry the unset-clock date that a unit writes when it has just
+							booted without time. When you plot LoRa losses by hour, they
+							concentrate between 09:00 and 11:00, running at around 20 percent an
+							hour, and then they fall away to essentially zero after 13:00. That is
+							during the busiest time, when participants are bunched together. With
+							thanks to Henrik, a field patch was applied, which stabilised
+							performance.
+							</p><p>
+							That splits the losses into two mechanisms. Some punches were sent,
+							got a single-hop acknowledgement, and the sender stopped
+							retransmitting, but R1 was frozen at that moment so the base never
+							actually stored them. Those are silent and unrecoverable. Others never
+							got an acknowledgement at all, so the sender retried the full five
+							times over about a minute into a receiver that was not listening, then
+							gave up. Either way, link quality only decided how many punches were
+							exposed to the problem. The R1 hangs turned exposure into loss.
+							</p><p>
+							SIRAP, and making sure punches stick:
+							</p><p>
+							Earlier I mentioned that R1 feeds SiTiming over SIRAP. SIRAP is
+							unacknowledged: the WiRoc pushes a punch at the timing software, and
+							there is no confirmation that it actually landed in the database. We
+							were bitten by that before at the Compass Sport Final (2024), where
+							punches arrived over the wire but never made it into the results. So
+							this time I wrote a replay system alongside it. Every punch WiRoc had
+							received was held and could be replayed into the timing software, so
+							that anything which reached the event centre was checked against
+							SiTiming and replayed if missed.
+							</p><p>
+							It is a belt and braces layer; WiRoc's job is to get the punch to
+							base, and the replay's job is to ensure a punch that reached base is
+							actually in the timing software.
+							</p><p>
+							<h5>What we would change:</h5>
+							<p>
+							The priority for next year is obvious: fix R1's stability so it is not
+							freezing under early load, because a solid base station would have
+							turned an 88 percent day into a very good one on the same radio links.
+							</p><p>
+							Buckden Village showed the 2.4 GHz SRR hop itself is fine, so the work
+							there is on the LoRa path to base, most likely antenna height,
+							position or repeater. And we would log RSSI next time. It was NULL
+							throughout these databases, so we could not do any signal-strength
+							fade analysis.
+							</p><p>
+							Overall, UWFRA were extremely happy with the data, having moved from a
+							paper-based system, and they have already booked us for next year,
+							where they want to add 2 more units... Henrik, I need more units :)
+							</p><p>
+							My sincere thanks to Henrik for his tireless support over these last
+							few months whilst I worked on this somewhat accidental project. The
+							WiRocs are meant for PFO use :)
+							</p>
+							</div>
+							<p></p>
+							<p>I must say I am impressed with what Ben archived in such a short time. 
+								A little sad I couldn't provide a stable version without the freezing issue. 
+								It is a known issue that has been fixed in later 
+								internal builds. The problem occurs when the links are marginal or there is some interferrense.</p>
+							<p>When I looked at the maps, distances (some above 6 km), topology, and Bens plans I didn't expect the Lora links 
+								to work as well as it apparantly did. There are some challenges with this setup in that the senders at the controls
+								are so far apart that they can't hear each other. This increases the chances of them trying to send data at the same time. 
+								This was also the first test of the repeater functionality in many years (and versions).</p>
+							<p>Some things to consider for next year: Should all run on the same channel with a single receiver? The receiver is in a 
+								difficult location to reach from the controls and it is difficult to find a single repeater location that has good Lora link to all controls. 
+								So maybe using two or more channels with a repeater on each could help. Linking up two WiRoc to create a relay station could be an 
+								alternative to use the repeater functionality. I also would suggest directional antennas at some checkpoints.</p>
+								<p>Ben also sent some photos, two of which are shown below:</p>
+								<p>
+									<img src="BlogPictures/Wharfedale-photo2.jpeg" class="img-fluid rounded blog-img" />
+									<img src="BlogPictures/Wharfedale--S1-GreatWhernside.jpeg" class="img-fluid rounded blog-img" />
+									
+								</p>
+
+						</div>
+					</div>
 
 				<div class="card">
 				  <div class="card-body">
@@ -1704,7 +1934,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 					<h3 class="card-title">New omnidirectional antenna</h3>
 					<p class="card-text">
 						<span class="blog-date">2026-05-01</span>
-						<p>Tested a new omnidirectional antenna combined with a hook at the top and a holder for WiRoc underneath. This makes it easy to hang it from a branch, often right above the control. Initial tests indicate it is as good or perhaps better than Yagi directional antennas. Compared to Yagi: more compact, no antenna elements to lose, no aiming needed, and other transmitters nearby can better detect its transmissions. Compared to the dipole: significantly better performance.</p>
+						<p>Tested a new omnidirectional antenna combined with a hook at the top and a holder for WiRoc underneath. This makes it easy to hang it from a branch, often right above the control. Initial tests indicate it works well, but doesn't give as good range as a well directed Yagi directional antennas. Compared to Yagi: more compact, no antenna elements to lose, no aiming needed, and other transmitters nearby can better detect its transmissions. Compared to the dipole: better performance.</p>
 						<img src="BlogPictures/OmnidirectonalAntennaAndWiRoc.png" class="img-fluid rounded blog-img" />
 					</p>
 				  </div>
@@ -1872,6 +2102,9 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 					<div class="text-center">
 						<span class="lang-sv-inline">E-post: info (at) wiroc.se</span><span class="lang-en-inline">Email: info (at) wiroc.se</span>
 					</div>
+					<div class="text-center mt-2">
+						<small>&copy; Henrik Larsson</small>
+					</div>
 				</footer>
 			</div>
 
@@ -1910,6 +2143,59 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 		// Blog pagination (shared state)
 		var BLOG_PER_PAGE = 10;
 		var blogPage = 1;
+
+		// Image flipper
+		function updateFlipper(flipper) {
+			var images = flipper.querySelectorAll('.flip-image');
+			var dots = flipper.querySelectorAll('.flip-dot');
+			var caption = flipper.querySelector('.flip-caption');
+			var prev = flipper.querySelector('.flip-prev');
+			var next = flipper.querySelector('.flip-next');
+			var activeIdx = 0;
+			for (var i = 0; i < images.length; i++) {
+				if (images[i].classList.contains('active')) { activeIdx = i; break; }
+			}
+			// Update dots
+			for (var j = 0; j < dots.length; j++) {
+				dots[j].classList.toggle('active', j === activeIdx);
+			}
+			// Update caption
+			if (caption) {
+				var alt = images[activeIdx].getAttribute('alt') || '';
+				caption.textContent = alt;
+			}
+			// Update button visibility
+			if (prev) prev.style.display = activeIdx === 0 ? 'none' : '';
+			if (next) next.style.display = activeIdx >= images.length - 1 ? 'none' : '';
+		}
+
+		function flipImage(flipper, dir) {
+			var images = flipper.querySelectorAll('.flip-image');
+			var activeIdx = 0;
+			for (var i = 0; i < images.length; i++) {
+				if (images[i].classList.contains('active')) { activeIdx = i; break; }
+			}
+			var newIdx = activeIdx + dir;
+			if (newIdx < 0 || newIdx >= images.length) return;
+			images[activeIdx].classList.remove('active');
+			images[newIdx].classList.add('active');
+			updateFlipper(flipper);
+		}
+
+		function flipTo(flipper, idx) {
+			var images = flipper.querySelectorAll('.flip-image');
+			for (var i = 0; i < images.length; i++) {
+				images[i].classList.toggle('active', i === idx);
+			}
+			updateFlipper(flipper);
+		}
+
+		// Initialize all flippers on load
+		function initFlippers() {
+			document.querySelectorAll('.image-flipper').forEach(function(flipper) {
+				updateFlipper(flipper);
+			});
+		}
 
 		function initBlogPagination() {
 			var blogSv = document.querySelector('#pageBlog .lang-sv');
@@ -2073,7 +2359,8 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 				}
 			});
 
-			initBlogPagination();
+			initFlippers();
+		initBlogPagination();
 		});
 		//]]>
 		</script>
