@@ -90,11 +90,11 @@
 			}
 			.blog-date {
 				background-color: var(--wiroc-accent);
-				color: white;
+				color: var(--wiroc-primary-dark);
 				padding: 0.2rem 0.6rem;
 				border-radius: 1rem;
 				font-size: 0.8rem;
-				font-weight: 500;
+				font-weight: 600;
 				display: inline-block;
 				margin-bottom: 0.5rem;
 			}
@@ -139,8 +139,94 @@
 			.footer a:hover {
 				color: white;
 			}
+			.lang-en { display: none; }
+			html[lang="en"] .lang-sv { display: none; }
+			html[lang="en"] .lang-en { display: unset; }
+			html[lang="en"] .lang-sv-inline { display: none; }
+			html[lang="en"] .lang-en-inline { display: inline; }
+			.lang-en-inline { display: none; }
+			.lang-switch-btn {
+				padding: 0.3rem 0.6rem;
+				font-size: 0.85rem;
+				font-weight: 700;
+				line-height: 1.4;
+				border: 2px solid var(--wiroc-accent);
+				color: var(--wiroc-accent);
+				background: rgba(0,0,0,0.45);
+				border-radius: .35rem;
+				cursor: pointer;
+				transition: all 0.2s ease;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+			}
+			.lang-switch-btn:hover {
+				background: var(--wiroc-accent);
+				color: var(--wiroc-primary-dark);
+			}
+			.lang-switch-btn.active-lang {
+				background: var(--wiroc-accent);
+				color: var(--wiroc-primary-dark);
+				border-color: var(--wiroc-accent);
+				box-shadow: 0 0 8px rgba(255,193,7,0.5);
+			}
+			.lang-switch-btn:not(.active-lang) {
+				text-shadow: 0 0 6px rgba(0,0,0,0.7);
+			}
+			.blog-pagination {
+				text-align: center;
+				margin: 1rem 0;
+			}
+			.blog-pagination .btn {
+				margin: 0 0.25rem;
+			}
+			.blog-pagination .btn-primary {
+				background-color: var(--wiroc-primary);
+				border-color: var(--wiroc-primary);
+			}
+			.blog-pagination .btn-outline-primary {
+				color: var(--wiroc-primary);
+				border-color: var(--wiroc-primary);
+			}
+			.blog-pagination .btn-outline-primary:hover {
+				background-color: var(--wiroc-primary);
+				border-color: var(--wiroc-primary);
+				color: white;
+			}
+			.blog-card-hidden {
+				display: none !important;
+			}
+			.blog-summary { margin-bottom: 1.5rem; }
+			.blog-summary .card-body { padding: 1rem 1.25rem; }
+			.blog-summary details > summary {
+				font-weight: 700;
+				font-size: 1rem;
+				cursor: pointer;
+				color: var(--wiroc-primary);
+				user-select: none;
+			}
+			.blog-summary details > summary:hover { color: var(--wiroc-accent); }
+			.blog-summary-list {
+				list-style: none;
+				padding: 0;
+				margin: 0.5rem 0 0 0;
+				columns: 2;
+				column-gap: 1.5rem;
+			}
+			@media (max-width: 576px) { .blog-summary-list { columns: 1; } }
+			.blog-summary-list li { break-inside: avoid; margin-bottom: 0.3rem; }
+			.blog-summary-link {
+				font-size: 0.85rem;
+				color: var(--wiroc-primary);
+				text-decoration: none;
+			}
+			.blog-summary-link:hover { color: var(--wiroc-accent); text-decoration: underline; }
+			.blog-summary-date {
+				color: #888;
+				font-size: 0.75rem;
+				margin-right: 0.3rem;
+			}
 		</style>
-		<title>WiRoc – Trådlösa mellantider för orientering</title>
+		<title>WiRoc – Trådlösa mellantider för orientering | Wireless split times for orienteering</title>
 	</head>
 	<body>
 		<div class="container">
@@ -152,10 +238,14 @@
 						</div>
 						<div>
 							<h1 class="mb-0">WiRoc</h1>
-							<p class="mb-0">Trådlösa mellantider med LoRa</p>
+							<p class="mb-0"><span class="lang-sv-inline">Trådlösa mellantider med LoRa</span><span class="lang-en-inline">Wireless split times with LoRa</span></p>
 						</div>
 					</div>
-					<div>
+					<div class="d-flex align-items-center">
+						<div class="lang-switch mr-3">
+							<button class="lang-switch-btn active-lang mr-1" data-lang="sv" onclick="setLang('sv')">🇸🇪 SV</button>
+							<button class="lang-switch-btn" data-lang="en" onclick="setLang('en')">🇬🇧 EN</button>
+						</div>
 						<a class="btn btn-warning btn-lg" href="http://monitor.wiroc.se" style="box-shadow: 0 2px 6px rgba(255,193,7,0.35); font-size: 1.1rem; padding: 0.5rem 1.2rem;">Monitor</a>
 					</div>
 				</div>
@@ -167,19 +257,19 @@
 				    <a class="nav-link active" id="tabWiRoc" data-toggle="pill" href="#pageWiRoc" role="tab">WiRoc</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" id="tabProducts" data-toggle="pill" href="#pageProducts" role="tab">Produkter</a>
+				    <a class="nav-link" id="tabProducts" data-toggle="pill" href="#pageProducts" role="tab"><span class="lang-sv-inline">Produkter</span><span class="lang-en-inline">Products</span></a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" id="tabRange" data-toggle="pill" href="#pageRange" role="tab">Räckvidd</a>
+				    <a class="nav-link" id="tabRange" data-toggle="pill" href="#pageRange" role="tab"><span class="lang-sv-inline">Räckvidd</span><span class="lang-en-inline">Range</span></a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" id="tabConfig" data-toggle="pill" href="#pageConfig" role="tab">Konfiguration</a>
+				    <a class="nav-link" id="tabConfig" data-toggle="pill" href="#pageConfig" role="tab"><span class="lang-sv-inline">Konfiguration</span><span class="lang-en-inline">Configuration</span></a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" id="tabBlog" data-toggle="pill" href="#pageBlog" role="tab">Blogg</a>
+				    <a class="nav-link" id="tabBlog" data-toggle="pill" href="#pageBlog" role="tab"><span class="lang-sv-inline">Blogg</span><span class="lang-en-inline">Blog</span></a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" id="tabContact" data-toggle="pill" href="#pageContact" role="tab">Kontakt</a>
+				    <a class="nav-link" id="tabContact" data-toggle="pill" href="#pageContact" role="tab"><span class="lang-sv-inline">Kontakt</span><span class="lang-en-inline">Contact</span></a>
 				  </li>
 				</ul>
 			</nav>
@@ -188,6 +278,7 @@
 
 				<div class="tab-pane fade show active" id="pageWiRoc" role="tabpanel">
 					 <div class="container mt-md-2">
+						<div class="lang-sv">
 						<h2>WiRoc</h2>
 						<div class="card">
 						  <img class="card-img-top" src="WiRocv6Rev1.JPG" alt="WiRoc enhet"/>
@@ -205,11 +296,32 @@
 							</p>
 						  </div>
 						</div>
+						</div>
+						<div class="lang-en">
+						<h2>WiRoc</h2>
+						<div class="card">
+						  <img class="card-img-top" src="WiRocv6Rev1.JPG" alt="WiRoc unit"/>
+						  <div class="card-body">
+							<h5 class="card-title"></h5>
+							<p class="card-text">
+							WiRoc is a system for wirelessly sending split times from controls to the competition software. It uses LoRa technology. A WiRoc unit can act as a LoRa transmitter, LoRa receiver, or LoRa repeater. The receiver connects to the network (usually via WiFi) and is configured to send split times to the competition software via SIRAP/TCP. The system does not require mobile coverage, SIM cards, or an internet connection. Internet access however provides greater possibilities for monitoring the units. The units are small and rechargeable batteries are included — just connect to a USB port to charge.
+							</p><p class="card-text">
+							Configuration is simple and done with the WiRoc-Config mobile app. WiRoc-Config is also used to test that the transmitter reaches the receiver.
+							</p><p class="card-text">
+							The WiRoc unit can also be used for the finish line. If the finish line is within WiFi range, a WiRoc unit can send finish times directly via SIRAP/TCP to the competition software so times appear instantly in the speaker commentary. WiRoc has a built-in SRR receiver. The same unit can also simultaneously receive split times from the forest.
+							</p>
+							<p class="card-text">
+							WiRoc can also be used together with the official ROC server. When the function is activated, incoming punches are automatically forwarded to the ROC server, just like a regular ROC unit. LoRa, SIRAP, and ROC can all be used simultaneously.
+							</p>
+						  </div>
+						</div>
+						</div>
 					</div>
 				</div>
 				
 				<div class="tab-pane fade" id="pageProducts" role="tabpanel">
-					
+
+					<div class="lang-sv">
 					<div class="container mt-md-4">
 						<div class="card">
 						  <img class="card-img-top" src="WiRocv6Rev1.JPG" alt="WiRoc v6Rev1">
@@ -220,7 +332,7 @@
 						  </div>
 						</div>
 					</div>
-					
+
 					<div class="container mt-md-4">
 						<div class="card">
 						  <img class="card-img-top" src="DirectionalAntenna.jpg" alt="Yagi antenna">
@@ -231,7 +343,7 @@
 						  </div>
 						</div>
 					</div>
-					
+
 					<div class="container mt-md-4">
 						<div class="card">
 						  <img class="card-img-top" src="DipoleAntenna.jpg" alt="Dipole antenna">
@@ -242,7 +354,7 @@
 						  </div>
 						</div>
 					</div>
-					
+
 					<div class="container mt-md-4">
 						<div class="card">
 						  <img class="card-img-top" src="USBToBluetooth.jpg" alt="USB-till-Bluetooth adapter">
@@ -253,7 +365,7 @@
 						  </div>
 						</div>
 					</div>
-					
+
 					<div class="container mt-md-4">
 						<div class="card">
 						  <img class="card-img-top" src="RS232ToBluetooth.jpg" alt="RS232-till-Bluetooth adapter">
@@ -264,10 +376,69 @@
 						  </div>
 						</div>
 					</div>
-					
+					</div>
+
+					<div class="lang-en">
+					<div class="container mt-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="WiRocv6Rev1.JPG" alt="WiRoc v6Rev1">
+						  <div class="card-body">
+							<h4 class="card-title">WiRoc unit</h4>
+							<span class="price-tag">90 SEK/day incl. VAT (72 SEK excl. VAT)</span>
+							<p class="card-text">The most common scenario for a radio control in the forest is to use a WiRoc unit configured as a transmitter at or near the control and a WiRoc unit configured as a receiver at the event centre. The receiver connects to the local WLAN/WiFi network and is configured to send to the competition software over SIRAP/TCP. The SportIdent unit can be connected to the WiRoc transmitter in several different ways depending on the type of SportIdent unit.<br/><br/><h5>SportIdent unit with USB cable</h5>If the SportIdent unit has a USB cable, it can be connected directly to the WiRoc unit (possibly with a USB extension cable and/or USB hub). Another option is to connect the SportIdent unit to a USB-to-Bluetooth adapter. In WiRoc-Config you can then search for and connect to the USB-to-Bluetooth adapter.<br/><br/><h5>SportIdent unit with RS232 serial cable</h5>If the SportIdent unit has an RS232 serial cable, it can be connected via a USB adapter (note that not all adapters are supported). There are also RS232-to-Bluetooth adapters to connect the SportIdent unit to. In WiRoc-Config you can then search for and connect the RS232-to-Bluetooth adapter. Some WiRoc units have a built-in RS232 port so it can be connected directly.<br/><br/><h5>SportIdent SRR unit</h5>To use a SportIdent SRR unit, you need to use an SRR USB Dongle that plugs into the WiRoc unit.</p>
+						  </div>
+						</div>
+					</div>
+
+					<div class="container mt-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="DirectionalAntenna.jpg" alt="Yagi antenna">
+						  <div class="card-body">
+							<h4 class="card-title">Yagi directional antenna</h4>
+							<span class="price-tag">50 SEK/day incl. VAT (40 SEK excl. VAT)</span>
+							<p class="card-text">A directional antenna connected to either the receiver or transmitter — or both — significantly improves the range.</p>
+						  </div>
+						</div>
+					</div>
+
+					<div class="container mt-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="DipoleAntenna.jpg" alt="Dipole antenna">
+						  <div class="card-body">
+							<h4 class="card-title">Dipole antenna</h4>
+							<span class="price-tag">30 SEK/day incl. VAT (24 SEK excl. VAT)</span>
+							<p class="card-text">Note that a dipole antenna is included when renting a WiRoc unit (if no directional antenna is rented).</p>
+						  </div>
+						</div>
+					</div>
+
+					<div class="container mt-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="USBToBluetooth.jpg" alt="USB-to-Bluetooth adapter">
+						  <div class="card-body">
+							<h4 class="card-title">USB-to-Bluetooth adapter</h4>
+							<span class="price-tag">50 SEK/day incl. VAT (40 SEK excl. VAT)</span>
+							<p class="card-text">Used to wirelessly connect a SportIdent unit with USB cable to a WiRoc unit. This makes it easier to place the WiRoc unit with antenna higher up, e.g. in a tree.</p>
+						  </div>
+						</div>
+					</div>
+
+					<div class="container mt-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="RS232ToBluetooth.jpg" alt="RS232-to-Bluetooth adapter">
+						  <div class="card-body">
+							<h4 class="card-title">RS232-to-Bluetooth adapter</h4>
+							<span class="price-tag">50 SEK/day incl. VAT (40 SEK excl. VAT)</span>
+							<p class="card-text">Used to wirelessly connect a SportIdent unit with RS232 serial cable to a WiRoc unit. This makes it easier to place the WiRoc unit with antenna higher up, e.g. in a tree.</p>
+						  </div>
+						</div>
+					</div>
+					</div>
+
 				</div>
 
 				<div class="tab-pane fade" id="pageRange" role="tabpanel">
+					<div class="lang-sv">
 					<div class="container">
 						<h2>Räckvidd</h2>
 						Räckvidden beror på många faktorer där de främsta är terrängen, vilka antenner som används och datahastigheten. Se några verkliga exempel från tävlingar längre ner.
@@ -285,7 +456,7 @@
 							</div>
 							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 								<div class="card h-100">
-								  <img class="card-img-top" src="DirectionalAntenna.jpg" alt="Dipolantenn">
+								  <img class="card-img-top" src="DirectionalAntenna.jpg" alt="Riktantenn">
 								  <div class="card-body">
 									<h5 class="card-title">Riktantenn</h5>
 									<p class="card-text">Riktantenn ger bättre räckvidd, denna är ca 45x30 cm.</p>
@@ -295,7 +466,7 @@
 						</div>
 						<h2>Exempel</h2>
 					</div>
-					
+
 					<div class="container mt-md-2">
 						<div class="card">
 						  <a href="RangeUlrikLangDM2023YagiToYagi.png" target="_blank"><img class="card-img-top" src="RangeUlrikLangDM2023YagiToYagi.png" alt="Yagiantenn till Yagiantenn"></a>
@@ -305,7 +476,7 @@
 						  </div>
 						</div>
 					</div>
-					
+
 					<div class="container mt-md-2">
 						<div class="card">
 						  <a href="RangeUlrikLangDM2023DipoleToDipole.png" target="_blank"><img class="card-img-top" src="RangeUlrikLangDM2023DipoleToDipole.png" alt="Dipolantenn till dipoleantenn"></a>
@@ -315,14 +486,14 @@
 						  </div>
 						</div>
 					</div>
-					
-					
+
+
 					<div class="container mt-md-2"><hr/></div>
 					<div class="container">
 						<h2>Äldre exempel</h2>
 						Nedanstående exempel är med en tidigare version av WiRoc. Nuvarande räckvidd bör dock vara minst lika bra.
 					</div>
-					
+
 					<div class="container mt-md-2">
 						<div class="card">
 						  <img class="card-img-top" src="RangeDipoleToDipole1.png" alt="Dipolantenn till dipoleantenn">
@@ -362,9 +533,108 @@
 						  </div>
 						</div>
 					</div>
+					</div>
+
+					<div class="lang-en">
+					<div class="container">
+						<h2>Range</h2>
+						The range depends on many factors, the main ones being terrain, which antennas are used, and the data rate. See some real-world examples from competitions below.
+						<h2>Antennas</h2>
+						Which antenna is used on the transmitter and receiver respectively has a major impact on range.
+						<div class="d-flex row flex-wrap align-content-stretch mb-2">
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+								<div class="card h-100">
+								  <img class="card-img-top" src="DipoleAntenna.jpg" alt="Dipole antenna">
+								  <div class="card-body">
+									<h5 class="card-title">Dipole antenna</h5>
+									<p class="card-text">Small dipole antenna that connects directly to the WiRoc unit. Size approx. 10x30 cm.</p>
+								  </div>
+								</div>
+							</div>
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+								<div class="card h-100">
+								  <img class="card-img-top" src="DirectionalAntenna.jpg" alt="Directional antenna">
+								  <div class="card-body">
+									<h5 class="card-title">Directional antenna</h5>
+									<p class="card-text">Directional antenna provides better range, approx. 45x30 cm.</p>
+								  </div>
+								</div>
+							</div>
+						</div>
+						<h2>Examples</h2>
+					</div>
+
+					<div class="container mt-md-2">
+						<div class="card">
+						  <a href="RangeUlrikLangDM2023YagiToYagi.png" target="_blank"><img class="card-img-top" src="RangeUlrikLangDM2023YagiToYagi.png" alt="Yagi to Yagi antenna"></a>
+						  <div class="card-body">
+							<h5 class="card-title">Lång DM Östergötland 2023</h5>
+							<p class="card-text">Distance between control 4 and finish is 3150 m. A yagi directional antenna was used on both the transmitter and receiver. Extra long range (XL) setting, data rate 134 bps.</p>
+						  </div>
+						</div>
+					</div>
+
+					<div class="container mt-md-2">
+						<div class="card">
+						  <a href="RangeUlrikLangDM2023DipoleToDipole.png" target="_blank"><img class="card-img-top" src="RangeUlrikLangDM2023DipoleToDipole.png" alt="Dipole to dipole antenna"></a>
+						  <div class="card-body">
+							<h5 class="card-title">Lång DM Östergötland 2023</h5>
+							<p class="card-text">Distance between control 14 and finish is 700 m. A dipole antenna was used on both the transmitter and receiver. Long range (L) setting (default), data rate 244 bps.</p>
+						  </div>
+						</div>
+					</div>
+
+
+					<div class="container mt-md-2"><hr/></div>
+					<div class="container">
+						<h2>Older examples</h2>
+						The examples below are with an earlier version of WiRoc. Current range should be at least as good.
+					</div>
+
+					<div class="container mt-md-2">
+						<div class="card">
+						  <img class="card-img-top" src="RangeDipoleToDipole1.png" alt="Dipole to dipole antenna">
+						  <div class="card-body">
+							<h5 class="card-title">Skullebomedeln</h5>
+							<p class="card-text">Distance between control 9 and finish is 600 m. A small dipole antenna was used on both transmitter and receiver. Low data rate/long range setting.</p>
+						  </div>
+						</div>
+					</div>
+
+					<div class="container mt-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="RangeDipoleToDirectional1.png" alt="Dipole to directional antenna">
+						  <div class="card-body">
+							<h5 class="card-title">Lång DM</h5>
+							<p class="card-text">Distance between control 14 and finish is 760 m. A small dipole antenna was used on the transmitter and the receiver used a directional antenna. Low data rate/long range setting. Would likely have worked with a dipole antenna on the receiver as well.</p>
+						  </div>
+						</div>
+					</div>
+
+					<div class="container mt-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="RangeDipoleToDirectional2.png" alt="Dipole to directional antenna">
+						  <div class="card-body">
+							<h5 class="card-title">Ulrikadubbeln</h5>
+							<p class="card-text">Distance from control 5 to finish is 1.5 km, the control is on high ground with near line-of-sight to the finish. A small dipole antenna was used on the transmitter and a directional antenna on the receiver. Would likely have worked with a dipole antenna on the receiver as well.</p>
+						  </div>
+						</div>
+					</div>
+
+					<div class="container mt-md-4">
+						<div class="card">
+						  <img class="card-img-top" src="RangeDirectionalToDirectional1.png" alt="Directional to directional antenna">
+						  <div class="card-body">
+							<h5 class="card-title">Lång DM</h5>
+							<p class="card-text">Distance from control 7 to finish is 1.8 km with several smaller hills in between. Directional antennas were used on both transmitter and receiver. Low data rate/long range setting.</p>
+						  </div>
+						</div>
+					</div>
+					</div>
 				</div>
 
 				<div class="tab-pane fade" id="pageConfig" role="tabpanel">
+					<div class="lang-sv">
 					<div class="container">
 						<h2>Konfiguration</h2>
 						WiRoc-enheterna konfigureras med Android-applikationen "WiRoc Config".
@@ -578,12 +848,232 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				
-				<div class="tab-pane fade" id="pageBlog" role="tabpanel">
-					<div class="container">
-						<h2>Blog</h2>
 					</div>
+
+					<div class="lang-en">
+					<div class="container">
+						<h2>Configuration</h2>
+						WiRoc units are configured using the Android app "WiRoc Config".
+					</div>
+					<div class="container">
+
+						<h3 class="mt-3">Scan</h3>
+						<div class="d-flex row flex-wrap align-content-stretch mb-2">
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_Scan.jpg" alt="Search for WiRoc units">
+								  <div class="card-body">
+									<h5 class="card-title">Search for units</h5>
+									<p class="card-text">Start the WiRoc unit and click Scan in the app. When the unit has started up it appears in the list. The default name is "WiRoc Device" but it is recommended to change the name to distinguish them. If there are several with the same name, you can tell them apart by signal strength – the one with the highest signal strength is the closest.</p>
+								  </div>
+								</div>
+							</div>
+						</div>
+
+						<h3 class="mt-3">Config</h3>
+						<div class="d-flex row flex-wrap align-content-stretch mb-2">
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigLora.jpg" alt="LoRa radio settings">
+								  <div class="card-body">
+									<h5 class="card-title">LoRa – Channel / Speed</h5>
+									<p class="card-text">Select function, channel, data rate etc. for the LoRa radio. Set the same on both transmitter and receiver. The lowest data rate gives the longest range but fewer punches per minute. However, other factors have a greater impact on range so the two lowest data rates are not recommended except in specific cases. Output power and compatibility mode for DRF1268DS (WiRoc v7 and earlier) is also selected here, as well as which channels are available depending on whether compatibility mode or amateur radio mode is active.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigSIRAP.jpg" alt="SIRAP settings">
+								  <div class="card-body">
+									<h5 class="card-title">SIRAP</h5>
+									<p class="card-text">Set the IP address and port to which punches will be sent via SIRAP TCP/IP. For Meos the default port is 10000, for OLA 10001 (only tested with these programs). Regardless of which LoRa function the WiRoc unit has, SIRAP TCP/IP can be enabled.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigROC.jpg" alt="ROC settings">
+								  <div class="card-body">
+									<h5 class="card-title">ROC</h5>
+									<p class="card-text">Here you can configure the unit to send punches to the official ROC server. When the function is activated, incoming punches are automatically forwarded to the ROC server, just like a regular ROC unit.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigSRR.jpg" alt="SRR settings">
+								  <div class="card-body">
+									<h5 class="card-title">SRR</h5>
+									<p class="card-text">Settings for the built-in SRR receivers. Here you can enable/disable SRR receivers for red and blue channels, and choose whether they should send ACK (acknowledgement) back to the SIAC/SRR units. SRR can also be set to transmit mode so that it sends out punches that can be received by another WiRoc or an SRR dongle.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigUSB.jpg" alt="USB settings">
+								  <div class="card-body">
+									<h5 class="card-title">USB</h5>
+									<p class="card-text">Manage connected USB devices such as SI master stations or SRR dongles. Here you can enable "One-way" communication (listen only, no commands sent) for the USB ports. Useful for SRR dongles or collection boxes that should not receive commands from WiRoc.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigSerial.jpg" alt="Serial port settings">
+								  <div class="card-body">
+									<h5 class="card-title">Serial port</h5>
+									<p class="card-text">Settings for the built-in serial port. Here you can enable "One-way" communication (listen only, no commands sent) for communication with SI units or collection boxes connected via serial cable. The serial port can also be used to send data to a computer, another WiRoc, or a collection box.</p>
+								  </div>
+								</div>
+							</div>
+						</div>
+
+						<h3 class="mt-3">Network</h3>
+						<div class="d-flex row flex-wrap align-content-stretch mb-2">
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_NetworkWifi.jpg" alt="WiFi settings">
+								  <div class="card-body">
+									<h5 class="card-title">WiFi</h5>
+									<p class="card-text">Connect the WiRoc unit to a WiFi network. Click "Get/Refresh wifi list" to see available networks. Select a network and enter the password to connect. The receiver unit must be connected to the network to send punches via SIRAP. The unit's IP address is displayed at the top when connected.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_NetworkEthernet.jpg" alt="Ethernet settings">
+								  <div class="card-body">
+									<h5 class="card-title">Ethernet</h5>
+									<p class="card-text">Here you can see the IP address for Ethernet connections (e.g. USB-Ethernet adapter) and Tailscale VPN IP.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_NetworkTailscale1.jpg" alt="Tailscale VPN settings">
+								  <div class="card-body">
+									<h5 class="card-title">Tailscale VPN</h5>
+									<p class="card-text">Connect the WiRoc unit to a Tailscale network. With Tailscale you can reach the unit from anywhere, even behind firewalls. The unit gets a fixed IP address (100.x.x.x) on the Tailscale network. Useful for remote monitoring, troubleshooting, or sending punches to a computer in another location. Requires a free account at tailscale.com.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_NetworkWifiMesh.jpg" alt="WiFi Mesh settings">
+								  <div class="card-body">
+									<h5 class="card-title">WiFi Mesh</h5>
+									<p class="card-text">Configure WiFi mesh networks (802.11s) to extend the range of the WiFi network. Useful when a control is outside normal WiFi range. Requires a compatible USB WiFi dongle (e.g. Atheros AR9271). Here you can also set restricted access to the local network and specify rules for permitted traffic.</p>
+								  </div>
+								</div>
+							</div>
+
+						</div>
+
+						<h3 class="mt-3">Test</h3>
+						<div class="d-flex row flex-wrap align-content-stretch mb-2">
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_TestSend.jpg" alt="Test transmission">
+								  <div class="card-body">
+									<h5 class="card-title">Test transmission</h5>
+									<p class="card-text">Send test messages to verify that the LoRa link between transmitter and receiver is working. Here you can see signal strength (RSSI and SNR) and which messages were acknowledged back. Useful during setup to check that placement and antenna direction are good. Can also be used to send via SIRAP TCP/IP, ROC, and other output methods. The screenshot shows a punch sent to both SIRAP and ROC.</p>
+								  </div>
+								</div>
+							</div>
+						</div>
+
+						<h3 class="mt-3">Other</h3>
+						<div class="d-flex row flex-wrap align-content-stretch mb-2">
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherDatabase.jpg" alt="Database">
+								  <div class="card-body">
+									<h5 class="card-title">Database</h5>
+									<p class="card-text">Manage the unit's internal database with punches and configuration. The database can be cleared of punches, or it can be completely recreated (losing both settings and punches).</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherDateTime.jpg" alt="Date and time">
+								  <div class="card-body">
+									<h5 class="card-title">Date &amp; Time</h5>
+									<p class="card-text">Set the date and time on the unit. Correct time is important for logs to have the right timestamp, and for punches sent to the ROC server to have the correct date. The unit normally syncs time automatically when it has internet connection and WiRoc V7 and later have an RTC chip that keeps time even when the unit is powered off.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherStatus.jpg" alt="Unit status">
+								  <div class="card-body">
+									<h5 class="card-title">Status</h5>
+									<p class="card-text">Shows the unit's current status, whether services are running properly, which inputs/outputs are active, etc.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherSettings.jpg" alt="Other settings">
+								  <div class="card-body">
+									<h5 class="card-title">Settings</h5>
+									<p class="card-text">Here you can change all settings, including advanced ones that don't have a dedicated user interface.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherAmateurRadio.jpg" alt="Amateur radio">
+								  <div class="card-body">
+									<h5 class="card-title">Amateur radio</h5>
+									<p class="card-text">Settings for amateur radio mode. Here you specify whether the mode should be activated and which callsign to use for amateur radio frequencies. The callsign is sent regularly as part of the radio transmissions in accordance with applicable regulations.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_MonitorAccess.jpg" alt="Monitor access">
+								  <div class="card-body">
+									<h5 class="card-title">Monitor access</h5>
+									<p class="card-text">Here you grant a username access to the WiRoc unit on monitor.wiroc.se so that the user can assign the unit to a competition, clear statistics, etc.</p>
+								  </div>
+								</div>
+							</div>
+
+							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+								<div class="card h-100">
+								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherUpdate.jpg" alt="Software update">
+								  <div class="card-body">
+									<h5 class="card-title">Update</h5>
+									<p class="card-text">Update the unit's software to the latest version. The unit searches for available updates and you can choose to install them directly. Keep the software updated to get the latest features and bug fixes.</p>
+								  </div>
+								</div>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+
+				<div class="tab-pane fade" id="pageBlog" role="tabpanel">
+					<div class="lang-sv">
+					<div class="container">
+						<h2>Blogg</h2>
+					</div>
+
+					<div class="blog-summary card blog-summary-row"></div>
 
           <div class="card">
 						  <div class="card-body">
@@ -1116,12 +1606,262 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 						  </div>
 						</div>
 					</div>
+					</div>
+
+					<div class="lang-en">
+					<div class="container">
+						<h2>Blog</h2>
+					</div>
+
+					<div class="blog-summary card blog-summary-row"></div>
+          <div class="card">
+				  <div class="card-body">
+					<h3 class="card-title">Send punches to the ROC server</h3>
+					<p class="card-text">
+						<span class="blog-date">2026-08-04</span>
+						<p>WiRoc can now send punches directly to a ROC server. Previously, WiRoc offered a ROC-compatible API from which punches could be fetched instead of from the official ROC server. With the new feature, WiRoc can actively send (push) punches to the official ROC server, the same way a regular ROC unit does.</p>
+						<p>This means WiRoc integrates seamlessly into an existing ROC system. To send punches, the WiRoc unit needs an internet connection (via WiFi, USB-Ethernet, WiFi-mesh). The feature can be used on WiRoc units configured as LoRa transmitter, LoRa receiver, or LoRa repeater. The different output options can be used in parallel, so punches can be sent via both LoRa, SIRAP/TCP, and to the ROC server simultaneously.</p>
+						<p>In the ROC server interface, it looks like the punches come from any regular ROC unit. This makes it possible to use WiRoc as a complement to ROC in the same competition — for example, ROC at controls near the arena where WiFi or mobile coverage exists, while WiRoc is used at controls further out in the forest where LoRa communication is more reliable.</p>
+						<p>The feature is available from WiRoc software version v1.45.</p>
+					</p>
+				  </div>
+				</div>
+
+          <div class="card">
+				  <div class="card-body">
+					<h3 class="card-title">WiFi-mesh – Restrict access to the local network</h3>
+					<p class="card-text">
+						<span class="blog-date">2026-08-03</span>
+						<p>The WiFi-mesh feature in WiRoc has a new setting: Restrict access. When enabled, devices on the mesh network cannot reach the local network (LAN) that the mesh nodes are connected to. This provides better control over what is accessible from the mesh network.</p>
+						<p>When Restrict access is enabled, mesh devices can still communicate with each other within the mesh network and with the WiRoc units' own services. Internet traffic is always allowed through.</p>
+						<p>To allow specific traffic from the mesh network to the local network, you can specify the destination IP address, port, and protocol. This way, for example, you can allow punches to be sent via TCP/SIRAP to a receiver computer on the local network, while other access to the LAN is blocked.</p>
+						<p>Available from software version v1.44.</p>
+					</p>
+				  </div>
+				</div>
+
+          <div class="card">
+				  <div class="card-body">
+					<h3 class="card-title">Tailscale VPN in WiRoc</h3>
+					<p class="card-text">
+						<span class="blog-date">2026-08-03</span>
+						<p>WiRoc now supports Tailscale VPN. Tailscale is a VPN service built on WireGuard that makes it easy to create a secure network between different devices, regardless of where they are or how they connect to the internet.</p>
+						<p>With Tailscale enabled on a WiRoc unit with internet connection, the unit can be reached from other devices also connected to the same Tailscale network. This means you can, for example, reach a WiRoc unit out in the forest from your computer at home.</p>
+						<p>Use cases include troubleshooting and monitoring, and sending punches via SIRAP/ROC to a computer not on the same local network. Requires a free account at tailscale.com.</p>
+						<p>Supported from WiRoc software version v1.43.</p>
+					</p>
+				  </div>
+				</div>
+
+          <div class="card">
+				  <div class="card-body">
+					<h3 class="card-title">ROC-compatible API for punch retrieval</h3>
+					<p class="card-text">
+						<span class="blog-date">2026-08-02</span>
+						<p>A new ROC-compatible API is available in WiRoc, making it possible to connect from competition software and fetch punches directly from a WiRoc unit via the ROC protocol. The address is <code>http://&lt;wiroc-ip&gt;:5000/api/roc</code>. The parameter "unitid" is ignored by WiRoc and can be set to e.g. 1.</p>
+						<p>The API supports long polling, meaning incoming punches are delivered quickly. Set a short polling interval, e.g. 100 ms. If there is no punch to fetch, WiRoc will block for up to 30 seconds and then return a punch immediately when one arrives. Both this API and TCP/IP SIRAP can be used in parallel.</p>
+					</p>
+				  </div>
+				</div>
+
+          <div class="card">
+				  <div class="card-body">
+					<h3 class="card-title">WiRoc V8 – new hardware and improved LoRa communication</h3>
+					<p class="card-text">
+						<span class="blog-date">2026-07-12</span>
+						<p>After testing the new hardware, version 8 of WiRoc is now ready to move forward. The biggest change is moving to a custom SBC (Single Board Computer) instead of the NanoPi Neo Air used previously. Having custom hardware provides significantly more freedom in design and makes future improvements easier.</p>
+						<p>The new version features new modules for WiFi, Bluetooth, and LoRa. The WiFi module now supports 5 GHz and has improved 2.4 GHz range. The new LoRa module provides full control over all LoRa settings, enabling smaller message sizes and faster ACK responses, increasing the number of punches per minute without increasing data rate. Up to 12 different channels are available, while maintaining backward compatibility with previous WiRoc versions.</p>
+						<p>Like previous versions, it has built-in SRR receivers for both Red and Blue channels, two USB host ports, and a serial port for connecting master stations or collection boxes.</p>
+					</div>
+				</div>
+
+          <div class="card">
+				  <div class="card-body">
+					<h3 class="card-title">Guest post: Wharfedale Three Peaks 2026</h3>
+					<p class="card-text">
+						<span class="blog-date">2026-07-02</span>
+						<p>Report from Ben in the UK. Ben bought a number of WiRoc kits, assembled them, and got everything working in short time for the Wharfedale Three Peaks event on 27th June 2026.</p>
+						<p>Six WiRoc units were used: one receiver at the finish (R1) feeding SiTiming over SIRAP, and five senders (S1–S5) covering the manned checkpoints. The LoRa network delivered 791 of 901 punches (88%) from the five hill sites. Great Whernside (S1) also ran as a repeater, relaying data from valley sites that couldn't reach base directly.</p>
+						<p>The main finding was that most losses were caused by R1 freezing under early load, not radio problems. After a field patch stabilized performance, losses dropped to near zero after 13:00. Overall a very successful first outing, and the organizers have already booked for next year.</p>
+						<p>Read the full report (in Swedish) for detailed analysis, maps, and photos.</p>
+					</p>
+				  </div>
+				</div>
+
+				<div class="card">
+				  <div class="card-body">
+					<h3 class="card-title">New hardware (WiRoc V8 prototype)</h3>
+					<p class="card-text">
+						<span class="blog-date">2026-06-15</span>
+						<p>Recently tested the next version of the hardware. The biggest change in many years — instead of building on a purchased SBC (NanoPi Neo Air), the processor, memory, and eMMC are now integrated on the PCB together with a new LoRa radio module. The advantages are mainly more flexibility and no longer being dependent on the availability of NanoPi Neo Air. The new LoRa radio provides more options to customize exactly how messages are sent, allowing us to squeeze out a bit more performance. We should be able to increase the number of punches per second and also offer more channels.</p>
+						<img src="BlogPictures/WiRoc_v8.png" class="img-fluid rounded blog-img" />
+					</p>
+				  </div>
+				</div>
+
+				<div class="card blog-pg">
+				  <div class="card-body">
+					<h3 class="card-title">New omnidirectional antenna</h3>
+					<p class="card-text">
+						<span class="blog-date">2026-05-01</span>
+						<p>Tested a new omnidirectional antenna combined with a hook at the top and a holder for WiRoc underneath. This makes it easy to hang it from a branch, often right above the control. Initial tests indicate it is as good or perhaps better than Yagi directional antennas. Compared to Yagi: more compact, no antenna elements to lose, no aiming needed, and other transmitters nearby can better detect its transmissions. Compared to the dipole: significantly better performance.</p>
+						<img src="BlogPictures/OmnidirectonalAntennaAndWiRoc.png" class="img-fluid rounded blog-img" />
+					</p>
+				  </div>
+				</div>
+
+				<div class="card blog-pg">
+				  <div class="card-body">
+					<h3 class="card-title">WiFi-mesh competition testing</h3>
+					<p class="card-text">
+						<span class="blog-date">2026-04-30</span>
+						<p>Tested WiFi-mesh at a double competition this weekend. It worked excellently — stable with better range than expected. Day 1 used four mesh nodes with USB WiFi dongles (Atheros AR9271), all staying online. Day 2 used only two nodes, both stable throughout.</p>
+						<img src="BlogPictures/WifiMeshTestCompetitionSmaller.png" class="img-fluid rounded blog-img" />
+						<img src="BlogPictures/Wifi-mesh-enhet.jpg" class="img-fluid rounded blog-img" />
+					</p>
+				  </div>
+				</div>
+
+				<div class="card blog-pg">
+				  <div class="card-body">
+					<h3 class="card-title">WiFi-mesh initial tests</h3>
+					<p class="card-text">
+						<span class="blog-date">2026-01-22</span>
+						<p>Tested WiFi mesh (802.11s) on WiRoc units using USB WiFi dongles (Atheros AR9271). WPA encryption wasn't reliable, but as an open network it worked well. 3D-printed holders solved USB connection looseness. This could be an option for the last control just outside WiFi range — lightning-fast transmission without using a LoRa channel.</p>
+						<img src="BlogPictures/WiRocConfigWifiMesh.jpg" class="img-fluid rounded blog-img" />
+						<p>Tested with four units: first on a balcony (internet-connected), second ~100m away, third another ~100m, fourth at ~80m (shaky, stabilized at ~50m).</p>
+						<img src="BlogPictures/WifiMeshTestMap.png" class="img-fluid rounded blog-img" />
+					</p>
+				  </div>
+				</div>
+
+				<div class="card blog-pg">
+				  <div class="card-body">
+					<h3 class="card-title">Better battery management</h3>
+					<p class="card-text">
+						<span class="blog-date">2025-12-11</span>
+						<p>v1.04 improves battery capacity calculation — more accurate and linear. Enables using more battery capacity, adding over two hours of runtime. Battery life depends on USB devices and punch volume: at least 12 hours, up to ~22 hours without USB devices.</p>
+					</p>
+				  </div>
+				</div>
+
+				<div class="card blog-pg">
+				  <div class="card-body">
+					<h3 class="card-title">Improvements to monitor.wiroc.se</h3>
+					<p class="card-text">
+						<span class="blog-date">2025-12-10</span>
+						<p>New battery column on the device list. Device detail page now shows unacknowledged LoRa messages (orange) and unacknowledged punches (red) in 5-minute intervals — useful for early detection of poor links. Also shows connected USB devices: which SRR dongles are connected, channels, and ACK status. Critical because a powered-but-undetected dongle can silently lose punches.</p>
+					</p>
+				  </div>
+				</div>
+
+				<div class="card blog-pg">
+				  <div class="card-body">
+					<h3 class="card-title">Built-in SRR receiver</h3>
+					<p class="card-text">
+						<span class="blog-date">2025-11-01</span>
+						<p>Since hardware v7, WiRoc has two built-in SRR receivers — one for red channel, one for blue. Individually enable/disable and configure ACK.</p>
+					</p>
+				  </div>
+				</div>
+
+				<div class="card blog-pg">
+				  <div class="card-body">
+					<h3 class="card-title">O-Ringen Jönköping 2025</h3>
+					<p class="card-text">
+						<span class="blog-date">2025-09-15</span>
+						<p>WiRoc used primarily for pre-warning controls (4-8 per stage). Also captured touch-free finish punches alongside collection boxes.</p>
+						<h4>Pre-warning controls</h4>
+						<p>Perfect for WiRoc — close range, minimal testing needed. With up to 8 controls and 6 channels, sharing worked fine when controls could hear each other. A receiver issue emerged: units spent too long on error correction of corrupted messages, appearing hung. Since fixed with a timeout.</p>
+						<h4>Radio controls</h4>
+						<p>Stage 1: Four controls on one channel, farthest at 3-3.7 km. Receiver on high ground with WiFi link back — total success. Stage 3: Relay setup via a hilltop control with serial cable forwarding — functional with minor delays. Stage 4: Amateur radio mode tested at ~4 km — all punches acknowledged first try, no retransmissions.</p>
+						<h4>SRR</h4>
+						<p>Not 100% reliable — runner body-blocking can lose a few percent of punches. Multiple receivers at different angles help. A SportIdent SRR dongle issue: sometimes powered and acknowledging but undetected by WiRoc/ROC, silently losing punches. Monitoring routine established.</p>
+					</p>
+				  </div>
+				</div>
+
+				<div class="card blog-pg">
+				  <div class="card-body">
+					<h3 class="card-title">Equipment rental</h3>
+					<p class="card-text">
+						<span class="blog-date">2023-09-06</span>
+						<p>The Products tab lists available rental equipment. Email info (at) wiroc.se or henrik.larsson (at) chenfei.se. Send a map with planned radio controls for an assessment of suitable equipment.</p>
+					</p>
+				  </div>
+				</div>
+
+				<div class="card blog-pg">
+				  <div class="card-body">
+					<h3 class="card-title">SportIdent SRR support</h3>
+					<p class="card-text">
+						<span class="blog-date">2022-06-05</span>
+						<p>Support for SportIdent SRR units and USB SRR Dongles implemented in v0.237. SRR Dongles are auto-detected and set to one-way mode. Earlier versions work with manual one-way setting.</p>
+					</p>
+				  </div>
+				</div>
+
+				<div class="card blog-pg">
+				  <div class="card-body">
+					<h3 class="card-title">Radio interference experiences</h3>
+					<p class="card-text">
+						<span class="blog-date">2022-06-03</span>
+						<p>Two competitions near Forsheda revealed a power line ~90m from the receiver causing interference. A remote finish ~1400m away struggled despite directional antennas and lower data rates. A control 50m from the receiver also had problems — both in the power line's direction.</p>
+						<p>Extensive log analysis led to improved error correction: Reed-Solomon coding, message structure knowledge, and a technique from academic research. Testing near a transformer station went from nearly impossible to most messages getting through.</p>
+					</p>
+				  </div>
+				</div>
+
+				<div class="card blog-pg">
+				  <div class="card-body">
+					<h3 class="card-title">Software improvements (Reed-Solomon, new format)</h3>
+					<p class="card-text">
+						<span class="blog-date">2021-10-09</span>
+						<p>New radio modes XL and UL (slower, longer range). Implemented: Reed-Solomon error correction, new message format halving byte count, and a two-punch message type. Preliminary tests: ~2 punches/second, enabling last-control use at O-Ringen (~1.5 runners/second peak).</p>
+					</p>
+				  </div>
+				</div>
+
+				<div class="card blog-pg">
+				  <div class="card-body">
+					<h3 class="card-title">WiRoc V3 – new hardware</h3>
+					<p class="card-text">
+						<span class="blog-date">2020-05-23</span>
+						<a href="WiRocNanoPiV3R1Rotate.mp4" alt="video"><img class="centered" src="BlogWiRocNanoPiV3R1.png" alt="WiRoc version 3 rev 2"/></a>
+						<p>New version: 6 non-overlapping channels, 2 USB ports, proper WiFi antenna, smaller size (84×59×34mm). Software: ~1.2 punches/sec with ACK, ~2 without. Support for USB-serial adapters (PL2303, FT232, ATEN), 9600bps baudrate for collection boxes.</p>
+					</p>
+				  </div>
+				</div>
+
+				<div class="card blog-pg">
+				  <div class="card-body">
+					<h3 class="card-title">O-Ringen Kolmården 2019</h3>
+					<p class="card-text">
+						<p>Managed three categories of online controls: forest radios, start/check units, and finish controls.</p>
+						<h4>Start/Check units</h4>
+						<p>ROCs with Telia USB dongles. Issues discovered during prep: faulty Y-cable causing disconnects, prepaid SIM data exhaustion (ROC sending duplicate punches), firmware bug (reconnecting SI unit within 10 seconds caused duplicate punch requests). All resolved before competition week.</p>
+						<h4>Forest controls</h4>
+						<p>O-Ringen's NET1 ROCs (heavy, motorcycle battery). NET1 mast decommissioned in Norrköping caused unstable connections. After Bagheera relay problems, WiRoc was deployed as backup option with a repeater on a hill. From first regular day, everything worked without issue.</p>
+						<h4>WiRoc</h4>
+						<p>Used successfully on MTBO controls, elite sprint pre-warning, and a stage 4 control. Improvements identified: more non-overlapping channels, faster throughput for last control use, more USB ports to avoid hubs, serial port support.</p>
+					</p>
+				  </div>
+				</div>
+				</div>
 				</div>
 
 				<div class="tab-pane fade" id="pageContact" role="tabpanel">
+					<div class="lang-sv">
 					<h2>Kontakt</h2>
 					<div class="container">
 						   E-post: info(at)wiroc.se
+					</div>
+					</div>
+					<div class="lang-en">
+					<h2>Contact</h2>
+					<div class="container">
+						   Email: info(at)wiroc.se
+					</div>
 					</div>
 				</div>
 			</div>
@@ -1130,7 +1870,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 		<div class="container">
 				<footer class="footer rounded" style="border-radius: .5rem;">
 					<div class="text-center">
-						E-post: info (at) wiroc.se
+						<span class="lang-sv-inline">E-post: info (at) wiroc.se</span><span class="lang-en-inline">Email: info (at) wiroc.se</span>
 					</div>
 				</footer>
 			</div>
@@ -1144,32 +1884,197 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 		<script type="text/javascript">
 		//<![CDATA[
 
-			var tabMap = {
-				'wiroc': '#tabWiRoc',
-				'products': '#tabProducts',
-				'range': '#tabRange',
-				'config': '#tabConfig',
-				'blog': '#tabBlog',
-				'contact': '#tabContact'
-			};
+		function setLang(lang) {
+			document.documentElement.setAttribute('lang', lang);
+			localStorage.setItem('wiroc-lang', lang);
+			document.querySelectorAll('.lang-switch-btn').forEach(function(btn) {
+				btn.classList.toggle('active-lang', btn.getAttribute('data-lang') === lang);
+			});
+			if (typeof refreshBlog === 'function') refreshBlog();
+		}
 
-			$(document).ready(function(){
-				// Handle deep-linking via URL hash
-				var hash = location.hash.replace('#', '');
-				if (hash && tabMap[hash]) {
-					$(tabMap[hash]).tab('show');
+		(function() {
+			var saved = localStorage.getItem('wiroc-lang') || 'sv';
+			setLang(saved);
+		})();
+
+		var tabMap = {
+			'wiroc': '#tabWiRoc',
+			'products': '#tabProducts',
+			'range': '#tabRange',
+			'config': '#tabConfig',
+			'blog': '#tabBlog',
+			'contact': '#tabContact'
+		};
+
+		// Blog pagination (shared state)
+		var BLOG_PER_PAGE = 10;
+		var blogPage = 1;
+
+		function initBlogPagination() {
+			var blogSv = document.querySelector('#pageBlog .lang-sv');
+			var blogEn = document.querySelector('#pageBlog .lang-en');
+
+			function getCards(container) {
+				if (!container) return [];
+				var all = container.querySelectorAll('.card');
+				var result = [];
+				for (var i = 0; i < all.length; i++) {
+					if (!all[i].classList.contains('blog-pagination-row') && !all[i].classList.contains('blog-summary-row')) {
+						result.push(all[i]);
+					}
+				}
+				return result;
+			}
+
+			function renderPage(container) {
+				if (!container) return;
+				var cards = getCards(container);
+				var totalPages = Math.max(1, Math.ceil(cards.length / BLOG_PER_PAGE));
+				if (blogPage > totalPages) blogPage = totalPages;
+				if (blogPage < 1) blogPage = 1;
+				var cp = blogPage;
+
+				for (var i = 0; i < cards.length; i++) {
+					var page = Math.floor(i / BLOG_PER_PAGE) + 1;
+					if (page !== cp) {
+						cards[i].classList.add('blog-card-hidden');
+					} else {
+						cards[i].classList.remove('blog-card-hidden');
+					}
 				}
 
-				// Update URL hash when tabs change
-				$('#mainNav a').on('shown.bs.tab', function(e) {
-					var tabId = e.target.hash.replace('#page', '').toLowerCase();
-					if (tabId === 'wiroc') {
-						history.replaceState(null, null, window.location.pathname);
-					} else {
-						history.replaceState(null, null, '#' + tabId);
+				// Remove old pagination
+				var old = container.querySelector('.blog-pagination');
+				if (old && old.parentNode) old.parentNode.removeChild(old);
+
+				if (totalPages <= 1) return;
+
+				var pagination = document.createElement('div');
+				pagination.className = 'blog-pagination card blog-pagination-row';
+				var body = document.createElement('div');
+				body.className = 'card-body text-center';
+
+				function goToPage(p) {
+					blogPage = p;
+					refreshBlog();
+				}
+
+				if (cp > 1) {
+					var prev = document.createElement('button');
+					prev.className = 'btn btn-sm btn-outline-secondary';
+					prev.textContent = '« Newer';
+					prev.addEventListener('click', function() { goToPage(cp - 1); });
+					body.appendChild(prev);
+					body.appendChild(document.createTextNode(' '));
+				}
+				for (var p = 1; p <= totalPages; p++) {
+					var btn = document.createElement('button');
+					btn.className = 'btn btn-sm ' + (p === cp ? 'btn-primary' : 'btn-outline-primary');
+					btn.textContent = '' + p;
+					(function(pageNum) {
+						btn.addEventListener('click', function() { goToPage(pageNum); });
+					})(p);
+					body.appendChild(btn);
+					body.appendChild(document.createTextNode(' '));
+				}
+				if (cp < totalPages) {
+					var next = document.createElement('button');
+					next.className = 'btn btn-sm btn-outline-secondary';
+					next.textContent = 'Older »';
+					next.addEventListener('click', function() { goToPage(cp + 1); });
+					body.appendChild(next);
+				}
+				pagination.appendChild(body);
+				container.appendChild(pagination);
+			}
+
+			window.refreshBlog = function() {
+				renderPage(blogSv);
+				renderPage(blogEn);
+			};
+
+			function buildSummaries() {
+				[blogSv, blogEn].forEach(function(container) {
+					if (!container) return;
+					var summaryEl = container.querySelector('.blog-summary');
+					if (!summaryEl) return;
+
+					var cards = getCards(container);
+					var isEn = container.classList.contains('lang-en');
+					var labelShow = isEn ? 'Show all posts' : 'Visa alla inl\u00e4gg';
+					var labelHide = isEn ? 'Hide list' : 'D\u00f6lj lista';
+
+					// Give each card an id
+					var langPrefix = isEn ? 'en-' : 'sv-';
+					cards.forEach(function(card, i) {
+						card.id = langPrefix + 'blog-' + (i + 1);
+					});
+
+					var html = '<details><summary>' + labelShow + '</summary>';
+					html += '<ul class="blog-summary-list">';
+					cards.forEach(function(card, i) {
+						var pageNum = Math.floor(i / BLOG_PER_PAGE) + 1;
+						var titleEl = card.querySelector('.card-title');
+						var dateEl = card.querySelector('.blog-date');
+						var title = titleEl ? titleEl.textContent : '';
+						var date = dateEl ? dateEl.textContent : '';
+						html += '<li><a href="#' + card.id + '" class="blog-summary-link" data-page="' + pageNum + '">';
+						if (date) html += '<span class="blog-summary-date">' + date + '</span> ';
+						html += title + '</a></li>';
+					});
+					html += '</ul></details>';
+					summaryEl.innerHTML = '<div class="card-body">' + html + '</div>';
+
+					// Wire up click handlers
+					summaryEl.querySelectorAll('.blog-summary-link').forEach(function(link) {
+						link.addEventListener('click', function(e) {
+							e.preventDefault();
+							var pn = parseInt(this.getAttribute('data-page'));
+							blogPage = pn;
+							refreshBlog();
+							setTimeout(function() {
+								var id = link.getAttribute('href').substring(1);
+								var target = document.getElementById(id);
+								if (target) target.scrollIntoView({ behavior: 'smooth' });
+							}, 60);
+						});
+					});
+
+					// Update details summary text on toggle
+					var details = summaryEl.querySelector('details');
+					if (details) {
+						details.addEventListener('toggle', function() {
+							var sum = details.querySelector('summary');
+							sum.textContent = details.open ? labelHide : labelShow;
+						});
 					}
 				});
+			}
+
+			buildSummaries();
+			refreshBlog();
+		}
+
+		$(document).ready(function(){
+			// Handle deep-linking via URL hash
+			var hash = location.hash.replace('#', '');
+			if (hash && tabMap[hash]) {
+				$(tabMap[hash]).tab('show');
+			}
+
+			// Update URL hash when tabs change
+			$('#mainNav a').on('shown.bs.tab', function(e) {
+				var tabId = e.target.hash.replace('#page', '').toLowerCase();
+				if (tabId === 'wiroc') {
+					history.replaceState(null, null, window.location.pathname);
+				} else {
+					history.replaceState(null, null, '#' + tabId);
+				}
 			});
+
+			initBlogPagination();
+		});
 		//]]>
 		</script>
 	</body>
