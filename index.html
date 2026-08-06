@@ -1171,6 +1171,23 @@
 
           			<div class="card">
 						  <div class="card-body">
+							<h3 class="card-title">SRR-sänd – Skicka stämplingar via SRR</h3>
+							<p class="card-text">
+								<span class="blog-date">2026-08-07</span>
+								<p>Nu finns möjligheten att skicka ut stämplingar via SRR (den inbyggda SRR-mottagaren sätts i sändarläge). Detta öppnar upp för flera nya användningsområden.</p>
+								<p>Funktionen kräver hårdvaruversion v7 eller senare, då dessa har inbyggd SRR-mottagare. För att aktivera SRR-sänd behövs en firmware-uppdatering av själva SRR-mottagaren (troligtvis kommer enheten behöva skickas in för detta) samt WiRoc mjukvaruversion v1.46 eller senare.</p>
+								<h4>Användningsområden</h4>
+								<p><strong>Relästation:</strong> Stämplingar kan skickas från en WiRoc-enhet till en annan via SRR. Den mottagande WiRoc-enheten kan sedan skicka stämplingarna vidare över LoRa. Detta gör det möjligt att bygga en relästation – till exempel om en kontroll ligger långt borta bakom en höjd och Lora inte kan nå fram till TC direkt. Då kan två WiRoc enheter placeras på höjden, en som tar emot stämplingarna med Lora och en som skickar vidare till TC också med Lora. För att överföra stämplingarna mellan WiRoc enheterna kan SRR användas*.</p>
+								<p><strong>Direkt till SRR-dongel:</strong> En WiRoc LoRa-mottagare kan skicka stämplingar via SRR till en SRR-dongel som är ansluten till en dator. Detta är ett alternativ till SIRAP/TCP och kräver ingen nätverkskonfiguration – endast en SRR-dongel i datorn.</p>
+								<p>Funktionen är ny och behöver testas mer för att utvärdera tillförlitlighet.</p>
+								<p>* Ett alternativ för WiRoc enheter med serieport är att använda en crossoverkabel</p>
+							</p>
+						  </div>
+					</div>
+
+
+          			<div class="card">
+						  <div class="card-body">
 							<h3 class="card-title">Skicka stämplingar till ROC-servern</h3>
 							<p class="card-text">
 								<span class="blog-date">2026-08-04</span>
@@ -1183,9 +1200,9 @@
 								<p>Funktionen finns tillgänglig från WiRoc mjukvaruversion v1.45.</p>
 							</p>
 						  </div>
-						</div>
+					</div>
 
-          <div class="card">
+          			<div class="card">
 						  <div class="card-body">
 							<h3 class="card-title">WiFi-mesh – Begränsa åtkomst till lokala nätverket</h3>
 								<p class="card-text">
@@ -1618,7 +1635,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 							<h3 class="card-title">Ny version</h3>
 							<p class="card-text">
 								<span class="blog-date">2020-05-23</span>
-								<a href="WiRocNanoPiV3R1Rotate.mp4" alt="video"><img class="centered" src="BlogWiRocNanoPiV3R1.png" alt="WiRoc version 3 rev 2"/></a>
+								<a href="BlogPictures/WiRocNanoPiV3R1Rotate.mp4" alt="video"><img class="centered" src="BlogPictures/BlogWiRocNanoPiV3R1.png" alt="WiRoc version 3 rev 2"/></a>
 								<p>Av flera anledningar har jag jobbat på en ny version av WiRoc. Den enkortdator (C.H.I.P.) som version 2 bygger på går inte längre att få tag på. Den nya enkortdatorn som jag har valt gör att det blir möjligt att göra ett antal förbättringar. Samtidigt saknar den en del funktioner (power management, batteriladdning) som jag har fått lägga till på ett eget kretskort. Jag passar samtidigt på att byta till en ny radiomodul som klarar av kanaler med mindre bandbredd, dvs ger möjlighet till fler icke överlappande kanaler.</p>
 
 								<p>På O-Ringen identifierades flera möjliga förbättringar, som skulle göra WiRoc smidigare att använda eller göra att Wiroc kan användas i fler situationer. Bland annat hade det varit smidigt att kunna ansluta fler SportIdent-masterstationer till en WiRoc utan att behöva en USB-hub. Nya versionen har därför två USB-kontakter så att två SportIdent-masterstationer kan anslutas utan USB-hub.</p>
@@ -1707,6 +1724,24 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 					</div>
 
 					<div class="blog-summary card blog-summary-row"></div>
+          <div class="card">
+				  <div class="card-body">
+					<h3 class="card-title">SRR transmit – Send punches via SRR</h3>
+					<p class="card-text">
+						<span class="blog-date">2026-08-07</span>
+						<p>It is now possible to transmit punches via SRR (the built-in SRR receiver is set to transmit mode). This opens up several new use cases.</p>
+						<p>The feature requires hardware version v7 or later, as these have a built-in SRR receiver. To enable SRR transmit, a firmware update of the SRR receiver itself is needed (the unit will likely need to be sent in for this) along with WiRoc software version v1.46 or later.</p>
+						<h4>Use cases</h4>
+						<p><strong>Relay station:</strong> Punches can be sent from one WiRoc device to another via SRR. The receiving WiRoc unit can then forward the punches over LoRa. This makes it possible to create a relay station – for example, if a control is far away behind a hill and LoRa cannot reach the event centre directly. Two WiRoc devices can be placed on the hill, one to receive punches via LoRa from the control, and one to forward them via LoRa to the receiver at the event centre. The SRR transmit* feature can be used to transfer the punches between the two WiRoc devices on the hill.</p>
+						<p><strong>Direct to SRR dongle:</strong> A WiRoc LoRa receiver can send punches via SRR to an SRR dongle connected to a computer. This is an alternative to SIRAP/TCP and requires no network configuration – just an SRR dongle in the computer.</p>
+						<p>The feature is new and needs more testing to evaluate reliability.</p>
+						<p>* An alternative, if the WiRoc devices has serial port available is to use a serial crossover cable.</p>
+					</p>
+				  </div>
+				</div>
+
+
+
           <div class="card">
 				  <div class="card-body">
 					<h3 class="card-title">Send punches to the ROC server</h3>
