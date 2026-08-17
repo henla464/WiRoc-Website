@@ -297,6 +297,79 @@
 				z-index: 2;
 				pointer-events: none;
 			}
+			/* Manual – print-friendly */
+			@media print {
+				nav, .header-banner, .footer, .lang-switch, .lang-switch-btn,
+				.nav-pills, .tab-pane:not(#pageManual), .btn-warning,
+				.image-flipper .flip-btn, .image-flipper .flip-dots,
+				.blog-pagination, .blog-summary { display: none !important; }
+				#pageManual { display: block !important; opacity: 1 !important; }
+				.tab-content > .tab-pane { display: none !important; }
+				.tab-content > #pageManual { display: block !important; }
+				body { font-size: 13pt; line-height: 1.55; color: #000; }
+				h2 { font-size: 20pt; border: none; padding-left: 0; }
+				h3 { font-size: 16pt; }
+				h4 { font-size: 14pt; }
+				.card { box-shadow: none; break-inside: avoid; border: 1px solid #ddd; }
+				.card:hover { transform: none; box-shadow: none; }
+				table { font-size: 11.5pt; }
+				.manual-img, .manual-img-click { max-width: 100%; max-height: 8in; }
+				.manual-img-click { max-width: 100%; max-height: 7in; }
+				a { color: #000; text-decoration: underline; }
+				.container { max-width: 100%; width: 100%; padding: 0; }
+				/* Title page */
+				#pageManual .manual-page > h2 {
+					font-size: 34pt;
+					font-weight: 800;
+					text-align: center;
+					line-height: 1.15;
+					margin: 0;
+					padding-top: 1.2in;
+					border: none;
+				}
+				#pageManual .manual-subtitle {
+					text-align: center;
+					font-size: 15pt;
+					color: #333;
+					margin: 0.3in 0 0;
+				}
+				#pageManual .manual-subtitle::after {
+					content: "";
+					display: block;
+					width: 2.4in;
+					border-bottom: 2px solid #b7b7b7;
+					margin: 0.35in auto 0;
+				}
+				.manual-toc { page-break-after: always; }
+				#pageManual .manual-toc {
+					border: none;
+					box-shadow: none;
+					margin-top: 1in;
+				}
+				#pageManual .manual-toc .card-body { padding: 0; }
+				#pageManual .manual-toc h4 {
+					font-size: 15pt;
+					text-transform: uppercase;
+					letter-spacing: 0.06em;
+					margin-bottom: 0.5in;
+				}
+				#pageManual .manual-toc ol { font-size: 14pt; line-height: 1.9; }
+				#pageManual .manual-toc a { text-decoration: none; }
+				#pageManual .manual-page { padding: 0 0.75in; }
+				.no-print { display: none !important; }
+				/* Preserve two-column layout in print */
+				.row { display: flex !important; flex-wrap: wrap !important; }
+				.col-md-6 { flex: 0 0 48% !important; max-width: 48% !important; margin-right: 2%; }
+				.col-md-6:last-child { margin-right: 0; margin-left: 2%; }
+			}
+			@media screen {
+				.manual-page { max-width: 900px; }
+				.manual-subtitle { font-size: 1.05rem; color: #6c757d; margin-top: -0.8rem; margin-bottom: 1rem; }
+				.manual-img { max-width: 100%; max-height: 350px; }
+				.manual-img-click { max-width: 100%; max-height: none; cursor: pointer; border: 1px solid #dee2e6; transition: opacity 0.2s; }
+				.manual-img-click:hover { opacity: 0.85; }
+				.manual-table { font-size: 0.9rem; }
+			}
 		</style>
 		<title>WiRoc – Trådlösa mellantider för orientering | Wireless split times for orienteering</title>
 	</head>
@@ -335,7 +408,7 @@
 				    <a class="nav-link" id="tabRange" data-toggle="pill" href="#pageRange" role="tab"><span class="lang-sv-inline">Räckvidd</span><span class="lang-en-inline">Range</span></a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" id="tabConfig" data-toggle="pill" href="#pageConfig" role="tab"><span class="lang-sv-inline">Konfiguration</span><span class="lang-en-inline">Configuration</span></a>
+				    <a class="nav-link" id="tabManual" data-toggle="pill" href="#pageManual" role="tab"><span class="lang-sv-inline">Manual</span><span class="lang-en-inline">Manual</span></a>
 				  </li>
 				  <li class="nav-item">
 				    <a class="nav-link" id="tabBlog" data-toggle="pill" href="#pageBlog" role="tab"><span class="lang-sv-inline">Blogg</span><span class="lang-en-inline">Blog</span></a>
@@ -383,8 +456,8 @@
 						<h2>WiRoc</h2>
 						<div class="card">
 						  <div class="image-flipper">
-						    <img class="flip-image active" src="WiRocV8Rev2_Ethernet_wobg_sc_2.png" alt="WiRoc unit - Ethernet side"/>
-						    <img class="flip-image" src="WiRocV8Rev2_Serial_wobg.png" alt="WiRoc unit - Serial port side"/>
+						    <img class="flip-image active" src="WiRocV8Rev2_Ethernet_wobg_sc_2.png" alt="WiRoc device - Ethernet side"/>
+						    <img class="flip-image" src="WiRocV8Rev2_Serial_wobg.png" alt="WiRoc device - Serial port side"/>
 						    <button class="flip-btn flip-prev" onclick="flipImage(this.parentElement, -1)" title="Previous image">&#10094;</button>
 						    <button class="flip-btn flip-next" onclick="flipImage(this.parentElement, 1)" title="Next image">&#10095;</button>
 						    <div class="flip-dots">
@@ -396,14 +469,14 @@
 						  <div class="card-body">
 							<h5 class="card-title"></h5>
 							<p class="card-text">
-							WiRoc is a system for wirelessly sending split times from controls to the competition software. It uses LoRa technology. A WiRoc unit can act as a LoRa transmitter, LoRa receiver, or LoRa repeater. The receiver connects to the network (usually via WiFi) and is configured to send split times to the competition software via SIRAP/TCP. The system does not require mobile coverage, SIM cards, or an internet connection. Internet access however provides greater possibilities for monitoring the units. The units are small and rechargeable batteries are included — just connect to a USB port to charge.
+							WiRoc is a system for wirelessly sending split times from controls to the competition software. It uses LoRa technology. A WiRoc device can act as a LoRa transmitter, LoRa receiver, or LoRa repeater. The receiver connects to the network (usually via WiFi) and is configured to send split times to the competition software via SIRAP/TCP. The system does not require mobile coverage, SIM cards, or an internet connection. Internet access however provides greater possibilities for monitoring the devices. The devices are small and rechargeable batteries are included — just connect to a USB port to charge.
 							</p><p class="card-text">
 							Configuration is simple and done with the WiRoc-Config mobile app. WiRoc-Config is also used to test that the transmitter reaches the receiver.
 							</p><p class="card-text">
-							The WiRoc unit can also be used for the finish line. If the finish line is within WiFi range, a WiRoc unit can send finish times directly via SIRAP/TCP to the competition software so times appear instantly in the speaker commentary. WiRoc has a built-in SRR receiver. The same unit can also simultaneously receive split times from the forest.
+							The WiRoc device can also be used for the finish line. If the finish line is within WiFi range, a WiRoc device can send finish times directly via SIRAP/TCP to the competition software so times appear instantly in the speaker commentary. WiRoc has a built-in SRR receiver. The same device can also simultaneously receive split times from the forest.
 							</p>
 							<p class="card-text">
-							WiRoc can also be used together with the official ROC server. When the function is activated, incoming punches are automatically forwarded to the ROC server, just like a regular ROC unit. LoRa, SIRAP, and ROC can all be used simultaneously.
+							WiRoc can also be used together with the official ROC server. When the function is activated, incoming punches are automatically forwarded to the ROC server, just like a regular ROC device. LoRa, SIRAP, and ROC can all be used simultaneously.
 							</p>
 						  </div>
 						</div>
@@ -477,7 +550,7 @@
 						  <div class="card-body">
 							<h4 class="card-title">WiRoc device</h4>
 							<span class="price-tag">90 SEK/day incl. VAT (72 SEK excl. VAT)</span>
-							<p class="card-text">The most common scenario for a radio control in the forest is to use a WiRoc device configured as a transmitter at or near the control and a WiRoc device configured as a receiver at the event centre. The receiver connects to the local WLAN/WiFi network and is configured to send to the competition software over SIRAP/TCP. The SportIdent unit can be connected to the WiRoc transmitter in several different ways depending on the type of SportIdent unit.<br/><h5>SportIdent SRR unit</h5>To use a SportIdent SRR unit you need to use a WiRoc V7 or later (with built in SRR receiver) or attach an SRR USB Dongle to the WiRoc device.<br/><br/><h5>SportIdent unit with USB cable</h5>If the SportIdent unit has a USB cable, it can be connected directly to the WiRoc unit (possibly with a USB extension cable and/or USB hub). Another option is to connect the SportIdent unit to a USB-to-Bluetooth adapter. In WiRoc-Config you can then search for and connect to the USB-to-Bluetooth adapter.<br/><br/><h5>SportIdent unit with RS232 serial cable</h5>If the SportIdent unit has an RS232 serial cable, it can be connected via a USB adapter (note that not all adapters are supported). There are also RS232-to-Bluetooth adapters to connect the SportIdent unit to. In WiRoc-Config you can then search for and connect the RS232-to-Bluetooth adapter. Some WiRoc units have a built-in RS232 port so it can be connected directly.<br/></p>
+							<p class="card-text">The most common scenario for a radio control in the forest is to use a WiRoc device configured as a transmitter at or near the control and a WiRoc device configured as a receiver at the event centre. The receiver connects to the local WLAN/WiFi network and is configured to send to the competition software over SIRAP/TCP. The SportIdent unit can be connected to the WiRoc transmitter in several different ways depending on the type of SportIdent unit.<br/><h5>SportIdent SRR unit</h5>To use a SportIdent SRR unit you need to use a WiRoc V7 or later (with built in SRR receiver) or attach an SRR USB Dongle to the WiRoc device.<br/><br/><h5>SportIdent unit with USB cable</h5>If the SportIdent unit has a USB cable, it can be connected directly to the WiRoc device (possibly with a USB extension cable and/or USB hub). Another option is to connect the SportIdent unit to a USB-to-Bluetooth adapter. In WiRoc-Config you can then search for and connect to the USB-to-Bluetooth adapter.<br/><br/><h5>SportIdent unit with RS232 serial cable</h5>If the SportIdent unit has an RS232 serial cable, it can be connected via a USB adapter (note that not all adapters are supported). There are also RS232-to-Bluetooth adapters to connect the SportIdent unit to. In WiRoc-Config you can then search for and connect the RS232-to-Bluetooth adapter. Some WiRoc units have a built-in RS232 port so it can be connected directly.<br/></p>
 						  </div>
 						</div>
 					</div>
@@ -722,440 +795,6 @@
 							<h5 class="card-title">Lång DM</h5>
 							<p class="card-text">Distance from control 7 to finish is 1.8 km with several smaller hills in between. Directional antennas were used on both transmitter and receiver. Low data rate/long range setting.</p>
 						  </div>
-						</div>
-					</div>
-					</div>
-				</div>
-
-				<div class="tab-pane fade" id="pageConfig" role="tabpanel">
-					<div class="lang-sv">
-					<div class="container">
-						<h2>Konfiguration</h2>
-						WiRoc-enheterna konfigureras med Android-applikationen "WiRoc Config".
-					</div>
-					<div class="container">
-
-						<h3 class="mt-3">Sök efter WiRoc-enheter</h3>
-						<div class="d-flex row flex-wrap align-content-stretch mb-2">
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_Scan.jpg" alt="Sök efter WiRocenheter">
-								  <div class="card-body">
-									<h5 class="card-title">Sök efter enheter</h5>
-									<p class="card-text">Starta WiRoc enheten och klicka på "Sök WiRoc enheter" i appen. När enheten har startat upp dyker den upp i listan. Default-namnet är "WiRoc Device" men rekommenderas att byta namn för att kunna skilja dem åt. Finns flera med samma namn kan man skilja dem åt på signalstyrkan – den med högst signalstyrka är närmast.</p>
-								  </div>
-								</div>
-							</div>
-						</div>
-
-						<h3 class="mt-3">Konfiguration</h3>
-						<div class="d-flex row flex-wrap align-content-stretch mb-2">
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigLora.jpg" alt="LoRa radioinställningar">
-								  <div class="card-body">
-									<h5 class="card-title">LoRa – Kanal / hastighet</h5>
-									<p class="card-text">Välj funktion, kanal, datahastighet mm för LoRa-radion. Sätt samma på både sändare och mottagare. Lägsta datahastigheten ger längst räckvidd men färre stämplingar per minut. Andra faktorer har dock större inverkan på räckvidden så de två lägsta datahastigheterna rekommenderas inte annat än i specifika fall. Här väljs också uteffekt och kompatibilitets läget för DRF1268DS (WiRoc v7 och tidigare) ska användas. Vilka kanaler som finns att välja på om kompatibilitetsläge är aktiverat och om amatörradioläget är aktiverat.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigSIRAP.jpg" alt="SIRAP inställningar">
-								  <div class="card-body">
-									<h5 class="card-title">SIRAP</h5>
-									<p class="card-text">Ställ in IP-adress och port dit stämplingar ska skickas via SIRAP TCP/IP. För Meos är standardporten 10000, för OLA 10001 (endast testat med dessa program). Oavsett vilken Lora funktion som WiRoc enheten har så kan SIRAP TCP/IP aktiveras.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigROC.jpg" alt="ROC inställningar">
-								  <div class="card-body">
-									<h5 class="card-title">ROC</h5>
-									<p class="card-text">Här kan du konfigurera enheten att skicka stämplingar till den officella ROC-servern. När funktionen är aktiverad skickas inkommande stämplingar automatiskt vidare till ROC-servern, precis som en vanlig ROC-enhet.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigSRR.jpg" alt="SRR inställningar">
-								  <div class="card-body">
-									<h5 class="card-title">SRR</h5>
-									<p class="card-text">Inställningar för inbyggda SRR-mottagare. Här kan du aktivera/inaktivera SRR-mottagare för röd och blå kanal, samt välja om de ska skicka ack (bekräftelse) tillbaka till SIAC/SRR-enheterna. Det går också att sätta SRR i sänd läge så att den skickar ut stämplingar som kan tas emot av annan WiRoc eller av en SRR-dongel.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigUSB.jpg" alt="USB inställningar">
-								  <div class="card-body">
-									<h5 class="card-title">USB</h5>
-									<p class="card-text">Hantera anslutna USB-enheter som SI-masterstationer eller SRR-donglar. Här kan du aktivera "One-way" kommunikation (endast lyssna, skickar inga kommandon) för USB-portarna. Användbart för SRR-donglar eller samlingsboxar som inte ska ta emot kommandon från WiRoc.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigSerial.jpg" alt="Serieport inställningar">
-								  <div class="card-body">
-									<h5 class="card-title">Serieport</h5>
-									<p class="card-text">Inställningar för den inbyggda serieporten. Här kan du aktivera "One-way" kommunikation (endast lyssna, skickar inga kommandon) för kommunikation med SI-enheter eller samlingsboxar anslutna via seriekabel. Serieporten kan även användas för att skicka ut data till dator, annan WiRoc eller samlingsbox.</p>
-								  </div>
-								</div>
-							</div>
-						</div>
-
-						<h3 class="mt-3">Nätverk</h3>
-						<div class="d-flex row flex-wrap align-content-stretch mb-2">
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_NetworkWifi.jpg" alt="WiFi inställningar">
-								  <div class="card-body">
-									<h5 class="card-title">WiFi</h5>
-									<p class="card-text">Anslut WiRoc-enheten till ett WiFi-nätverk. Klicka på "Get/Refresh wifi list" för att se tillgängliga nätverk. Välj nätverk och ange lösenord för att ansluta. Mottagarenheten måste vara ansluten till nätverket för att kunna skicka stämplingar via SIRAP. Enhetens IP-adress visas längst upp när den är ansluten.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_NetworkEthernet.jpg" alt="Ethernet inställningar">
-								  <div class="card-body">
-									<h5 class="card-title">Ethernet</h5>
-									<p class="card-text">Här kan du se ip-adressen för Ethernet-anslutningar (exempelvis USB-Ethernet-adapter) och Tailscale VPN IP.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_NetworkTailscale1.jpg" alt="Tailscale VPN inställningar">
-								  <div class="card-body">
-									<h5 class="card-title">Tailscale VPN</h5>
-									<p class="card-text">Anslut WiRoc-enheten till ett Tailscale-nätverk. Med Tailscale kan du nå enheten från var som helst, även bakom brandväggar. Enheten får en fast IP-adress (100.x.x.x) i Tailscale-nätverket. Användbart för fjärrövervakning, felsökning eller för att skicka stämplingar till en dator på annan plats. Kräver ett gratiskonto på tailscale.com.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_NetworkWifiMesh.jpg" alt="WiFi Mesh inställningar">
-								  <div class="card-body">
-									<h5 class="card-title">WiFi Mesh</h5>
-									<p class="card-text">Konfigurera WiFi-mesh-nätverk (802.11s) för att utöka räckvidden på WiFi-nätverket. Användbart när en kontroll ligger utanför vanlig WiFi-räckvidd. Kräver en kompatibel USB-WiFi-dongel (t.ex. Atheros AR9271). Här kan du även ställa in begränsad åtkomst till det lokala nätverket och ange specifika regler för tillåten trafik.</p>
-								  </div>
-								</div>
-							</div>
-							
-						</div>
-
-						<h3 class="mt-3">Test</h3>
-						<div class="d-flex row flex-wrap align-content-stretch mb-2">
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_TestSend.jpg" alt="Testa sändning">
-								  <div class="card-body">
-									<h5 class="card-title">Testa sändning</h5>
-									<p class="card-text">Skicka testmeddelanden för att verifiera att Lora länken mellan sändare och mottagare fungerar. Här kan du se signalstyrka (RSSI och SNR) och vilka meddelanen bekräftats tillbaka. Användbart vid uppsättning för att kontrollera att placering och antennriktning är bra. Kan även användas för att skicka via SIRAP TCP/IP, ROC och de andra utdatametoderna. Skärmbilden visar en stämpling som skickats till SIRAP och till ROC</p>
-								  </div>
-								</div>
-							</div>
-						</div>
-
-						<h3 class="mt-3">Övrigt</h3>
-						<div class="d-flex row flex-wrap align-content-stretch mb-2">
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherDatabase.jpg" alt="Databas">
-								  <div class="card-body">
-									<h5 class="card-title">Databas</h5>
-									<p class="card-text">Hantera enhetens interna databas med stämplingar och konfiguration. Databasen kan rensas från stämplingar eller så kan den helt skapas om (förlorar då både inställningar och stämplingar). </p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherDateTime.jpg" alt="Datum och tid">
-								  <div class="card-body">
-									<h5 class="card-title">Datum & Tid</h5>
-									<p class="card-text">Ställ in datum och tid på enheten. Korrekt tid är viktigt för att loggarna ska få rätt tidsstämpel, och för att stämplingar som skickas till ROC servern ska få rätt datum. Enheten synkar normalt tiden automatiskt när den har internetuppkoppling och WiRoc V7 och senare har RTC-chip som håller tiden även när enheten är avstängd.</p>
-								  </div>
-								</div>
-							</div>
-							
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherStatus.jpg" alt="Enhetsstatus">
-								  <div class="card-body">
-									<h5 class="card-title">Status</h5>
-									<p class="card-text">Visar enhetens aktuella status, om tjänsterna körs som de ska, vilka indata/utdata som är aktiva mm.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherSettings.jpg" alt="Övriga inställningar">
-								  <div class="card-body">
-									<h5 class="card-title">Inställningar</h5>
-									<p class="card-text">Här kan man ändra alla inställningar, inklusive avancerade som det inte finns något användargränssnitt för.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherAmateurRadio.jpg" alt="Amatörradio">
-								  <div class="card-body">
-									<h5 class="card-title">Amatörradio</h5>
-									<p class="card-text">Inställningar för amatörradioläget. Här anges om läget ska aktiveras och vilken anropssignal som ska användas för amatörradiofrekvenser. Anropssignalen skickas med regelbundet som en del av radiosändningarna enligt gällande regler.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_MonitorAccess.jpg" alt="Monitor åtkomst">
-								  <div class="card-body">
-									<h5 class="card-title">Monitor-åtkomst</h5>
-									<p class="card-text">Här ger du ett användarnamn åtkomst till WiRoc enheten på monitor.wiroc.se så att användaren kan tilldela eneheten till en tävling, rensa statistik mm.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherUpdate.jpg" alt="Mjukvaruuppdatering">
-								  <div class="card-body">
-									<h5 class="card-title">Uppdatering</h5>
-									<p class="card-text">Uppdatera enhetens mjukvara till senaste versionen. Enheten söker efter tillgängliga uppdateringar och du kan välja att installera dem direkt. Håll mjukvaran uppdaterad för att få de senaste funktionerna och buggfixarna.</p>
-								  </div>
-								</div>
-							</div>
-						</div>
-					</div>
-					</div>
-
-					<div class="lang-en">
-					<div class="container">
-						<h2>Configuration</h2>
-						WiRoc units are configured using the Android app "WiRoc Config".
-					</div>
-					<div class="container">
-
-						<h3 class="mt-3">Scan for WiRoc devices</h3>
-						<div class="d-flex row flex-wrap align-content-stretch mb-2">
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_Scan.jpg" alt="Search for WiRoc units">
-								  <div class="card-body">
-									<h5 class="card-title">Search for units</h5>
-									<p class="card-text">Start the WiRoc device and click Scan in the app. When the device has started up it appears in the list. The default name is "WiRoc Device" but it is recommended to change the name to distinguish them. If there are several with the same name, you can tell them apart by signal strength – the one with the highest signal strength is the closest.</p>
-								  </div>
-								</div>
-							</div>
-						</div>
-
-						<h3 class="mt-3">Config</h3>
-						<div class="d-flex row flex-wrap align-content-stretch mb-2">
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigLora.jpg" alt="LoRa radio settings">
-								  <div class="card-body">
-									<h5 class="card-title">LoRa – Channel / Speed</h5>
-									<p class="card-text">Select function, channel, data rate etc. for the LoRa radio. Set the same on both transmitter and receiver. The lowest data rate gives the longest range but fewer punches per minute. However, other factors have a greater impact on range so the two lowest data rates are not recommended except in specific cases. Output power and compatibility mode for DRF1268DS (WiRoc v7 and earlier) is also selected here, as well as which channels are available depending on whether compatibility mode or amateur radio mode is active.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigSIRAP.jpg" alt="SIRAP settings">
-								  <div class="card-body">
-									<h5 class="card-title">SIRAP</h5>
-									<p class="card-text">Set the IP address and port to which punches will be sent via SIRAP TCP/IP. For Meos the default port is 10000, for OLA 10001 (only tested with these programs). Regardless of which LoRa function the WiRoc unit has, SIRAP TCP/IP can be enabled.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigROC.jpg" alt="ROC settings">
-								  <div class="card-body">
-									<h5 class="card-title">ROC</h5>
-									<p class="card-text">Here you can configure the unit to send punches to the official ROC server. When the function is activated, incoming punches are automatically forwarded to the ROC server, just like a regular ROC unit.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigSRR.jpg" alt="SRR settings">
-								  <div class="card-body">
-									<h5 class="card-title">SRR</h5>
-									<p class="card-text">Settings for the built-in SRR receivers. Here you can enable/disable SRR receivers for red and blue channels, and choose whether they should send ACK (acknowledgement) back to the SIAC/SRR units. SRR can also be set to transmit mode so that it sends out punches that can be received by another WiRoc or an SRR dongle.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigUSB.jpg" alt="USB settings">
-								  <div class="card-body">
-									<h5 class="card-title">USB</h5>
-									<p class="card-text">Manage connected USB devices such as SI master stations or SRR dongles. Here you can enable "One-way" communication (listen only, no commands sent) for the USB ports. Useful for "samlingsboxar" that cannot receive commands from WiRoc.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_ConfigSerial.jpg" alt="Serial port settings">
-								  <div class="card-body">
-									<h5 class="card-title">Serial port</h5>
-									<p class="card-text">Settings for the built-in serial port. Here you can enable "One-way" communication (listen only, no commands sent) for communication with SI units or "samlingsboxar" connected via serial cable. The serial port can also be used to send data to a computer, another WiRoc, or a "samlingsbox".</p>
-								  </div>
-								</div>
-							</div>
-						</div>
-
-						<h3 class="mt-3">Network</h3>
-						<div class="d-flex row flex-wrap align-content-stretch mb-2">
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_NetworkWifi.jpg" alt="WiFi settings">
-								  <div class="card-body">
-									<h5 class="card-title">WiFi</h5>
-									<p class="card-text">Connect the WiRoc unit to a WiFi network. Click "Get/Refresh wifi list" to see available networks. Select a network and enter the password to connect. The receiver unit must be connected to the network to send punches via SIRAP. The unit's IP address is displayed at the top when connected.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_NetworkEthernet.jpg" alt="Ethernet settings">
-								  <div class="card-body">
-									<h5 class="card-title">Ethernet</h5>
-									<p class="card-text">Here you can see the IP address for Ethernet connections (e.g. USB-Ethernet adapter) and Tailscale VPN IP.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_NetworkTailscale1.jpg" alt="Tailscale VPN settings">
-								  <div class="card-body">
-									<h5 class="card-title">Tailscale VPN</h5>
-									<p class="card-text">Connect the WiRoc unit to a Tailscale network. With Tailscale you can reach the unit from anywhere, even behind firewalls. The unit gets a fixed IP address (100.x.x.x) on the Tailscale network. Useful for remote monitoring, troubleshooting, or sending punches to a computer in another location. Requires a free account at tailscale.com.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_NetworkWifiMesh.jpg" alt="WiFi Mesh settings">
-								  <div class="card-body">
-									<h5 class="card-title">WiFi Mesh</h5>
-									<p class="card-text">Configure WiFi mesh networks (802.11s) to extend the range of the WiFi network. Useful when a control is outside normal WiFi range. Requires a compatible USB WiFi dongle (e.g. Atheros AR9271). Here you can also set restricted access to the local network and specify rules for permitted traffic.</p>
-								  </div>
-								</div>
-							</div>
-
-						</div>
-
-						<h3 class="mt-3">Test</h3>
-						<div class="d-flex row flex-wrap align-content-stretch mb-2">
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_TestSend.jpg" alt="Test transmission">
-								  <div class="card-body">
-									<h5 class="card-title">Test transmission</h5>
-									<p class="card-text">Send test messages to verify that the LoRa link between transmitter and receiver is working. Here you can see signal strength (RSSI and SNR) and which messages were acknowledged back. Useful during setup to check that placement and antenna direction are good. Can also be used to send via SIRAP TCP/IP, ROC, and other output methods. The screenshot shows a punch sent to both SIRAP and ROC.</p>
-								  </div>
-								</div>
-							</div>
-						</div>
-
-						<h3 class="mt-3">Other</h3>
-						<div class="d-flex row flex-wrap align-content-stretch mb-2">
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherDatabase.jpg" alt="Database">
-								  <div class="card-body">
-									<h5 class="card-title">Database</h5>
-									<p class="card-text">Manage the unit's internal database with punches and configuration. The database can be cleared of punches, or it can be completely recreated (losing both settings and punches).</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherDateTime.jpg" alt="Date and time">
-								  <div class="card-body">
-									<h5 class="card-title">Date &amp; Time</h5>
-									<p class="card-text">Set the date and time on the unit. Correct time is important for logs to have the right timestamp, and for punches sent to the ROC server to have the correct date. The unit normally syncs time automatically when it has internet connection and WiRoc V7 and later have an RTC chip that keeps time even when the unit is powered off.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherStatus.jpg" alt="Unit status">
-								  <div class="card-body">
-									<h5 class="card-title">Status</h5>
-									<p class="card-text">Shows the unit's current status, whether services are running properly, which inputs/outputs are active, etc.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherSettings.jpg" alt="Other settings">
-								  <div class="card-body">
-									<h5 class="card-title">Settings</h5>
-									<p class="card-text">Here you can change all settings, including advanced ones that don't have a dedicated user interface.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherAmateurRadio.jpg" alt="Amateur radio">
-								  <div class="card-body">
-									<h5 class="card-title">Amateur radio</h5>
-									<p class="card-text">Settings for amateur radio mode. Here you specify whether the mode should be activated and which callsign to use for amateur radio frequencies. The callsign is sent regularly as part of the radio transmissions in accordance with applicable regulations.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_MonitorAccess.jpg" alt="Monitor access">
-								  <div class="card-body">
-									<h5 class="card-title">Monitor access</h5>
-									<p class="card-text">Here you grant a username access to the WiRoc unit on monitor.wiroc.se so that the user can assign the unit to a competition, clear statistics, etc.</p>
-								  </div>
-								</div>
-							</div>
-
-							<div class="mt-2 mb-2 pl-2 pr-2 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-								<div class="card h-100">
-								  <img class="card-img-top" src="WiRocConfigScreenshots/small/AppScreen_OtherUpdate.jpg" alt="Software update">
-								  <div class="card-body">
-									<h5 class="card-title">Update</h5>
-									<p class="card-text">Update the device's software to the latest version. The device searches for available updates and you can choose to install them directly. Keep the software updated to get the latest features and bug fixes.</p>
-								  </div>
-								</div>
-							</div>
 						</div>
 					</div>
 					</div>
@@ -2115,6 +1754,889 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 				</div>
 				</div>
 
+
+				<div class="tab-pane fade" id="pageManual" role="tabpanel">
+					<div class="lang-sv">
+					<div class="container manual-page">
+
+						<h2>Användarmanual – WiRoc</h2>
+						<p class="manual-subtitle">Trådlösa mellantider för orientering</p>
+						<div class="text-right mb-3 no-print">
+							<a href="OtherResources/WiRoc_Manual_Svenska.pdf" class="btn btn-primary" download>Ladda ner som PDF</a>
+						</div>
+
+						<div class="manual-toc card mb-4" style="page-break-after: always;">
+							<div class="card-body">
+								<h4>Innehållsförteckning</h4>
+								<ol>
+									<li><a href="#manual-oversikt">Översikt</a></li>
+									<li><a href="#manual-anslutningar">Anslutningar och delar</a></li>
+									<li><a href="#manual-start">Start och avstängning</a></li>
+									<li><a href="#manual-konfiguration">Konfiguration med WiRoc Config</a></li>
+									<li><a href="#manual-monitor">Monitor.wiroc.se</a></li>
+									<li><a href="#manual-rackvidd">Räckvidd</a></li>
+								</ol>
+							</div>
+						</div>
+
+						<!-- AVSNITT 1: ÖVERSIKT -->
+						<section id="manual-oversikt" style="page-break-before: always;">
+							<h3>1. Översikt</h3>
+							<p>WiRoc är en enhet för att trådlöst skicka mellantider från kontroller till tävlingsprogrammet med hjälp av LoRa-teknik. En WiRoc-enhet kan konfigureras som LoRa-sändare, LoRa-mottagare eller LoRa-repeater. Enheten är batteridriven och uppladdningsbar via USB.</p>
+
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<img src="OtherPictures/WiRocV8Rev2_Ethernet_wobg_sc.png" alt="WiRoc – Ethernet/USB-sida" class="img-fluid rounded manual-img"/>
+									<p class="text-center text-muted small mt-1">Ethernet/USB-sida</p>
+								</div>
+								<div class="col-md-6 mb-3">
+									<img src="OtherPictures/WiRocV8Rev2_Serial_wobg_sc.png" alt="WiRoc – Serieport-sida" class="img-fluid rounded manual-img"/>
+									<p class="text-center text-muted small mt-1">Serieport-sida</p>
+								</div>
+							</div>
+
+							<h4>Specifikationer</h4>
+							<table class="table table-bordered table-sm manual-table">
+								<tr><td style="width:200px;"><strong>Mått</strong></td><td>Ca 83 × 58 × 35 mm (exkl. antenn och kablar)</td></tr>
+								<tr><td><strong>Vikt</strong></td><td>Ca 260 g</td></tr>
+								<tr><td><strong>Batteri</strong></td><td>Inbyggt uppladdningsbart LiPo-batteri. Drifttid ca 15 timmar (utan externa USB-enheter). Laddas via USB kabeln (USB A).</td></tr>
+								<tr><td><strong>LoRa-radio</strong></td><td>~440 MHz (70 cm amatörband / ISM-band). Upp till 12 kanaler på version 8 av hårdvaran (6 kanaler på tidigare versioner).</td></tr>
+								<tr><td><strong>WiFi</strong></td><td>2,4 GHz (V7 och tidigare) eller 2,4/5 GHz dual-band (V8).</td></tr>
+								<tr><td><strong>Bluetooth</strong></td><td>BLE 5.4 (V8) BLE 4.2 (V7 och tidigare)för konfiguration med WiRoc Config-appen.</td></tr>
+								<tr><td><strong>SRR-mottagare</strong></td><td>Inbyggd (från V7). Två kanaler - röd och blå. Kan konfigureras för sändning (från v1.46 av mjukvaran).</td></tr>
+								<tr><td><strong>USB-portar</strong></td><td>En USB A hankontakt för laddning, två USB-A host-portar för kringutrustning.</td></tr>
+								<tr><td><strong>Display</strong></td><td>OLED-display, 128×64 pixlar.</td></tr>
+							</table>
+						</section>
+
+						<!-- AVSNITT 2: ANSLUTNINGAR OCH DELAR -->
+						<section id="manual-anslutningar" style="page-break-before: always;">
+							<h3>2. Anslutningar och delar</h3>
+
+							<h4>2.1 USB-A hankontakt – Laddning</h4>
+							<p>USB-A-porten används <strong>endast för laddning</strong> av batterierna. Batterierna kan laddas medan enheten är igång – till exempel med en powerbank under ett event om det behövs. Observera dock att vissa powerbanks kan avge mycket radiostörningar, så använd endast powerbanks av god kvalitet eller ladda bara vid behov. De inbyggda batterierna räcker ca 15 timmar när inget är anslutet till USB-portarna.</p>
+
+							<h4>2.2 USB-A – Hostportar</h4>
+							<p>USB A-portarna kan användas med många olika enheter:</p>
+							<ul>
+								<li><strong>SportIdent-enhet med USB-kabel</strong> – kopplas direkt till WiRoc.</li>
+								<li><strong>SportIdent SRR-dongel</strong> – för att ta emot SRR-stämplingar (för de versioner som har inbyggd SRR-mottagare så rekommenderas att använda dem).</li>
+								<li><strong>USB-Seriell-adapter</strong> – för att ansluta SportIdent-enhet med seriekabel.</li>
+								<li><strong>USB-Ethernet-adapter</strong> – för trådbunden nätverksanslutning.</li>
+								<li><strong>Atheros AR9271 USB WiFi-adapter</strong> – för att skapa WiFi-mesh mellan WiRoc-enheter.</li>
+							</ul>
+
+							<h4>2.3 Serieport</h4>
+							<p>Serieporten kan konfigureras som både ingång och utgång. Den kan ta emot eller skicka stämplingar. Används för att ansluta till:</p>
+							<ul>
+								<li>SportIdent-enheter med seriekabel.</li>
+								<li>En annan WiRoc-enhet med cross-over-kabel (de två enheterna kan då fungera som relä – ta emot LoRa-signal på en kanal och skicka över till den andra enhetern som skickar vidare på en annan LoRa-kanal).</li>
+								<li>Samlingsbox (<a href="https://sunjo.uno/" target="_blank">sunjo.uno</a>).</li>
+								<li>Dator med USB-seriell-adapter.</li>
+							</ul>
+
+							<h4>2.4 Antennanslutning (SMA) och strömknapp</h4>
+							<p>SMA-kontakten används för LoRa-antennen, precis under sitter strömknappen. </p>
+							
+							<h4>2.5 Strömknapp</h4>
+							<p>Under antennanslutningen sitter strömknappen:</p>
+							<ul>
+								<li><strong>Tryck 2 sekund</strong> – starta enheten.</li>
+								<li><strong>Tryck 2 sekunder</strong> (när enheten är igång) – påbörja avstängning. Displayen visar "Shutting down".</li>
+								<li><strong>Korta tryck</strong> (när enheten är igång) – bläddra mellan skärmbilderna på displayen.</li>
+								<li><strong>Tryck ~10 sekunder</strong> – Strömmen till enheten bryts (forcerad avstängning).</li>
+							</ul>
+
+							<h4>2.6 OLED-display</h4>
+							<p>Visar grundläggande information om enhetens konfiguration och status. Med korta tryck på strömknappen kan du bläddra mellan olika skärmbilder som visar IP-adress, LoRa-inställningar, batterinivå med mera.</p>
+
+							<h4>2.7 SRR-mottagare</h4>
+							<p>Inbyggd mottagare för att ta emot stämplingar via SRR-protokollet. Kan ta emot från både SportIdent SRR-enheter och SIAC-kort (touch-free). Det finns två mottagare – en för röd kanal och en för blå kanal. Från mjukvaruversion v1.46 kan SRR-mottagaren även sättas i sändarläge för att skicka stämplingar till andra enheter.</p>
+
+							<h4>2.8 Lysdioder för LoRa</h4>
+							<p>Vid kanten av kretskortet sitter två lydioder för LoRa. Den <strong>röda lysdioden</strong> lyser när ett meddelande skickas. Den <strong>blå lysdioden</strong> blinkar till när ett meddelande tagits emot. Vid normal drift ser du den röda lysa när en stämpling sänds, strax efter den röda slutat lysa så blinkar den blå när bekräftelsen (ACK) från mottagaren tas emot.</p>
+
+							<h4>2.9 Statuslysdioder</h4>
+							<p>Hårdvaruversion upp till och med V7: Den <strong>röda lysdioden</strong> indikerar att WiRoc-enheten har ström. Den <strong>gula lysdioden</strong> används efter uppstart för att indikera status:</p>
+							<p>Hårdvaruversion V8: Den <strong>blå lysdioden</strong> indikerar att WiRoc-enheten har ström. Den <strong>röda lysdioden</strong> används efter uppstart för att indikera status:</p>
+							<ul>
+								<li><strong>Blink 0,25 Hz</strong> – Alla WiRoc-processer körs normalt, batterispänning över 3,2 V och strömhanteringskrets-temperatur under 85°C.</li>
+								<li><strong>Blink 1 Hz</strong> – Något av följande har hänt:
+									<ul>
+										<li>WiRocPython systemd-tjänsten körs inte</li>
+										<li>WiRocPythonWS systemd-tjänsten körs inte</li>
+										<li>WiRocBLEAPI systemd-tjänsten körs inte</li>
+										<li>Batterispänning under 3,2 V (enheten stängs av vid 3,0 V)</li>
+										<li>Strömhanteringskrets-temperatur över 85°C</li>
+									</ul>
+								</li>
+								<li><strong>Ingen blink</strong> – WiRocWatchDog systemd-tjänsten körs troligtvis inte.</li>
+								<li><strong>Växlar mellan 1 Hz och 0,25 Hz</strong> – Troligtvis kraschar och startar en systemd-tjänst om i en loop.</li>
+							</ul>
+							<p>Normalt blir strömhanteringskretsen bara riktigt varm vid laddning. Vid 85°C reduceras laddningshastigheten. Vid 90°C stängs WiRoc-enheten av.</p>
+
+							<h4>2.10 Batteriets huvudströmbrytare</h4>
+							<p>En bygel (jumper) på kretskortet (på undersidan om det är V7 eller tidigare) fungerar som huvudströmbrytare för batteriet. Används för att helt koppla bort batteriet vid längre förvaring eller transport.</p>
+
+							<h4>2.11 WiFi/BT-antenn</h4>
+							<p>Inbyggd antenn för WiFi och Bluetooth. På V8 finns stöd för både 2,4 GHz och 5 GHz WiFi.</p>
+
+							<h4>2.12 Debug UART</h4>
+							<p>Denna UART-port kan användas för felsökning. Den visar Linux boot-meddelanden och ger tillgång till Linux-terminalen.</p>
+						</section>
+
+						<!-- AVSNITT 3: START OCH AVSTÄNGNING -->
+						<section id="manual-start" style="page-break-before: always;">
+							<h3>3. Start och avstängning</h3>
+
+							<h4>Starta enheten</h4>
+							<ol>
+								<li>Kontrollera att batteriets huvudströmbrytare (bygel på kretskortet) är tillsluten.</li>
+								<li>Anslut LoRa-antennen till SMA-kontakten.</li>
+								<li>Håll strömknappen intryckt i ca 2 sekunder tills den blåa lysdioden tänds (eller röda om det är V7 eller tidigare).</li>
+								<li>Efter ca 30–60 sekunder är enheten redo. OLED-displayen visar enhetens status.</li>
+								<li>Status lysdioden blinkar långsamt om allt är i ordning.</li>
+							</ol>
+
+							<h4>Stänga av enheten</h4>
+							<ol>
+								<li>Håll strömknappen intryckt i ca 2 sekunder.</li>
+								<li>Displayen ska visa "Shutting down".</li>
+								<li>Vänta tills displayen och lysdioderna slocknat (tar ca 10–15 sekunder).</li>
+							</ol>
+							<p>Om enheten hänger sig: håll strömknappen intryckt i ca 10 sekunder för att forcera avstängning via PMU:n. Det finns en väldigt liten risk för att skada filsystemet när man forcerar avstängning så gör det bara när det behövs.</p>
+
+							<h4>Bläddra mellan skärmbilder</h4>
+							<p>Med korta tryck (under 1 sekund) på strömknappen kan du växla mellan olika informationsskärmar på OLED-displayen. Skärmarna visar bland annat:</p>
+							<ul>
+								<li>Enhetens namn och IP-adress</li>
+								<li>LoRa-kanal, datahastighet och funktion (sändare/mottagare/repeater)</li>
+								<li>Batterinivå</li>
+								<li>Felmeddelanden</li>
+							</ul>
+
+							<h4>Ladda batteriet</h4>
+							<p>Anslut USB-kabeln till en usbport. Enheten kan laddas både avstängd och påslagen. Vid normal användning räcker batteriet gott och väl för en heldagstävling. Med powerbank kan drifttiden förlängas vid behov.</p>
+						</section>
+
+						<!-- AVSNITT 4: KONFIGURATION -->
+						<section id="manual-konfiguration" style="page-break-before: always;">
+							<h3>4. Konfiguration med WiRoc Config</h3>
+							<p>WiRoc-enheterna konfigureras med Android-applikationen <strong>WiRoc Config</strong>. Appen ansluter till enheten via Bluetooth (BLE).</p>
+
+							<h4>4.1 Sök efter WiRoc-enheter</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_Scan.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_Scan.jpg" alt="Sök efter WiRoc-enheter" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Sök:</strong> Starta WiRoc-enheten och klicka på <strong>Scan</strong> i appen. När enheten har startat upp dyker den upp i listan. Standardnamnet är "WiRoc Device" men det rekommenderas att byta namn för att kunna skilja dem åt. Finns flera med samma namn kan man skilja dem åt på signalstyrkan – den med högst signalstyrka är närmast.</p>
+								</div>
+							</div>
+
+							<h4>4.2 LoRa-inställningar</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_ConfigLora.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_ConfigLora.jpg" alt="LoRa-inställningar" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>LoRa:</strong> Välj funktion (sändare/mottagare/repeater), kanal, datahastighet och uteffekt. <strong>Samma kanal, DRF1268DS Compatibility, Range/Data rate måste användas på både sändare och mottagare för att kommunikationen ska fungera.</strong></p>
+									<p>Lägsta datahastigheten ger teoretiskt längst räckvidd men klarar få stämplingar per minut. De två lägsta datahastigheterna rekommenderas endast i specifika fall då andra faktorer har större inverkan på räckvidden och så låg hastighet kommer med flera nackdelar.</p>
+									<p>Här ställs även kompatibilitetsläge för DRF1268DS (WiRoc V7 och tidigare).</p>
+									<p>Med kompatibilitetsläge för DRF1268DS avstängt finns det totalt 12 kanaler, de kallas 1A, 1B, 2A, 2B osv till 6A, 6B. De namnges så för att göra det tydligt att både 1A och 1B kanalerna överlappar kanal 1. Dvs om du använder äldre versioner, eller kompabilitetsläget och använder kanal 1 så ska du inte använda kanal 1A eller kanal 1B samtidigt.</p>
+									<p>I sänd-läge så kan du välja att begära bekräftelse eller inte, normalt ska detta vara aktiverat. Då kommer sändaren att vänta på bekräftelse från mottagaren och skicka om meddelandet inte bekräftas inom en viss tid.</p>
+									<p>I mottagar-läge så kan du välja att bara lyssna på inkommande stämplingar/meddelanden utan att skicka bekräftelse. Detta ska normalt vara avstängt (men kan användas om man har en annan mottagare som skickar bekräftelse)</p>
+								</div>
+							</div>
+
+							<h4>4.3 SIRAP-inställningar</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_ConfigSIRAP.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_ConfigSIRAP.jpg" alt="SIRAP-inställningar" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>SIRAP:</strong> Ställ in IP-adress och port dit stämplingar ska skickas via SIRAP TCP/IP. För MeOS är standardporten 10000, för OLA 10001. Mottagaren måste vara ansluten till nätverket (WiFi/Ethernet) för att detta ska fungera.</p>
+								</div>
+							</div>
+
+							<h4>4.4 ROC-inställningar</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_ConfigROC.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_ConfigROC.jpg" alt="ROC-inställningar" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>ROC:</strong> Konfigurera enheten att skicka stämplingar till den officiella ROC-servern. När funktionen är aktiverad skickas inkommande stämplingar automatiskt vidare till ROC-servern, precis som en vanlig ROC-enhet. Kräver internetuppkoppling.</p>
+								</div>
+							</div>
+
+							<h4>4.5 SRR-inställningar</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_ConfigSRR.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_ConfigSRR.jpg" alt="SRR-inställningar" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>SRR:</strong> Inställningar för de inbyggda SRR-mottagarna. Aktivera/inaktivera röd och blå kanal samt välj om de ska skicka ACK (bekräftelse) tillbaka till SIAC/SRR-enheterna. Från v1.46 kan SRR även sättas i sändarläge för att skicka ut stämplingar.</p>
+								</div>
+							</div>
+
+							<h4>4.6 USB-inställningar</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_ConfigUSB.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_ConfigUSB.jpg" alt="USB-inställningar" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>USB:</strong> Hantera anslutna USB-enheter. Här kan du aktivera "One-way" kommunikation (endast lyssna) för USB-portarna. Kan användas om man ansluter en samlingsbox via USB-Serial adapter eftersom samlingboxen inte kan ta emot kommandon. Samlingsboxar användar sig av 4800 bps så även det måste aktiveras.</p>
+								</div>
+							</div>
+
+							<h4>4.7 Serieport-inställningar</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_ConfigSerial.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_ConfigSerial.jpg" alt="Serieport-inställningar" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Serieport:</strong> Inställningar för den inbyggda serieporten. Serieporten kan användas både som ingång (ta emot stämplingar) och utgång (skicka stämplingar). Här kan du aktivera "One-way" kommunikation (endast lyssna) för serieporten när den är i mottagarläget. Kan användas om man ansluter en samlingsbox eftersom samlingboxen inte kan ta emot kommandon. Samlingsboxar användar sig av 4800 bps så även det måste aktiveras.</p>
+								</div>
+							</div>
+
+							<h4>4.8 Nätverk – WiFi</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_NetworkWifi.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_NetworkWifi.jpg" alt="WiFi-inställningar" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>WiFi:</strong> Anslut WiRoc-enheten till ett WiFi-nätverk. Klicka på <strong>Get/Refresh wifi list</strong> för att se tillgängliga nätverk. Välj nätverk och ange lösenord. Enhetens IP-adress visas när den är ansluten.</p>
+								</div>
+							</div>
+
+							<h4>4.9 Nätverk – Ethernet</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_NetworkEthernet.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_NetworkEthernet.jpg" alt="Ethernet-inställningar" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p>Visar IP-adress för Ethernet-anslutningar (t.ex. USB-Ethernet-adapter) och Tailscale VPN IP.</p>
+								</div>
+							</div>
+
+							<h4>4.10 Nätverk – Tailscale VPN</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_NetworkTailscale1.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_NetworkTailscale1.jpg" alt="Tailscale-inställningar" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Tailscale VPN:</strong> Anslut enheten till ett Tailscale-nätverk för fjärråtkomst. Enheten får en fast IP-adress (100.x.x.x). Kräver gratiskonto på tailscale.com. Följ instruktionerna på skärmen.</p>
+								</div>
+							</div>
+
+							<h4>4.11 Nätverk – WiFi Mesh</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_NetworkWifiMesh.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_NetworkWifiMesh.jpg" alt="WiFi Mesh-inställningar" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>WiFi Mesh:</strong> Konfigurera WiFi-mesh-nätverk (802.11s) för att utöka WiFi-räckvidden. Kräver kompatibel USB-WiFi-dongel (Atheros AR9271). En WiRoc-enhet måste vara Gateway och vara ansluten till lokala nätverket. Gatewayen kommer ha nodnummer 1 och ipaddressen kommer att sluta med Nodnummret. På gatewayen måste du också välja vilket interface som ipmeddelandena ska skickas till, välj det interface som används för att anslutat till nätverket (wlan0 om ansluten till Wifi). "Begränsa åtkomst" kan aktiveras för att blockera trafik från mesh-nätverket till det lokala nätverket. Övriga noder som då inte är Gateway behöver ha ett unikt nodnummer.</p>
+								</div>
+							</div>
+
+							<h4>4.12 Testa sändning</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_TestSend.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_TestSend.jpg" alt="Testa sändning" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Testa sändning:</strong> Skicka testmeddelanden för att verifiera LoRa-länken. Visar signalstyrka (RSSI och SNR) och vilka meddelanden som bekräftats. Används vid uppsättning för att kontrollera placering och antennriktning. Kan även användas för att testa att skicka till SIRAP etc.</p>
+								</div>
+							</div>
+
+							<h4>4.13 Monitor-åtkomst</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_MonitorAccess.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_MonitorAccess.jpg" alt="Monitor-åtkomst" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Monitor-åtkomst:</strong> Ge ett användarnamn åtkomst till WiRoc-enheten på monitor.wiroc.se. Med åtkomst kan användaren tilldela enheten till en tävling, rensa statistik med mera. Du behöver skapa ett konto på monitor.wiroc.se först.</p>
+								</div>
+							</div>
+
+							<h4>4.14 Övriga inställningar</h4>
+							
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_OtherDatabase.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_OtherDatabase.jpg" alt="Databas" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Databas:</strong> Hantera enhetens interna databas med stämplingar och konfiguration. Databasen kan rensas från stämplingar eller helt skapas om (förlorar då både inställningar och stämplingar).</p>
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_OtherDateTime.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_OtherDateTime.jpg" alt="Datum och tid" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Datum &amp; Tid:</strong> Ställ in datum och tid på enheten. Korrekt tid är viktigt för att loggarna ska få rätt tidsstämpel och för att stämplingar som skickas till ROC-servern ska få rätt datum. Enheten synkar normalt tiden automatiskt när den har internetuppkoppling. WiRoc V7 och senare har RTC-chip som håller tiden även när enheten är avstängd.</p>
+									<p><strong>Väckning:</strong> Ställ in en väckningstid för enheten. Efters att ställt in en tid stäng av enheten, det ska då stå att den aktiverar väckning. Vid den inställda tidpunken startar enheten upp. Om du startar enheten innan den väckningstiden så stängs väckningen av och du måste konfigurera den igen om du fortfarande vill att den ska väckas automatiskt.</p>
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_OtherStatus.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_OtherStatus.jpg" alt="Enhetsstatus" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Status:</strong> Visar enhetens aktuella status – om tjänsterna körs som de ska, vilka indata/utdata som är aktiva med mera. Används för felsökningsändamål.</p>
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_OtherSettings.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_OtherSettings.jpg" alt="Övriga inställningar" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Inställningar:</strong> Här kan alla inställningar ändras, inklusive avancerade inställningar som inte har något separat användargränssnitt.</p>
+								</div>
+							</div>
+							
+
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_OtherAmateurRadio.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_OtherAmateurRadio.jpg" alt="Amatörradio" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Amatörradio:</strong> Inställningar för amatörradioläget. Här anges om läget ska aktiveras och vilken anropssignal som ska användas för amatörradiofrekvenser. Anropssignalen skickas med regelbundet som en del av radiosändningarna enligt gällande regler.</p>
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_OtherUpdate.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_OtherUpdate.jpg" alt="Mjukvaruuppdatering" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Uppdatering:</strong> Uppdatera enhetens mjukvara till senaste versionen. Håll mjukvaran uppdaterad för senaste funktioner och buggfixar.</p>
+								</div>
+							</div>
+						</section>
+
+						<!-- AVSNITT 5: MONITOR -->
+						<section id="manual-monitor" style="page-break-before: always;">
+							<h3>5. Monitor.wiroc.se</h3>
+							<p><strong>Monitor</strong> (<a href="http://monitor.wiroc.se" target="_blank">monitor.wiroc.se</a>) är ett webbaserat övervakningsverktyg för WiRoc-enheter. Det ger översikt över alla enheter som är uppkopplade mot internet.</p>
+
+							<h4>Kom igång</h4>
+							<ol>
+								<li>Skapa ett konto på monitor.wiroc.se.</li>
+								<li>I WiRoc Config-appen, under Monitor-åtkomst, anger du ditt användarnamn för att ge ditt användarkonto rätt att hantera din enhet.</li>
+								<li>När enheten har internetuppkoppling dyker den upp i listan på Monitor.</li>
+							</ol>
+
+							<h4>Funktioner</h4>
+							<ul>
+								<li><strong>Enhetslista</strong> – Visar alla WiRoc-enheter med batterinivå i procent, om de är online, och senaste kontakt.</li>
+								<li><strong>Detaljvy</strong> – Klicka på en enhet för att se:
+									<ul>
+										<li>Graf över batteriladdning över tid</li>
+										<li>Antal LoRa-meddelanden som inte ackats (orange linje, 5-minutersintervall)</li>
+										<li>Stämplingar som inte ackats (röd linje, 5-minutersintervall)</li>
+										<li>Anslutna USB-enheter och SRR-donglar</li>
+										<li>Konfiguration av interna SRR-mottagare</li>
+									</ul>
+								</li>
+								<li><strong>Tävlingar</strong> – Tilldela enheter till tävlingar för att organisera och filtrera. Här kan du också lägga upp kartan och placera ut WiRoc-enheterna på kartan. Du kan mäta avstånd, se höjdprofilen mellan två punkter och en uppskattning på hur bra LoRa anslutning blir mellan de två punkterna.</li>
+							</ul>
+
+							<h4>Övervakningstips</h4>
+							<ul>
+								<li>Håll koll på antalet icke-ackade LoRa-meddelanden – en ökning kan tyda på försämrad länkkvalitet.</li>
+								<li>Kontrollera att anslutna SRR-donglar rapporteras korrekt. En inkopplad men ej upptäckt dongel kan orsaka tappade stämplingar.</li>
+								<li>Om en enhet går offline – kontrollera att den inte har stängt av sig eller tappat kontakten. Online/Offline status visas beroende på statusmeddelandena som skickas var femte minut. Kontrollera om du får in några stämplingar från en aktuella kontrollen. Det kan vara att ett enstaka statusmeddelande inte kom fram.</li>
+							</ul>
+						</section>
+
+						<!-- AVSNITT 6: RÄCKVIDD -->
+						<section id="manual-rackvidd" style="page-break-before: always;">
+							<h3>6. Räckvidd</h3>
+							<p>Räckvidden för LoRa-kommunikationen beror på flera faktorer. Här är de viktigaste:</p>
+
+							<h4>6.1 Faktorer som påverkar räckvidden</h4>
+							<table class="table table-bordered table-sm manual-table">
+								<tr><th style="width:200px;">Faktor</th><th>Påverkan</th></tr>
+								<tr><td><strong>Terräng</strong></td><td>Fri sikt ger bäst räckvidd. Höjder, tät skog och byggnader dämpar signalen. Placera antennen högt för bästa resultat.</td></tr>
+								<tr><td><strong>Antenner</strong></td><td>Dipolantenn (medföljer) kan ge bra räckvidd men riktantenn (Yagi) kan ge klart längre räckvidd. Bäst resultat fås med riktantenner på både sändare och mottagare. Om riktantenner används är det viktigt att de riktas korrekt mot varandra.</td></tr>
+								<tr><td><strong>Antennplacering</strong></td><td>Båda sändarantennen och mottagarantennen ska ha samma polarisation. Vanligtvis placeras antennen lodrätt. Undvik att placera nära metallföremål, marken eller större föremål. Så fritt runt om antennen som möjligt är att föredra.</td></tr>
+								<tr><td><strong>Radiostörningar</strong></td><td>Störningar från andra källor kan påverka räckvidden mycket. Saker som kan störa är kraftledningar, powerbanks av låg kvalité och annan elektronik. Om powerbanks används i närheten av WiRoc-enheten så använd en av hög kvalité. Även WiRoc-enheter som skickar meddelanden på annan kanal kan störa just under tiden den sänder. Om två mottagare står nära varandra och den ena skickar bekräftelse samtidigt som den andra ska ta emot ett meddelande kan det störas ut. Minimera risken genom att placera mottagarna en bit ifrån varandra, använd kanaler så långt ifrån varandra som möjligt och minska risken att de "krockar" genom att inte använda onödigt låg datahastighet.</td></tr>
+								<tr><td><strong>Datahastighet</strong></td><td>Lägre datahastighet ger längre räckvidd men färre stämplingar per minut. Om bara en kontroll körs på kanalen så är standard (L) en bra kompromiss i de flesta fall. UL och XL rekommenderas endast i undantagsfall (mkt lågt antal stämplingar på kontrollen och om det inte fungerar med högre hastighet).</td></tr>
+								<tr><td><strong>Uteffekt</strong></td><td>Högre uteffekt ger bättre räckvidd, standardinställningen är max och det finns normalt ingen anledning att ändra.</td></tr>
+							</table>
+
+							<h4>6.2 Antenntyper</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<img src="DipoleAntenna.jpg" alt="Dipolantenn" class="img-fluid rounded manual-img"/>
+									<p class="text-center text-muted small">Dipolantenn (ca 10×30 cm). Rundstrålande. Medföljer vid hyra.</p>
+								</div>
+								<div class="col-md-6 mb-3">
+									<img src="DirectionalAntenna.jpg" alt="Riktantenn" class="img-fluid rounded manual-img"/>
+									<p class="text-center text-muted small">Yagi riktantenn (ca 45×30 cm). Ger betydligt bättre räckvidd men måste riktas mot mottagaren.</p>
+								</div>
+							</div>
+
+							<h4>6.3 Riktlinjer för bra räckvidd</h4>
+							<ol>
+								<li>Använd testfunktionen i WiRoc Config för att testa om det är kontakt mellan sändare och mottagare.</li>
+								<li>Om möjligt undvik att placera antennerna så att det finns hinder mellan dem.</li>
+								<li>Placera antennen så högt som möjligt – i ett träd eller på en stolpe. Sätt antennen så det är så fritt som möjligt runt den, sätts den på en trädstam se till att stammen inte är mellan sändaren och mottagaren.</li>
+								<li>Bättre att byta till en bättre antenn än att gå ner i datahastighet. </li>
+								<li>Om riktantenner används se till att de är riktade mot varandra.</li>
+								<li>Undvik att flera sändare på samma kanal är placerade så att de inte kan höra varandra (ökar risken för kollisioner).</li>
+								<li>Kom ihåg att du har viss möjlighet att placera mottagaren eftersom den kan kopplas upp på wifi. Kanske kan du placera mottagren på närliggande höjd som är inom räckvidd för Wifit. Det är också möjligt att dra en nätverkskabel och koppla in mottagaren på den via en USB-Ethernet adapter (eller nätverksporten om en sådan finns på din WiRoc-enhet). Wifi-mesh funktionaliteten kan också användas för öka räckvidden på Wifit (men kräver då extra WiRoc-enheter, och USB-Wifi hårdvara)</li>
+								<li>Om direktkontakt inte fungerar – använd en repeater eller relästation. Placera denna på en höjd.</li>
+								<li>Ytterligare ett alternativ är att koppla upp någon av enheterna, mottagaren eller sändaren på mobilnätet med 4g-dongel (t.ex Huawei E3372). Med hjälp av ett Tailscale VPN-nätverk koppla ihop enheten med tävlingens nätverk och kör SIRAP-tcp/ip till mottagardatorn. T.ex så kan en mottagare placeras på en höjd med god mobiltäckning, sändarna belägna lägre kan då skicka över Lora till mottagaren och behöver inte själva ha någon mobiltäckning. Om man inte vill använda sig av Tailscale VPN så kan enheten istället skicka stämplingarna till ROC-servern. En mottagardator måste då konfigureras att hämta från ROC-servern.</li>
+							</ol>
+
+							
+						</section>
+
+					</div>
+					</div>
+						<div class="lang-en">
+						<div class="container manual-page">
+
+						<h2>User manual – WiRoc</h2>
+						<p class="manual-subtitle">Wireless split times for orienteering</p>
+						<div class="text-right mb-3 no-print">
+							<a href="OtherResources/WiRoc_Manual_English.pdf" class="btn btn-primary" download>Download as PDF</a>
+						</div>
+
+						<div class="manual-toc card mb-4" style="page-break-after: always;">
+							<div class="card-body">
+							<h4>Table of contents</h4>
+							<ol>
+								<li><a href="#manual-oversikt-en">Overview</a></li>
+								<li><a href="#manual-anslutningar-en">Connections and parts</a></li>
+								<li><a href="#manual-start-en">Starting and shutting down</a></li>
+								<li><a href="#manual-konfiguration-en">Configuration with WiRoc Config</a></li>
+								<li><a href="#manual-monitor-en">Monitor.wiroc.se</a></li>
+								<li><a href="#manual-rackvidd-en">Range</a></li>
+							</ol>
+							</div>
+						</div>
+
+						<!-- SECTION 1: OVERVIEW -->
+						<section id="manual-oversikt-en" style="page-break-before: always;">
+							<h3>1. Overview</h3>
+							<p>WiRoc is a device for wirelessly sending split times from controls to the competition software using LoRa technology. A WiRoc device can be configured as a LoRa transmitter, LoRa receiver or LoRa repeater. The device is battery-powered and rechargeable via USB.</p>
+
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<img src="OtherPictures/WiRocV8Rev2_Ethernet_wobg_sc.png" alt="WiRoc – Ethernet/USB side" class="img-fluid rounded manual-img"/>
+									<p class="text-center text-muted small mt-1">Ethernet/USB side</p>
+								</div>
+								<div class="col-md-6 mb-3">
+									<img src="OtherPictures/WiRocV8Rev2_Serial_wobg_sc.png" alt="WiRoc – Serial port side" class="img-fluid rounded manual-img"/>
+									<p class="text-center text-muted small mt-1">Serial port side</p>
+								</div>
+							</div>
+
+							<h4>Specifications</h4>
+							<table class="table table-bordered table-sm manual-table">
+								<tr><td style="width:200px;"><strong>Dimensions</strong></td><td>Approx. 83 × 58 × 35 mm (excluding antenna and cables)</td></tr>
+								<tr><td><strong>Weight</strong></td><td>Approx. 260 g</td></tr>
+								<tr><td><strong>Battery</strong></td><td>Built-in rechargeable LiPo battery. Operating time approx. 15 hours (without external USB devices). Charged via the USB cable (USB A).</td></tr>
+								<tr><td><strong>LoRa radio</strong></td><td>~440 MHz (70 cm amateur band / ISM band). Up to 12 channels on hardware version 8 (6 channels on earlier versions).</td></tr>
+								<tr><td><strong>WiFi</strong></td><td>2.4 GHz (V7 and earlier) or 2.4/5 GHz dual-band (V8).</td></tr>
+								<tr><td><strong>Bluetooth</strong></td><td>BLE 5.4 (V8), BLE 4.2 (V7 and earlier) for configuration with the WiRoc Config app.</td></tr>
+								<tr><td><strong>SRR receiver</strong></td><td>Built-in (from V7). Two channels – red and blue. Can be configured for transmission (from software v1.46).</td></tr>
+								<tr><td><strong>USB ports</strong></td><td>One USB A male connector for charging, two USB A host ports for peripherals.</td></tr>
+								<tr><td><strong>Display</strong></td><td>OLED display, 128×64 pixels.</td></tr>
+							</table>
+						</section>
+
+						<!-- SECTION 2: CONNECTIONS AND PARTS -->
+						<section id="manual-anslutningar-en" style="page-break-before: always;">
+							<h3>2. Connections and parts</h3>
+
+							<h4>2.1 USB A male connector – Charging</h4>
+							<p>The USB A port is used <strong>only for charging</strong> the batteries. The batteries can be charged while the device is running – for example with a power bank during an event if needed. Note, however, that some power banks emit a lot of radio interference, so only use high-quality power banks or charge only when needed. The built-in batteries last about 15 hours when nothing is connected to the USB ports.</p>
+
+							<h4>2.2 USB A – Host ports</h4>
+							<p>The USB A ports can be used with many different devices:</p>
+							<ul>
+								<li><strong>SportIdent unit with USB cable</strong> – connected directly to WiRoc.</li>
+								<li><strong>SportIdent SRR dongle</strong> – to receive SRR punches (for versions with a built-in SRR receiver it is recommended to use those instead).</li>
+								<li><strong>USB serial adapter</strong> – to connect a SportIdent unit with a serial cable.</li>
+								<li><strong>USB Ethernet adapter</strong> – for a wired network connection.</li>
+								<li><strong>Atheros AR9271 USB WiFi adapter</strong> – to create a WiFi mesh between WiRoc devices.</li>
+							</ul>
+
+							<h4>2.3 Serial port</h4>
+							<p>The serial port can be configured as both input and output. It can receive or send punches. Used to connect to:</p>
+							<ul>
+								<li>SportIdent units with a serial cable.</li>
+								<li>Another WiRoc device with a cross-over cable (the two devices can then act as a relay – receive a LoRa signal on one channel and pass it on to the other device which forwards it on another LoRa channel).</li>
+								<li>"Samlingsbox" (<a href="https://sunjo.uno/" target="_blank">sunjo.uno</a>).</li>
+								<li>Computer with a USB serial adapter.</li>
+							</ul>
+
+							<h4>2.4 Antenna connector (SMA) and power button</h4>
+							<p>The SMA connector is used for the LoRa antenna; the power button is located just below it.</p>
+
+							<h4>2.5 Power button</h4>
+							<p>The power button is located below the antenna connector:</p>
+							<ul>
+								<li><strong>Press 2 seconds</strong> – start the device.</li>
+								<li><strong>Press 2 seconds</strong> (when the device is running) – start shutdown. The display shows "Shutting down".</li>
+								<li><strong>Short press</strong> (when the device is running) – browse the screens on the display.</li>
+								<li><strong>Press ~10 seconds</strong> – power to the device is cut (forced shutdown).</li>
+							</ul>
+
+							<h4>2.6 OLED display</h4>
+							<p>Shows basic information about the device's configuration and status. Short presses on the power button let you browse between different screens showing IP address, LoRa settings, battery level and more.</p>
+
+							<h4>2.7 SRR receiver</h4>
+							<p>Built-in receiver for receiving punches via the SRR protocol. Can receive from both SportIdent SRR units and SIAC cards (touch-free). There are two receivers – one for the red channel and one for the blue channel. From software version v1.46 the SRR receiver can also be set to transmit mode to send punches another WiRoc device, or to a SRR Dongle.</p>
+
+							<h4>2.8 LoRa LEDs</h4>
+							<p>Two LEDs for LoRa are located at the edge of the circuit board. The <strong>red LED</strong> lights up when a message is being sent. The <strong>blue LED</strong> flashes when a message has been received. In normal operation you see the red one light up when a punch is sent, and shortly after the red one stops the blue one flashes when the acknowledgement (ACK) from the receiver is received.</p>
+
+							<h4>2.9 Status LEDs</h4>
+							<p>Hardware version up to and including V7: the <strong>red LED</strong> indicates that the WiRoc device has power. The <strong>yellow LED</strong> is used after boot-up to indicate status:</p>
+							<p>Hardware version V8: the <strong>blue LED</strong> indicates that the WiRoc device has power. The <strong>red LED</strong> is used after boot-up to indicate status:</p>
+							<ul>
+								<li><strong>Blink 0.25 Hz</strong> – All WiRoc processes are running normally, battery voltage above 3.2 V and power management circuit temperature below 85 °C.</li>
+								<li><strong>Blink 1 Hz</strong> – One of the following has happened:
+								<ul>
+									<li>The WiRocPython systemd service is not running</li>
+									<li>The WiRocPythonWS systemd service is not running</li>
+									<li>The WiRocBLEAPI systemd service is not running</li>
+									<li>Battery voltage below 3.2 V (the device shuts down at 3.0 V)</li>
+									<li>Power management circuit temperature above 85 °C</li>
+								</ul>
+								</li>
+								<li><strong>No blink</strong> – The WiRocWatchDog systemd service is probably not running.</li>
+								<li><strong>Alternating between 1 Hz and 0.25 Hz</strong> – A systemd service is probably crashing and restarting in a loop.</li>
+							</ul>
+							<p>Normally the power management circuit only gets really hot when charging. At 85 °C the charging speed is reduced. At 90 °C the WiRoc device shuts down.</p>
+
+							<h4>2.10 Battery master switch</h4>
+							<p>A jumper on the circuit board (on the underside for V7 or earlier) acts as a master switch for the battery. Used to completely disconnect the battery for long-term storage or transport.</p>
+
+							<h4>2.11 WiFi/BT antenna</h4>
+							<p>Built-in antenna for WiFi and Bluetooth. On V8 there is support for both 2.4 GHz and 5 GHz WiFi.</p>
+
+							<h4>2.12 Debug UART</h4>
+							<p>This UART port can be used for troubleshooting. It shows Linux boot messages and provides access to the Linux terminal.</p>
+						</section>
+
+						<!-- SECTION 3: STARTING AND SHUTTING DOWN -->
+						<section id="manual-start-en" style="page-break-before: always;">
+							<h3>3. Starting and shutting down</h3>
+
+							<h4>Starting the device</h4>
+							<ol>
+								<li>Check that the battery master switch (jumper on the circuit board) is closed.</li>
+								<li>Connect the LoRa antenna to the SMA connector.</li>
+								<li>Hold the power button for about 2 seconds until the blue LED lights up (or the red one for V7 or earlier).</li>
+								<li>After about 30–60 seconds the device is ready. The OLED display shows the devicestatus.</li>
+								<li>The status LED blinks slowly if everything is in order.</li>
+							</ol>
+
+							<h4>Shutting down the device</h4>
+							<ol>
+								<li>Hold the power button for about 2 seconds.</li>
+								<li>The display should show "Shutting down".</li>
+								<li>Wait until the display and the LEDs have gone out (takes about 10–15 seconds).</li>
+							</ol>
+							<p>If the device hangs: hold the power button for about 10 seconds to force shutdown via the PMU. There is a very small risk of damaging the file system when forcing shutdown, so only do it when needed.</p>
+
+							<h4>Browsing the screens</h4>
+							<p>With short presses (under 1 second) on the power button you can switch between different information screens on the OLED display. The screens show, among other things:</p>
+							<ul>
+								<li>The device name and IP address</li>
+								<li>LoRa channel, data rate and function (transmitter/receiver/repeater)</li>
+								<li>Battery level</li>
+								<li>Error messages</li>
+							</ul>
+
+							<h4>Charging the battery</h4>
+							<p>Connect the USB cable to a USB port. The device can be charged both when off and when on. In normal use the battery is more than enough for a full day of competition. With a power bank the operating time can be extended if needed.</p>
+						</section>
+
+						<!-- SECTION 4: CONFIGURATION -->
+						<section id="manual-konfiguration-en" style="page-break-before: always;">
+							<h3>4. Configuration with WiRoc Config</h3>
+							<p>The WiRoc devices are configured with the Android app <strong>WiRoc Config</strong>. The app connects to the device via Bluetooth (BLE).</p>
+
+							<h4>4.1 Scan for WiRoc devices</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_Scan.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_Scan.jpg" alt="Search for WiRoc units" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Scan:</strong> Start the WiRoc device and tap <strong>Scan</strong> in the app. Once the device has started up it appears in the list. The default name is "WiRoc Device" but it is recommended to change the name to tell them apart. If there are several with the same name, you can tell them apart by signal strength – the one with the highest signal strength is the closest.</p>
+								</div>
+							</div>
+
+							<h4>4.2 LoRa settings</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_ConfigLora.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_ConfigLora.jpg" alt="LoRa settings" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>LoRa:</strong> Select function (transmitter/receiver/repeater), channel, data rate and output power. <strong>The same channel, DRF1268DS Compatibility and Range/Data rate must be used on both transmitter and receiver for communication to work.</strong></p><p>The lowest data rate theoretically gives the longest range but can only handle a few punches per minute. The two lowest data rates are recommended only in specific cases, since other factors have a greater impact on range and such a low data rate comes with several drawbacks.</p><p>The compatibility mode for DRF1268DS (WiRoc V7 and earlier) is also set here.</p><p>With DRF1268DS compatibility mode off there are a total of 12 channels, called 1A, 1B, 2A, 2B etc. up to 6A, 6B. They are named that way to make it clear that channels 1A and 1B both overlap channel 1. That is, if you use older versions, or compatibility mode, and use channel 1, you should not use channel 1A or channel 1B at the same time.</p><p>In transmit mode you can choose whether to request an acknowledgement or not; normally this should be enabled. The transmitter will then wait for an acknowledgement from the receiver and resend the message if it is not acknowledged within a certain time.</p><p>In receive mode you can choose to only listen for incoming punches/messages without sending an acknowledgement. This should normally be off (but can be used if you have another receiver that sends the acknowledgement).</p>
+								</div>
+							</div>
+
+							<h4>4.3 SIRAP settings</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_ConfigSIRAP.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_ConfigSIRAP.jpg" alt="SIRAP settings" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>SIRAP:</strong> Set the IP address and port to which punches should be sent via SIRAP TCP/IP. For MeOS the default port is 10000, for OLA 10001. The receiver must be connected to the network (WiFi/Ethernet) for this to work.</p>
+								</div>
+							</div>
+
+							<h4>4.4 ROC settings</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_ConfigROC.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_ConfigROC.jpg" alt="ROC settings" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>ROC:</strong> Configure the device to send punches to the official ROC server. When the function is activated, incoming punches are automatically forwarded to the ROC server, just like a regular ROC device. Requires an internet connection.</p>
+								</div>
+							</div>
+
+							<h4>4.5 SRR settings</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_ConfigSRR.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_ConfigSRR.jpg" alt="SRR settings" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>SRR:</strong> Settings for the built-in SRR receivers. Enable/disable the red and blue channels and choose whether they should send ACK (acknowledgement) back to the SIAC/SRR units. From v1.46 the SRR can also be set to transmit mode to send out punches.</p>
+								</div>
+							</div>
+
+							<h4>4.6 USB settings</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_ConfigUSB.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_ConfigUSB.jpg" alt="USB settings" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>USB:</strong> Manage connected USB devices. Here you can enable "One-way" communication (listen only) for the USB ports. Can be used if you connect a "Samlingsbox" via a USB serial adapter, since the "Samlingsbox" cannot receive commands. "Samlingsbox" uses 4800 bps, so that must also be enabled.</p>
+								</div>
+							</div>
+
+							<h4>4.7 Serial port settings</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_ConfigSerial.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_ConfigSerial.jpg" alt="Serial port settings" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Serial port:</strong> Settings for the built-in serial port. The serial port can be used as both input (receive punches) and output (send punches). Here you can enable "One-way" communication (listen only) for the serial port when it is in receive mode. Can be used if you connect a "Samlingsbox", since the "Samlingsbox" cannot receive commands. "Samlingsbox" uses 4800 bps, so that must also be enabled.</p>
+								</div>
+							</div>
+
+							<h4>4.8 Network – WiFi</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_NetworkWifi.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_NetworkWifi.jpg" alt="WiFi settings" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>WiFi:</strong> Connect the WiRoc device to a WiFi network. Tap <strong>Get/Refresh wifi list</strong> to see available networks. Select a network and enter the password. The IP address of the device is displayed when connected.</p>
+								</div>
+							</div>
+
+							<h4>4.9 Network – Ethernet</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_NetworkEthernet.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_NetworkEthernet.jpg" alt="Ethernet settings" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p>Shows the IP address for Ethernet connections (e.g. USB Ethernet adapter) and the Tailscale VPN IP.</p>
+								</div>
+							</div>
+
+							<h4>4.10 Network – Tailscale VPN</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_NetworkTailscale1.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_NetworkTailscale1.jpg" alt="Tailscale settings" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Tailscale VPN:</strong> Connect the device to a Tailscale network for remote access. The device gets a fixed IP address (100.x.x.x). Requires a free account at tailscale.com. Follow the on-screen instructions.</p>
+								</div>
+							</div>
+
+							<h4>4.11 Network – WiFi Mesh</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_NetworkWifiMesh.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_NetworkWifiMesh.jpg" alt="WiFi Mesh settings" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>WiFi Mesh:</strong> Configure WiFi mesh networks (802.11s) to extend the WiFi range. Requires a compatible USB WiFi dongle (Atheros AR9271). One WiRoc device must be the Gateway and be connected to the local network. The gateway will have node number 1 and the IP address will end with the node number. On the gateway you must also select which interface the IP messages should be sent to; select the interface used to connect to the network (wlan0 if connected to WiFi). "Restrict access" can be enabled to block traffic from the mesh network to the local network. Other nodes that are not the Gateway need a unique node number.</p>
+								</div>
+							</div>
+
+							<h4>4.12 Test transmission</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_TestSend.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_TestSend.jpg" alt="Test transmission" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Test transmission:</strong> Send test messages to verify the LoRa link. Shows signal strength (RSSI and SNR) and which messages were acknowledged. Used during setup to check placement and antenna direction. Can also be used to test sending to SIRAP etc.</p>
+								</div>
+							</div>
+
+							<h4>4.13 Monitor access</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_MonitorAccess.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_MonitorAccess.jpg" alt="Monitor access" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Monitor access:</strong> Grant a username access to the WiRoc device on monitor.wiroc.se. With access, the user can assign the device to a competition, clear statistics and more. You need to create an account on monitor.wiroc.se first.</p>
+								</div>
+							</div>
+
+							<h4>4.14 Other settings</h4>
+
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_OtherDatabase.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_OtherDatabase.jpg" alt="Database" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Database:</strong> Manage the device's internal database with punches and configuration. The database can be cleared of punches or completely recreated (losing both settings and punches).</p>
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_OtherDateTime.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_OtherDateTime.jpg" alt="Date and time" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Date &amp; Time:</strong> Set the date and time on the device. Correct time is important for logs to get the right timestamp and for punches sent to the ROC server to get the right date. The device normally synchronizes the time automatically when it has an internet connection. WiRoc V7 and later have an RTC chip that keeps the time even when the device is off.</p><p><strong>Wake-up:</strong> Set a wake-up time for the device. After setting a time, turn off the device; it should then indicate that it has activated wake-up. At the set time the device starts up. If you start the device before the wake-up time, the wake-up is cancelled and you must configure it again if you still want it to wake up automatically.</p>
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_OtherStatus.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_OtherStatus.jpg" alt="Unit status" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Status:</strong> Shows the current status of the device – whether the services are running as they should, which inputs/outputs are active and more. Used for troubleshooting.</p>
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_OtherSettings.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_OtherSettings.jpg" alt="Other settings" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Settings:</strong> Here all settings can be changed, including advanced settings that do not have a separate user interface.</p>
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_OtherAmateurRadio.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_OtherAmateurRadio.jpg" alt="Amateur radio" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Amateur radio:</strong> Settings for amateur radio mode. Here you specify whether the mode should be activated and which callsign to use for amateur radio frequencies. The callsign is sent regularly as part of the radio transmissions in accordance with applicable regulations.</p>
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="WiRocConfigScreenshots/AppScreen_OtherUpdate.jpg" target="_blank"><img src="WiRocConfigScreenshots/AppScreen_OtherUpdate.jpg" alt="Software update" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Update:</strong> Update the device's software to the latest version. Keep the software updated for the latest features and bug fixes.</p>
+								</div>
+							</div>
+
+						</section>
+
+						<!-- SECTION 5: MONITOR -->
+						<section id="manual-monitor-en" style="page-break-before: always;">
+							<h3>5. Monitor.wiroc.se</h3>
+							<p><strong>Monitor</strong> (<a href="http://monitor.wiroc.se" target="_blank">monitor.wiroc.se</a>) is a web-based monitoring tool for WiRoc devices. It provides an overview of all devices connected to the internet.</p>
+
+							<h4>Getting started</h4>
+							<ol>
+								<li>Create an account at monitor.wiroc.se.</li>
+								<li>In the WiRoc Config app, under Monitor access, enter your username to give your user account the right to manage your device.</li>
+								<li>Once the device has an internet connection it appears in the list on Monitor.</li>
+							</ol>
+
+							<h4>Features</h4>
+							<ul>
+								<li><strong>Device list</strong> – Shows all WiRoc devices with battery level as a percentage, whether they are online, and last contact.</li>
+								<li><strong>Detail view</strong> – Click a device to see:
+								<ul>
+									<li>Graph of battery charge over time</li>
+									<li>Number of LoRa messages not acknowledged (orange line, 5-minute intervals)</li>
+									<li>Punches not acknowledged (red line, 5-minute intervals)</li>
+									<li>Connected USB devices and SRR dongles</li>
+									<li>Configuration of internal SRR receivers</li>
+								</ul>
+								</li>
+								<li><strong>Competitions</strong> – Assign devices to competitions to organize and filter. Here you can also upload the map and place the WiRoc devices on the map. You can measure distances, see the elevation profile between two points, and get an estimate of how good the LoRa connection will be between the two points.</li>
+							</ul>
+
+							<h4>Monitoring tips</h4>
+							<ul>
+								<li>Keep an eye on the number of unacknowledged LoRa messages – an increase can indicate deteriorating link quality.</li>
+								<li>Check that connected SRR dongles are reported correctly. A dongle that is plugged in but not detected can cause lost punches.</li>
+								<li>If a device goes offline – check that it hasn't turned itself off or lost contact. Online/offline status is shown based on the status messages sent every five minutes. Check whether you are receiving punches from the control in question. It could be that a single status message didn't get through.</li>
+							</ul>
+						</section>
+
+						<!-- SECTION 6: RANGE -->
+						<section id="manual-rackvidd-en" style="page-break-before: always;">
+							<h3>6. Range</h3>
+							<p>The range of the LoRa communication depends on several factors. Here are the most important:</p>
+
+							<h4>6.1 Factors affecting the range</h4>
+							<table class="table table-bordered table-sm manual-table">
+								<tr><th style="width:200px;">Factor</th><th>Impact</th></tr>
+								<tr><td><strong>Terrain</strong></td><td>Free line of sight gives the best range. Hills, dense forest and buildings attenuate the signal. Place the antenna high for best results.</td></tr>
+								<tr><td><strong>Antennas</strong></td><td>A dipole antenna (included) can give good range, but a directional antenna (Yagi) can give clearly longer range. Best results are achieved with directional antennas on both transmitter and receiver. If directional antennas are used, it is important that they are pointed correctly at each other.</td></tr>
+								<tr><td><strong>Antenna placement</strong></td><td>Both the transmitter antenna and receiver antenna should have the same polarization. Usually the antenna is placed vertically. Avoid placing it near metal objects, the ground or larger objects. As clear as possible around the antenna is preferred.</td></tr>
+								<tr><td><strong>Radio interference</strong></td><td>Interference from other sources can greatly affect the range. Things that can interfere include power lines, low-quality power banks and other electronics. If power banks are used near the WiRoc device, use a high-quality one. WiRoc devices transmitting on other channels can also interfere during the moment they transmit. If two receivers are close together and one sends an acknowledgement at the same time as the other is receiving a message, it can be disrupted. Minimize the risk by placing the receivers some distance apart, using channels as far apart as possible, and reducing the risk of "collisions" by not using an unnecessarily low data rate.</td></tr>
+								<tr><td><strong>Data rate</strong></td><td>A lower data rate gives longer range but fewer punches per minute. If only one control is running on the channel, the standard (L) is a good compromise in most cases. UL and XL are recommended only in exceptional cases (very low number of punches at the control and if it doesn't work with a higher data rate).</td></tr>
+								<tr><td><strong>Output power</strong></td><td>Higher output power gives better range; the default is max and there is normally no reason to change it.</td></tr>
+							</table>
+
+							<h4>6.2 Antenna types</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<img src="DipoleAntenna.jpg" alt="Dipole antenna" class="img-fluid rounded manual-img"/>
+									<p class="text-center text-muted small">Dipole antenna (approx. 10×30 cm). Omni-directional. Included with rental.</p>
+								</div>
+								<div class="col-md-6 mb-3">
+									<img src="DirectionalAntenna.jpg" alt="Directional antenna" class="img-fluid rounded manual-img"/>
+									<p class="text-center text-muted small">Yagi directional antenna (approx. 45×30 cm). Gives significantly better range but must be pointed at the receiver.</p>
+								</div>
+							</div>
+
+							<h4>6.3 Guidelines for good range</h4>
+							<ol>
+								<li>Use the test function in WiRoc Config to check whether there is contact between transmitter and receiver.</li>
+								<li>If possible, avoid placing the antennas so there are obstacles between them.</li>
+								<li>Place the antenna as high as possible – in a tree or on a pole. Place the antenna so it is as clear as possible around it; if it is placed on a tree trunk, make sure the trunk is not between the transmitter and receiver.</li>
+								<li>It is better to switch to a better antenna than to lower the data rate.</li>
+								<li>If directional antennas are used, make sure they are pointed at each other.</li>
+								<li>When using multiple transmitters on the same channel place them so that they can all hear each other. If they cannot hear each other then it will increase the riskt that they will transmit at the same time.</li>
+								<li>Remember that you have some freedom to place the receiver since it can connect over WiFi. Perhaps you can place the receiver on a nearby hill that is within WiFi range. It is also possible to run a network cable and connect the receiver via a USB Ethernet adapter (or the network port if one exists on the WiRoc device). The WiFi mesh functionality can also be used to extend the WiFi range (but requires extra WiRoc devices and USB WiFi hardware).</li>
+								<li>If direct contact doesn't work – use a repeater or relay station. Place it on high ground.</li>
+								<li>Yet another option is to connect one of the devices, the receiver or the transmitter, to the mobile network with a 4G dongle (e.g. Huawei E3372). Using a Tailscale VPN network, connect the device to the competition's network and run SIRAP-TCP/IP to the receiver computer. For example, a receiver can be placed on high ground with good mobile coverage; transmitters located lower can then send over LoRa to the receiver and do not need mobile coverage themselves. If you don't want to use Tailscale VPN, the device can instead send the punches to the ROC server. A receiver computer must then be configured to fetch from the ROC server.</li>
+							</ol>
+
+						</section>
+
+					</div>
+					</div>
+				</div>
+
 				<div class="tab-pane fade" id="pageContact" role="tabpanel">
 					<div class="lang-sv">
 					<h2>Kontakt</h2>
@@ -2170,8 +2692,8 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 			'wiroc': '#tabWiRoc',
 			'products': '#tabProducts',
 			'range': '#tabRange',
-			'config': '#tabConfig',
 			'blog': '#tabBlog',
+			'manual': '#tabManual',
 			'contact': '#tabContact'
 		};
 
