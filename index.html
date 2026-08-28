@@ -213,6 +213,16 @@
 				column-gap: 1.5rem;
 			}
 			@media (max-width: 576px) { .blog-summary-list { columns: 1; } }
+			@media (max-width: 767.98px) {
+				.header-banner > .d-flex {
+					flex-direction: column !important;
+					align-items: center !important;
+					justify-content: center !important;
+					gap: 0.75rem;
+				}
+				.header-banner h1 { font-size: 1.6rem; }
+				.header-banner p { font-size: 1rem; }
+			}
 			.blog-summary-list li { break-inside: avoid; margin-bottom: 0.3rem; }
 			.blog-summary-link {
 				font-size: 0.85rem;
@@ -456,8 +466,8 @@
 						<h2>WiRoc</h2>
 						<div class="card">
 						  <div class="image-flipper">
-						    <img class="flip-image active" src="WiRocV8Rev2_Ethernet_wobg_sc_2.png" alt="WiRoc device - Ethernet side"/>
-						    <img class="flip-image" src="WiRocV8Rev2_Serial_wobg.png" alt="WiRoc device - Serial port side"/>
+						    <img class="flip-image active" src="OtherPictures/WiRocV8Rev2_Ethernet_wobg_sc.png" alt="WiRoc device - Ethernet side"/>
+						    <img class="flip-image" src="OtherPictures/WiRocV8Rev2_Serial_wobg_sc.png" alt="WiRoc device - Serial port side"/>
 						    <button class="flip-btn flip-prev" onclick="flipImage(this.parentElement, -1)" title="Previous image">&#10094;</button>
 						    <button class="flip-btn flip-next" onclick="flipImage(this.parentElement, 1)" title="Next image">&#10095;</button>
 						    <div class="flip-dots">
@@ -1773,8 +1783,11 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 									<li><a href="#manual-anslutningar">Anslutningar och delar</a></li>
 									<li><a href="#manual-start">Start och avstängning</a></li>
 									<li><a href="#manual-konfiguration">Konfiguration med WiRoc Config</a></li>
+									<li><a href="#manual-meos">Konfigurering av MeOS</a></li>
+									<li><a href="#manual-ola">Konfigurering av OLA</a></li>
 									<li><a href="#manual-monitor">Monitor.wiroc.se</a></li>
 									<li><a href="#manual-rackvidd">Räckvidd</a></li>
+									<li><a href="#manual-changelog">Ändringslogg</a></li>
 								</ol>
 							</div>
 						</div>
@@ -2118,9 +2131,50 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 							</div>
 						</section>
 
-						<!-- AVSNITT 5: MONITOR -->
+						<!-- AVSNITT 5: KONFIGURERING AV MEOS -->
+						<section id="manual-meos" style="page-break-before: always;">
+							<h3>5. Konfigurering av MeOS</h3>
+							<p>MeOS är ett tävlingsadministrationsprogram för orientering. För att MeOS ska kunna ta emot stämplingar från WiRoc-enheter över nätverket används en SIRAP-server i MeOS.</p>
+
+							<h4>5.1 Konfigurering av SIRAP-server</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="OtherPictures/MEOSSirapServer.png" target="_blank"><img src="OtherPictures/MEOSSirapServer.png" alt="MeOS SIRAP-server" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>SIRAP-server:</strong> Starta SIRAP-servern i MeOS och ange den port som WiRoc-enheterna ska skicka till. Standardporten i MeOS är 10000 – samma port ska vara inställd i WiRoc Config under SIRAP (avsnitt 4.3).</p>
+								</div>
+							</div>
+						</section>
+
+						<!-- AVSNITT 6: KONFIGURERING AV OLA -->
+						<section id="manual-ola" style="page-break-before: always;">
+							<h3>6. Konfigurering av OLA</h3>
+							<p>OLA är ett tävlingsadministrationsprogram utvecklat av Sveriges Orienteringsförbund. WiRoc-enheter kan skicka stämplingar till OLA via SIRAP. Först registreras kontrollerna som "mellantidskontroller" och därefter sätts SIRAP-servern upp.</p>
+
+							<h4>6.1 Konfigurering av SIRAP-server</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="OtherPictures/OLARegistreraKontroller.png" target="_blank"><img src="OtherPictures/OLARegistreraKontroller.png" alt="OLA – Registrera kontroller" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Registrera kontroller:</strong> Registrera onlinekontrollerna som "mellantidskontroller".</p>
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="OtherPictures/OLASirapServer.png" target="_blank"><img src="OtherPictures/OLASirapServer.png" alt="OLA – SIRAP-server" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>SIRAP-server:</strong> Starta SIRAP-servern i OLA. Standardporten i OLA är 10001 – samma port ska vara inställd i WiRoc Config under SIRAP (avsnitt 4.3).</p>
+								</div>
+							</div>
+						</section>
+
+						<!-- AVSNITT 7: MONITOR -->
 						<section id="manual-monitor" style="page-break-before: always;">
-							<h3>5. Monitor.wiroc.se</h3>
+							<h3>7. Monitor.wiroc.se</h3>
 							<p><strong>Monitor</strong> (<a href="http://monitor.wiroc.se" target="_blank">monitor.wiroc.se</a>) är ett webbaserat övervakningsverktyg för WiRoc-enheter. Det ger översikt över alla enheter som är uppkopplade mot internet.</p>
 
 							<h4>Kom igång</h4>
@@ -2153,12 +2207,12 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 							</ul>
 						</section>
 
-						<!-- AVSNITT 6: RÄCKVIDD -->
+						<!-- AVSNITT 8: RÄCKVIDD -->
 						<section id="manual-rackvidd" style="page-break-before: always;">
-							<h3>6. Räckvidd</h3>
+							<h3>8. Räckvidd</h3>
 							<p>Räckvidden för LoRa-kommunikationen beror på flera faktorer. Här är de viktigaste:</p>
 
-							<h4>6.1 Faktorer som påverkar räckvidden</h4>
+							<h4>8.1 Faktorer som påverkar räckvidden</h4>
 							<table class="table table-bordered table-sm manual-table">
 								<tr><th style="width:200px;">Faktor</th><th>Påverkan</th></tr>
 								<tr><td><strong>Terräng</strong></td><td>Fri sikt ger bäst räckvidd. Höjder, tät skog och byggnader dämpar signalen. Placera antennen högt för bästa resultat.</td></tr>
@@ -2169,7 +2223,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 								<tr><td><strong>Uteffekt</strong></td><td>Högre uteffekt ger bättre räckvidd, standardinställningen är max och det finns normalt ingen anledning att ändra.</td></tr>
 							</table>
 
-							<h4>6.2 Antenntyper</h4>
+							<h4>8.2 Antenntyper</h4>
 							<div class="row mb-3">
 								<div class="col-md-6 mb-3">
 									<img src="DipoleAntenna.jpg" alt="Dipolantenn" class="img-fluid rounded manual-img"/>
@@ -2181,7 +2235,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 								</div>
 							</div>
 
-							<h4>6.3 Riktlinjer för bra räckvidd</h4>
+							<h4>8.3 Riktlinjer för bra räckvidd</h4>
 							<ol>
 								<li>Använd testfunktionen i WiRoc Config för att testa om det är kontakt mellan sändare och mottagare.</li>
 								<li>Om möjligt undvik att placera antennerna så att det finns hinder mellan dem.</li>
@@ -2197,6 +2251,15 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 							
 						</section>
 
+						<!-- AVSNITT 9: ÄNDRINGSLOGG -->
+						<section id="manual-changelog" style="page-break-before: always;">
+							<h3>9. Ändringslogg</h3>
+							<table class="table table-bordered table-sm manual-table">
+								<tr><th style="width:70px;">Version</th><th style="width:110px;">Datum</th><th style="width:140px;">Författare</th><th>Beskrivning</th></tr>
+								<tr><td>v1.0</td><td>2026-08-17</td><td>Henrik Larsson</td><td>Första versionen.</td></tr>
+								<tr><td>v1.1</td><td>2026-08-18</td><td>Henrik Larsson</td><td>Tillägg av konfiguration av OLA/MeOS.</td></tr>
+							</table>
+						</section>
 					</div>
 					</div>
 						<div class="lang-en">
@@ -2216,8 +2279,11 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 								<li><a href="#manual-anslutningar-en">Connections and parts</a></li>
 								<li><a href="#manual-start-en">Starting and shutting down</a></li>
 								<li><a href="#manual-konfiguration-en">Configuration with WiRoc Config</a></li>
+								<li><a href="#manual-meos-en">MeOS configuration</a></li>
+								<li><a href="#manual-ola-en">OLA configuration</a></li>
 								<li><a href="#manual-monitor-en">Monitor.wiroc.se</a></li>
 								<li><a href="#manual-rackvidd-en">Range</a></li>
+								<li><a href="#manual-changelog-en">Changelog</a></li>
 							</ol>
 							</div>
 						</div>
@@ -2555,9 +2621,50 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 
 						</section>
 
-						<!-- SECTION 5: MONITOR -->
+						<!-- SECTION 5: MEOS CONFIGURATION -->
+						<section id="manual-meos-en" style="page-break-before: always;">
+							<h3>5. MeOS configuration</h3>
+							<p>MeOS is an orienteering competition management program. To allow MeOS to receive punches from WiRoc devices over the network, a SIRAP server is used in MeOS.</p>
+
+							<h4>5.1 SIRAP server configuration</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="OtherPictures/MEOSSirapServer.png" target="_blank"><img src="OtherPictures/MEOSSirapServer.png" alt="MeOS SIRAP server" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>SIRAP server:</strong> Start the SIRAP server in MeOS and set the port that the WiRoc devices should send to. The default port in MeOS is 10000 – the same port must be set in WiRoc Config under SIRAP (section 4.3).</p>
+								</div>
+							</div>
+						</section>
+
+						<!-- SECTION 6: OLA CONFIGURATION -->
+						<section id="manual-ola-en" style="page-break-before: always;">
+							<h3>6. OLA configuration</h3>
+							<p>OLA is a competition management program developed by the Swedish Orienteering Association. WiRoc devices can send punches to OLA via SIRAP. First the controls needs to be registered as "mellantidskontroller", and then the SIRAP server is set up.</p>
+
+							<h4>6.1 SIRAP server configuration</h4>
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="OtherPictures/OLARegistreraKontroller.png" target="_blank"><img src="OtherPictures/OLARegistreraKontroller.png" alt="OLA – Register controls" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>Register controls:</strong> The controls needs to registered as "mellantidskontroll".</p>
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-md-6 mb-3">
+									<a href="OtherPictures/OLASirapServer.png" target="_blank"><img src="OtherPictures/OLASirapServer.png" alt="OLA – SIRAP server" class="img-fluid rounded manual-img-click"></a>
+								</div>
+								<div class="col-md-6">
+									<p><strong>SIRAP server:</strong> Start the SIRAP server in OLA. The default port in OLA is 10001 – the same port must be set in WiRoc Config under SIRAP (section 4.3).</p>
+								</div>
+							</div>
+						</section>
+
+						<!-- SECTION 7: MONITOR -->
 						<section id="manual-monitor-en" style="page-break-before: always;">
-							<h3>5. Monitor.wiroc.se</h3>
+							<h3>7. Monitor.wiroc.se</h3>
 							<p><strong>Monitor</strong> (<a href="http://monitor.wiroc.se" target="_blank">monitor.wiroc.se</a>) is a web-based monitoring tool for WiRoc devices. It provides an overview of all devices connected to the internet.</p>
 
 							<h4>Getting started</h4>
@@ -2590,12 +2697,12 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 							</ul>
 						</section>
 
-						<!-- SECTION 6: RANGE -->
+						<!-- SECTION 8: RANGE -->
 						<section id="manual-rackvidd-en" style="page-break-before: always;">
-							<h3>6. Range</h3>
+							<h3>8. Range</h3>
 							<p>The range of the LoRa communication depends on several factors. Here are the most important:</p>
 
-							<h4>6.1 Factors affecting the range</h4>
+							<h4>8.1 Factors affecting the range</h4>
 							<table class="table table-bordered table-sm manual-table">
 								<tr><th style="width:200px;">Factor</th><th>Impact</th></tr>
 								<tr><td><strong>Terrain</strong></td><td>Free line of sight gives the best range. Hills, dense forest and buildings attenuate the signal. Place the antenna high for best results.</td></tr>
@@ -2606,7 +2713,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 								<tr><td><strong>Output power</strong></td><td>Higher output power gives better range; the default is max and there is normally no reason to change it.</td></tr>
 							</table>
 
-							<h4>6.2 Antenna types</h4>
+							<h4>8.2 Antenna types</h4>
 							<div class="row mb-3">
 								<div class="col-md-6 mb-3">
 									<img src="DipoleAntenna.jpg" alt="Dipole antenna" class="img-fluid rounded manual-img"/>
@@ -2618,7 +2725,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 								</div>
 							</div>
 
-							<h4>6.3 Guidelines for good range</h4>
+							<h4>8.3 Guidelines for good range</h4>
 							<ol>
 								<li>Use the test function in WiRoc Config to check whether there is contact between transmitter and receiver.</li>
 								<li>If possible, avoid placing the antennas so there are obstacles between them.</li>
@@ -2633,6 +2740,15 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 
 						</section>
 
+						<!-- SECTION 9: CHANGELOG -->
+						<section id="manual-changelog-en" style="page-break-before: always;">
+							<h3>9. Changelog</h3>
+							<table class="table table-bordered table-sm manual-table">
+								<tr><th style="width:70px;">Version</th><th style="width:110px;">Date</th><th style="width:140px;">Author</th><th>Description</th></tr>
+								<tr><td>v1.0</td><td>2026-08-17</td><td>Henrik Larsson</td><td>Initial version.</td></tr>
+								<tr><td>v1.1</td><td>2026-08-18</td><td>Henrik Larsson</td><td>Addition of configuration of OLA/MeOS.</td></tr>
+							</table>
+						</section>
 					</div>
 					</div>
 				</div>
