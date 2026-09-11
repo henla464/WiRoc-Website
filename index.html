@@ -1810,6 +1810,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 									<li><a href="#manual-meos">Konfigurering av MeOS</a></li>
 									<li><a href="#manual-ola">Konfigurering av OLA</a></li>
 									<li><a href="#manual-monitor">Monitor.wiroc.se</a></li>
+									<li><a href="#manual-usbdongel">USB-mobildongel</a></li>
 									<li><a href="#manual-rackvidd">Räckvidd</a></li>
 									<li><a href="#manual-changelog">Ändringslogg</a></li>
 								</ol>
@@ -1861,6 +1862,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 								<li><strong>USB-Seriell-adapter</strong> – för att ansluta SportIdent-enhet med seriekabel.</li>
 								<li><strong>USB-Ethernet-adapter</strong> – för trådbunden nätverksanslutning.</li>
 								<li><strong>Atheros AR9271 USB WiFi-adapter</strong> – för att skapa WiFi-mesh mellan WiRoc-enheter.</li>
+								<li><strong>USB-mobildongel</strong> – för internetuppkoppling via mobilnätet (se 8).</li>
 							</ul>
 
 							<h4>2.3 Serieport</h4>
@@ -2231,12 +2233,23 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 							</ul>
 						</section>
 
-						<!-- AVSNITT 8: RÄCKVIDD -->
+						<!-- AVSNITT 8: USB-MOBILDONGEL -->
+						<section id="manual-usbdongel" style="page-break-before: always;">
+							<h3>8. USB-mobildongel</h3>
+							<p>En USB-mobildongel kan anslutas till en av USB-A hostportarna för att ge enheten internetuppkoppling via mobilnätet. Det krävs dock ingen mobildongel för att använda WiRoc – LoRa-radion behöver ingen internetuppkoppling. Mobildongeln kan användas för att skicka stämplingar till ROC-servern istället för över LoRa-radion (eller som ett komplement till LoRa).</p>
+							<p>Följande mobildonglar är testade och stöds:</p>
+							<ul>
+								<li><strong>Huawei E3372</strong> – stöds och rekommenderas.</li>
+								<li><strong>Huawei LTE Wingle E8372</strong> – stöds också, men eftersom den har en inbyggd WiFi-router drar den troligtvis mer ström.</li>
+								<li><strong>Generisk 4G LTE-dongel med chipset Qualcomm MSM8916 (id: 05c6:9091)</strong> – har testats framgångsrikt men drar ganska mycket ström och rekommenderas därför inte.</li>
+							</ul>
+						</section>
+						<!-- AVSNITT 9: RÄCKVIDD -->
 						<section id="manual-rackvidd" style="page-break-before: always;">
-							<h3>8. Räckvidd</h3>
+							<h3>9. Räckvidd</h3>
 							<p>Räckvidden för LoRa-kommunikationen beror på flera faktorer. Här är de viktigaste:</p>
 
-							<h4>8.1 Faktorer som påverkar räckvidden</h4>
+							<h4>9.1 Faktorer som påverkar räckvidden</h4>
 							<table class="table table-bordered table-sm manual-table">
 								<tr><th style="width:200px;">Faktor</th><th>Påverkan</th></tr>
 								<tr><td><strong>Terräng</strong></td><td>Fri sikt ger bäst räckvidd. Höjder, tät skog och byggnader dämpar signalen. Placera antennen högt för bästa resultat.</td></tr>
@@ -2247,7 +2260,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 								<tr><td><strong>Uteffekt</strong></td><td>Högre uteffekt ger bättre räckvidd, standardinställningen är max och det finns normalt ingen anledning att ändra.</td></tr>
 							</table>
 
-							<h4>8.2 Antenntyper</h4>
+							<h4>9.2 Antenntyper</h4>
 							<div class="row mb-3">
 								<div class="col-md-6 mb-3">
 									<img src="DipoleAntenna.jpg" alt="Dipolantenn" class="img-fluid rounded manual-img"/>
@@ -2259,7 +2272,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 								</div>
 							</div>
 
-							<h4>8.3 Riktlinjer för bra räckvidd</h4>
+							<h4>9.3 Riktlinjer för bra räckvidd</h4>
 							<ol>
 								<li>Använd testfunktionen i WiRoc Config för att testa om det är kontakt mellan sändare och mottagare.</li>
 								<li>Om möjligt undvik att placera antennerna så att det finns hinder mellan dem.</li>
@@ -2275,13 +2288,14 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 							
 						</section>
 
-						<!-- AVSNITT 9: ÄNDRINGSLOGG -->
+						<!-- AVSNITT 10: ÄNDRINGSLOGG -->
 						<section id="manual-changelog" style="page-break-before: always;">
-							<h3>9. Ändringslogg</h3>
+							<h3>10. Ändringslogg</h3>
 							<table class="table table-bordered table-sm manual-table">
 								<tr><th style="width:70px;">Version</th><th style="width:110px;">Datum</th><th style="width:140px;">Författare</th><th>Beskrivning</th></tr>
 								<tr><td>v1.0</td><td>2026-08-17</td><td>Henrik Larsson</td><td>Första versionen.</td></tr>
 								<tr><td>v1.1</td><td>2026-08-18</td><td>Henrik Larsson</td><td>Tillägg av konfiguration av OLA/MeOS.</td></tr>
+								<tr><td>v1.2</td><td>2026-09-11</td><td>Henrik Larsson</td><td>Tillägg av avsnitt om USB-mobildonglar.</td></tr>
 							</table>
 						</section>
 					</div>
@@ -2306,6 +2320,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 								<li><a href="#manual-meos-en">MeOS configuration</a></li>
 								<li><a href="#manual-ola-en">OLA configuration</a></li>
 								<li><a href="#manual-monitor-en">Monitor.wiroc.se</a></li>
+								<li><a href="#manual-usbdongle-en">USB mobile dongle</a></li>
 								<li><a href="#manual-rackvidd-en">Range</a></li>
 								<li><a href="#manual-changelog-en">Changelog</a></li>
 							</ol>
@@ -2357,6 +2372,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 								<li><strong>USB serial adapter</strong> – to connect a SportIdent unit with a serial cable.</li>
 								<li><strong>USB Ethernet adapter</strong> – for a wired network connection.</li>
 								<li><strong>Atheros AR9271 USB WiFi adapter</strong> – to create a WiFi mesh between WiRoc devices.</li>
+								<li><strong>USB mobile dongle</strong> – for an internet connection over the mobile network (see 8).</li>
 							</ul>
 
 							<h4>2.3 Serial port</h4>
@@ -2721,12 +2737,23 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 							</ul>
 						</section>
 
-						<!-- SECTION 8: RANGE -->
+						<!-- SECTION 8: USB MOBILE DONGLE -->
+						<section id="manual-usbdongle-en" style="page-break-before: always;">
+							<h3>8. USB mobile dongle</h3>
+							<p>A USB mobile dongle can be connected to one of the USB A host ports to give the device an internet connection over the mobile network. No mobile dongle is required to use WiRoc – the LoRa radio does not need an internet connection. The dongle can, however, be used to send punches to the ROC server instead of over the LoRa radio (or in addition to it).</p>
+							<p>The following mobile dongles are tested and supported:</p>
+							<ul>
+								<li><strong>Huawei E3372</strong> – supported and recommended.</li>
+								<li><strong>Huawei LTE Wingle E8372</strong> – also supported, but because it has a built-in WiFi router it most likely draws more power.</li>
+								<li><strong>Generic 4G LTE dongle with Qualcomm MSM8916 chipset (id: 05c6:9091)</strong> – has been tested successfully but is quite power hungry and is therefore not recommended.</li>
+							</ul>
+						</section>
+						<!-- SECTION 9: RANGE -->
 						<section id="manual-rackvidd-en" style="page-break-before: always;">
-							<h3>8. Range</h3>
+							<h3>9. Range</h3>
 							<p>The range of the LoRa communication depends on several factors. Here are the most important:</p>
 
-							<h4>8.1 Factors affecting the range</h4>
+							<h4>9.1 Factors affecting the range</h4>
 							<table class="table table-bordered table-sm manual-table">
 								<tr><th style="width:200px;">Factor</th><th>Impact</th></tr>
 								<tr><td><strong>Terrain</strong></td><td>Free line of sight gives the best range. Hills, dense forest and buildings attenuate the signal. Place the antenna high for best results.</td></tr>
@@ -2737,7 +2764,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 								<tr><td><strong>Output power</strong></td><td>Higher output power gives better range; the default is max and there is normally no reason to change it.</td></tr>
 							</table>
 
-							<h4>8.2 Antenna types</h4>
+							<h4>9.2 Antenna types</h4>
 							<div class="row mb-3">
 								<div class="col-md-6 mb-3">
 									<img src="DipoleAntenna.jpg" alt="Dipole antenna" class="img-fluid rounded manual-img"/>
@@ -2749,7 +2776,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 								</div>
 							</div>
 
-							<h4>8.3 Guidelines for good range</h4>
+							<h4>9.3 Guidelines for good range</h4>
 							<ol>
 								<li>Use the test function in WiRoc Config to check whether there is contact between transmitter and receiver.</li>
 								<li>If possible, avoid placing the antennas so there are obstacles between them.</li>
@@ -2764,13 +2791,14 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 
 						</section>
 
-						<!-- SECTION 9: CHANGELOG -->
+						<!-- SECTION 10: CHANGELOG -->
 						<section id="manual-changelog-en" style="page-break-before: always;">
-							<h3>9. Changelog</h3>
+							<h3>10. Changelog</h3>
 							<table class="table table-bordered table-sm manual-table">
 								<tr><th style="width:70px;">Version</th><th style="width:110px;">Date</th><th style="width:140px;">Author</th><th>Description</th></tr>
 								<tr><td>v1.0</td><td>2026-08-17</td><td>Henrik Larsson</td><td>Initial version.</td></tr>
 								<tr><td>v1.1</td><td>2026-08-18</td><td>Henrik Larsson</td><td>Addition of configuration of OLA/MeOS.</td></tr>
+								<tr><td>v1.2</td><td>2026-09-11</td><td>Henrik Larsson</td><td>Added section about supported USB mobile dongles.</td></tr>
 							</table>
 						</section>
 					</div>

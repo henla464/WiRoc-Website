@@ -1,3 +1,68 @@
-Privacy policy
+Privacy Policy - WiRoc Config
+Last updated: 11 September 2026
 
-WiRoc Config does not collect any user or mobile device data.
+WiRoc Config is an app for configuring WiRoc devices (SportIdent timing and
+registration equipment). This policy explains what information the app
+accesses, what it stores on your device, and what it sends over the network.
+
+In short: WiRoc Config has no user accounts, no advertising, and no analytics,
+crash-reporting or tracking services, and it does not sell your information.
+The app talks to WiRoc devices over Bluetooth and, where relevant, to WiRoc's
+own server (monitor.wiroc.se) to look up firmware updates and to manage device
+access.
+
+1. Permissions the app requests
+   - Bluetooth: used to find and connect to nearby WiRoc devices.
+   - Location (Android): the Android operating system requires location
+     permission for apps that scan for Bluetooth devices. The app does not use
+     your location for any other purpose and does not track or store it.
+   - Network/Internet: used to communicate with WiRoc devices on your local
+     network and to reach monitor.wiroc.se.
+
+2. Information read from WiRoc devices
+   When you scan for and connect to a WiRoc device, the app reads information
+   from that device, including its Bluetooth address (the device identifier),
+   its name, its signal strength (RSSI), and its configuration settings. This
+   information is used only to display and configure your device.
+
+3. Information stored on your device
+   The app keeps a list of the WiRoc devices you have used, storing for each
+   device its name, Bluetooth address and, if you use it, the network address of
+   the device's REST API. This is kept in local storage on your phone and is
+   removed when you delete the device in the app or uninstall the app.
+   The app also keeps a short in-app log (the last 500 messages) for
+   troubleshooting. This stays on your device and is not sent anywhere.
+
+4. Information sent to WiRoc's server (monitor.wiroc.se)
+   - Firmware update lookup: when you open the Update screen for a connected
+     device, the app sends the device's hardware version, hardware revision and
+     Bluetooth address to monitor.wiroc.se in order to retrieve the list of
+     available firmware versions. No personal information is included.
+   - Device access: if you use the "Device access" screen, the email address and
+     password you enter (for your monitor.wiroc.se account) are sent over HTTPS
+     to monitor.wiroc.se in order to grant that account access to the device.
+     The app does not store your password.
+   monitor.wiroc.se is operated by the WiRoc project. Information sent there is
+   used only for the purposes above (firmware lookup and device access
+   management) and is not used for advertising or profiling.
+
+5. Tailscale (optional)
+   If you enable the Tailscale VPN feature for a device, the app opens the
+   device's Tailscale login link in your web browser. Signing in is handled by
+   Tailscale in the browser; the app does not receive or store your Tailscale
+   credentials. If you tap "Copy link", the link is placed on your clipboard.
+
+6. Third parties
+   The app does not include advertising, analytics, crash-reporting or tracking
+   services, and does not sell or rent your information.
+
+7. Children's privacy
+   The app is not directed at children and does not knowingly collect personal
+   information from children.
+
+8. Changes to this policy
+   We may update this policy from time to time. Changes will be reflected by the
+   "last updated" date above.
+
+9. Contact
+   Questions about this policy can be sent to info(at)wiroc.se.
