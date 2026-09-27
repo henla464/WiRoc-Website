@@ -320,6 +320,21 @@
 				h2 { font-size: 20pt; border: none; padding-left: 0; }
 				h3 { font-size: 16pt; }
 				h4 { font-size: 14pt; }
+				h5 { font-size: 12pt; }
+				/* Manual: numbered sub-headings in section 11 */
+				.install-heading {
+					font-size: 14pt;
+					margin-top: 1rem;
+					padding-bottom: 0.15rem;
+					border-bottom: 1px solid #999;
+				}
+				.install-subheading {
+					font-size: 12pt;
+					font-weight: 600;
+					margin: 0.9rem 0 0.4rem;
+					padding-left: 0.45rem;
+					border-left: 3px solid #999;
+				}
 				.card { box-shadow: none; break-inside: avoid; border: 1px solid #ddd; }
 				.card:hover { transform: none; box-shadow: none; }
 				table { font-size: 11.5pt; }
@@ -379,6 +394,20 @@
 				.manual-img-click { max-width: 100%; max-height: none; cursor: pointer; border: 1px solid #dee2e6; transition: opacity 0.2s; }
 				.manual-img-click:hover { opacity: 0.85; }
 				.manual-table { font-size: 0.9rem; }
+				/* Manual: numbered sub-headings in section 11 */
+				#pageManual .install-heading {
+					margin-top: 1.4rem;
+					padding-bottom: 0.3rem;
+					border-bottom: 1px solid #cfd8dc;
+				}
+				#pageManual .install-subheading {
+					font-size: 1.05rem;
+					font-weight: 600;
+					color: var(--wiroc-primary);
+					margin: 1.2rem 0 0.5rem;
+					padding-left: 0.6rem;
+					border-left: 3px solid var(--wiroc-accent);
+				}
 			}
 		</style>
 		<title>WiRoc – Trådlösa mellantider för orientering | Wireless split times for orienteering</title>
@@ -419,6 +448,9 @@
 				  </li>
 				  <li class="nav-item">
 				    <a class="nav-link" id="tabManual" data-toggle="pill" href="#pageManual" role="tab"><span class="lang-sv-inline">Manual</span><span class="lang-en-inline">Manual</span></a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" id="tabDownloads" data-toggle="pill" href="#pageDownloads" role="tab"><span class="lang-sv-inline">Nedladdning</span><span class="lang-en-inline">Downloads</span></a>
 				  </li>
 				  <li class="nav-item">
 				    <a class="nav-link" id="tabBlog" data-toggle="pill" href="#pageBlog" role="tab"><span class="lang-sv-inline">Blogg</span><span class="lang-en-inline">Blog</span></a>
@@ -502,7 +534,7 @@
 						  <img class="card-img-top" src="WiRocv6Rev1.JPG" alt="WiRoc v6Rev1">
 						  <div class="card-body">
 							<h4 class="card-title">WiRoc enhet</h4>
-							<span class="price-tag">90 kr/dag inkl. moms (72 kr exkl. moms)</span>
+							<span class="price-tag">110 kr/dag inkl. moms (88 kr exkl. moms)</span>
 							<p class="card-text">Det vanligaste scenariot för en radiokontroll i skogen är att använda en WiRoc enhet konfigurerad som sändare på eller i närheten av kontrollen och en WiRoc enhet konfigurerad som mottagare vid TC. Mottagaren kopplas upp på det lokala WLAN/Wifi nätverket och konfigureras att skicka till tävlingsprogrammet över SIRAP/tcp. SportIdent enheten kan kopplas till WiRoc sändaren på några olika sätt beroende på vilken typ av SportIdent enhet det är.<br/><br/><h5>SportIdent SRR enhet</h5> För att använda en SportIdent SRR enhet behöver man använda WiRoc V7 eller senare alternativt ansluta en SRR USB Dongle till WiRocs USB port.<br/><br/><h5>SportIdent enhet med USB kabel</h5>Om SportIdent enheten har USB sladd kan den kopplas direkt till WiRoc enheten (ev. med en USB-förlängningsladd och/eller USB-hub). Ett annat alternativ är att koppla SportIdent enheten till en USB-till-Bluetooth adapter. I WiRoc-Config kan man sedan söka upp och ansluta USB-till-Bluetooth adaptern.<br/><br/><h5>SportIdent enhet med RS232 seriell kabel</h5>Om SportIdent enheten har en RS232 seriell kabel så kan den kopplas via USB-adapter (notera att inte alla adaptrar stöds). Det finns även RS232-till-Bluetooth adaptrar att koppla SportIdent enheten till. I WiRoc-Config kan man sedan söka upp och ansluta RS232-till-Bluetooth adaptern. Vissa WiRoc enheter har en inbyggd RS232 port så att det går att koppla in direkt.</p>
 						  </div>
 						</div>
@@ -513,7 +545,7 @@
 						  <img class="card-img-top" src="DirectionalAntenna.jpg" alt="Yagi antenna">
 						  <div class="card-body">
 							<h4 class="card-title">Yagi riktantenn</h4>
-							<span class="price-tag">50 kr/dag inkl. moms (40 kr exkl. moms)</span>
+							<span class="price-tag">60 kr/dag inkl. moms (48 kr exkl. moms)</span>
 							<p class="card-text">En riktantenn kopplad till antingen mottagaren eller sändaren alternativt båda två förbättrar räckvidden avsevärt.</p>
 						  </div>
 						</div>
@@ -559,7 +591,7 @@
 						  <img class="card-img-top" src="WiRocv6Rev1.JPG" alt="WiRoc v6Rev1">
 						  <div class="card-body">
 							<h4 class="card-title">WiRoc device</h4>
-							<span class="price-tag">90 SEK/day incl. VAT (72 SEK excl. VAT)</span>
+							<span class="price-tag">110 SEK/day incl. VAT (88 SEK excl. VAT)</span>
 							<p class="card-text">The most common scenario for a radio control in the forest is to use a WiRoc device configured as a transmitter at or near the control and a WiRoc device configured as a receiver at the event centre. The receiver connects to the local WLAN/WiFi network and is configured to send to the competition software over SIRAP/TCP. The SportIdent station can be connected to the WiRoc transmitter in several different ways depending on the type of SportIdent station.<br/><h5>SportIdent SRR unit</h5>To use a SportIdent SRR unit you need to use a WiRoc V7 or later (with built in SRR receiver) or attach an SRR USB Dongle to the WiRoc device.<br/><br/><h5>SportIdent station with USB cable</h5>If the SportIdent station has a USB cable, it can be connected directly to the WiRoc device (possibly with a USB extension cable and/or USB hub). Another option is to connect the SportIdent station to a USB-to-Bluetooth adapter. In WiRoc-Config you can then search for and connect to the USB-to-Bluetooth adapter.<br/><br/><h5>SportIdent station with RS232 serial cable</h5>If the SportIdent station has an RS232 serial cable, it can be connected via a USB adapter (note that not all adapters are supported). There are also RS232-to-Bluetooth adapters to connect the SportIdent station to. In WiRoc-Config you can then search for and connect the RS232-to-Bluetooth adapter. Some WiRoc units have a built-in RS232 port so it can be connected directly.<br/></p>
 						  </div>
 						</div>
@@ -570,7 +602,7 @@
 						  <img class="card-img-top" src="DirectionalAntenna.jpg" alt="Yagi antenna">
 						  <div class="card-body">
 							<h4 class="card-title">Yagi directional antenna</h4>
-							<span class="price-tag">50 SEK/day incl. VAT (40 SEK excl. VAT)</span>
+							<span class="price-tag">60 SEK/day incl. VAT (48 SEK excl. VAT)</span>
 							<p class="card-text">A directional antenna connected to either the receiver or transmitter — or both — significantly improves the range.</p>
 						  </div>
 						</div>
@@ -1839,6 +1871,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 									<li><a href="#manual-monitor">Monitor.wiroc.se</a></li>
 									<li><a href="#manual-usbdongel">USB-mobildongel</a></li>
 									<li><a href="#manual-rackvidd">Räckvidd</a></li>
+									<li><a href="#manual-installation">Installation av mjukvaran</a></li>
 									<li><a href="#manual-changelog">Ändringslogg</a></li>
 								</ol>
 							</div>
@@ -2339,15 +2372,59 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 							
 						</section>
 
-						<!-- AVSNITT 11: ÄNDRINGSLOGG -->
+						<!-- AVSNITT 11: INSTALLATION AV MJUKVARAN -->
+						<section id="manual-installation" style="page-break-before: always;">
+							<h3>11. Installation av mjukvaran</h3>
+							<p>WiRoc-enheten kommer färdiginstallerad, men du kan behöva uppdatera mjukvaran för buggrättningar eller nya funktioner. Mindre uppdateringar kan göras via WiRoc Config-appen, men ibland kan det vara nödvändigt att skriva en ny avbildning ("image") till microSD-kortet.</p>
+
+							<h4 class="install-heading">11.1 Mindre uppdateringar</h4>
+							<p>Se 4.14 Övriga inställningar för hur man uppdaterar mjukvaran</p>
+
+							<h4 class="install-heading">11.2 Större uppdateringar</h4>
+							<p>För större uppdateringar behöver du skriva en ny avbildning till microSD-kortet.</p>
+
+							<h5 class="install-subheading">11.2.1 Skriv avbildningen till ett microSD-kort</h5>
+							<ol>
+								<li>Ladda ner avbildningen (<code>.img.xz</code>) för din hårdvaruversion från <a href="#pageDownloads" data-toggle="pill" role="tab">nedladdningssidan</a>.</li>
+								<li>Sätt ett microSD-kort på minst 8 GB i datorn.</li>
+								<li>Starta <a href="https://imager.armbian.com/" target="_blank" rel="noopener">Armbian Imager</a>. Välj att skriva din egen avbildning – programmet kan pekas mot en lokal avbildningsfil. Välj den nedladdade <code>.img.xz</code>-filen, välj sedan microSD-kortet under <em>Select storage</em> och starta skrivningen. </li>
+								<li>Vänta tills skrivningen är klar och mata ut kortet.</li>
+							</ol>
+							<p><strong>Tips:</strong> filen är komprimerad (<code>.xz</code>) och behöver <em>inte</em> packas upp i förväg – Armbian Imager hanterar det automatiskt.</p>
+
+							<h5 class="install-subheading">11.2.2 Anslut till enheten – WiFi</h5>
+							<p>Vid första uppstarten letar enheten efter ett WiFi-nätverk med namnet <strong>WiRoc</strong> och lösenordet <strong>WiRocWiRoc</strong>, och ansluter automatiskt till det. Enklaste sättet är att skapa nätverket som en hotspot på en mobiltelefon. Använd exakt SSID <code>WiRoc</code> och lösenord <code>WiRocWiRoc</code>, och se till att hotspoten sänds på 2,4 GHz om du har en äldre hårdvaruversion (v7 och tidigare stödjer endast 2,4 GHz).</p>
+							<ol>
+								<li>Starta wifinätverket WiRoc, t.ex som en hotspot på en mobiltelefon.</li>
+								<li>Sätt i microSD-kortet i enheten och anslut ström via USB eller tryck på strömknappen så att enheten startar.</li>
+								<li>När enheten är ansluten till samma nätverk som datorn kan du logga in via SSH:
+									<pre><code>ssh root@&lt;enhetens-ip-adress&gt;</code></pre></li>
+								<li>Logga in med lösenordet 1234. Efter inloggning följer du guiden som skapar ett nytt root lösenord och skapar ett användarnamn 'chip'.</li>
+							</ol>
+						
+							<h5 class="install-subheading">11.2.3 Anslut till enheten – Seriell konsol</h5>
+							<ol>
+								<li>Ansluta direkt till UART-stiften på kretskortet med en USB-seriell-adapter. Starta ett seriellt terminalprogram och använd iställningarna 115200 baud, 8N1.</li>
+								<li>Sätt i microSD-kortet i enheten och anslut ström via USB eller tryck på strömknappen så att enheten startar.</li>
+								<li>När enheten startar upp ska du se bootloggen i terminalprogrammet. När den är klar kan du logga in som root med lösenord 1234 och sedan följer du guiden som skapar ett nytt root lösenord och skapar ett användarnamn 'chip'.</li>
+							</ol>
+
+							<h4 class="install-heading">11.4 Installera på eMMC (intern lagring)</h4>
+							<p>Systemet bör köras från eMMC istället för direkt från SD-kortet. Det är både stabilare, snabbare och mer energieffektivt. Detta görs med kommandot:</p>
+							<pre><code>sudo armbian-config --cmd STO001</code></pre>
+							<p>Välj "Install" för att installera hela Armian (inte bara bootloadern) på eMMC chippet. Bekräfta det förvalda eMMC chippet, och att hel installation (både boot + system) ska installeras. Välj ext4 som filsystem och godkänn att den skriver över eventuella befintliga system på eMMC. Efter systemet skrivits till eMMC så tar du ut SD-kortet och startar om enheten utan det.</p>
+						</section>
+
+						<!-- AVSNITT 12: ÄNDRINGSLOGG -->
 						<section id="manual-changelog" style="page-break-before: always;">
-							<h3>11. Ändringslogg</h3>
+							<h3>12. Ändringslogg</h3>
 							<table class="table table-bordered table-sm manual-table">
 								<tr><th style="width:70px;">Version</th><th style="width:110px;">Datum</th><th style="width:140px;">Författare</th><th>Beskrivning</th></tr>
 								<tr><td>v1.0</td><td>2026-08-17</td><td>Henrik Larsson</td><td>Första versionen.</td></tr>
 								<tr><td>v1.1</td><td>2026-08-18</td><td>Henrik Larsson</td><td>Tillägg av konfiguration av OLA/MeOS.</td></tr>
 								<tr><td>v1.2</td><td>2026-09-11</td><td>Henrik Larsson</td><td>Tillägg av avsnitt om USB-mobildonglar.</td></tr>
 								<tr><td>v1.3</td><td>2026-09-12</td><td>Henrik Larsson</td><td>Tillägg av avsnitt om konfigurering av SportIdent-enheter.</td></tr>
+								<tr><td>v1.4</td><td>2026-09-24</td><td>Henrik Larsson</td><td>Tillägg av avsnitt om installation av mjukvaran (skrivning av avbildning till SD-kort, första uppstart och eMMC).</td></tr>
 							</table>
 						</section>
 					</div>
@@ -2375,6 +2452,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 								<li><a href="#manual-monitor-en">Monitor.wiroc.se</a></li>
 								<li><a href="#manual-usbdongle-en">USB mobile dongle</a></li>
 								<li><a href="#manual-rackvidd-en">Range</a></li>
+								<li><a href="#manual-installation-en">Installing the software</a></li>
 								<li><a href="#manual-changelog-en">Changelog</a></li>
 							</ol>
 							</div>
@@ -2868,21 +2946,106 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 
 						</section>
 
-						<!-- SECTION 11: CHANGELOG -->
+						<!-- SECTION 11: INSTALLING THE SOFTWARE -->
+						<section id="manual-installation-en" style="page-break-before: always;">
+							<h3>11. Installing the software</h3>
+							<p>The WiRoc device comes with the software already installed, but you may need to update the software for bug fixes or new features. Minor updates can be done via the WiRoc Config app, but sometimes it may be necessary to write a new image to the microSD card.</p>
+
+							<h4 class="install-heading">11.1 Minor updates</h4>
+							<p>See 4.14 Other settings for how to update the software.</p>
+
+							<h4 class="install-heading">11.2 Major updates</h4>
+							<p>For major updates you need to write a new image to the microSD card.</p>
+
+							<h5 class="install-subheading">11.2.1 Write the image to a microSD card</h5>
+							<ol>
+								<li>Download the image (<code>.img.xz</code>) for your hardware version from the <a href="#pageDownloads" data-toggle="pill" role="tab">download page</a>.</li>
+								<li>Insert a microSD card of at least 8 GB into the computer.</li>
+								<li>Start <a href="https://imager.armbian.com/" target="_blank" rel="noopener">Armbian Imager</a>. Choose to flash your own image &ndash; the program can be pointed at a local image file. Select the downloaded <code>.img.xz</code> file, then select the microSD card under <em>Select storage</em> and start writing. </li>
+								<li>Wait until writing has finished and eject the card.</li>
+							</ol>
+							<p><strong>Tip:</strong> the file is compressed (<code>.xz</code>) and does <em>not</em> need to be unpacked first &ndash; Armbian Imager handles that automatically.</p>
+
+							<h5 class="install-subheading">11.2.2 Connect to the device &ndash; WiFi</h5>
+							<p>On the first boot the device looks for a WiFi network named <strong>WiRoc</strong> with the password <strong>WiRocWiRoc</strong> and connects to it automatically. The easiest way is to create the network as a hotspot on a mobile phone. Use exactly the SSID <code>WiRoc</code> and password <code>WiRocWiRoc</code>, and make sure the hotspot is broadcast on 2.4 GHz if you have an older hardware version (v7 and earlier support 2.4 GHz only).</p>
+							<ol>
+								<li>Start the WiRoc WiFi network, e.g. as a hotspot on a mobile phone.</li>
+								<li>Insert the microSD card into the device and connect power via USB or press the power button so that the device starts.</li>
+								<li>Once the device is connected to the same network as the computer you can log in via SSH:
+									<pre><code>ssh root@&lt;device-ip-address&gt;</code></pre></li>
+								<li>Log in with the password 1234. After login you follow the guide that creates a new root password and creates a username 'chip'.</li>
+							</ol>
+						
+							<h5 class="install-subheading">11.2.3 Connect to the device &ndash; Serial console</h5>
+							<ol>
+								<li>Connect directly to the UART pins on the circuit board with a USB-to-serial adapter. Start a serial terminal program and use the settings 115200 baud, 8N1.</li>
+								<li>Insert the microSD card into the device and connect power via USB or press the power button so that the device starts.</li>
+								<li>When the device starts up you should see the boot log in the terminal program. When it is finished you can log in as root with the password 1234 and then follow the guide that creates a new root password and creates a username 'chip'.</li>
+							</ol>
+
+							<h4 class="install-heading">11.4 Install to eMMC (internal storage)</h4>
+							<p>The system should be run from eMMC instead of directly from the SD card. It is both more stable, faster and more energy-efficient. This is done with the command:</p>
+							<pre><code>sudo armbian-config --cmd STO001</code></pre>
+							<p>Choose "Install" to install the entire Armbian (not just the bootloader) onto the eMMC chip. Confirm the pre-selected eMMC chip and that a complete installation (both boot + system) is to be installed. Choose ext4 as the file system and accept that it overwrites any existing system on the eMMC. After the system has been written to the eMMC, remove the SD card and restart the device without it.</p>
+						</section>
+
+						<!-- SECTION 12: CHANGELOG -->
 						<section id="manual-changelog-en" style="page-break-before: always;">
-							<h3>11. Changelog</h3>
+							<h3>12. Changelog</h3>
 							<table class="table table-bordered table-sm manual-table">
 								<tr><th style="width:70px;">Version</th><th style="width:110px;">Date</th><th style="width:140px;">Author</th><th>Description</th></tr>
 								<tr><td>v1.0</td><td>2026-08-17</td><td>Henrik Larsson</td><td>Initial version.</td></tr>
 								<tr><td>v1.1</td><td>2026-08-18</td><td>Henrik Larsson</td><td>Addition of configuration of OLA/MeOS.</td></tr>
 								<tr><td>v1.2</td><td>2026-09-11</td><td>Henrik Larsson</td><td>Added section about supported USB mobile dongles.</td></tr>
 								<tr><td>v1.3</td><td>2026-09-12</td><td>Henrik Larsson</td><td>Added section about configuring SportIdent stations.</td></tr>
+								<tr><td>v1.4</td><td>2026-09-24</td><td>Henrik Larsson</td><td>Added section about installing the software (writing the image to an SD card, first boot and eMMC).</td></tr>
 							</table>
 						</section>
 					</div>
 					</div>
 				</div>
 
+				<div class="tab-pane fade" id="pageDownloads" role="tabpanel">
+					<h2><span class="lang-sv-inline">Nedladdning</span><span class="lang-en-inline">Downloads</span></h2>
+					<p><span class="lang-en-inline">Here you can download the WiRoc software as a disk image (<code>.img.xz</code>) to write to a microSD card. Use it to install the software on a new card, upgrade to a new version or restore a device.</span><span class="lang-sv-inline">Här kan du ladda ner WiRoc-mjukvaran som en avbildning (<code>.img.xz</code>) att skriva till ett microSD-kort. Använd det för att installera mjukvaran på ett nytt kort, uppdatera till en ny version eller återställa en enhet.</span></p>
+					<div class="alert alert-info">
+						<strong><span class="lang-sv-inline">Aktuell version: v1.51</span><span class="lang-en-inline">Current version: v1.51</span></strong> <span class="lang-sv-inline">(avser WiRoc-Python-2-versionen). Välj den avbildning som matchar enhetens <strong>hårdvaruversion</strong> – den står på etiketten på enheten. Filen behöver <em>inte</em> packas upp i förväg.</span><span class="lang-en-inline">(refers to the WiRoc-Python-2 version number). Choose the image that matches the <strong>hardware version</strong> of your device – it is printed on the label. The file does <em>not</em> need to be unpacked first.</span>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-bordered table-sm manual-table">
+							<thead class="thead-light">
+								<tr>
+									<th style="width:130px;"><span class="lang-sv-inline">Hårdvaruversion</span><span class="lang-en-inline">Hardware version</span></th>
+									<th><span class="lang-sv-inline">Beskrivning</span><span class="lang-en-inline">Description</span></th>
+									<th style="width:290px;"><span class="lang-sv-inline">Nedladdning</span><span class="lang-en-inline">Download</span></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="align-middle"><strong>v3Rev2</strong></td>
+									<td class="align-middle"><span class="lang-sv-inline">Tredje generationen (2020). Kompakt kort byggt på NanoPi Neo Air, med 6 LoRa-kanaler och två USB-portar.</span><span class="lang-en-inline">Third generation (2020). Compact board built on the NanoPi Neo Air, with 6 LoRa channels and two USB ports.</span></td>
+									<td class="align-middle"><button type="button" class="btn btn-sm btn-outline-secondary mr-1" data-toggle="modal" data-target="#dl-v3"><span class="lang-sv-inline">Detaljer</span><span class="lang-en-inline">Details</span></button> <a class="btn btn-sm btn-warning" href="https://monitor.wiroc.se/other_resources/WiRoc_v3Rev2_1.51_25.11.0-trunk-trixie_current_6.12.51.img.xz" title="WiRoc_v3Rev2_1.51_25.11.0-trunk-trixie_current_6.12.51.img.xz" download><span class="lang-sv-inline">Ladda ner v3Rev2 (v1.51)</span><span class="lang-en-inline">Download v3Rev2 (v1.51)</span></a></td>
+								</tr>
+								<tr>
+									<td class="align-middle"><strong>v4Rev1</strong></td>
+									<td class="align-middle"><span class="lang-sv-inline">Fjärde generationen (2021). NanoPi Neo Air-kort med inbyggd RS232-serieport för direkt anslutning av SI-master eller samlingsbox.</span><span class="lang-en-inline">Fourth generation (2021). NanoPi Neo Air board with a built-in RS232 serial port for connecting an SI master or collection box directly.</span></td>
+									<td class="align-middle"><button type="button" class="btn btn-sm btn-outline-secondary mr-1" data-toggle="modal" data-target="#dl-v4"><span class="lang-sv-inline">Detaljer</span><span class="lang-en-inline">Details</span></button> <a class="btn btn-sm btn-warning" href="https://monitor.wiroc.se/other_resources/WiRoc_v4Rev1_1.51_25.11.0-trunk-trixie_current_6.12.51.img.xz" title="WiRoc_v4Rev1_1.51_25.11.0-trunk-trixie_current_6.12.51.img.xz" download><span class="lang-sv-inline">Ladda ner v4Rev1 (v1.51)</span><span class="lang-en-inline">Download v4Rev1 (v1.51)</span></a></td>
+								</tr>
+								<tr>
+									<td class="align-middle"><strong>v7Rev2</strong></td>
+									<td class="align-middle"><span class="lang-sv-inline">Sjunde generationen. Första versionen med inbyggd SRR-mottagare, samt RTC-krets som håller tiden även när enheten är avstängd.</span><span class="lang-en-inline">Seventh generation. The first version with a built-in SRR receiver, plus an RTC chip that keeps the time when the device is switched off.</span></td>
+									<td class="align-middle"><button type="button" class="btn btn-sm btn-outline-secondary mr-1" data-toggle="modal" data-target="#dl-v7"><span class="lang-sv-inline">Detaljer</span><span class="lang-en-inline">Details</span></button> <a class="btn btn-sm btn-warning" href="https://monitor.wiroc.se/other_resources/WiRoc_v7Rev2_1.51_25.11.0-trunk-trixie_current_6.12.51.img.xz" title="WiRoc_v7Rev2_1.51_25.11.0-trunk-trixie_current_6.12.51.img.xz" download><span class="lang-sv-inline">Ladda ner v7Rev2 (v1.51)</span><span class="lang-en-inline">Download v7Rev2 (v1.51)</span></a></td>
+								</tr>
+								<tr>
+									<td class="align-middle"><strong>v8Rev2</strong></td>
+									<td class="align-middle"><span class="lang-sv-inline">Åttonde generationen (2026). Egen SBC med ny LoRa-radio, upp till 12 kanaler och dual-band WiFi.</span><span class="lang-en-inline">Eighth generation (2026). Custom SBC with a new LoRa radio, up to 12 channels and dual-band WiFi.</span></td>
+									<td class="align-middle"><button type="button" class="btn btn-sm btn-outline-secondary mr-1" data-toggle="modal" data-target="#dl-v8"><span class="lang-sv-inline">Detaljer</span><span class="lang-en-inline">Details</span></button> <a class="btn btn-sm btn-warning" href="https://monitor.wiroc.se/other_resources/WiRoc_v8Rev2_1.51_25.11.0-trunk-trixie_current_6.12.51.img.xz" title="WiRoc_v8Rev2_1.51_25.11.0-trunk-trixie_current_6.12.51.img.xz" download><span class="lang-sv-inline">Ladda ner v8Rev2 (v1.51)</span><span class="lang-en-inline">Download v8Rev2 (v1.51)</span></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p class="mt-4"><span class="lang-sv-inline"><strong>Hur du skriver avbildningen till ett microSD-kort</strong>, startar enheten första gången och installerar på eMMC beskrivs i <a href="#manual-installation" data-goto="#manual-installation">manualens avsnitt 11 – Installation av mjukvaran</a>.</span><span class="lang-en-inline"><strong>How to write the image to a microSD card</strong>, boot the device for the first time and install to eMMC is described in <a href="#manual-installation-en" data-goto="#manual-installation-en">section 11 of the manual – Installing the software</a>.</span></p>
+					</div>
 				<div class="tab-pane fade" id="pageContact" role="tabpanel">
 					<div class="lang-sv">
 					<h2>Kontakt</h2>
@@ -2900,6 +3063,148 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 			</div>
 		</div>
 		
+		<div class="modal fade" id="dl-v3" tabindex="-1" role="dialog" aria-labelledby="dl-v3-label" aria-hidden="true">
+			<div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="dl-v3-label">WiRoc v3Rev2</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<div class="modal-body">
+						<div class="lang-sv">
+							<p>Den tredje generationen, introducerad 2020. Den ersatte version 2 (som byggde på C.H.I.P.) med en NanoPi Neo Air-enkortsdator på ett eget bärarkort som tillför strömhantering och batteriladdning.</p>
+							<ul>
+								<li>6 icke-överlappande LoRa-kanaler (version 2 hade 8 kanaler som överlappade).</li>
+								<li>Två USB-värdportar, så att två SportIdent-masterenheter kan anslutas utan USB-hubb (plus en USB-A-kontakt för laddning).</li>
+								<li>Extern WiFi-antenn istället för kretskortsantennen, så att enheten kan placeras längre från accesspunkten.</li>
+								<li>Mindre kapsling: 84 × 59 × 34 mm.</li>
+								<li>Ingen inbyggd SRR-mottagare – en SRR USB-dongel kan användas.</li>
+							</ul>
+						</div>
+						<div class="lang-en">
+							<p>The third generation, introduced in 2020. It replaced the C.H.I.P.-based version 2 with a NanoPi Neo Air single-board computer on a custom carrier board that adds power management and battery charging.</p>
+							<ul>
+								<li>6 non-overlapping LoRa channels (version 2 had 8 overlapping channels).</li>
+								<li>Two USB host ports, so two SportIdent master stations can be connected without a USB hub (plus a USB-A plug for charging).</li>
+								<li>External WiFi antenna instead of the on-board antenna, so the device can be placed further from the access point.</li>
+								<li>Smaller enclosure: 84 × 59 × 34 mm.</li>
+								<li>No built-in SRR receiver – an SRR USB dongle can be used.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal"><span class="lang-sv-inline">Stäng</span><span class="lang-en-inline">Close</span></button>
+						<a class="btn btn-warning" href="https://monitor.wiroc.se/other_resources/WiRoc_v3Rev2_1.51_25.11.0-trunk-trixie_current_6.12.51.img.xz" title="WiRoc_v3Rev2_1.51_25.11.0-trunk-trixie_current_6.12.51.img.xz" download><span class="lang-sv-inline">Ladda ner v3Rev2 (v1.51)</span><span class="lang-en-inline">Download v3Rev2 (v1.51)</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="dl-v4" tabindex="-1" role="dialog" aria-labelledby="dl-v4-label" aria-hidden="true">
+			<div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="dl-v4-label">WiRoc v4Rev1</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<div class="modal-body">
+						<div class="lang-sv">
+							<p>Den fjärde generationen, från 2021. Det är en vidareutveckling av NanoPi Neo Air-designen och tillför ett inbyggt seriegränssnitt.</p>
+							<ul>
+								<li>Inbyggd RS232-serieport, så att en SportIdent-master med seriekabel eller en samlingsbox kan anslutas direkt, utan USB-till-seriell-adapter.</li>
+								<li>Vinklad SMA-kontakt för LoRa-antennen.</li>
+								<li>6 icke-överlappande LoRa-kanaler.</li>
+								<li>Två USB-värdportar och en extern WiFi-antenn.</li>
+								<li>Ingen inbyggd SRR-mottagare – en SRR USB-dongel kan användas.</li>
+							</ul>
+						</div>
+						<div class="lang-en">
+							<p>The fourth generation, from 2021. It is a further development of the NanoPi Neo Air design and adds a built-in serial interface.</p>
+							<ul>
+								<li>Built-in RS232 serial port, so a SportIdent master with a serial cable or a collection box can be connected directly, without a USB-to-serial adapter.</li>
+								<li>Angled SMA connector for the LoRa antenna.</li>
+								<li>6 non-overlapping LoRa channels.</li>
+								<li>Two USB host ports and an external WiFi antenna.</li>
+								<li>No built-in SRR receiver – an SRR USB dongle can be used.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal"><span class="lang-sv-inline">Stäng</span><span class="lang-en-inline">Close</span></button>
+						<a class="btn btn-warning" href="https://monitor.wiroc.se/other_resources/WiRoc_v4Rev1_1.51_25.11.0-trunk-trixie_current_6.12.51.img.xz" title="WiRoc_v4Rev1_1.51_25.11.0-trunk-trixie_current_6.12.51.img.xz" download><span class="lang-sv-inline">Ladda ner v4Rev1 (v1.51)</span><span class="lang-en-inline">Download v4Rev1 (v1.51)</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="dl-v7" tabindex="-1" role="dialog" aria-labelledby="dl-v7-label" aria-hidden="true">
+			<div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="dl-v7-label">WiRoc v7Rev2</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<div class="modal-body">
+						<div class="lang-sv">
+							<p>Den sjunde generationen, byggd på NanoPi Neo Air precis som v3/v4. Det är den första versionen med inbyggd SRR-mottagare.</p>
+							<ul>
+								<li>Två inbyggda SRR-mottagare – en för röd kanal och en för blå kanal. De kan aktiveras/inaktiveras var för sig och ställas in på att acka eller inte.</li>
+								<li>RTC-krets (realtidsklocka) som håller tiden även när enheten är avstängd.</li>
+								<li>6 LoRa-kanaler.</li>
+								<li>Endast WiFi 2,4 GHz, och Bluetooth BLE 4.2 för konfiguration med WiRoc Config-appen.</li>
+							</ul>
+						</div>
+						<div class="lang-en">
+							<p>The seventh generation, built on the NanoPi Neo Air like v3/v4. It is the first version with a built-in SRR receiver.</p>
+							<ul>
+								<li>Two built-in SRR receivers – one for the red channel and one for the blue channel. They can be enabled/disabled independently and configured to acknowledge or not.</li>
+								<li>RTC (real-time clock) chip that keeps the time even when the device is switched off.</li>
+								<li>6 LoRa channels.</li>
+								<li>WiFi 2.4 GHz only, and Bluetooth BLE 4.2 for configuration with the WiRoc Config app.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal"><span class="lang-sv-inline">Stäng</span><span class="lang-en-inline">Close</span></button>
+						<a class="btn btn-warning" href="https://monitor.wiroc.se/other_resources/WiRoc_v7Rev2_1.51_25.11.0-trunk-trixie_current_6.12.51.img.xz" title="WiRoc_v7Rev2_1.51_25.11.0-trunk-trixie_current_6.12.51.img.xz" download><span class="lang-sv-inline">Ladda ner v7Rev2 (v1.51)</span><span class="lang-en-inline">Download v7Rev2 (v1.51)</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="dl-v8" tabindex="-1" role="dialog" aria-labelledby="dl-v8-label" aria-hidden="true">
+			<div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="dl-v8-label">WiRoc v8Rev2</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<div class="modal-body">
+						<div class="lang-sv">
+							<p>Den åttonde generationen, från 2026. Istället för att bygga på en inköpt enkortsdator (NanoPi Neo Air) är nu processor, minne och eMMC integrerade på WiRocs kretskort tillsammans med en ny LoRa-radiomodul.</p>
+							<ul>
+								<li>Ny LoRa-radio med full kontroll över alla inställningar. Upp till 12 smalare kanaler, fortfarande kompatibel med de äldre 6 kanalerna – så gamla och nya enheter kan blandas i samma system.</li>
+								<li>Dual-band WiFi (2,4 GHz och 5 GHz) med förbättrad 2,4 GHz-räckvidd, och Bluetooth BLE 5.4.</li>
+								<li>Inbyggd SRR-mottagare för både röd och blå kanal.</li>
+								<li>Två USB-värdportar (SRR-donglar, USB-Ethernet-adapter eller SportIdent-enheter med USB-kabel) och en serieport för masterenhet med seriekontakt eller samlingsbox.</li>
+								<li>Högre stämplingskapacitet tack vare kortare meddelanden och snabbare kvittenser.</li>
+							</ul>
+						</div>
+						<div class="lang-en">
+							<p>The eighth generation, from 2026. Instead of building on a purchased single-board computer (NanoPi Neo Air), the processor, memory and eMMC are now integrated on the WiRoc PCB together with a new LoRa radio module.</p>
+							<ul>
+								<li>New LoRa radio with full control over all settings. Up to 12 narrower channels, while remaining compatible with the older 6 channels – so old and new units can be mixed in the same system.</li>
+								<li>Dual-band WiFi (2.4 GHz and 5 GHz) with improved 2.4 GHz range, and Bluetooth BLE 5.4.</li>
+								<li>Built-in SRR receiver for both the red and the blue channel.</li>
+								<li>Two USB host ports (SRR dongles, USB Ethernet adapter or SportIdent stations with a USB cable) and a serial port for a master station with a serial connector or a collection box.</li>
+								<li>Higher punch throughput thanks to shorter messages and faster acknowledgements.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal"><span class="lang-sv-inline">Stäng</span><span class="lang-en-inline">Close</span></button>
+						<a class="btn btn-warning" href="https://monitor.wiroc.se/other_resources/WiRoc_v8Rev2_1.51_25.11.0-trunk-trixie_current_6.12.51.img.xz" title="WiRoc_v8Rev2_1.51_25.11.0-trunk-trixie_current_6.12.51.img.xz" download><span class="lang-sv-inline">Ladda ner v8Rev2 (v1.51)</span><span class="lang-en-inline">Download v8Rev2 (v1.51)</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="container">
 				<footer class="footer rounded" style="border-radius: .5rem;">
 					<div class="text-center">
@@ -2940,7 +3245,8 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 			'range': '#tabRange',
 			'blog': '#tabBlog',
 			'manual': '#tabManual',
-			'contact': '#tabContact'
+			'contact': '#tabContact',
+			'downloads': '#tabDownloads'
 		};
 
 		// Blog pagination (shared state)
@@ -3160,6 +3466,22 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 				} else {
 					history.replaceState(null, null, '#' + tabId);
 				}
+			});
+
+			// In-page links that switch to a tab and scroll to a section (e.g. downloads -> manual section 11)
+			$(document).on('click', 'a[data-goto]', function(e) {
+				var sel = $(this).attr('data-goto');
+				var target = document.querySelector(sel);
+				if (!target) return;
+				e.preventDefault();
+				var pane = target.closest('.tab-pane');
+				if (pane) {
+					$('#mainNav a[href="#' + pane.id + '"]').tab('show');
+				}
+				setTimeout(function() {
+					var el = document.querySelector(sel);
+					if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}, 250);
 			});
 
 			initFlippers();
