@@ -103,6 +103,13 @@
 				border-radius: .35rem;
 				margin: 0.5rem 0;
 			}
+			.play-badge-img {
+				height: 46px;
+				width: auto;
+				vertical-align: middle;
+				transition: opacity 0.2s ease;
+			}
+			.play-badge-img:hover { opacity: 0.85; }
 			.header-banner {
 				border-radius: .5rem !important;
 				margin-top: 0.5rem;
@@ -3009,7 +3016,7 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 					<h2><span class="lang-sv-inline">Nedladdning</span><span class="lang-en-inline">Downloads</span></h2>
 					<p><span class="lang-en-inline">Here you can download the WiRoc software as a disk image (<code>.img.xz</code>) to write to a microSD card. Use it to install the software on a new card, upgrade to a new version or restore a device.</span><span class="lang-sv-inline">Här kan du ladda ner WiRoc-mjukvaran som en avbildning (<code>.img.xz</code>) att skriva till ett microSD-kort. Använd det för att installera mjukvaran på ett nytt kort, uppdatera till en ny version eller återställa en enhet.</span></p>
 					<div class="alert alert-info">
-						<strong><span class="lang-sv-inline">Aktuell version: v1.51</span><span class="lang-en-inline">Current version: v1.51</span></strong> <span class="lang-sv-inline">(avser WiRoc-Python-2-versionen). Välj den avbildning som matchar enhetens <strong>hårdvaruversion</strong> – den står på etiketten på enheten. Filen behöver <em>inte</em> packas upp i förväg.</span><span class="lang-en-inline">(refers to the WiRoc-Python-2 version number). Choose the image that matches the <strong>hardware version</strong> of your device – it is printed on the label. The file does <em>not</em> need to be unpacked first.</span>
+						<strong><span class="lang-sv-inline">Aktuell version: v1.51</span><span class="lang-en-inline">Current version: v1.51</span></strong> <span class="lang-sv-inline">(avser WiRoc-Python-2-versionen). Välj den avbildning som matchar enhetens <strong>hårdvaruversion</strong>. Versionen står tryckt på kretskortet, men kan vara svår att se – välj <strong>Detaljer</strong> för mer information om respektive hårdvaruversion. Filen behöver <em>inte</em> packas upp i förväg.</span><span class="lang-en-inline">(refers to the WiRoc-Python-2 version number). Choose the image that matches the <strong>hardware version</strong> of your device. The version is printed on the circuit board but can be hard to see – select <strong>Details</strong> for more information about each hardware version. The file does <em>not</em> need to be unpacked first.</span>
 					</div>
 					<div class="table-responsive">
 						<table class="table table-bordered table-sm manual-table">
@@ -3045,6 +3052,13 @@ Alla stämplingar ackades och vid de stickprov jag tog så var det ingen kö på
 						</table>
 					</div>
 					<p class="mt-4"><span class="lang-sv-inline"><strong>Hur du skriver avbildningen till ett microSD-kort</strong>, startar enheten första gången och installerar på eMMC beskrivs i <a href="#manual-installation" data-goto="#manual-installation">manualens avsnitt 11 – Installation av mjukvaran</a>.</span><span class="lang-en-inline"><strong>How to write the image to a microSD card</strong>, boot the device for the first time and install to eMMC is described in <a href="#manual-installation-en" data-goto="#manual-installation-en">section 11 of the manual – Installing the software</a>.</span></p>
+					<div class="card mt-4">
+						<div class="card-body">
+							<h4 class="card-title"><span class="lang-sv-inline">WiRoc Config-appen (Android)</span><span class="lang-en-inline">WiRoc Config app (Android)</span></h4>
+							<p class="card-text"><span class="lang-sv-inline">WiRoc-enheterna konfigureras med appen WiRoc Config, som också används för att testa att sändaren når mottagaren. Appen finns för Android och laddas ner från Google Play.</span><span class="lang-en-inline">WiRoc devices are configured with the WiRoc Config app, which is also used to test that the transmitter reaches the receiver. The app is available for Android and is downloaded from Google Play.</span></p>
+							<span class="lang-sv-inline"><a href="https://play.google.com/store/apps/details?id=com.wirocconfigrn&amp;hl=sv" target="_blank" rel="noopener"><img class="play-badge-img" src="google-play-badge-sv.png" alt="Ladda ned WiRoc Config på Google Play"></a></span><span class="lang-en-inline"><a href="https://play.google.com/store/apps/details?id=com.wirocconfigrn&amp;hl=en" target="_blank" rel="noopener"><img class="play-badge-img" src="google-play-badge-en.png" alt="Get WiRoc Config on Google Play"></a></span>
+						</div>
+					</div>
 					</div>
 				<div class="tab-pane fade" id="pageContact" role="tabpanel">
 					<div class="lang-sv">
